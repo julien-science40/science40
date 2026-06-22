@@ -37,7 +37,7 @@
             height: 100%;
             object-fit: cover;
             opacity: 0.15; /* Reste très discret pour ne pas gêner la lecture */
-            filter: hue-rotate(180deg) blue;
+            filter: hue-rotate(180deg);
         }
 
         /* Voile de protection pour le contraste */
@@ -210,10 +210,11 @@
                     <p>Exploration des ruptures en physique théorique, modélisation des structures fondamentales et gestion de l'entropie systémique.</p>
                 </div>
                 <div class="card-media">
-            <video class="display-video" autoplay loop muted playsinline>
-                <source src="f5.mp4" type="video/mp4">
-            </video>
-        </div>
+                    <!-- Ajout de l'attribut controls pour activer l'interface audio -->
+                    <video class="display-video" autoplay loop muted playsinline controls>
+                        <source src="f5.mp4" type="video/mp4">
+                    </video>
+                </div>
             </div>
 
             <!-- Module Bio-OS V8 -->
