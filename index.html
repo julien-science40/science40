@@ -143,18 +143,23 @@
             background: #020617;
         }
 
-        .display-video, .display-img {
+        .display-video {
             width: 100%;
             height: 100%;
             object-fit: cover;
             display: block;
         }
 
-        /* Intégration cybernétique du portrait */
+        /* Optimisation et ajustement du Portrait pour éviter le recadrage visible sur image_aa3fe4.jpg */
         .display-img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain; /* Conserve l'intégralité du portrait vertical sans le couper */
+            background-color: rgba(7, 11, 22, 0.6); /* Fond harmonisé avec la console */
             filter: saturate(0.7) brightness(0.85) contrast(1.1);
             mix-blend-mode: luminosity;
             transition: all 0.5s ease;
+            display: block;
         }
 
         .card:hover .display-img {
