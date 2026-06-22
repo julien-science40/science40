@@ -3,12 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Science 4.0</title>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Fira+Code:wght@500&display=swap">
+    <title>Science 4.0 — Interface</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Fira+Code:wght@400;500&display=swap">
     <style>
-        /* Fond de page futuriste avec dégradé radial */
         body {
-            background: radial-gradient(circle at center, #0b111e 0%, #05070f 100%);
+            background-color: #030712;
             color: #e2e8f0;
             font-family: 'Inter', system-ui, sans-serif;
             margin: 0;
@@ -18,31 +17,77 @@
             align-items: center;
             min-height: 100vh;
             box-sizing: border-box;
+            overflow-x: hidden;
+        }
+
+        /* Arrière-plan vidéo immersif */
+        .bg-video-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -2;
+            overflow: hidden;
+            background: radial-gradient(circle at center, #0b111e 0%, #030712 100%);
+        }
+
+        .bg-video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0.15; /* Reste très discret pour ne pas gêner la lecture */
+            filter: hue-rotate(180deg) blue;
+        }
+
+        /* Voile de protection pour le contraste */
+        .bg-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background: linear-gradient(180deg, rgba(3,7,18,0.4) 0%, rgba(3,7,18,0.8) 100%);
         }
 
         .container {
-            max-width: 800px;
+            max-width: 900px;
             width: 100%;
         }
 
         header {
-            margin-bottom: 40px;
-            border-bottom: 1px solid rgba(0, 242, 254, 0.1);
-            padding-bottom: 24px;
+            margin-bottom: 50px;
+            border-bottom: 1px solid rgba(0, 242, 254, 0.15);
+            padding-bottom: 30px;
+            position: relative;
+        }
+
+        /* Petit voyant de statut système */
+        header::before {
+            content: "SYS_STATUS: ACTIVE";
+            position: absolute;
+            top: -30px;
+            left: 0;
+            font-family: 'Fira Code', monospace;
+            font-size: 0.75rem;
+            color: #10b981;
+            letter-spacing: 2px;
+            animation: pulse 2s infinite;
         }
 
         h1 {
             font-family: 'Fira Code', monospace;
             color: #00f2fe;
-            text-shadow: 0 0 15px rgba(0, 242, 254, 0.4);
+            text-shadow: 0 0 20px rgba(0, 242, 254, 0.5);
             margin: 0 0 12px 0;
-            font-size: 2.6rem;
+            font-size: 2.8rem;
             font-weight: 500;
         }
 
         .subtitle {
             color: #38bdf8;
-            font-size: 1.1rem;
+            font-size: 1.15rem;
             margin: 0;
             letter-spacing: 0.5px;
         }
@@ -50,27 +95,61 @@
         .grid {
             display: flex;
             flex-direction: column;
-            gap: 24px;
+            gap: 35px;
         }
 
-        /* Cartes style cockpit de pilotage (Glassmorphism) */
+        /* Cartes High-Tech avec lecteur intégré */
         .card {
-            background: rgba(15, 23, 42, 0.4);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
+            background: rgba(15, 23, 42, 0.5);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
             border: 1px solid rgba(0, 242, 254, 0.15);
-            border-radius: 12px;
-            padding: 28px;
-            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
+            border-radius: 16px;
+            padding: 30px;
+            transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.6);
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
         }
 
-        /* Effet d'activation quantique au survol (Hover effect) */
+        @media (min-width: 768px) {
+            .card {
+                flex-direction: row;
+                align-items: center;
+            }
+            .card-content {
+                flex: 1;
+            }
+            .card-media {
+                width: 300px;
+                height: 170px;
+                flex-shrink: 0;
+            }
+        }
+
         .card:hover {
-            transform: translateY(-4px);
-            border-color: rgba(0, 242, 254, 0.8);
-            box-shadow: 0 0 25px rgba(0, 242, 254, 0.3), 
-                        inset 0 0 15px rgba(0, 242, 254, 0.15);
+            transform: translateY(-5px) scale(1.01);
+            border-color: rgba(0, 242, 254, 0.7);
+            box-shadow: 0 0 35px rgba(0, 242, 254, 0.25), 
+                        inset 0 0 15px rgba(0, 242, 254, 0.1);
+        }
+
+        .card-media {
+            border-radius: 10px;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.4);
+            position: relative;
+            background: #020617;
+        }
+
+        /* Vidéo interne aux cartes */
+        .display-video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
         }
 
         h2 {
@@ -78,7 +157,7 @@
             color: #00f2fe;
             text-shadow: 0 0 10px rgba(0, 242, 254, 0.2);
             margin: 0 0 12px 0;
-            font-size: 1.5rem;
+            font-size: 1.6rem;
             font-weight: 500;
         }
 
@@ -91,16 +170,32 @@
 
         footer {
             margin-top: auto;
-            padding-top: 60px;
+            padding-top: 80px;
             color: #475569;
-            font-size: 0.85rem;
+            font-family: 'Fira Code', monospace;
+            font-size: 0.8rem;
             text-align: center;
             width: 100%;
-            letter-spacing: 0.3px;
+            letter-spacing: 0.5px;
+        }
+
+        @keyframes pulse {
+            0% { opacity: 0.6; }
+            50% { opacity: 1; text-shadow: 0 0 8px rgba(16, 185, 129, 0.6); }
+            100% { opacity: 0.6; }
         }
     </style>
 </head>
 <body>
+
+    <!-- Structure vidéo en arrière-plan -->
+    <div class="bg-video-container">
+        <video class="bg-video" autoplay loop muted playsinline>
+            <source src="https://assets.mixkit.co/videos/preview/mixkit-abstract-laser-lights-background-23145-large.mp4" type="video/mp4">
+        </video>
+    </div>
+    <div class="bg-overlay"></div>
+
     <div class="container">
         <header>
             <h1>Science 4.0</h1>
@@ -108,20 +203,37 @@
         </header>
 
         <main class="grid">
+            <!-- Module Projet F-5 -->
             <div class="card">
-                <h2>Projet F-5</h2>
-                <p>Exploration des ruptures en physique théorique, modélisation des structures fondamentales et gestion de l'entropie systémique.</p>
+                <div class="card-content">
+                    <h2>Projet F-5</h2>
+                    <p>Exploration des ruptures en physique théorique, modélisation des structures fondamentales et gestion de l'entropie systémique.</p>
+                </div>
+                <div class="card-media">
+                    <video class="display-video" autoplay loop muted playsinline>
+                        <source src="https://assets.mixkit.co/videos/preview/mixkit-digital-animation-of-screens-and-data-31913-large.mp4" type="video/mp4">
+                    </video>
+                </div>
             </div>
 
+            <!-- Module Bio-OS V8 -->
             <div class="card">
-                <h2>Bio-OS V8</h2>
-                <p>Système d'exploitation biologique conçu pour la résilience industrielle, la standardisation et la dissipation des chocs au sein des structures complexes.</p>
+                <div class="card-content">
+                    <h2>Bio-OS V8</h2>
+                    <p>Système d'exploitation biologique conçu pour la résilience industrielle, la standardisation et la dissipation des chocs au sein des structures complexes.</p>
+                </div>
+                <div class="card-media">
+                    <video class="display-video" autoplay loop muted playsinline>
+                        <source src="https://assets.mixkit.co/videos/preview/mixkit-tunnel-of-futuristic-blue-lights-42207-large.mp4" type="video/mp4">
+                    </video>
+                </div>
             </div>
         </main>
     </div>
 
     <footer>
-        © 2026 Julien Boblique. Tous droits réservés. — Science 4.0 Framework
+        [ AUTH_ID: JULIEN_BOBLIQUE ] — © 2026 — Science 4.0 Framework
     </footer>
+
 </body>
 </html>
