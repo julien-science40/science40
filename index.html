@@ -3,12 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Science 4.0 — Console Directrice Large</title>
-    <!-- Importation de la police Fira Code -->
+    <title>Science 4.0 — Framework</title>
     <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;700&display=swap" rel="stylesheet">
     
     <style>
-        /* Réinitialisation complète */
         * {
             margin: 0;
             padding: 0;
@@ -17,18 +15,18 @@
 
         body {
             font-family: 'Fira Code', monospace;
-            background-color: #020617;
-            color: #f1f5f9;
+            background-color: #030712;
+            color: #e2e8f0;
             min-height: 100vh;
-            padding: 30px 20px;
             display: flex;
             flex-direction: column;
-            align-items: center;
             justify-content: center;
+            align-items: center;
             overflow-x: hidden;
+            padding: 40px 20px;
         }
 
-        /* Arrière-plan vidéo immersif */
+        /* Vidéo d'arrière-plan */
         .bg-video {
             position: fixed;
             top: 0;
@@ -40,102 +38,74 @@
             pointer-events: none;
         }
 
-        /* Masque radial de profondeur */
+        /* Effet Vignette d'origine */
         .vignette-overlay {
             position: fixed;
             top: 0;
             left: 0;
             width: 100vw;
             height: 100vh;
-            background: radial-gradient(circle, rgba(2, 6, 23, 0.2) 30%, rgba(2, 6, 23, 0.85) 90%);
+            background: radial-gradient(circle, rgba(3, 7, 18, 0.2) 10%, rgba(3, 7, 18, 0.85) 80%);
             z-index: -1;
             pointer-events: none;
         }
 
-        /* CONSOLE MAXIMISÉE (EXTENSIBLE ET LARGE) */
+        /* Boîtier de la console d'origine */
         .console-container {
-            width: 96%;
-            max-width: 1250px; /* Élargissement massif de l'interface */
-            background: rgba(15, 23, 42, 0.45);
-            border: 1px solid rgba(0, 242, 255, 0.12);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
+            width: 100%;
+            max-width: 900px;
+            background: rgba(11, 19, 43, 0.45);
+            border: 1px solid rgba(56, 189, 248, 0.15);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
             border-radius: 12px;
-            padding: 45px 50px;
-            box-shadow: 0 30px 70px rgba(0, 0, 0, 0.6);
-            margin-bottom: 20px;
+            padding: 40px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
         }
 
-        /* En-tête */
         header {
             margin-bottom: 40px;
         }
 
         .sys-status {
             font-size: 0.75rem;
-            color: #38bdf8;
+            color: #00f2ff;
             text-transform: uppercase;
-            letter-spacing: 3px;
+            letter-spacing: 2px;
             margin-bottom: 12px;
             font-weight: 700;
         }
 
         h1 {
-            font-size: 2.6rem;
+            font-size: 2.2rem;
             color: #00f2ff;
             font-weight: 700;
             letter-spacing: 1px;
-            margin-bottom: 10px;
-            text-shadow: 0 0 25px rgba(0, 242, 255, 0.3);
+            margin-bottom: 8px;
+            text-shadow: 0 0 20px rgba(0, 242, 255, 0.3);
         }
 
         .subtitle {
             font-size: 0.95rem;
             color: #38bdf8;
-            opacity: 0.85;
-            line-height: 1.6;
-            margin-bottom: 20px;
+            opacity: 0.9;
+            line-height: 1.5;
         }
 
-        /* Compteur Télémétrique */
-        .telemetry-counter {
-            font-size: 0.7rem;
-            color: #38bdf8;
-            letter-spacing: 1.5px;
-            display: inline-block;
-            border: 1px solid rgba(0, 242, 255, 0.2);
-            padding: 6px 14px;
-            border-radius: 4px;
-            background: rgba(2, 6, 23, 0.7);
-        }
-
-        .telemetry-counter span {
-            color: #00f2ff;
-            font-weight: 700;
-        }
-
-        /* Grille des blocs */
         .modules-grid {
             display: flex;
             flex-direction: column;
             gap: 24px;
         }
 
-        /* Module horizontal spacieux */
         .module-card {
-            background: rgba(9, 15, 32, 0.6);
-            border: 1px solid rgba(0, 242, 255, 0.04);
+            background: rgba(3, 7, 18, 0.5);
+            border: 1px solid rgba(56, 189, 248, 0.08);
             border-radius: 8px;
-            padding: 30px 40px;
+            padding: 24px;
             display: flex;
-            gap: 50px;
+            gap: 24px;
             align-items: center;
-            transition: border-color 0.3s ease, transform 0.3s ease;
-        }
-
-        .module-card:hover {
-            border-color: rgba(0, 242, 255, 0.2);
-            transform: translateY(-1px);
         }
 
         .module-info {
@@ -143,26 +113,26 @@
         }
 
         .module-title {
-            font-size: 1.4rem;
+            font-size: 1.2rem;
             color: #00f2ff;
             margin-bottom: 12px;
             font-weight: 700;
+            letter-spacing: 0.5px;
         }
 
         .module-text {
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             color: #94a3b8;
-            line-height: 1.7;
+            line-height: 1.6;
         }
 
-        /* Lecteurs Médias Élargis */
         .module-media {
-            width: 340px;
-            height: 190px;
+            width: 240px;
+            height: 135px;
             border-radius: 6px;
             overflow: hidden;
-            border: 1px solid rgba(0, 242, 255, 0.15);
-            background: #020617;
+            border: 1px solid rgba(56, 189, 248, 0.15);
+            background: #000;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -174,58 +144,44 @@
             object-fit: cover;
         }
 
-        /* Footer */
         footer {
-            font-size: 0.75rem;
-            color: #475569;
+            margin-top: 40px;
+            font-size: 0.7rem;
+            color: #64748b;
             text-align: center;
-            letter-spacing: 2px;
-            text-transform: uppercase;
+            letter-spacing: 1px;
+            width: 100%;
         }
 
-        /* Responsivité tablettes / mobiles */
-        @media (max-width: 900px) {
+        @media (max-width: 768px) {
             .module-card {
                 flex-direction: column;
                 align-items: flex-start;
-                padding: 30px;
-                gap: 20px;
             }
             .module-media {
                 width: 100%;
-                height: 210px;
-            }
-            .console-container {
-                padding: 30px 20px;
+                height: 160px;
             }
         }
     </style>
 </head>
 <body>
 
-    <!-- VIDÉO EN ARRIÈRE-PLAN -->
     <video class="bg-video" autoplay loop muted playsinline>
         <source src="background.mp4" type="video/mp4">
     </video>
 
     <div class="vignette-overlay"></div>
 
-    <!-- DOUBLE CLIC SUR LA LARGEUR DE LA CONSOLE -->
     <main class="console-container">
-        
         <header>
             <div class="sys-status">SYS_STATUS: ACTIVE</div>
             <h1>Science 4.0</h1>
             <p class="subtitle">Framework Architectural pour la Résilience et les Systèmes Structurels</p>
-            
-            <div class="telemetry-counter">
-                METRIC_TRAFFIC: <span id="visitor-count">⚡ CONNECTING...</span> VISITS
-            </div>
         </header>
 
         <div class="modules-grid">
             
-            <!-- PROJET F-5 -->
             <section class="module-card">
                 <div class="module-info">
                     <h2 class="module-title">Projet F-5</h2>
@@ -238,7 +194,6 @@
                 </div>
             </section>
 
-            <!-- BIO-OS V8 -->
             <section class="module-card">
                 <div class="module-info">
                     <h2 class="module-title">Bio-OS V8</h2>
@@ -251,7 +206,6 @@
                 </div>
             </section>
 
-            <!-- PROFILE ARCHITECTE -->
             <section class="module-card">
                 <div class="module-info">
                     <h2 class="module-title">Dr. Julien Boblique</h2>
@@ -268,23 +222,6 @@
     <footer>
         [ AUTH_ID: JULIEN_BOBLIQUE ] — © 2026 – Science 4.0 Framework
     </footer>
-
-    <!-- SCRIPT TÉLÉMÉTRIQUE SYNCHRONISÉ (DÉJÀ À 12 VISITES DANS TON HISTORIQUE !) -->
-    <script>
-        const namespace = "science40_architecture";
-        const key = "main_interface_counter";
-
-        async function fetchCounter() {
-            try {
-                const response = await fetch(`https://api.counterapi.dev/v1/${namespace}/${key}/up`);
-                const data = await response.json();
-                document.getElementById('visitor-count').innerText = data.count;
-            } catch (error) {
-                document.getElementById('visitor-count').innerText = "ONLINE";
-            }
-        }
-        window.addEventListener('DOMContentLoaded', fetchCounter);
-    </script>
 
 </body>
 </html>
