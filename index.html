@@ -91,8 +91,28 @@
         .subtitle {
             color: #38bdf8;
             font-size: 1.15rem;
-            margin: 0;
+            margin: 0 0 16px 0;
             letter-spacing: 0.5px;
+        }
+
+        /* Liens de navigation supérieurs (LinkedIn / Contact) */
+        .header-links {
+            font-family: 'Fira Code', monospace;
+            font-size: 0.85rem;
+            color: #4b5563; /* Couleur grise pour les crochets */
+        }
+
+        .header-links a {
+            color: #00f2fe;
+            text-decoration: none;
+            letter-spacing: 0.5px;
+            transition: all 0.3s ease;
+            margin: 0 5px;
+        }
+
+        .header-links a:hover {
+            color: #38bdf8;
+            text-shadow: 0 0 8px rgba(0, 242, 254, 0.6);
         }
 
         .grid {
@@ -236,10 +256,10 @@
         /* RECTIFICATION TECHNIQUE : Protection et visibilité du pied de page */
         footer {
             position: relative;
-            z-index: 10; /* Propulsé au premier plan avec le contenu */
+            z-index: 10; 
             margin-top: auto;
             padding-top: 80px;
-            color: #cbd5e1; /* Éclairci en blanc argenté pour un contraste parfait */
+            color: #cbd5e1; 
             font-family: 'Fira Code', monospace;
             font-size: 0.8rem;
             text-align: center;
@@ -267,6 +287,11 @@
         <header>
             <h1>Science 4.0</h1>
             <p class="subtitle">Framework Architectural pour la Résilience et les Systèmes Structurels</p>
+            
+            <!-- Restauration des liens supérieurs manquants -->
+            <div class="header-links">
+                [ <a href="https://www.linkedin.com/in/julien-boblique-33230a210" target="_blank">LINKEDIN_NODE</a> ] &nbsp;&nbsp; [ <a href="mailto:julien.boblique@orange.fr">CONTACT_PRO</a> ]
+            </div>
         </header>
 
         <main class="grid">
