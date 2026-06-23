@@ -210,6 +210,53 @@
             font-size: 1rem;
         }
 
+        /* Styles dédiés à la sous-section des documents */
+        .doc-section {
+            margin-top: 20px;
+            padding-top: 15px;
+            border-top: 1px dashed rgba(56, 189, 248, 0.2);
+        }
+
+        .doc-title {
+            font-family: 'Fira Code', monospace;
+            font-size: 0.8rem;
+            color: #38bdf8;
+            margin-bottom: 10px;
+            letter-spacing: 1px;
+            font-weight: 500;
+        }
+
+        .doc-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .doc-item {
+            font-family: 'Fira Code', monospace;
+            font-size: 0.8rem;
+            line-height: 1.4;
+        }
+
+        .doc-link {
+            color: #00f2fe;
+            text-decoration: none;
+            transition: color 0.3s ease, text-shadow 0.3s ease;
+        }
+
+        .doc-link:hover {
+            color: #e2e8f0;
+            text-shadow: 0 0 8px rgba(0, 242, 254, 0.5);
+        }
+
+        .doc-status {
+            color: #10b981;
+            font-weight: 500;
+        }
+
         footer {
             position: relative;
             z-index: 10; 
@@ -287,6 +334,19 @@
                 <div class="card-content">
                     <h2>Dr. Julien Boblique</h2>
                     <p>Architecte de la Science 4.0 — Chercheur publié (Impact Factor 7.019). Expert en souveraineté biologique, modélisation infodynamique et résilience des systèmes complexes.</p>
+                    
+                    <!-- INCORPORATION DU HUB DE VÉRIFICATION DES MANUSCRITS -->
+                    <div class="doc-section">
+                        <div class="doc-title">// REGISTERED_DOCUMENTS :</div>
+                        <ul class="doc-list">
+                            <li class="doc-item">
+                                <a href="mailto:julienboblique75@gmail.com?subject=Request%20Access%3A%20Science%204.0%20Core%20Publications" class="doc-link">&gt; [PUB_INDEXED]</a> Core Architecture Framework &amp; Peer-Reviewed Papers
+                            </li>
+                            <li class="doc-item">
+                                <a href="mailto:julienboblique75@gmail.com?subject=Request%20Abstract%3A%20Bio-OS%20V8%20Standardization" class="doc-link">&gt; [ABSTRACT_2026]</a> Industrial Standardization of Bio-OS Resilience Engineering <span class="doc-status">[PENDING_SUBMISSION]</span>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
                 <div class="card-media">
                     <img class="display-img" src="Dr_Julien_Boblique_Portrait.jpg.png" alt="Dr. Julien Boblique">
