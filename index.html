@@ -95,21 +95,24 @@
             letter-spacing: 0.5px;
         }
 
-        /* Nœuds de connectivité épurés */
+        /* Nœuds de connectivité sécurisés */
         .nav-nodes {
             display: flex;
-            gap: 25px;
+            gap: 20px;
             margin-top: 20px;
             align-items: center;
+        }
+
+        .nav-nodes a, .nav-nodes .secure-node {
+            font-family: 'Fira Code', monospace;
+            font-size: 0.85rem;
+            letter-spacing: 1px;
+            font-weight: 500;
         }
 
         .nav-nodes a {
             color: #38bdf8;
             text-decoration: none;
-            font-family: 'Fira Code', monospace;
-            font-size: 0.85rem;
-            letter-spacing: 1px;
-            font-weight: 500;
             transition: color 0.3s ease, text-shadow 0.3s ease;
         }
 
@@ -118,13 +121,20 @@
             text-shadow: 0 0 12px rgba(0, 242, 254, 0.6);
         }
 
+        /* Nœud verrouillé non cliquable pour protection des données */
+        .nav-nodes .secure-node {
+            color: #64748b;
+            cursor: not-allowed;
+            user-select: none;
+        }
+
         .grid {
             display: flex;
             flex-direction: column;
             gap: 35px;
         }
 
-        /* Cartes High-Tech */
+        /* Cartes High-Tech protectrices */
         .card {
             background: rgba(11, 18, 32, 0.85); 
             backdrop-filter: blur(25px);
@@ -254,10 +264,51 @@
             
             <nav class="nav-nodes">
                 <a href="https://www.linkedin.com/in/julien-boblique" target="_blank">[ LINKEDIN_NODE ]</a>
+                <span class="secure-node">[ REPO_LOCKED ]</span>
                 <a href="mailto:julienboblique75@gmail.com">[ CONTACT_PRO ]</a>
             </nav>
         </header>
 
         <main class="grid">
             <div class="card">
-                <div class="card-
+                <div class="card-content">
+                    <h2>Projet F-5</h2>
+                    <p>Exploration des ruptures en physique théorique, modélisation des structures fondamentales et gestion de l'entropie systémique.</p>
+                </div>
+                <div class="card-media">
+                    <video class="display-video" autoplay loop muted playsinline controls>
+                        <source src="f5.mp4" type="video/mp4">
+                    </video>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-content">
+                    <h2>Bio-OS V8</h2>
+                    <p>Système d'exploitation biologique conçu pour la résilience industrielle, la standardisation et la dissipation des chocs au sein des structures complexes.</p>
+                </div>
+                <div class="card-media">
+                    <video class="display-video" autoplay loop muted playsinline controls>
+                        <source src="bioos_v8.mp4" type="video/mp4">
+                    </video>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-content">
+                    <h2>Dr. Julien Boblique</h2>
+                    <p>Architecte de la Science 4.0 — Chercheur publié (Impact Factor 7.019). Expert en souveraineté biologique, modélisation infodynamique et résilience des systèmes complexes.</p>
+                </div>
+                <div class="card-media">
+                    <img class="display-img" src="Dr_Julien_Boblique_Portrait.jpg.png" alt="Dr. Julien Boblique">
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <footer>
+        [ AUTH_ID: JULIEN_BOBLIQUE ] — © 2026 — Science 4.0 Framework
+    </footer>
+
+</body>
+</html>
