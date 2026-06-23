@@ -3,11 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Science 4.0 — Console Directrice</title>
+    <title>Science 4.0 — Console Directrice Large</title>
+    <!-- Importation de la police Fira Code -->
     <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;700&display=swap" rel="stylesheet">
     
     <style>
-        /* Configuration de base et réinitialisation */
+        /* Réinitialisation complète */
         * {
             margin: 0;
             padding: 0;
@@ -19,14 +20,15 @@
             background-color: #020617;
             color: #f1f5f9;
             min-height: 100vh;
-            padding: 60px 20px;
+            padding: 30px 20px;
             display: flex;
             flex-direction: column;
             align-items: center;
+            justify-content: center;
             overflow-x: hidden;
         }
 
-        /* Arrière-plan vidéo natif */
+        /* Arrière-plan vidéo immersif */
         .bg-video {
             position: fixed;
             top: 0;
@@ -38,36 +40,35 @@
             pointer-events: none;
         }
 
-        /* Masque radial d'origine (Vignette) */
+        /* Masque radial de profondeur */
         .vignette-overlay {
             position: fixed;
             top: 0;
             left: 0;
             width: 100vw;
             height: 100vh;
-            background: radial-gradient(circle, rgba(2, 6, 23, 0.3) 20%, rgba(2, 6, 23, 0.9) 90%);
+            background: radial-gradient(circle, rgba(2, 6, 23, 0.2) 30%, rgba(2, 6, 23, 0.85) 90%);
             z-index: -1;
             pointer-events: none;
         }
 
-        /* Grand dôme de la console (Proportions exactes de l'image 1) */
+        /* CONSOLE MAXIMISÉE (EXTENSIBLE ET LARGE) */
         .console-container {
-            width: 100%;
-            max-width: 1050px;
-            background: rgba(15, 23, 42, 0.4);
-            border: 1px solid rgba(0, 242, 255, 0.1);
+            width: 96%;
+            max-width: 1250px; /* Élargissement massif de l'interface */
+            background: rgba(15, 23, 42, 0.45);
+            border: 1px solid rgba(0, 242, 255, 0.12);
             backdrop-filter: blur(20px);
             -webkit-backdrop-filter: blur(20px);
-            border-radius: 16px;
-            padding: 60px 50px;
-            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.6);
-            margin-bottom: 30px;
+            border-radius: 12px;
+            padding: 45px 50px;
+            box-shadow: 0 30px 70px rgba(0, 0, 0, 0.6);
+            margin-bottom: 20px;
         }
 
-        /* En-tête de l'interface */
+        /* En-tête */
         header {
-            margin-bottom: 50px;
-            position: relative;
+            margin-bottom: 40px;
         }
 
         .sys-status {
@@ -75,38 +76,37 @@
             color: #38bdf8;
             text-transform: uppercase;
             letter-spacing: 3px;
-            margin-bottom: 14px;
+            margin-bottom: 12px;
             font-weight: 700;
         }
 
         h1 {
-            font-size: 2.5rem;
+            font-size: 2.6rem;
             color: #00f2ff;
             font-weight: 700;
-            letter-spacing: 1.5px;
-            margin-bottom: 12px;
-            text-shadow: 0 0 25px rgba(0, 242, 255, 0.35);
+            letter-spacing: 1px;
+            margin-bottom: 10px;
+            text-shadow: 0 0 25px rgba(0, 242, 255, 0.3);
         }
 
         .subtitle {
-            font-size: 1rem;
+            font-size: 0.95rem;
             color: #38bdf8;
             opacity: 0.85;
             line-height: 1.6;
             margin-bottom: 20px;
         }
 
-        /* Compteur télémétrique discret et intégré */
+        /* Compteur Télémétrique */
         .telemetry-counter {
             font-size: 0.7rem;
             color: #38bdf8;
             letter-spacing: 1.5px;
             display: inline-block;
             border: 1px solid rgba(0, 242, 255, 0.2);
-            padding: 5px 12px;
+            padding: 6px 14px;
             border-radius: 4px;
-            background: rgba(2, 6, 23, 0.6);
-            text-transform: uppercase;
+            background: rgba(2, 6, 23, 0.7);
         }
 
         .telemetry-counter span {
@@ -114,28 +114,28 @@
             font-weight: 700;
         }
 
-        /* Grille principale des blocs structurels */
+        /* Grille des blocs */
         .modules-grid {
             display: flex;
             flex-direction: column;
-            gap: 30px;
+            gap: 24px;
         }
 
-        /* Blocs Modules d'origine */
+        /* Module horizontal spacieux */
         .module-card {
-            background: rgba(9, 15, 32, 0.65);
-            border: 1px solid rgba(0, 242, 255, 0.05);
-            border-radius: 12px;
-            padding: 35px;
+            background: rgba(9, 15, 32, 0.6);
+            border: 1px solid rgba(0, 242, 255, 0.04);
+            border-radius: 8px;
+            padding: 30px 40px;
             display: flex;
-            gap: 40px;
+            gap: 50px;
             align-items: center;
             transition: border-color 0.3s ease, transform 0.3s ease;
         }
 
         .module-card:hover {
             border-color: rgba(0, 242, 255, 0.2);
-            transform: translateY(-2px);
+            transform: translateY(-1px);
         }
 
         .module-info {
@@ -143,11 +143,10 @@
         }
 
         .module-title {
-            font-size: 1.35rem;
+            font-size: 1.4rem;
             color: #00f2ff;
-            margin-bottom: 16px;
+            margin-bottom: 12px;
             font-weight: 700;
-            letter-spacing: 0.5px;
         }
 
         .module-text {
@@ -156,11 +155,11 @@
             line-height: 1.7;
         }
 
-        /* Fenêtres médias horizontales calibrées */
+        /* Lecteurs Médias Élargis */
         .module-media {
-            width: 320px;
-            height: 180px;
-            border-radius: 8px;
+            width: 340px;
+            height: 190px;
+            border-radius: 6px;
             overflow: hidden;
             border: 1px solid rgba(0, 242, 255, 0.15);
             background: #020617;
@@ -175,45 +174,43 @@
             object-fit: cover;
         }
 
-        /* Pied de page d'autorité d'origine */
+        /* Footer */
         footer {
             font-size: 0.75rem;
             color: #475569;
             text-align: center;
             letter-spacing: 2px;
-            margin-top: 20px;
             text-transform: uppercase;
         }
 
-        /* Optimisation pour les affichages mobiles */
-        @media (max-width: 850px) {
+        /* Responsivité tablettes / mobiles */
+        @media (max-width: 900px) {
             .module-card {
                 flex-direction: column;
                 align-items: flex-start;
-                padding: 25px;
+                padding: 30px;
                 gap: 20px;
             }
             .module-media {
                 width: 100%;
-                height: 200px;
+                height: 210px;
             }
             .console-container {
                 padding: 30px 20px;
-            }
-            h1 {
-                font-size: 2rem;
             }
         }
     </style>
 </head>
 <body>
 
+    <!-- VIDÉO EN ARRIÈRE-PLAN -->
     <video class="bg-video" autoplay loop muted playsinline>
         <source src="background.mp4" type="video/mp4">
     </video>
 
     <div class="vignette-overlay"></div>
 
+    <!-- DOUBLE CLIC SUR LA LARGEUR DE LA CONSOLE -->
     <main class="console-container">
         
         <header>
@@ -228,6 +225,7 @@
 
         <div class="modules-grid">
             
+            <!-- PROJET F-5 -->
             <section class="module-card">
                 <div class="module-info">
                     <h2 class="module-title">Projet F-5</h2>
@@ -240,6 +238,7 @@
                 </div>
             </section>
 
+            <!-- BIO-OS V8 -->
             <section class="module-card">
                 <div class="module-info">
                     <h2 class="module-title">Bio-OS V8</h2>
@@ -252,6 +251,7 @@
                 </div>
             </section>
 
+            <!-- PROFILE ARCHITECTE -->
             <section class="module-card">
                 <div class="module-info">
                     <h2 class="module-title">Dr. Julien Boblique</h2>
@@ -269,6 +269,7 @@
         [ AUTH_ID: JULIEN_BOBLIQUE ] — © 2026 – Science 4.0 Framework
     </footer>
 
+    <!-- SCRIPT TÉLÉMÉTRIQUE SYNCHRONISÉ (DÉJÀ À 12 VISITES DANS TON HISTORIQUE !) -->
     <script>
         const namespace = "science40_architecture";
         const key = "main_interface_counter";
@@ -279,11 +280,9 @@
                 const data = await response.json();
                 document.getElementById('visitor-count').innerText = data.count;
             } catch (error) {
-                console.error("Erreur d'acquisition réseau :", error);
                 document.getElementById('visitor-count').innerText = "ONLINE";
             }
         }
-
         window.addEventListener('DOMContentLoaded', fetchCounter);
     </script>
 
