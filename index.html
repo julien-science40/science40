@@ -187,13 +187,57 @@
             font-size: 1rem;
         }
 
+        /* AJOUT DESIGN : Spécifications de la section Documents */
+        .doc-section {
+            margin-top: 25px;
+            font-family: 'Fira Code', monospace;
+            font-size: 0.85rem;
+            border-top: 1px dashed rgba(56, 189, 248, 0.2);
+            padding-top: 15px;
+        }
+
+        .doc-title {
+            color: #38bdf8;
+            margin-bottom: 12px;
+            letter-spacing: 1px;
+            font-weight: 500;
+        }
+
+        .doc-line {
+            margin-bottom: 8px;
+            color: #cbd5e1;
+            line-height: 1.5;
+        }
+
+        .text-cyan {
+            color: #00f2fe;
+        }
+
+        .text-cyan a {
+            color: #00f2fe;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+
+        .text-cyan a:hover {
+            text-shadow: 0 0 8px rgba(0, 242, 254, 0.8);
+            text-decoration: underline;
+        }
+
+        .text-green {
+            color: #10b981;
+            font-weight: 500;
+            margin-left: 5px;
+        }
+
         /* RECTIFICATION TECHNIQUE : Protection et visibilité du pied de page */
         footer {
             position: relative;
-            z-index: 10; /* Propulsé au premier plan avec le contenu */
+            z-index: 10; 
             margin-top: auto;
             padding-top: 80px;
-            color: #cbd5e1; /* Éclairci en blanc argenté pour un contraste parfait */
+            color: #cbd5e1; 
             font-family: 'Fira Code', monospace;
             font-size: 0.8rem;
             text-align: center;
@@ -252,6 +296,17 @@
                 <div class="card-content">
                     <h2>Dr. Julien Boblique</h2>
                     <p>Architecte de la Science 4.0 — Chercheur publié (Impact Factor 7.019). Expert en souveraineté biologique, modélisation infodynamique et résilience des systèmes complexes.</p>
+                    
+                    <!-- REINTEGRATION DES DOCUMENTS ET MANUSCRIT PUBLIÉ -->
+                    <div class="doc-section">
+                        <div class="doc-title">// REGISTERED DOCUMENTS :</div>
+                        <div class="doc-line">
+                            <span class="text-cyan">&gt; <a href="INSÉREZ_LIEN_VERS_PAPIERS_INDEXÉS" target="_blank">[PUB_INDEXED]</a></span> Core Architecture Framework & Peer-Reviewed Papers
+                        </div>
+                        <div class="doc-line">
+                            <span class="text-cyan">&gt; <a href="INSÉREZ_LIEN_VERS_MANUSCRIT_MEDWIN" target="_blank">[ABSTRACT_2026]</a></span> Industrial Standardization of Bio-OS Resilience Engineering <span class="text-green">[PUBLISHED]</span>
+                        </div>
+                    </div>
                 </div>
                 <div class="card-media">
                     <img class="display-img" src="Dr_Julien_Boblique_Portrait.jpg.png" alt="Dr. Julien Boblique">
