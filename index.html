@@ -20,7 +20,7 @@
             overflow-x: hidden;
         }
 
-        /* Arrière-plan : Vidéo Laboratoire Locale */
+        /* Arrière-plan : Laboratoire Haute Visibilité */
         .bg-video-container {
             position: fixed;
             top: 0;
@@ -29,18 +29,18 @@
             height: 100%;
             z-index: -2;
             overflow: hidden;
-            background: radial-gradient(circle at center, #0b111e 0%, #030712 100%);
+            background: #030712;
         }
 
         .bg-video {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            opacity: 0.15; /* Calibré pour être visible mais discret */
-            filter: hue-rotate(180deg) brightness(0.7);
+            opacity: 0.45; /* Augmenté à 0.45 pour une visibilité nette */
+            filter: hue-rotate(180deg) brightness(1.1) contrast(1.1); /* Boost de lumière et de contraste */
         }
 
-        /* Voile de protection pour le contraste */
+        /* Voile affiné pour laisser passer la vidéo tout en isolant le texte */
         .bg-overlay {
             position: fixed;
             top: 0;
@@ -48,7 +48,7 @@
             width: 100%;
             height: 100%;
             z-index: -1;
-            background: linear-gradient(180deg, rgba(3,7,18,0.3) 0%, rgba(3,7,18,0.7) 100%);
+            background: linear-gradient(180deg, rgba(3,7,18,0.1) 0%, rgba(3,7,18,0.4) 100%);
         }
 
         .container {
@@ -63,6 +63,7 @@
             position: relative;
         }
 
+        /* Voyant de statut système */
         header::before {
             content: "SYS_STATUS: ACTIVE";
             position: absolute;
@@ -97,15 +98,16 @@
             gap: 35px;
         }
 
+        /* Cartes renforcées pour maintenir le contraste face au fond plus clair */
         .card {
-            background: rgba(15, 23, 42, 0.65);
+            background: rgba(11, 18, 32, 0.8); /* Opacité augmentée pour bloquer la lumière arrière sous le texte */
             backdrop-filter: blur(20px);
             -webkit-backdrop-filter: blur(20px);
-            border: 1px solid rgba(0, 242, 254, 0.15);
+            border: 1px solid rgba(0, 242, 254, 0.2);
             border-radius: 16px;
             padding: 30px;
             transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.7);
+            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.8);
             display: flex;
             flex-direction: column;
             gap: 20px;
@@ -149,6 +151,7 @@
             display: block;
         }
 
+        /* Cadrage Portrait d'Architecte */
         .display-img {
             width: 100%;
             height: 100%;
@@ -175,7 +178,7 @@
         }
 
         p {
-            color: #94a3b8;
+            color: #cbd5e1; /* Texte légèrement blanchi pour une lisibilité maximale */
             line-height: 1.6;
             margin: 0;
             font-size: 1rem;
@@ -201,7 +204,6 @@
 </head>
 <body>
 
-    <!-- Routage Arrière-plan Local (Zéro dépendance externe) -->
     <div class="bg-video-container">
         <video class="bg-video" autoplay loop muted playsinline>
             <source src="labo.mp4" type="video/mp4">
@@ -216,7 +218,6 @@
         </header>
 
         <main class="grid">
-            <!-- Module Projet F-5 -->
             <div class="card">
                 <div class="card-content">
                     <h2>Projet F-5</h2>
@@ -229,7 +230,6 @@
                 </div>
             </div>
 
-            <!-- Module Bio-OS V8 -->
             <div class="card">
                 <div class="card-content">
                     <h2>Bio-OS V8</h2>
@@ -242,7 +242,6 @@
                 </div>
             </div>
 
-            <!-- Module L'Architecte -->
             <div class="card">
                 <div class="card-content">
                     <h2>Dr. Julien Boblique</h2>
