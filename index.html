@@ -20,7 +20,7 @@
             overflow-x: hidden;
         }
 
-        /* COUCHE 1 : Fond métallique lumineux (Tout au fond) */
+        /* COUCHE 1 : Fond en Couleurs d'Origine et Lumineux */
         .bg-video-container {
             position: fixed;
             top: 0;
@@ -36,8 +36,8 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
-            opacity: 0.95; 
-            filter: grayscale(1) brightness(1.6) contrast(1.1); 
+            opacity: 0.85; /* Forte présence visuelle */
+            filter: brightness(1.3) contrast(1.1); /* Supprimé grayscale(1) : retour des couleurs réelles avec un boost de lumière */
         }
 
         /* COUCHE 2 : Voile de protection intermédiaire */
@@ -51,7 +51,7 @@
             background: radial-gradient(circle at center, rgba(3,7,18,0.1) 0%, rgba(3,7,18,0.5) 100%);
         }
 
-        /* COUCHE 10 : Contenu forcé au premier plan (Sécurité absolue) */
+        /* COUCHE 10 : Contenu au premier plan */
         .container {
             position: relative;
             z-index: 10; 
