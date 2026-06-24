@@ -67,9 +67,9 @@
             position: relative;
         }
 
-        /* Voyant de statut système */
+        /* Voyant de statut système avec curseur clignotant */
         header::before {
-            content: "SYS_STATUS: ACTIVE";
+            content: "SYS_STATUS: ACTIVE _";
             position: absolute;
             top: -30px;
             left: 0;
@@ -77,7 +77,7 @@
             font-size: 0.75rem;
             color: #10b981;
             letter-spacing: 2px;
-            animation: pulse 2s infinite;
+            animation: blink 1s infinite step-end;
         }
 
         h1 {
@@ -96,7 +96,7 @@
             letter-spacing: 0.5px;
         }
 
-        /* Liens de navigation supérieurs (LinkedIn / Contact / ORCID / Scholar) */
+        /* Navigation supérieure */
         .header-links {
             font-family: 'Fira Code', monospace;
             font-size: 0.85rem;
@@ -190,6 +190,25 @@
             line-height: 1.4;
         }
 
+        /* Flux de Télémétrie Automatisé (SYSTEM_LOGS) */
+        .log-entry {
+            border-left: 2px solid #00f2fe;
+            padding-left: 15px;
+            margin: 18px 0;
+            font-family: 'Fira Code', monospace;
+            font-size: 0.85rem;
+        }
+        .log-date {
+            color: #f59e0b;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+        .log-title {
+            color: #00f2fe;
+            font-weight: 500;
+            margin: 4px 0;
+        }
+
         /* Cadrage Portrait */
         .display-img {
             width: 100%;
@@ -223,7 +242,7 @@
             font-size: 1rem;
         }
 
-        /* Infrastructure du registre des documents et conférences */
+        /* Registre des documents */
         .document-registry {
             margin-top: 25px;
             border-top: 1px dashed rgba(0, 242, 254, 0.2);
@@ -274,7 +293,6 @@
             text-shadow: 0 0 8px rgba(0, 242, 254, 0.5);
         }
 
-        /* Protection du pied de page */
         footer {
             position: relative;
             z-index: 10; 
@@ -288,10 +306,9 @@
             letter-spacing: 0.5px;
         }
 
-        @keyframes pulse {
-            0% { opacity: 0.6; }
-            50% { opacity: 1; text-shadow: 0 0 8px rgba(16, 185, 129, 0.6); }
-            100% { opacity: 0.6; }
+        @keyframes blink {
+            from, to { color: transparent }
+            50% { color: #10b981; text-shadow: 0 0 8px rgba(16, 185, 129, 0.6); }
         }
     </style>
 </head>
@@ -310,11 +327,13 @@
             <p class="subtitle">Framework Architectural pour la Résilience et les Systèmes Structurels</p>
             
             <div class="header-links">
-                [ <a href="https://www.linkedin.com/in/julien-boblique-33230a210" target="_blank">LINKEDIN_NODE</a> ] &nbsp;&nbsp; [ <a href="mailto:julien.boblique@orange.fr">CONTACT_PRO</a> ] &nbsp;&nbsp; [ <a href="https://orcid.org/0009-0009-0648-5970" target="_blank">ORCID_NODE</a> ] &nbsp;&nbsp; [ <a href="https://scholar.google.com/citations?user=TON_ID_GOOGLE_SCHOLAR" target="_blank">SCHOLAR_NODE</a> ]
+                [ <a href="https://www.linkedin.com/in/julien-boblique-33230a210" target="_blank">LINKEDIN_NODE</a> ] &nbsp;&nbsp; [ <a href="mailto:julien.boblique@orange.fr">CONTACT_PRO</a> ] &nbsp;&nbsp; [ <a href="https://orcid.org/0009-0009-0648-5970" target="_blank">ORCID_NODE</a> ] &nbsp;&nbsp; [ <a href="#" target="_blank">SCHOLAR_NODE</a> ]
             </div>
         </header>
 
         <main class="grid">
+            
+            <!-- SECTION 1 : PROJET F-5 -->
             <div class="card">
                 <div class="card-content">
                     <h2>Projet F-5</h2>
@@ -327,14 +346,13 @@
                 </div>
             </div>
 
+            <!-- SECTION 2 : BIO-OS V8 -->
             <div class="card">
                 <div class="card-content">
                     <h2>Bio-OS V8</h2>
                     <p>Système d'exploitation biologique conçu pour la résilience industrielle, la standardisation et la dissipation des chocs au sein des structures complexes.</p>
                     
-                    <div class="matrix-console">// BIO-OS FLOW STEERING MATRIX v8.0
-d(_Integrity) / dt = [I_control * H_infodynamics] - [E_drift * d_entropy]
-Telemetry Status: TERMINAL_RUNNING_ACTIVE // SYSTEM_CONVERGENCE_LOCK</div>
+                    <div class="matrix-console" id="typed-console">// INITIALIZING MATRIX CONSOLE...</div>
                 </div>
                 <div class="card-media">
                     <video class="display-video" autoplay loop muted playsinline controls>
@@ -343,6 +361,16 @@ Telemetry Status: TERMINAL_RUNNING_ACTIVE // SYSTEM_CONVERGENCE_LOCK</div>
                 </div>
             </div>
 
+            <!-- NOUVELLE CARD AUTO-GÉNÉRÉE : FLUX DE DÉCRYPTAGE (SYSTEM_LOGS) -->
+            <div class="card">
+                <div class="card-content" style="width: 100%;">
+                    <h2>// SYSTEM_LOGS : RECHERCHES TRANSITOIRES</h2>
+                    <p style="font-size: 0.9rem; color: #94a3b8; margin-bottom: 10px;">Applications en temps réel des invariants de la Science 4.0 sur l'infodynamique globale.</p>
+                    <div id="logs-container"></div>
+                </div>
+            </div>
+
+            <!-- SECTION 3 : PROFIL DR. JULIEN BOBLIQUE -->
             <div class="card">
                 <div class="card-content">
                     <h2>Dr. Julien Boblique</h2>
@@ -451,6 +479,14 @@ Telemetry Status: TERMINAL_RUNNING_ACTIVE // SYSTEM_CONVERGENCE_LOCK</div>
                             </a> 
                             <span style="color: #38bdf8;">[INDEXED_NODE]</span>
                         </p>
+
+                        <!-- AJOUT TECHNIQUE : LE PRESS KIT DE CONFÉRENCE -->
+                        <p class="document-line" style="margin-top: 20px; padding-top: 10px; border-top: 1px dashed rgba(245, 158, 11, 0.15);">
+                            &gt; <span style="color: #ef4444;">[PRESS_KIT_2027]</span> 
+                            <a href="press_kit_dr_boblique.pdf" target="_blank" class="document-link" style="color: #e2e8f0; font-weight: bold;">
+                                DOWNLOAD_OFFICIAL_PRESS_KIT (Syllabus & Biography PDF)
+                            </a>
+                        </p>
                     </div>
 
                 </div>
@@ -464,6 +500,58 @@ Telemetry Status: TERMINAL_RUNNING_ACTIVE // SYSTEM_CONVERGENCE_LOCK</div>
     <footer>
         [ AUTH_ID: JULIEN_BOBLIQUE ] — © 2026 — Science 4.0 Framework
     </footer>
+
+    <!-- LOGIQUE DE PILOTAGE AUTOMATIQUE DES LOGS & ANIMATIONS -->
+    <script>
+        // 1. TA BASE DE DONNÉES SIMPLE POUR TES PROCHAINS ARTICLES
+        // Pour ajouter une actu, copie-colle juste un bloc { ... } ci-dessous.
+        const ARTICLES_BIO_OS_DATABASE = [
+            {
+                date: "24 JUIN 2026",
+                tag: "ASTROPHYSIQUE",
+                title: "GW250114 — Décryptage du point de non-retour",
+                text: "Analyse infodynamique des empreintes de l'horizon des événements captées par LIGO. Validation des structures de flux macroscopiques et de la traînée de référentiel spatio-temporelle."
+            },
+            {
+                date: "20 JUIN 2026",
+                tag: "MÉCANIQUE CÉLESTE",
+                title: "Transit de l'Astéroïde 1997 NC1",
+                text: "Modélisation orbitale prédictive et calcul d'impédance gravitationnelle à 6,66 fois la distance Terre-Lune. Alignement des lois de convergence systémique."
+            },
+            {
+                date: "15 JUIN 2026",
+                tag: "INFODYNAMIQUE ANTIQUE",
+                title: "ScanPyramids — Trajectographie Muonique",
+                text: "Scan passif des couloirs de Khéops par muons cosmiques. Démonstration de la manière dont la matière contraint le flux d'information structurel."
+            }
+        ];
+
+        // Générateur automatique de lignes HTML
+        const container = document.getElementById('logs-container');
+        container.innerHTML = ARTICLES_BIO_OS_DATABASE.map(art => `
+            <div class="log-entry">
+                <span class="log-date">[ ${art.date} // NODE: ${art.tag} ]</span>
+                <div class="log-title">&gt; ${art.title}</div>
+                <p style="font-size: 0.85rem; color: #94a3b8; margin: 0;">${art.text}</p>
+            </div>
+        `).join('');
+
+        // 2. EFFET TERMINAL VIVANT (ÉQUATION CHRONOMÉTRÉE LETTRE PAR LETTRE)
+        const consoleElement = document.getElementById('typed-console');
+        const equationText = `// BIO-OS FLOW STEERING MATRIX v8.0\nd(_Integrity) / dt = [I_control * H_infodynamics] - [E_drift * d_entropy]\nTelemetry Status: TERMINAL_RUNNING_ACTIVE // SYSTEM_CONVERGENCE_LOCK`;
+        
+        let index = 0;
+        consoleElement.innerHTML = "";
+        function typeConsole() {
+            if (index < equationText.length) {
+                consoleElement.innerHTML += equationText.charAt(index);
+                index++;
+                setTimeout(typeConsole, 12); // Vitesse d'écriture millimétrée
+            }
+        }
+        // Lancement synchrone
+        setTimeout(typeConsole, 500);
+    </script>
 
 </body>
 </html>
