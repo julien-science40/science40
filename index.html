@@ -140,14 +140,14 @@
         @media (min-width: 768px) {
             .card {
                 flex-direction: row;
-                align-items: center;
+                align-items: flex-start; /* Alignement propre en haut pour éviter le décentrage dû à la hauteur variable */
             }
             .card-content {
                 flex: 1;
             }
             .card-media {
                 width: 300px;
-                height: 170px;
+                aspect-ratio: 16/9; /* Empêche les lecteurs vidéo avec contrôles de dépasser */
                 flex-shrink: 0;
             }
         }
@@ -186,7 +186,7 @@
             color: #38bdf8;
             overflow-x: auto;
             margin-top: 15px;
-            white-space: pre;
+            white-space: pre-wrap; /* Permet un retour à la ligne propre sur mobile */
             line-height: 1.4;
         }
 
@@ -274,7 +274,7 @@
             text-shadow: 0 0 8px rgba(0, 242, 254, 0.5);
         }
 
-        /* RECTIFICATION TECHNIQUE : Protection et visibilité du pied de page */
+        /* Protection du pied de page */
         footer {
             position: relative;
             z-index: 10; 
@@ -332,7 +332,6 @@
                     <h2>Bio-OS V8</h2>
                     <p>Système d'exploitation biologique conçu pour la résilience industrielle, la standardisation et la dissipation des chocs au sein des structures complexes.</p>
                     
-                    <!-- CONSOLE EMBED DE L'ÉQUATION RETROUVÉE -->
                     <div class="matrix-console">// BIO-OS FLOW STEERING MATRIX v8.0
 d(_Integrity) / dt = [I_control * H_infodynamics] - [E_drift * d_entropy]
 Telemetry Status: TERMINAL_RUNNING_ACTIVE // SYSTEM_CONVERGENCE_LOCK</div>
@@ -352,6 +351,13 @@ Telemetry Status: TERMINAL_RUNNING_ACTIVE // SYSTEM_CONVERGENCE_LOCK</div>
                     <div class="document-registry">
                         <div class="document-registry-title">// REGISTERED DOCUMENTS :</div>
                         
+                        <!-- LIGNE RESTAURÉE : FORTHCOMING JULY 2026 -->
+                        <p class="document-line">
+                            &gt; <span class="tag-cyan">[BIO_OS_STANDARDIZATION_2026]</span> 
+                            Industrial Standardization of the Bio-OS: Architectural Telemetry and Epigenetic Flow Control 
+                            <span class="tag-orange">[FORTHCOMING &ndash; JULY 2026]</span>
+                        </p>
+
                         <p class="document-line">
                             &gt; <span class="tag-cyan">[SET_THEORY_2026]</span> 
                             <a href="https://doi.org/10.23880/izab-16000667" target="_blank" class="document-link">
@@ -417,7 +423,19 @@ Telemetry Status: TERMINAL_RUNNING_ACTIVE // SYSTEM_CONVERGENCE_LOCK</div>
                         </p>
                     </div>
 
-                    <div class="document-registry" style="border-color: rgba(245, 158, 11, 0.25); margin-top: 30px;">
+                    <!-- SECTION RESTAURÉE : SCIENTIFIC LEADERSHIP & COLLABORATIONS -->
+                    <div class="document-registry" style="border-color: rgba(16, 185, 129, 0.2); margin-top: 25px;">
+                        <div class="document-registry-title" style="color: #10b981;">// SCIENTIFIC LEADERSHIP & RESEARCH COLLABORATIONS :</div>
+                        <p class="document-line">&gt; Science 4.0 Architecture Paradigm Active</p>
+                        <p class="document-line">
+                            &gt; <span class="tag-cyan">[OPEN_NODE]</span> Open for Peer-to-Peer Research Alignments and Scientific Cooperations on Bio-OS V8 Protocols.
+                        </p>
+                        <p class="document-line">
+                            &gt; <span class="tag-cyan">[PARTNERSHIPS]</span> Steering multi-systemic connections for industrialized bio-governance standards.
+                        </p>
+                    </div>
+
+                    <div class="document-registry" style="border-color: rgba(245, 158, 11, 0.25); margin-top: 25px;">
                         <div class="document-registry-title" style="color: #f59e0b;">// FUTURE TRANSMISSIONS & CONFERENCES (2027) :</div>
                         
                         <p class="document-line">
