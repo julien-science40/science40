@@ -32,6 +32,24 @@
             overflow-x: hidden;
         }
 
+        /* MODIF 1 : Barre de défilement personnalisée (Scrollbar CSS) */
+        ::-webkit-scrollbar {
+            width: 6px;
+            height: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #030712; 
+        }
+        ::-webkit-scrollbar-thumb {
+            background: rgba(0, 242, 254, 0.2); 
+            border-radius: 3px;
+            transition: background 0.3s ease;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: rgba(0, 242, 254, 0.6); 
+            box-shadow: 0 0 8px rgba(0, 242, 254, 0.5);
+        }
+
         /* COUCHE 1 : Fond en Couleurs d'Origine et Lumineux */
         .bg-video-container {
             position: fixed;
