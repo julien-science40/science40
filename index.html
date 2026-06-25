@@ -6,8 +6,10 @@
     <title>Dr. Julien Boblique — Science 4.0 & Bio-OS V8</title>
     <meta name="description" content="Site officiel du Dr. Julien Boblique, architecte de la Science 4.0 et du Bio-OS V8. Chercheur publié en souveraineté biologique et résilience systémique.">
     
+    <!-- CHANTIER 2 : Favicon Système Inline (Code Cyber-Atome Cyan) -->
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='35' stroke='%2300f2fe' stroke-width='6' fill='none' stroke-dasharray='5 3'/><circle cx='50' cy='50' r='12' fill='%2300f2fe'/></svg>">
 
+    <!-- CHANTIER 1 : Open Graph / LinkedIn -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://julien-science40.github.io/science40/">
     <meta property="og:title" content="Dr. Julien Boblique — Science 4.0 & Bio-OS V8">
@@ -199,6 +201,59 @@
             line-height: 1.4;
         }
 
+        /* CHANTIER 4 : Style du Manifeste Épistémologique */
+        .manifesto-timeline {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            margin-top: 15px;
+            font-family: 'Fira Code', monospace;
+        }
+
+        .manifesto-node {
+            border-left: 2px dashed rgba(56, 189, 248, 0.2);
+            padding-left: 20px;
+            position: relative;
+        }
+
+        .manifesto-node::before {
+            content: "";
+            position: absolute;
+            left: -5px;
+            top: 5px;
+            width: 8px;
+            height: 8px;
+            background: #4b5563;
+            border-radius: 50%;
+        }
+
+        .manifesto-node.active {
+            border-left: 2px solid #00f2fe;
+        }
+
+        .manifesto-node.active::before {
+            background: #00f2fe;
+            box-shadow: 0 0 10px #00f2fe;
+        }
+
+        .manifesto-title {
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+
+        .manifesto-node.active .manifesto-title {
+            color: #00f2fe;
+            text-shadow: 0 0 8px rgba(0, 242, 254, 0.3);
+        }
+
+        .manifesto-desc {
+            font-family: 'Inter', system-ui, sans-serif;
+            font-size: 0.9rem;
+            color: #94a3b8;
+            line-height: 1.5;
+        }
+
         /* Cadrage Portrait */
         .display-img {
             width: 100%;
@@ -323,6 +378,34 @@
 
         <main class="grid">
             
+            <!-- CHANTIER 4 : MANIFESTE ÉPISTÉMOLOGIQUE DES 4 ÂGES DE LA SCIENCE -->
+            <div class="card">
+                <div class="card-content" style="width: 100%;">
+                    <h2>// MANIFESTE ÉPISTÉMOLOGIQUE : LA TRAJECTOIRE DE CONVERGENCE</h2>
+                    <p style="font-size: 0.9rem; color: #94a3b8; margin-bottom: 20px;">Cartographie infodynamique des grandes ruptures de l'histoire scientifique.</p>
+                    
+                    <div class="manifesto-timeline">
+                        <div class="manifesto-node">
+                            <div class="manifesto-title" style="color: #4b5563;">SCIENCE 1.0 // L'ÂGE EMPIRIQUE</div>
+                            <div class="manifesto-desc">Observation directe des phénomènes naturels, classification inductive et formalisation des structures phénotypiques visibles.</div>
+                        </div>
+                        <div class="manifesto-node">
+                            <div class="manifesto-title" style="color: #4b5563;">SCIENCE 2.0 // L'ÂGE THÉORIQUE & RÉDUCTIONNISTE</div>
+                            <div class="manifesto-desc">Émergence des modèles déterministes, équations différentielles et lois mécanistes. Isolation des variables au détriment du système global.</div>
+                        </div>
+                        <div class="manifesto-node">
+                            <div class="manifesto-title" style="color: #4b5563;">SCIENCE 3.0 // L'ÂGE COMPUTATIONNEL</div>
+                            <div class="manifesto-desc">Simulation numérique par calcul de masse, traitement des données complexes et modélisation algorithmique des réseaux interconnectés.</div>
+                        </div>
+                        <div class="manifesto-node active">
+                            <div class="manifesto-title">SCIENCE 4.0 // L'ÂGE INFODYNAMIQUE & SYSTEMIC STEERING <span style="font-size: 0.75rem; color: #10b981; margin-left: 10px;">[ PROTOCOLE_ACTIF ]</span></div>
+                            <div class="manifesto-desc" style="color: #cbd5e1;">Architecture unifiée du contrôle absolu des flux, intégrité épigénétique et standardisation industrielle de la résilience systémique via l'infrastructure du Bio-OS V8.</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- SECTION 1 : PROJET F-5 -->
             <div class="card">
                 <div class="card-content">
                     <h2>Projet F-5</h2>
@@ -335,6 +418,7 @@
                 </div>
             </div>
 
+            <!-- SECTION 2 : BIO-OS V8 -->
             <div class="card">
                 <div class="card-content">
                     <h2>Bio-OS V8</h2>
@@ -349,16 +433,19 @@
                 </div>
             </div>
 
+            <!-- SECTION : FLUX DE DÉCRYPTAGE (SYSTEM_LOGS VIA STREAM LINKEDIN AUTOMATISÉ) -->
             <div class="card">
                 <div class="card-content" style="width: 100%;">
                     <h2>// SYSTEM_LOGS : RECHERCHES TRANSITOIRES</h2>
                     <p style="font-size: 0.9rem; color: #94a3b8; margin-bottom: 25px;">Applications en temps réel des invariants de la Science 4.0 sur l'infodynamique globale.</p>
                     
+                    <!-- Elfsight LinkedIn Feed | Untitled LinkedIn Feed -->
                     <script src="https://elfsightcdn.com/platform.js" async></script>
                     <div class="elfsight-app-1f78390e-3a67-4999-b746-ee649642a045" data-elfsight-app-lazy></div>
                 </div>
             </div>
 
+            <!-- SECTION 3 : PROFIL DR. JULIEN BOBLIQUE -->
             <div class="card">
                 <div class="card-content">
                     <h2>Dr. Julien Boblique</h2>
@@ -468,6 +555,7 @@
                             <span style="color: #38bdf8;">[INDEXED_NODE]</span>
                         </p>
 
+                        <!-- SÉCURISATION DU BOUTON KIT DE PRESSE : INTERACTION CONSOLE SANS ERREUR -->
                         <p class="document-line" style="margin-top: 20px; padding-top: 10px; border-top: 1px dashed rgba(245, 158, 11, 0.15);">
                             &gt; <span style="color: #ef4444;">[PRESS_KIT_2027]</span> 
                             <a href="#" onclick="alert('// SYSTEM_INFO: Official Press Kit is locked in compilation protocol. Document package synchronization scheduled for upcoming cycles.'); return false;" class="document-link" style="color: #e2e8f0; font-weight: bold;">
