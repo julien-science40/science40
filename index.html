@@ -190,25 +190,6 @@
             line-height: 1.4;
         }
 
-        /* Flux de Télémétrie Automatisé (SYSTEM_LOGS) */
-        .log-entry {
-            border-left: 2px solid #00f2fe;
-            padding-left: 15px;
-            margin: 18px 0;
-            font-family: 'Fira Code', monospace;
-            font-size: 0.85rem;
-        }
-        .log-date {
-            color: #f59e0b;
-            font-size: 0.75rem;
-            font-weight: 600;
-        }
-        .log-title {
-            color: #00f2fe;
-            font-weight: 500;
-            margin: 4px 0;
-        }
-
         /* Cadrage Portrait */
         .display-img {
             width: 100%;
@@ -361,12 +342,15 @@
                 </div>
             </div>
 
-            <!-- SECTION : FLUX DE DÉCRYPTAGE (SYSTEM_LOGS) -->
+            <!-- SECTION : FLUX DE DÉCRYPTAGE (SYSTEM_LOGS VIA STREAM LINKEDIN AUTOMATISÉ) -->
             <div class="card">
                 <div class="card-content" style="width: 100%;">
                     <h2>// SYSTEM_LOGS : RECHERCHES TRANSITOIRES</h2>
-                    <p style="font-size: 0.9rem; color: #94a3b8; margin-bottom: 10px;">Applications en temps réel des invariants de la Science 4.0 sur l'infodynamique globale.</p>
-                    <div id="logs-container"></div>
+                    <p style="font-size: 0.9rem; color: #94a3b8; margin-bottom: 25px;">Applications en temps réel des invariants de la Science 4.0 sur l'infodynamique globale.</p>
+                    
+                    <!-- Elfsight LinkedIn Feed | Untitled LinkedIn Feed -->
+                    <script src="https://elfsightcdn.com/platform.js" async></script>
+                    <div class="elfsight-app-1f78390e-3a67-4999-b746-ee649642a045" data-elfsight-app-lazy></div>
                 </div>
             </div>
 
@@ -491,7 +475,7 @@
 
                 </div>
                 <div class="card-media">
-                    <img class="display-img" src="Dr_Julien_Boblique_Portrait.jpg.png" alt="Dr. Julien Boblique">
+                    <img class="display-img" src="Dr_Julien_Boblique_Portrait.png" alt="Dr. Julien Boblique">
                 </div>
             </div>
         </main>
@@ -502,38 +486,6 @@
     </footer>
 
     <script>
-        // DATA MATRIX FOR SYSTEM_LOGS
-        const ARTICLES_BIO_OS_DATABASE = [
-            {
-                date: "24 JUIN 2026",
-                tag: "ASTROPHYSIQUE",
-                title: "GW250114 — Décryptage du point de non-retour",
-                text: "Analyse infodynamique des empreintes de l'horizon des événements captées par LIGO. Validation des structures de flux macroscopiques et de la traînée de référentiel spatio-temporelle."
-            },
-            {
-                date: "20 JUIN 2026",
-                tag: "MÉCANIQUE CÉLESTE",
-                title: "Transit de l'Astéroïde 1997 NC1",
-                text: "Modélisation orbitale prédictive et calcul d'impédance gravitationnelle à 6,66 fois la distance Terre-Lune. Alignement des lois de convergence systémique."
-            },
-            {
-                date: "15 JUIN 2026",
-                tag: "INFODYNAMIQUE ANTIQUE",
-                title: "ScanPyramids — Trajectographie Muonique",
-                text: "Scan passif des couloirs de Khéops par muons cosmiques. Démonstration de la manière dont la matière contraint le flux d'information structurel."
-            }
-        ];
-
-        // Automatic engine generation
-        const container = document.getElementById('logs-container');
-        container.innerHTML = ARTICLES_BIO_OS_DATABASE.map(art => `
-            <div class="log-entry">
-                <span class="log-date">[ ${art.date} // NODE: ${art.tag} ]</span>
-                <div class="log-title">&gt; ${art.title}</div>
-                <p style="font-size: 0.85rem; color: #94a3b8; margin: 0;">${art.text}</p>
-            </div>
-        `).join('');
-
         // VIVID TERMINAL EFFECT
         const consoleElement = document.getElementById('typed-console');
         const equationText = `// BIO-OS FLOW STEERING MATRIX v8.0\nd(_Integrity) / dt = [I_control * H_infodynamics] - [E_drift * d_entropy]\nTelemetry Status: TERMINAL_RUNNING_ACTIVE // SYSTEM_CONVERGENCE_LOCK`;
