@@ -6,10 +6,8 @@
     <title>Dr. Julien Boblique — Science 4.0 & Bio-OS V8</title>
     <meta name="description" content="Site officiel du Dr. Julien Boblique, architecte de la Science 4.0 et du Bio-OS V8. Chercheur publié en souveraineté biologique et résilience systémique.">
     
-    <!-- CHANTIER 2 : Favicon Système Inline (Code Cyber-Atome Cyan) -->
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='35' stroke='%2300f2fe' stroke-width='6' fill='none' stroke-dasharray='5 3'/><circle cx='50' cy='50' r='12' fill='%2300f2fe'/></svg>">
 
-    <!-- CHANTIER 1 : Open Graph / LinkedIn -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://julien-science40.github.io/science40/">
     <meta property="og:title" content="Dr. Julien Boblique — Science 4.0 & Bio-OS V8">
@@ -356,22 +354,37 @@
             text-shadow: 0 0 8px rgba(0, 242, 254, 0.5);
         }
 
-        footer {
-            position: relative;
-            z-index: 10; 
-            margin-top: auto;
-            padding-top: 80px;
-            color: #cbd5e1; 
-            font-family: 'Fira Code', monospace;
-            font-size: 0.8rem;
-            text-align: center;
-            width: 100%;
-            letter-spacing: 0.5px;
-        }
-
-        @keyframes blink {
-            from, to { color: transparent }
-            50% { color: #10b981; text-shadow: 0 0 8px rgba(16, 185, 129, 0.6); }
+        /* OPTIMISATION 2 : Feuille de style d'impression pour export PDF académique propre */
+        @media print {
+            body {
+                background: #ffffff !important;
+                color: #000000 !important;
+                padding: 20px !important;
+            }
+            .bg-video-container, .bg-overlay, .card-media, iframe, .elfsight-app-1f78390e-3a67-4999-b746-ee649642a045 {
+                display: none !important; /* Masque les arrière-plans, vidéos et widgets boursouflés */
+            }
+            .card {
+                background: none !important;
+                border: none !important;
+                box-shadow: none !important;
+                padding: 0 !important;
+                margin-bottom: 30px !important;
+                page-break-inside: avoid;
+            }
+            h1, h2, h3, p, a {
+                color: #000000 !important;
+                text-shadow: none !important;
+            }
+            .manifesto-title, .manifesto-desc {
+                color: #000000 !important;
+            }
+            .manifesto-node {
+                border-left-color: #4b5563 !important;
+            }
+            .document-registry {
+                border-color: #cccccc !important;
+            }
         }
     </style>
 </head>
@@ -396,7 +409,6 @@
 
         <main class="grid">
             
-            <!-- CHANTIER 4 : MANIFESTE ÉPISTÉMOLOGIQUE DES 4 ÂGES DE LA SCIENCE -->
             <div class="card">
                 <div class="card-content" style="width: 100%;">
                     <h2>// MANIFESTE ÉPISTÉMOLOGIQUE : LA TRAJECTOIRE DE CONVERGENCE</h2>
@@ -423,7 +435,6 @@
                 </div>
             </div>
             
-            <!-- SECTION 1 : PROJET F-5 -->
             <div class="card">
                 <div class="card-content">
                     <h2>Projet F-5</h2>
@@ -436,7 +447,6 @@
                 </div>
             </div>
 
-            <!-- SECTION 2 : BIO-OS V8 -->
             <div class="card">
                 <div class="card-content">
                     <h2>Bio-OS V8</h2>
@@ -451,19 +461,16 @@
                 </div>
             </div>
 
-            <!-- SECTION : FLUX DE DÉCRYPTAGE (SYSTEM_LOGS VIA STREAM LINKEDIN AUTOMATISÉ) -->
             <div class="card">
                 <div class="card-content" style="width: 100%;">
                     <h2>// SYSTEM_LOGS : RECHERCHES TRANSITOIRES</h2>
                     <p style="font-size: 0.9rem; color: #94a3b8; margin-bottom: 25px;">Applications en temps réel des invariants de la Science 4.0 sur l'infodynamique globale.</p>
                     
-                    <!-- Elfsight LinkedIn Feed | Untitled LinkedIn Feed -->
                     <script src="https://elfsightcdn.com/platform.js" async></script>
                     <div class="elfsight-app-1f78390e-3a67-4999-b746-ee649642a045" data-elfsight-app-lazy></div>
                 </div>
             </div>
 
-            <!-- SECTION 3 : PROFIL DR. JULIEN BOBLIQUE -->
             <div class="card">
                 <div class="card-content">
                     <h2>Dr. Julien Boblique</h2>
@@ -477,139 +484,3 @@
                             Industrial Standardization of the Bio-OS: Architectural Telemetry and Epigenetic Flow Control 
                             <span class="tag-orange">[FORTHCOMING &ndash; JULY 2026]</span>
                         </p>
-
-                        <p class="document-line">
-                            &gt; <span class="tag-cyan">[SET_THEORY_2026]</span> 
-                            <a href="https://doi.org/10.23880/izab-16000667" target="_blank" class="document-link">
-                                A Social Epigenetic Theory of Systemic Transitions
-                            </a> 
-                            <span class="tag-green">[PUBLISHED]</span>
-                        </p>
-
-                        <p class="document-line">
-                            &gt; <span class="tag-cyan">[SCIENCE_4.0_2026]</span> 
-                            <a href="https://doi.org/10.23880/izab-16000669" target="_blank" class="document-link">
-                                From SET Theory to Science 4.0: An AI-Driven Framework for Epigenetic Integrity and Biological Flow Control
-                            </a> 
-                            <span class="tag-green">[PUBLISHED]</span>
-                        </p>
-
-                        <p class="document-line">
-                            &gt; <span class="tag-cyan">[EPIGENETIC_SUSTAINABILITY_2026]</span> 
-                            <a href="https://doi.org/10.23880/jenr-16000418" target="_blank" class="document-link">
-                                Epigenetic Sustainability: Modeling the Human Factor as a Natural Resource through Science 4.0 and the NR3C1 Biological Pilot
-                            </a> 
-                            <span class="tag-green">[PUBLISHED]</span>
-                        </p>
-
-                        <p class="document-line">
-                            &gt; <span class="tag-cyan">[CELLULAR_RESILIENCE_2026]</span> 
-                            <a href="https://doi.org/10.23880/izab-16000673" target="_blank" class="document-link">
-                                Science 4.0-Architecture of Cellular Resilience and Living Signal Optimization
-                            </a> 
-                            <span class="tag-green">[PUBLISHED]</span>
-                        </p>
-
-                        <p class="document-line">
-                            &gt; <span class="tag-cyan">[CLINICAL_VALIDATION_2026]</span> 
-                            <a href="https://doi.org/10.23880/izab-16000677" target="_blank" class="document-link">
-                                Clinical Validation of Science 4.0: Flow Steering and Epigenetic Drift Inversion on a 76-Year-Old Hybrid System
-                            </a> 
-                            <span class="tag-green">[PUBLISHED]</span>
-                        </p>
-
-                        <p class="document-line">
-                            &gt; <span class="tag-cyan">[UNIFIED_FRAMEWORK_2026]</span> 
-                            <a href="https://doi.org/10.26502/AVSM.054" target="_blank" class="document-link">
-                                Science 4.0: A Unified Operational Framework for Epigenetic Integrity and Systemic Resilience Steering
-                            </a> 
-                            <span class="tag-green">[PUBLISHED]</span>
-                        </p>
-
-                        <p class="document-line">
-                            &gt; <span class="tag-cyan">[BIO_OS_GOVERNANCE_2026]</span> 
-                            <a href="https://doi.org/10.23880/izab-16000679" target="_blank" class="document-link">
-                                Science 4.0: Comprehensive Architecture of the Biological Operating System (Bio-OS) A Framework for Systemic Resilience and Industrialized Bio-Governance
-                            </a> 
-                            <span class="tag-green">[PUBLISHED]</span>
-                        </p>
-
-                        <p class="document-line">
-                            &gt; <span class="tag-cyan">[MITOCHONDRIAL_BIOLOGISTICS_2026]</span> 
-                            <a href="https://doi.org/10.23880/izab-16000681" target="_blank" class="document-link">
-                                Mitochondrial Bio-Logistics: Steering Co-Enzyme Q10 and Lycopene Synergies within the Science 4.0 Bio-OS Framework
-                            </a> 
-                            <span class="tag-green">[PUBLISHED]</span>
-                        </p>
-                    </div>
-
-                    <div class="document-registry" style="border-color: rgba(16, 185, 129, 0.2); margin-top: 25px;">
-                        <div class="document-registry-title" style="color: #10b981;">// SCIENTIFIC LEADERSHIP & RESEARCH COLLABORATIONS :</div>
-                        <p class="document-line">&gt; Science 4.0 Architecture Paradigm Active</p>
-                        <p class="document-line">
-                            &gt; <span class="tag-cyan">[OPEN_NODE]</span> Open for Peer-to-Peer Research Alignments and Scientific Cooperations on Bio-OS V8 Protocols.
-                        </p>
-                        <p class="document-line">
-                            &gt; <span class="tag-cyan">[PARTNERSHIPS]</span> Steering multi-systemic connections for industrialized bio-governance standards.
-                        </p>
-                    </div>
-
-                    <div class="document-registry" style="border-color: rgba(245, 158, 11, 0.25); margin-top: 25px;">
-                        <div class="document-registry-title" style="color: #f59e0b;">// FUTURE TRANSMISSIONS & CONFERENCES (2027) :</div>
-                        
-                        <p class="document-line">
-                            &gt; <span class="tag-orange">[ISGAC_2027]</span> 
-                            <a href="https://astrophysics2027.spectrumconferences.com/speakers" target="_blank" class="document-link">
-                                International Summit on Gravitation, Astrophysics and Cosmology — Milan, Italy
-                            </a> 
-                            <span class="tag-orange">[INVITED_KEYNOTE]</span>
-                        </p>
-
-                        <p class="document-line">
-                            &gt; <span class="tag-orange">[ASTROPHYSICS_2027]</span> 
-                            <a href="https://u57442154.ct.sendgrid.net/ls/click?upn=u001.D5UjdLDjPvLthbJJcJjv-2FqpyM-2FcxmEc9l0CYX0zVadmUFnA6ZQ7weBkH-2FKz3xBk56rk1T6gBQ75FZM6nfE-2BIY1i4jS5b-2BJkWeSJCvF03f9o-3DyON5_2r5X1tWATI9-2Fo-2BjB8xYt-2B8EzSe-2FX8UcwZwgGlCx50yOV3Fd2uEDILIV3lgEt2dMJcaR1vH6pFGs-2B0j4TSYCWUbTCchUPKHppEaxuQ2NLNCFVk5f8jatq7z7OO4D6F3e5uc6NoGgHdI9WUk2P1sV-2BEc4I5hZQfrwBCfRs2AI3mpqocQQCPIm71qPz2Xxn6SuPcYytHGz6TRbatJ6KoJVMbA-3D-3D" target="_blank" class="document-link">
-                                Global Summit on Astrophysics & Systemic Convergence — Florence, Italy
-                            </a> 
-                            <span style="color: #38bdf8;">[INDEXED_NODE]</span>
-                        </p>
-
-                        <!-- SÉCURISATION DU BOUTON KIT DE PRESSE : INTERACTION CONSOLE SANS ERREUR -->
-                        <p class="document-line" style="margin-top: 20px; padding-top: 10px; border-top: 1px dashed rgba(245, 158, 11, 0.15);">
-                            &gt; <span style="color: #ef4444;">[PRESS_KIT_2027]</span> 
-                            <a href="#" onclick="alert('// SYSTEM_INFO: Official Press Kit is locked in compilation protocol. Document package synchronization scheduled for upcoming cycles.'); return false;" class="document-link" style="color: #e2e8f0; font-weight: bold;">
-                                DOWNLOAD_OFFICIAL_PRESS_KIT (Syllabus & Biography PDF)
-                            </a>
-                        </p>
-                    </div>
-
-                </div>
-                <div class="card-media">
-                    <img class="display-img" src="Dr_Julien_Boblique_Portrait.jpg.png" alt="Dr. Julien Boblique">
-                </div>
-            </div>
-        </main>
-    </div>
-
-    <footer>
-        [ AUTH_ID: JULIEN_BOBLIQUE ] — © 2026 — Science 4.0 Framework
-    </footer>
-
-    <script>
-        // VIVID TERMINAL EFFECT
-        const consoleElement = document.getElementById('typed-console');
-        const equationText = `// BIO-OS FLOW STEERING MATRIX v8.0\nd(_Integrity) / dt = [I_control * H_infodynamics] - [E_drift * d_entropy]\nTelemetry Status: TERMINAL_RUNNING_ACTIVE // SYSTEM_CONVERGENCE_LOCK`;
-        
-        let index = 0;
-        consoleElement.innerHTML = "";
-        function typeConsole() {
-            if (index < equationText.length) {
-                consoleElement.innerHTML += equationText.charAt(index);
-                index++;
-                setTimeout(typeConsole, 12);
-            }
-        }
-        setTimeout(typeConsole, 500);
-    </script>
-
-</body>
-</html>
