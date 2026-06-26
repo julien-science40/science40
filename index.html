@@ -402,6 +402,12 @@
             from, to { color: transparent; }
             50% { color: #10b981; text-shadow: 0 0 8px rgba(16, 185, 129, 0.6); }
         }
+
+        @keyframes pulseStatus {
+            0% { opacity: 0.6; }
+            50% { opacity: 1; box-shadow: 0 0 10px rgba(0, 242, 254, 0.4); }
+            100% { opacity: 0.6; }
+        }
     </style>
 </head>
 <body>
@@ -479,6 +485,29 @@
                     <video class="display-video" autoplay loop muted playsinline controls>
                         <source src="bioos_v8.mp4" type="video/mp4">
                     </video>
+                </div>
+            </div>
+
+            <!-- NOUVELLE SECTION : FORTHCOMING TRANSMISSION -->
+            <div class="card" style="border-left: 4px solid #00f2fe;">
+                <div class="card-content" style="width: 100%; display: flex; flex-direction: column; gap: 15px;">
+                    <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px dashed rgba(0, 242, 254, 0.3); padding-bottom: 10px; font-family: 'Fira Code', monospace; font-size: 0.85rem; color: #00f2fe;">
+                        <span>// FORTHCOMING TRANSMISSION</span>
+                        <span style="background: rgba(0, 242, 254, 0.1); padding: 2px 8px; border-radius: 4px; border: 1px solid rgba(0, 242, 254, 0.5); animation: pulseStatus 2s infinite;">[ STATUS: PENDING_SUBMISSION ]</span>
+                    </div>
+                    
+                    <div style="font-family: 'Fira Code', monospace; font-size: 0.95rem; line-height: 1.6;">
+                        <p style="margin: 5px 0;"><strong style="color: #38bdf8;">TARGET:</strong> Medwin Publishers // Scholarly Journal</p>
+                        <p style="margin: 5px 0;"><strong style="color: #38bdf8;">TIMELINE:</strong> 05 Juillet 2026</p>
+                        <p style="margin: 15px 0 5px 0;"><strong style="color: #00f2fe;">PROJECT_TITLE:</strong> <span style="font-style: italic; letter-spacing: 0.5px;">Industrial Standardization of the Bio-OS: Architectural Telemetry and Epigenetic Flow Control</span></p>
+                    </div>
+
+                    <div class="matrix-console" style="margin-top: 5px; background: rgba(2, 6, 17, 0.6); border-color: rgba(0, 242, 254, 0.15);">
+                        <span style="color: rgba(56, 189, 248, 0.5); font-size: 0.75rem; display: block; margin-bottom: 5px;">// ABSTRACT PREVIEW_</span>
+                        <p style="color: #cbd5e1; font-family: 'Inter', sans-serif; font-size: 0.9rem; margin: 0; text-align: justify; line-height: 1.6;">
+                            Ce travail formalise les critères d'ingénierie et les protocoles d'harmonisation requis pour l'industrialisation des architectures de flux du Bio-OS. En reliant la conductivité informationnelle aux dynamiques de dissipation de l'entropie, ce manifeste pose le cadre d'une résilience systémique globale appliquée aux structures complexes.
+                        </p>
+                    </div>
                 </div>
             </div>
 
