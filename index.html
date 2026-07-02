@@ -508,7 +508,7 @@
                             Après le succès de la Phase 1, cette nouvelle étape intègre des boucles prédictives en temps réel dans l'architecture <span class="tag-cyan">Bio-OS V8</span> pour optimiser systématiquement la dynamique des fluides biologiques et dépasser les limites physiologiques standard.
                         </p>
                         <p style="margin-top: 15px; font-size: 0.95rem; color: #cbd5e1; text-align: justify;">
-                            La documentation entre actuellement dans le circuit <strong style="color: #f59e0b;">international de révision par les pairs</strong>. Que ce soit à travers des revues traditionnelles à fort impact ou des canaux avancés de <span class="tag-cyan">Science Ouverte</span>, le déploiement de cette architecture is désormais actif.
+                            La documentation entre actuellement dans le circuit <strong style="color: #f59e0b;">international de révision par les pairs</strong>. Que ce soit à travers des revues traditionnelles à fort impact ou des canaux avancés de <span class="tag-cyan">Science Ouverte</span>, le déploiement de cette architecture est désormais actif.
                         </p>
                         <div style="margin-top: 20px; padding: 12px; border: 1px dashed rgba(0, 242, 254, 0.3); background: rgba(0, 242, 254, 0.05); font-family: 'Fira Code', monospace; font-size: 0.8rem; color: #00f2fe; text-align: center; letter-spacing: 1px;">
                             🔔 RESTEZ À L'ÉCOUTE POUR LES PROCHAINES MISES À JOUR ET PUBLICATIONS DE DONNÉES !
@@ -651,7 +651,6 @@
                         <h2>// SYSTEM_LOGS : RECHERCHES TRANSITOIRES</h2>
                         <p style="font-size: 0.9rem; color: #94a3b8; margin-bottom: 25px;">Applications en temps réel des invariants de la Science 4.0 sur l'infodynamique globale.</p>
                         
-                        <script src="https://elfsightcdn.com/platform.js" async></script>
                         <div class="elfsight-app-1f78390e-3a67-4999-b746-ee649642a045"></div>
                     </div>
                 </div>
@@ -748,7 +747,7 @@
                         </div>
 
                         <div class="document-registry" style="border-color: rgba(16, 185, 129, 0.2); margin-top: 25px;">
-                            <div class="document-registry-title" style="color: #10b981;">// SCIENTIFIC LEADERSHIP & RESEARCH COLLABORATIONS :</div>
+                            <div class="document-registry-title" style="color: #10b981;">// SCIENTIFIC LEADRESHIP & RESEARCH COLLABORATIONS :</div>
                             <p class="document-line">&gt; Science 4.0 Architecture Paradigm Active</p>
                             <p class="document-line">
                                 &gt; <span class="tag-cyan">[OPEN_NODE]</span> Open for Peer-to-Peer Research Alignments and Scientific Cooperations on Bio-OS V8 Protocols.
@@ -798,7 +797,10 @@
     </footer>
 
     <script>
-        // ENGINE 1 : ROUTAGE DES ONGLETS DYNAMIQUES (SPA PROTOCOL OPTIMIZED)
+        // VARIABLE DE CONTROLE DU CORE INJECTION
+        let elfsightScriptLoaded = false;
+
+        // ENGINE 1 : ROUTAGE DES ONGLETS DYNAMIQUES (SPA PROTOCOL LAZY-INJECTION OPTIMIZED)
         function switchTab(tabId) {
             // Désactiver tous les panneaux
             document.querySelectorAll('.tab-panel').forEach(panel => {
@@ -817,8 +819,22 @@
             const targetBtn = document.querySelector(`.tab-btn[data-tab="${tabId}"]`);
             if (targetBtn) targetBtn.classList.add('active');
 
-            // FORCE RE-RENDERING EFFECT : Déclenche un faux redimensionnement pour réveiller Elfsight
-            window.dispatchEvent(new Event('resize'));
+            // ALGORITHME DE SÉCURITÉ ELFSIGHT
+            if (tabId === 'logs') {
+                if (!elfsightScriptLoaded) {
+                    // Si l'onglet Logs s'ouvre pour la première fois, on injecte le script au moment exact de la visibilité
+                    const script = document.createElement('script');
+                    script.src = "https://elfsightcdn.com/platform.js";
+                    script.async = true;
+                    document.body.appendChild(script);
+                    elfsightScriptLoaded = true;
+                } else {
+                    // Si déjà injecté lors d'une précédente bascule, on réveille l'affichage
+                    setTimeout(() => {
+                        window.dispatchEvent(new Event('resize'));
+                    }, 150);
+                }
+            }
         }
 
         // ENGINE 2 : HORLOGE SYSTÈME DYNAMIQUE
