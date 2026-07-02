@@ -181,20 +181,24 @@
             font-weight: 500;
         }
 
+        /* ALGORITHME DE PLACEMENT HORS-ÉCRAN (ANTI-CRASH POUR MODULES IFRAME) */
         .tab-panel {
-            display: none;
-        }
-
-        .tab-panel.active {
             display: flex;
             flex-direction: column;
             gap: 35px;
+            position: absolute;
+            left: -9999px;
+            top: 0;
+            width: 100%;
+            box-sizing: border-box;
+            pointer-events: none;
         }
 
-        /* ZONE DE RÉCEPTION FORCEE POUR ELFSIGHT */
-        .elfsight-app-1f78390e-3a67-4999-b746-ee649642a045 {
-            min-height: 600px;
-            width: 100%;
+        .tab-panel.active {
+            position: relative;
+            left: 0;
+            top: 0;
+            pointer-events: auto;
         }
 
         .grid {
@@ -428,6 +432,12 @@
                 display: none !important; 
             }
             .tab-panel {
+                position: relative !important;
+                top: 0 !important;
+                left: 0 !important;
+                visibility: visible !important;
+                opacity: 1 !important;
+                height: auto !important;
                 display: flex !important;
                 flex-direction: column !important;
             }
@@ -471,6 +481,7 @@
             100% { r: 4; fill: #00f2fe; filter: drop-shadow(0 0 2px #00f2fe); }
         }
     </style>
+    <script src="https://elfsightcdn.com/platform.js" async></script>
 </head>
 <body>
 
@@ -803,47 +814,29 @@
     </footer>
 
     <script>
-        // ENGINE 1 : ROUTAGE DES ONGLETS DYNAMIQUES (SPA PROTOCOL WITH DYNAMIC CACHE-BUSTER INJECTION)
+        // ENGINE 1 : ROUTAGE DES ONGLETS DYNAMIQUES (SPA PROTOCOL SECURE POSITION SHIFTING)
         function switchTab(tabId) {
-            // 1. Gestion classique de la visibilité des onglets
+            // Désactiver tous les panneaux en leur appliquant la classe standard
             document.querySelectorAll('.tab-panel').forEach(panel => {
-                panel.style.display = 'none';
+                panel.classList.remove('active');
             });
+            // Désactiver tous les boutons de navigation
             document.querySelectorAll('.tab-btn').forEach(btn => {
                 btn.classList.remove('active');
             });
             
+            // Activer le panneau cible via la classe active (qui le remet à sa vraie place)
             const targetPanel = document.getElementById(`panel-${tabId}`);
-            if (targetPanel) {
-                targetPanel.style.display = 'flex';
-            }
+            if (targetPanel) targetPanel.classList.add('active');
             
+            // Activer le bouton correspondant via l'attribut data-tab
             const targetBtn = document.querySelector(`.tab-btn[data-tab="${tabId}"]`);
-            if (targetBtn) {
-                targetBtn.classList.add('active');
-            }
+            if (targetBtn) targetBtn.classList.add('active');
 
-            // 2. DRIVER SYSTEM RE-INITIALIZATION FOR ELFSIGHT
-            if (tabId === 'logs') {
-                // On supprime l'éventuel ancien script pour éviter l'accumulation dans le DOM
-                const oldScript = document.getElementById('elfsight-dynamic-driver');
-                if (oldScript) {
-                    oldScript.remove();
-                }
-
-                // On génère et on injecte à chaud un script tout neuf doté d'un timestamp unique.
-                // Cela force le navigateur à re-scanner la zone maintenant visible à l'écran.
-                const script = document.createElement('script');
-                script.id = 'elfsight-dynamic-driver';
-                script.src = "https://elfsightcdn.com/platform.js?t=" + new Date().getTime();
-                script.async = true;
-                document.body.appendChild(script);
-            } else {
-                // Calibrage standard des éléments graphiques pour les autres onglets
-                setTimeout(() => {
-                    window.dispatchEvent(new Event('resize'));
-                }, 50);
-            }
+            // Forcer un petit recalibrage d'affichage pour réveiller les dimensions responsives de l'iframe
+            setTimeout(() => {
+                window.dispatchEvent(new Event('resize'));
+            }, 50);
         }
 
         // ENGINE 2 : HORLOGE SYSTÈME DYNAMIQUE
