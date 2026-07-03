@@ -777,6 +777,7 @@
                         <div class="document-registry" style="border-color: rgba(245, 158, 11, 0.25); margin-top: 25px;">
                             <div class="document-registry-title" style="color: #f59e0b;">// FUTURE TRANSMISSIONS & CONFERENCES (2027) :</div>
                             
+                            <!-- INJECTION DU NODE BERLIN CRÉÉ ICI DANS LE FIL DES CONFÉRENCES -->
                             <p class="document-line">
                                 &gt; <span class="tag-orange">[ICGAC_2027]</span> 
                                 <a href="https://astrophysics2027.conplusmeetings.com/" target="_blank" class="document-link">
@@ -824,24 +825,19 @@
     <script>
         // ENGINE 1 : ROUTAGE DES ONGLETS DYNAMIQUES (SPA PROTOCOL SECURE POSITION SHIFTING)
         function switchTab(tabId) {
-            // Désactiver tous les panneaux en leur appliquant la classe standard
             document.querySelectorAll('.tab-panel').forEach(panel => {
                 panel.classList.remove('active');
             });
-            // Désactiver tous les boutons de navigation
             document.querySelectorAll('.tab-btn').forEach(btn => {
                 btn.classList.remove('active');
             });
             
-            // Activer le panneau cible via la classe active (qui le remet à sa vraie place)
             const targetPanel = document.getElementById(`panel-${tabId}`);
             if (targetPanel) targetPanel.classList.add('active');
             
-            // Activer le bouton correspondant via l'attribut data-tab
             const targetBtn = document.querySelector(`.tab-btn[data-tab="${tabId}"]`);
             if (targetBtn) targetBtn.classList.add('active');
 
-            // Forcer un petit recalibrage d'affichage pour réveiller les dimensions responsives de l'iframe
             setTimeout(() => {
                 window.dispatchEvent(new Event('resize'));
             }, 50);
