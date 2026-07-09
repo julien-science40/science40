@@ -68,13 +68,13 @@
             height: 100%;
             object-fit: cover;
             opacity: 0; /* Invisibles par défaut pour permettre la transition */
-            filter: brightness(1.6) contrast(1.15); /* OPTIMISÉ : Éclairage renforcé pour percer le fond noir */
+            filter: brightness(1.6) contrast(1.15); /* Éclairage renforcé pour percer le fond noir */
             transition: opacity 1500ms ease-in-out; /* Fondu croisé de 1.5 seconde */
         }
 
         /* La vidéo active passe à l'opacité requise pour la lisibilité de l'interface */
         .bg-video.active {
-            opacity: 0.55; /* OPTIMISÉ : Opacité augmentée pour rendre les détails bien visibles */
+            opacity: 0.55; /* Opacité augmentée pour rendre les détails bien visibles */
         }
 
         /* COUCHE 2 : Voile de protection */
@@ -954,8 +954,11 @@
         document.addEventListener("DOMContentLoaded", () => {
             const videoLayers = document.querySelectorAll(".bg-video");
             let currentTrack = 0;
-            const sequenceDuration = 10000; // Fréquence de transition : 10 secondes
-            const crossfadeTime = 1500;     // Doit correspondre à la transition CSS (1.5 seconde)
+            const crossfadeTime = 1500;     // Durée du fondu (1.5 seconde)
+            const videoDuration = 10000;    // Durée totale d'un clip (10 secondes)
+            
+            // CORRECTIF PROTOCOLE : Déclenchement de la transition exactement avant le rebouclage natif (8500 ms)
+            const sequenceDuration = videoDuration - crossfadeTime; 
 
             // Lecture forcée du premier flux initial
             if(videoLayers[currentTrack]) {
