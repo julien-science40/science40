@@ -21,17 +21,18 @@
         .cursor::after { content: ''; width: 4px; height: 4px; background: #00f2fe; border-radius: 50%; }
         .cursor.hover { transform: scale(2); background: rgba(0, 242, 254, 0.1); }
 
-        /* VIDÉO ET STYLE */
+        /* VIDÉO ET STRUCTURE */
         .bg-video-container { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 1; overflow: hidden; background: #030712; }
-        .bg-video { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0; filter: brightness(1.6) contrast(1.15); transition: opacity 1500ms ease-in-out; }
+        .bg-video { position: absolute; width: 100%; height: 100%; object-fit: cover; opacity: 0; filter: brightness(1.6) contrast(1.15); transition: opacity 1500ms ease-in-out; }
         .bg-video.active { opacity: 0.55; }
         .bg-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 2; background: radial-gradient(circle at center, rgba(3,7,18,0.1) 0%, rgba(3,7,18,0.5) 100%); pointer-events: none; }
         
         .container { position: relative; z-index: 10; max-width: 900px; width: 100%; }
         header { margin-bottom: 40px; border-bottom: 1px solid rgba(0, 242, 254, 0.15); padding-bottom: 30px; position: relative; }
         #sys-status { position: absolute; top: -30px; left: 0; font-family: 'Fira Code', monospace; font-size: 0.75rem; color: #10b981; }
-        h1 { font-family: 'Fira Code', monospace; color: #00f2fe; text-shadow: 0 0 20px rgba(0, 242, 254, 0.5); margin: 0 0 12px 0; font-size: 2.8rem; }
-        .tab-btn { background: rgba(11, 18, 32, 0.4); border: 1px solid rgba(0, 242, 254, 0.25); color: #e2e8f0; padding: 10px 18px; cursor: pointer; border-radius: 6px; transition: all 0.4s; font-family: 'Fira Code', monospace; }
+        h1 { font-family: 'Fira Code', monospace; color: #00f2fe; text-shadow: 0 0 20px rgba(0, 242, 254, 0.5); margin: 0 0 12px 0; font-size: 2.8rem; font-weight: 500; }
+        .subtitle { color: #38bdf8; font-size: 1.15rem; margin: 0 0 16px 0; }
+        .tab-btn { background: rgba(11, 18, 32, 0.4); border: 1px solid rgba(0, 242, 254, 0.25); color: #e2e8f0; padding: 10px 18px; cursor: pointer; border-radius: 6px; font-family: 'Fira Code', monospace; }
         .tab-btn.active { color: #00f2fe; border-color: #00f2fe; background: rgba(0, 242, 254, 0.08); font-weight: 500; }
         .tab-panel { display: none; flex-direction: column; gap: 35px; }
         .tab-panel.active { display: flex; }
@@ -42,7 +43,9 @@
         .manifesto-node { border-left: 2px dashed rgba(56, 189, 248, 0.2); padding-left: 20px; position: relative; }
         .manifesto-node.active { border-left: 2px solid #00f2fe; }
         .display-img { width: 100%; display: block; filter: saturate(0.7) brightness(0.85); mix-blend-mode: luminosity; }
+        .tag-cyan { color: #00f2fe; } .tag-green { color: #10b981; } .tag-orange { color: #f59e0b; }
         .document-link { color: #cbd5e1; text-decoration: none; border-bottom: 1px dashed rgba(56, 189, 248, 0.4); }
+        footer { position: relative; z-index: 10; margin-top: 40px; color: #cbd5e1; font-family: 'Fira Code', monospace; font-size: 0.8rem; text-align: center; }
     </style>
 </head>
 <body>
@@ -62,7 +65,9 @@
             <div id="sys-status">SYS_STATUS: INITIALIZING...</div>
             <h1>Science 4.0</h1>
             <p class="subtitle">Framework Architectural pour la Résilience et les Systèmes Structurels</p>
-            <div class="header-links">[ <a href="https://www.linkedin.com/in/julien-boblique-33230a210" target="_blank">LINKEDIN</a> ] [ <a href="mailto:julien.boblique@orange.fr">CONTACT_PRO</a> ]</div>
+            <div class="header-links">
+                [ <a href="https://www.linkedin.com/in/julien-boblique-33230a210" target="_blank">LINKEDIN_NODE</a> ] [ <a href="mailto:julien.boblique@orange.fr">CONTACT_PRO</a> ] [ <a href="https://orcid.org/0009-0009-0648-5970" target="_blank">ORCID_NODE</a> ] [ <a href="https://scholar.google.com/scholar?q=Julien+Boblique" target="_blank">SCHOLAR_NODE</a> ]
+            </div>
         </header>
 
         <nav class="tab-navigation">
@@ -78,13 +83,21 @@
                     <div class="card-content"><h2>📊 // IMPACT_ANALYTICS</h2><p>Impressions : <span id="live-impressions">64 077+</span></p></div>
                 </div>
                 <div class="card" style="border-left: 4px solid #10b981;">
-                    <div class="card-content"><h2>📢 // EDITIONS_UPDATE</h2><p>Nano-vecteur lipidique validé en production.</p></div>
+                    <div class="card-content"><h2>📢 // EDITIONS_UPDATE</h2><p>Nano-vecteur validé en production.</p></div>
                 </div>
                 <div class="card" style="border-left: 4px solid #00f2fe;">
-                    <div class="card-content"><h2>🚀 // SYSTEM_UPDATE</h2><p>Phase 2 lancée.</p></div>
+                    <div class="card-content"><h2>🚀 // PHASE 2</h2><p>Phase 2 lancée.</p></div>
                 </div>
                 <div class="card">
-                    <div class="card-content"><h2>// MANIFESTE ÉPISTÉMOLOGIQUE</h2><p>Science 4.0 : Âge Infodynamique.</p></div>
+                    <div class="card-content">
+                        <h2>// MANIFESTE ÉPISTÉMOLOGIQUE</h2>
+                        <div class="manifesto-timeline">
+                            <div class="manifesto-node">SCIENCE 1.0 // ÂGE EMPIRIQUE</div>
+                            <div class="manifesto-node">SCIENCE 2.0 // ÂGE THÉORIQUE</div>
+                            <div class="manifesto-node">SCIENCE 3.0 // ÂGE COMPUTATIONNEL</div>
+                            <div class="manifesto-node active">SCIENCE 4.0 // INFODYNAMIQUE [ACTIF]</div>
+                        </div>
+                    </div>
                 </div>
                 <div class="card">
                     <div class="card-content"><h2>// PROJET F-5</h2><p>Exploration des ruptures en physique.</p></div>
@@ -110,15 +123,22 @@
             <!-- PROFILE -->
             <div id="panel-profile" class="tab-panel">
                 <div class="card">
-                    <div class="card-content"><h2>Dr. Julien Boblique</h2><p>Architecte Science 4.0.</p></div>
+                    <div class="card-content">
+                        <h2>Dr. Julien Boblique</h2>
+                        <p>Architecte de la Science 4.0 — Chercheur publié.</p>
+                        <div class="document-registry">
+                            <p class="document-line">&gt; <span class="tag-cyan">[DOC_01]</span> Publication validée.</p>
+                        </div>
+                    </div>
                     <div class="card-media"><img class="display-img" src="Dr_Julien_Boblique_Portrait.jpg.png" alt="Portrait"></div>
                 </div>
             </div>
         </main>
     </div>
 
+    <footer>[ AUTH_ID: JULIEN_BOBLIQUE ] — © 2026 — Science 4.0 Framework</footer>
+
     <script>
-        // NAVIGATION
         window.switchTab = function(tabId) {
             document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
             document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
@@ -126,7 +146,6 @@
             document.querySelector(`.tab-btn[data-tab="${tabId}"]`).classList.add('active');
         };
 
-        // PRELOADER
         window.addEventListener('load', () => {
             const p = document.getElementById('progress');
             let w = 0;
@@ -136,7 +155,6 @@
             }, 80);
         });
 
-        // CURSOR
         const cursor = document.querySelector('.cursor');
         document.addEventListener('mousemove', e => { cursor.style.left = e.clientX + 'px'; cursor.style.top = e.clientY + 'px'; });
         document.querySelectorAll('a, button, .card').forEach(item => {
@@ -144,13 +162,11 @@
             item.addEventListener('mouseleave', () => cursor.classList.remove('hover'));
         });
 
-        // CLOCK
         setInterval(() => {
             const now = new Date();
             document.getElementById('sys-status').innerHTML = `SYS_STATUS: ACTIVE // ${now.toLocaleDateString()} - ${now.toLocaleTimeString()}`;
         }, 1000);
 
-        // VIDEO CROSSFADE
         document.addEventListener("DOMContentLoaded", () => {
             const layers = document.querySelectorAll(".bg-video");
             let idx = 0;
@@ -164,7 +180,6 @@
             }, 8500);
         });
 
-        // LIVING SYSTEM
         setInterval(() => {
             const s = document.getElementById("live-stability");
             const p = document.getElementById("live-phase");
