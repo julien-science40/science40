@@ -48,7 +48,7 @@
             box-shadow: 0 0 8px rgba(0, 242, 254, 0.5);
         }
 
-        /* COUCHE 1 : Fond Vidéo */
+        /* COUCHE 1 : Fond Vidéo Multi-pistes avec Crossfade */
         .bg-video-container {
             position: fixed;
             top: 0;
@@ -61,11 +61,20 @@
         }
 
         .bg-video {
+            position: absolute;
+            top: 0;
+            left: 0;
             width: 100%;
             height: 100%;
             object-fit: cover;
-            opacity: 0.85; 
-            filter: brightness(1.3) contrast(1.1); 
+            opacity: 0; /* Invisibles par défaut pour permettre la transition */
+            filter: brightness(1.2) contrast(1.1); 
+            transition: opacity 1500ms ease-in-out; /* Fondu croisé de 1.5 seconde */
+        }
+
+        /* La vidéo active passe à l'opacité requise pour la lisibilité de l'interface */
+        .bg-video.active {
+            opacity: 0.25; 
         }
 
         /* COUCHE 2 : Voile de protection */
@@ -77,6 +86,7 @@
             height: 100%;
             z-index: 2; 
             background: radial-gradient(circle at center, rgba(3,7,18,0.1) 0%, rgba(3,7,18,0.5) 100%);
+            pointer-events: none;
         }
 
         /* COUCHE 10 : Contenu principal */
@@ -485,8 +495,14 @@
 <body>
 
     <div class="bg-video-container">
-        <video class="bg-video" autoplay loop muted playsinline>
+        <video id="layer-servers" class="bg-video active" autoplay loop muted playsinline>
             <source src="labo.mp4" type="video/mp4">
+        </video>
+        <video id="layer-bio" class="bg-video" loop muted playsinline>
+            <source src="Macroscopic_journey_through_a.mp4" type="video/mp4">
+        </video>
+        <video id="layer-math" class="bg-video" loop muted playsinline>
+            <source src="Abstract_geometric_simulation.mp4" type="video/mp4">
         </video>
     </div>
     <div class="bg-overlay"></div>
@@ -559,7 +575,7 @@
                     <div class="card-content" style="width: 100%;">
                         <h2 style="color: #00f2fe; text-shadow: 0 0 15px rgba(0, 242, 254, 0.6);">🚀 // SYSTEM_UPDATE : LA PHASE 2 (ÉLÉVATION) EST OFFICIELLEMENT LANCÉE</h2>
                         <p style="margin-top: 15px; font-size: 1.05rem; line-height: 1.6; color: #e2e8f0;">
-                            Le manuscrit principal de la Phase 2 du paradigme Science 4.0 est finalisé : <br>
+                            Le manuscrit principal de la Phase 2 du paradigme Science 4.0 is finalisé : <br>
                             <strong style="color: #38bdf8;">"The Maternal Golden Standard: Algorithmic Regulation of Renal Hydraulics and Glomerular Flow Restoration above 85~mL/min eGFR"</strong>.
                         </p>
                         <p style="margin-top: 15px; font-size: 0.95rem; color: #cbd5e1; text-align: justify;">
@@ -569,7 +585,7 @@
                             La documentation entre actuellement dans le circuit <strong style="color: #f59e0b;">international de révision par les pairs</strong>. Que ce soit à travers des revues traditionnelles à fort impact ou des canaux avancés de <span class="tag-cyan">Science Ouverte</span>, le déploiement de cette architecture est désormais actif.
                         </p>
                         <div style="margin-top: 20px; padding: 12px; border: 1px dashed rgba(0, 242, 254, 0.3); background: rgba(0, 242, 254, 0.05); font-family: 'Fira Code', monospace; font-size: 0.8rem; color: #00f2fe; text-align: center; letter-spacing: 1px;">
-                            🔔 RESTEZ À L'ÉCOUTE POUR LES PROCHAINES MISES À ROYAUTÉ ET PUBLICATIONS DE DONNÉES !
+                            🔔 RESTEZ À L'ÉCOUTE POUR LES PROCHAINES MISES À NIVEAU ET PUBLICATIONS DE DONNÉES !
                         </div>
                     </div>
                 </div>
@@ -933,6 +949,42 @@
             }
             setTimeout(typeConsole, 500);
         }
+
+        // ENGINE 5 : MULTI-VIDEO STREAM CROSSFADE ORCHESTRATOR (SILENT SILENCE RUNNING)
+        document.addEventListener("DOMContentLoaded", () => {
+            const videoLayers = document.querySelectorAll(".bg-video");
+            let currentTrack = 0;
+            const sequenceDuration = 10000; // Fréquence de transition : 10 secondes
+            const crossfadeTime = 1500;     // Doit correspondre à la transition CSS (1.5 seconde)
+
+            // Lecture forcée du premier flux initial
+            if(videoLayers[currentTrack]) {
+                videoLayers[currentTrack].play().catch(err => console.log("Flux initial bloqué :", err));
+            }
+
+            setInterval(() => {
+                const previousTrack = currentTrack;
+                currentTrack = (currentTrack + 1) % videoLayers.length;
+
+                const dynamicOut = videoLayers[previousTrack];
+                const dynamicIn = videoLayers[currentTrack];
+
+                // Initialisation et lecture de la piste suivante dans la matrice avant le fondu
+                dynamicIn.play().then(() => {
+                    dynamicIn.classList.add("active");
+                    dynamicOut.classList.remove("active");
+
+                    // Extinction du flux sortant une fois le fondu croisé CSS achevé (optimisation processeur)
+                    setTimeout(() => {
+                        if (!dynamicOut.classList.contains("active")) {
+                            dynamicOut.pause();
+                            dynamicOut.currentTime = 0; // Réinitialisation de la tête de lecture
+                        }
+                    }, crossfadeTime);
+                }).catch(err => console.log("Erreur de synchronisation du flux matrice :", err));
+
+            }, sequenceDuration);
+        });
     </script>
 
 </body>
