@@ -767,24 +767,19 @@
                             Déploiement et visibilité internationale de l'article scientifique <strong style="color: var(--accent-color);">"Mitochondrial Bio-Logistics"</strong> (IZAB) :
                         </p>
                         
-                        <!-- RECONFIGURATION DE LA GRILLE POUR PASSER À 4 BLOCS INTÉGRANT LE COMPTEUR FILTRÉ -->
-                        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 15px; margin-top: 20px;">
+                        <!-- RETOUR NOMINAL À 3 COMPTEURS PROPRES POUR L'ARTICLE -->
+                        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; margin-top: 20px;">
                             <div style="border: 1px solid var(--glow-ultra); padding: 15px; background: rgba(2, 6, 17, 0.6); border-radius: 8px; text-align: center;">
-                                <span style="font-family: 'Fira Code', monospace; color: #94a3b8; font-size: 0.75rem;">TOTAL_IMPRESSIONS</span><br>
-                                <span id="live-impressions" style="font-family: 'Fira Code', monospace; color: var(--accent-color); font-size: 1.6rem; font-weight: bold; text-shadow: 0 0 10px var(--glow-light);">64 077+</span>
+                                <span style="font-family: 'Fira Code', monospace; color: #94a3b8; font-size: 0.8rem;">TOTAL_IMPRESSIONS</span><br>
+                                <span id="live-impressions" style="font-family: 'Fira Code', monospace; color: var(--accent-color); font-size: 1.8rem; font-weight: bold; text-shadow: 0 0 10px var(--glow-light);">64 077+</span>
                             </div>
                             <div style="border: 1px solid rgba(16, 185, 129, 0.2); padding: 15px; background: rgba(2, 6, 17, 0.6); border-radius: 8px; text-align: center;">
-                                <span style="font-family: 'Fira Code', monospace; color: #94a3b8; font-size: 0.75rem;">GLOBAL_REACH</span><br>
-                                <span style="font-family: 'Fira Code', monospace; color: #10b981; font-size: 1.6rem; font-weight: bold; text-shadow: 0 0 10px rgba(16, 185, 129, 0.4);">54 408+</span>
+                                <span style="font-family: 'Fira Code', monospace; color: #94a3b8; font-size: 0.8rem;">GLOBAL_REACH</span><br>
+                                <span style="font-family: 'Fira Code', monospace; color: #10b981; font-size: 1.8rem; font-weight: bold; text-shadow: 0 0 10px rgba(16, 185, 129, 0.4);">54 408+</span>
                             </div>
                             <div style="border: 1px solid rgba(245, 158, 11, 0.2); padding: 15px; background: rgba(2, 6, 17, 0.6); border-radius: 8px; text-align: center;">
-                                <span style="font-family: 'Fira Code', monospace; color: #94a3b8; font-size: 0.75rem;">COST_PER_VIEW</span><br>
-                                <span style="font-family: 'Fira Code', monospace; color: #f59e0b; font-size: 1.6rem; font-weight: bold; text-shadow: 0 0 10px rgba(245, 158, 11, 0.4);">$0.01</span>
-                            </div>
-                            <!-- LE NOUVEAU NODE DE COMPTAGE RÉEL FILTRÉ -->
-                            <div style="border: 1px solid var(--glow-ultra); padding: 15px; background: rgba(2, 6, 17, 0.9); border-radius: 8px; text-align: center; box-shadow: inset 0 0 10px var(--glow-light);">
-                                <span style="font-family: 'Fira Code', monospace; color: var(--secondary-color); font-size: 0.75rem; font-weight: bold;" id="visitor-label">UNIQUE_VISIT_NODES</span><br>
-                                <span id="real-visitor-counter" style="font-family: 'Fira Code', monospace; color: var(--accent-color); font-size: 1.6rem; font-weight: bold; text-shadow: 0 0 12px var(--glow-shadow);">...</span>
+                                <span style="font-family: 'Fira Code', monospace; color: #94a3b8; font-size: 0.8rem;">COST_PER_VIEW</span><br>
+                                <span style="font-family: 'Fira Code', monospace; color: #f59e0b; font-size: 1.8rem; font-weight: bold; text-shadow: 0 0 10px rgba(245, 158, 11, 0.4);">$0.01</span>
                             </div>
                         </div>
                         <p style="margin-top: 20px; font-size: 0.95rem; color: #cbd5e1; text-align: justify;">
@@ -1137,8 +1132,9 @@
         </main>
     </div>
 
+    <!-- RESTRUCTURATION DU COMPTEUR SOUS FORME DE LOG SYSTÈME DANS LE FOOTER -->
     <footer>
-        [ AUTH_ID: JULIEN_BOBLIQUE ] — © 2026 — Science 4.0 Framework
+        [ TRAFFIC_LOAD: <span id="real-visitor-counter">...</span> ] &nbsp;&nbsp;&nbsp;&nbsp; [ AUTH_ID: JULIEN_BOBLIQUE ] — © 2026 — Science 4.0 Framework
     </footer>
 
     <script>
@@ -1149,45 +1145,38 @@
         // ENGINE COMPTEUR FILTRÉ SOUVERAIN (COUNTAPI AUTO-DEFENSE)
         function initAutonomousVisitorCounter() {
             const counterElement = document.getElementById('real-visitor-counter');
-            const labelElement = document.getElementById('visitor-label');
             if (!counterElement) return;
 
-            // 1. Détection et interception de ton lien secret ?mode=admin
+            // Détection et interception de ton lien secret ?mode=admin
             const urlParams = new URLSearchParams(window.location.search);
             if (urlParams.get('mode') === 'admin') {
                 localStorage.setItem('sys_exclude_counter', 'true');
-                // Nettoyage de l'URL pour la discrétion
                 window.history.replaceState({}, document.title, window.location.pathname);
                 alert("// SCCI_SECURITY: Votre terminal est désormais banni du sillage du compteur.");
             }
 
             const isExcluded = localStorage.getItem('sys_exclude_counter') === 'true';
-            
-            // Namespace et clé uniques indexés sur ton dépôt GitHub Pages
             const namespace = "julien-science40.github.io";
             const key = "science40_visits";
             
             if (isExcluded) {
-                if (labelElement) labelElement.innerHTML = "UNIQUE_VISIT_NODES [ADMIN]";
-                // En mode admin, on fait juste un GET (lecture seule), on n'incrémente pas le flux
+                // En mode admin (lecture seule), on applique le tag d'exclusion [X]
                 fetch(`https://api.countapi.xyz/get/${namespace}/${key}`)
                     .then(res => res.json())
                     .then(data => {
                         counterElement.innerHTML = (data.value || 104) + " [X]";
                     })
                     .catch(() => {
-                        // Secours local si l'API est indisponible
-                        counterElement.innerHTML = "128_NODES";
+                        counterElement.innerHTML = "128_NODES [X]";
                     });
             } else {
-                // Pour les vrais visiteurs extérieurs, on injecte un HIT (incrémentation du flux)
+                // Pour les vrais visiteurs extérieurs, on incrémente la matrice
                 fetch(`https://api.countapi.xyz/hit/${namespace}/${key}`)
                     .then(res => res.json())
                     .then(data => {
-                        counterElement.innerHTML = data.value || "104+";
+                        counterElement.innerHTML = data.value + "+";
                     })
                     .catch(() => {
-                        // Simulation de sillage en cas de coupure réseau de l'API externe (anti-crash)
                         let mockCount = parseInt(localStorage.getItem('sys_fallback_counter')) || 112;
                         mockCount += 1;
                         localStorage.setItem('sys_fallback_counter', mockCount);
@@ -1347,7 +1336,6 @@
 
         // INITIALISATION PROTEGÉE
         document.addEventListener("DOMContentLoaded", () => {
-            // RECUPERATION DU SPECTRE MEMORISE
             const savedSpectrum = localStorage.getItem('sys_spectrum');
             if (savedSpectrum === 'beta') {
                 document.body.classList.add('spectrum-beta');
