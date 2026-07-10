@@ -16,8 +16,33 @@
 
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Fira+Code:wght@400;500&display=swap">
     <style>
+        /* ==========================================
+           MATRICE DES VARIABLES SPECTRALES
+           ========================================== */
+        :root {
+            --accent-color: #00f2fe;
+            --secondary-color: #38bdf8;
+            --glow-shadow: rgba(0, 242, 254, 0.5);
+            --glow-light: rgba(0, 242, 254, 0.15);
+            --glow-ultra: rgba(0, 242, 254, 0.25);
+            --bg-tint: rgba(0, 242, 254, 0.08);
+            --cursor-glow: rgba(0, 242, 254, 0.6);
+            --cursor-pulse: rgba(56, 189, 248, 0.9);
+        }
+
+        body.spectrum-beta {
+            --accent-color: #10b981;
+            --secondary-color: #34d399;
+            --glow-shadow: rgba(16, 185, 129, 0.5);
+            --glow-light: rgba(16, 185, 129, 0.15);
+            --glow-ultra: rgba(16, 185, 129, 0.25);
+            --bg-tint: rgba(16, 185, 129, 0.08);
+            --cursor-glow: rgba(16, 185, 129, 0.6);
+            --cursor-pulse: rgba(52, 211, 153, 0.9);
+        }
+
         /* Masquage étanche du pointeur système par défaut sur tout le site */
-        html, body, a, button, video, .tab-btn, .card, .document-link, .console-cmd-btn, .accordion-summary {
+        html, body, a, button, video, .tab-btn, .card, .document-link, .console-cmd-btn, .accordion-summary, .spectrum-btn {
             cursor: none !important;
         }
 
@@ -33,6 +58,7 @@
             min-height: 100vh;
             box-sizing: border-box;
             overflow-x: hidden;
+            transition: background-color 0.3s ease;
         }
 
         /* ==========================================
@@ -101,20 +127,20 @@
         }
 
         /* ==========================================
-           VISEUR CYBER BLEU
+           VISEUR CYBER RECONFIGURABLE
            ========================================== */
         #cyber-cursor {
             position: fixed;
             width: 22px;
             height: 22px;
-            border: 1.5px solid #00f2fe;
+            border: 1.5px solid var(--accent-color);
             border-radius: 50%;
             pointer-events: none; 
             z-index: 999999;
             transform: translate(-50%, -50%);
-            box-shadow: 0 0 12px rgba(0, 242, 254, 0.6);
+            box-shadow: 0 0 12px var(--cursor-glow);
             display: none; 
-            transition: width 0.2s cubic-bezier(0.16, 1, 0.3, 1), height 0.2s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.2s;
+            transition: width 0.2s cubic-bezier(0.16, 1, 0.3, 1), height 0.2s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.3s ease, box-shadow 0.3s ease;
         }
 
         #cyber-cursor::after {
@@ -124,24 +150,25 @@
             left: 50%;
             width: 4px;
             height: 4px;
-            background: #00f2fe;
+            background: var(--accent-color);
             border-radius: 50%;
             transform: translate(-50%, -50%);
+            transition: background-color 0.3s ease;
         }
 
         #cyber-cursor.pulse-active {
             width: 32px;
             height: 32px;
-            border-color: #38bdf8;
-            box-shadow: 0 0 18px rgba(56, 189, 248, 0.9);
+            border-color: var(--secondary-color);
+            box-shadow: 0 0 18px var(--cursor-pulse);
             background-color: rgba(0, 242, 254, 0.04);
         }
 
         /* Styles de Commande de la Console */
         .console-cmd-btn {
             background: rgba(2, 6, 17, 0.8);
-            border: 1px dashed rgba(56, 189, 248, 0.4);
-            color: #38bdf8;
+            border: 1px dashed var(--secondary-color);
+            color: var(--secondary-color);
             padding: 8px 14px;
             border-radius: 4px;
             font-family: 'Fira Code', monospace;
@@ -151,10 +178,10 @@
         }
 
         .console-cmd-btn:hover {
-            color: #00f2fe;
-            border-color: #00f2fe;
+            color: var(--accent-color);
+            border-color: var(--accent-color);
             border-style: solid;
-            box-shadow: 0 0 12px rgba(0, 242, 254, 0.25);
+            box-shadow: 0 0 12px var(--glow-ultra);
             background: rgba(0, 242, 254, 0.02);
         }
 
@@ -167,13 +194,13 @@
             background: #030712; 
         }
         ::-webkit-scrollbar-thumb {
-            background: rgba(0, 242, 254, 0.2); 
+            background: var(--glow-ultra); 
             border-radius: 3px;
             transition: background 0.3s ease;
         }
         ::-webkit-scrollbar-thumb:hover {
-            background: rgba(0, 242, 254, 0.6); 
-            box-shadow: 0 0 8px rgba(0, 242, 254, 0.5);
+            background: var(--accent-color); 
+            box-shadow: 0 0 8px var(--glow-shadow);
         }
 
         /* COUCHE 1 : Fond Vidéo Multi-pistes */
@@ -226,7 +253,7 @@
 
         header {
             margin-bottom: 40px;
-            border-bottom: 1px solid rgba(0, 242, 254, 0.15);
+            border-bottom: 1px solid var(--glow-light);
             padding-bottom: 30px;
             position: relative;
         }
@@ -248,9 +275,10 @@
             right: 0;
             font-family: 'Fira Code', monospace;
             font-size: 0.75rem;
-            color: #38bdf8;
+            color: var(--secondary-color);
             letter-spacing: 1px;
             text-align: right;
+            transition: color 0.3s ease;
         }
 
         @media (max-width: 768px) {
@@ -265,18 +293,20 @@
 
         h1 {
             font-family: 'Fira Code', monospace;
-            color: #00f2fe;
-            text-shadow: 0 0 20px rgba(0, 242, 254, 0.5);
+            color: var(--accent-color);
+            text-shadow: 0 0 20px var(--glow-shadow);
             margin: 0 0 12px 0;
             font-size: 2.8rem;
             font-weight: 500;
+            transition: color 0.3s ease, text-shadow 0.3s ease;
         }
 
         .subtitle {
-            color: #38bdf8;
+            color: var(--secondary-color);
             font-size: 1.15rem;
             margin: 0 0 16px 0;
             letter-spacing: 0.5px;
+            transition: color 0.3s ease;
         }
 
         .header-links {
@@ -286,7 +316,7 @@
         }
 
         .header-links a {
-            color: #00f2fe;
+            color: var(--accent-color);
             text-decoration: none;
             letter-spacing: 0.5px;
             transition: all 0.3s ease;
@@ -294,8 +324,8 @@
         }
 
         .header-links a:hover {
-            color: #38bdf8;
-            text-shadow: 0 0 8px rgba(0, 242, 254, 0.6);
+            color: var(--secondary-color);
+            text-shadow: 0 0 8px var(--glow-shadow);
         }
 
         /* Navigation Cyber-Industrielle */
@@ -312,7 +342,7 @@
             background: rgba(11, 18, 32, 0.4);
             backdrop-filter: blur(10px);
             -webkit-backdrop-filter: blur(10px);
-            border: 1px solid rgba(0, 242, 254, 0.25);
+            border: 1px solid var(--glow-ultra);
             color: rgba(226, 232, 240, 0.6);
             padding: 10px 18px;
             font-size: 0.8rem;
@@ -323,16 +353,16 @@
         }
 
         .tab-btn:hover {
-            color: #38bdf8;
-            border-color: rgba(0, 242, 254, 0.6);
+            color: var(--secondary-color);
+            border-color: var(--glow-shadow);
             box-shadow: 0 0 12px rgba(0, 242, 254, 0.15);
         }
 
         .tab-btn.active {
-            color: #00f2fe;
-            border-color: #00f2fe;
-            background: rgba(0, 242, 254, 0.08);
-            box-shadow: 0 0 15px rgba(0, 242, 254, 0.25), inset 0 0 5px rgba(0, 242, 254, 0.1);
+            color: var(--accent-color);
+            border-color: var(--accent-color);
+            background: var(--bg-tint);
+            box-shadow: 0 0 15px var(--glow-ultra), inset 0 0 5px rgba(0, 242, 254, 0.1);
             font-weight: 500;
         }
 
@@ -360,7 +390,7 @@
             background: rgba(11, 18, 32, 0.85); 
             backdrop-filter: blur(25px);
             -webkit-backdrop-filter: blur(25px);
-            border: 1px solid rgba(0, 242, 254, 0.2);
+            border: 1px solid var(--glow-light);
             border-radius: 16px;
             padding: 30px;
             transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
@@ -387,9 +417,8 @@
 
         .card:hover {
             transform: translateY(-5px) scale(1.01);
-            border-color: rgba(0, 242, 254, 0.7);
-            box-shadow: 0 0 35px rgba(0, 242, 254, 0.25), 
-                        inset 0 0 15px rgba(0, 242, 254, 0.1);
+            border-color: var(--accent-color);
+            box-shadow: 0 0 35px var(--glow-ultra), inset 0 0 15px rgba(0, 242, 254, 0.1);
         }
 
         .card-media {
@@ -410,18 +439,19 @@
 
         .matrix-console {
             background: rgba(2, 6, 17, 0.7);
-            border: 1px solid rgba(0, 242, 254, 0.15);
+            border: 1px solid var(--glow-light);
             border-radius: 6px;
             padding: 12px;
             font-family: 'Fira Code', monospace;
             font-size: 0.78rem;
-            color: #38bdf8;
+            color: var(--secondary-color);
             overflow-y: auto;
             height: 180px;
             margin-top: 15px;
             white-space: pre-wrap; 
             line-height: 1.4;
             box-sizing: border-box;
+            transition: color 0.3s ease, border-color 0.3s ease;
         }
 
         /* Style du Manifeste Épistémologique */
@@ -451,12 +481,12 @@
         }
 
         .manifesto-node.active {
-            border-left: 2px solid #00f2fe;
+            border-left: 2px solid var(--accent-color);
         }
 
         .manifesto-node.active::before {
-            background: #00f2fe;
-            box-shadow: 0 0 10px #00f2fe;
+            background: var(--accent-color);
+            box-shadow: 0 0 10px var(--glow-shadow);
         }
 
         .manifesto-title {
@@ -466,7 +496,7 @@
         }
 
         .manifesto-node.active .manifesto-title {
-            color: #00f2fe;
+            color: var(--accent-color);
             text-shadow: 0 0 8px rgba(0, 242, 254, 0.3);
         }
 
@@ -495,11 +525,12 @@
 
         h2 {
             font-family: 'Fira Code', monospace;
-            color: #00f2fe;
+            color: var(--accent-color);
             text-shadow: 0 0 10px rgba(0, 242, 254, 0.2);
             margin: 0 0 12px 0;
             font-size: 1.6rem;
             font-weight: 500;
+            transition: color 0.3s ease;
         }
 
         p {
@@ -510,26 +541,27 @@
         }
 
         /* ==========================================
-           MODULE AMÉLIORATION 1 : ACCORDÉON CYBER
+           MODULE ACCORDÉON ADAPTATIF
            ========================================== */
         .document-registry {
             margin-top: 25px;
-            border-top: 1px dashed rgba(0, 242, 254, 0.2);
+            border-top: 1px dashed var(--glow-ultra);
             padding-top: 20px;
             font-family: 'Fira Code', monospace;
             font-size: 0.85rem;
         }
 
         .document-registry-title {
-            color: #38bdf8;
+            color: var(--secondary-color);
             margin-bottom: 20px;
             font-weight: 600;
             letter-spacing: 1px;
+            transition: color 0.3s ease;
         }
 
         .accordion-category {
             background: rgba(2, 6, 17, 0.45);
-            border: 1px solid rgba(0, 242, 254, 0.15);
+            border: 1px solid var(--glow-light);
             border-radius: 8px;
             margin-bottom: 14px;
             overflow: hidden;
@@ -537,7 +569,7 @@
         }
 
         .accordion-category[open] {
-            border-color: rgba(0, 242, 254, 0.45);
+            border-color: var(--accent-color);
             box-shadow: 0 0 20px rgba(0, 242, 254, 0.08);
             background: rgba(2, 6, 17, 0.7);
         }
@@ -545,7 +577,7 @@
         .accordion-summary {
             padding: 14px 18px;
             font-weight: 600;
-            color: #38bdf8;
+            color: var(--secondary-color);
             list-style: none;
             display: flex;
             justify-content: space-between;
@@ -555,8 +587,8 @@
         }
 
         .accordion-summary:hover {
-            background: rgba(0, 242, 254, 0.04);
-            color: #00f2fe;
+            background: var(--bg-tint);
+            color: var(--accent-color);
         }
 
         .accordion-summary::-webkit-details-marker {
@@ -567,18 +599,18 @@
             content: '[ + ]';
             font-family: 'Fira Code', monospace;
             font-size: 0.8rem;
-            color: rgba(56, 189, 248, 0.6);
+            color: var(--secondary-color);
             transition: color 0.3s;
         }
 
         .accordion-category[open] .accordion-summary {
-            color: #00f2fe;
-            border-bottom: 1px dashed rgba(0, 242, 254, 0.15);
+            color: var(--accent-color);
+            border-bottom: 1px dashed var(--glow-light);
         }
 
         .accordion-category[open] .accordion-summary::after {
             content: '[ - ]';
-            color: #00f2fe;
+            color: var(--accent-color);
         }
 
         .accordion-content {
@@ -607,10 +639,10 @@
         }
 
         .document-link:hover {
-            color: #00f2fe;
+            color: var(--accent-color);
             border-bottom-style: solid;
-            border-color: #00f2fe;
-            text-shadow: 0 0 8px rgba(0, 242, 254, 0.5);
+            border-color: var(--accent-color);
+            text-shadow: 0 0 8px var(--glow-shadow);
         }
 
         footer {
@@ -644,7 +676,7 @@
 
         @keyframes blinkToken { from, to { color: transparent; } 50% { color: #10b981; text-shadow: 0 0 8px rgba(16, 185, 129, 0.6); } }
         @keyframes pulseStatus { 0% { opacity: 0.6; } 50% { opacity: 1; box-shadow: 0 0 10px rgba(0, 242, 254, 0.4); } 100% { opacity: 0.6; } }
-        @keyframes pulseNode { 0% { r: 4; fill: #00f2fe; filter: drop-shadow(0 0 2px #00f2fe); } 50% { r: 6; fill: #38bdf8; filter: drop-shadow(0 0 8px #00f2fe); } 100% { r: 4; fill: #00f2fe; filter: drop-shadow(0 0 2px #00f2fe); } }
+        @keyframes pulseNode { 0% { r: 4; fill: var(--accent-color); filter: drop-shadow(0 0 2px var(--accent-color)); } 50% { r: 6; fill: var(--secondary-color); filter: drop-shadow(0 0 8px var(--accent-color)); } 100% { r: 4; fill: var(--accent-color); filter: drop-shadow(0 0 2px var(--accent-color)); } }
     </style>
 </head>
 <body>
@@ -684,7 +716,11 @@
             <p class="subtitle">Framework Architectural pour la Résilience et les Systèmes Structurels</p>
             
             <div class="header-links">
-                [ <a href="https://www.linkedin.com/in/julien-boblique-33230a210" target="_blank">LINKEDIN_NODE</a> ] &nbsp;&nbsp; [ <a href="mailto:julien.boblique@orange.fr">CONTACT_PRO</a> ] &nbsp;&nbsp; [ <a href="https://orcid.org/0009-0009-0648-5970" target="_blank">ORCID_NODE</a> ] &nbsp;&nbsp; [ <a href="https://scholar.google.com/scholar?q=Julien+Boblique" target="_blank">SCHOLAR_NODE</a> ]
+                [ <a href="https://www.linkedin.com/in/julien-boblique-33230a210" target="_blank">LINKEDIN_NODE</a> ] &nbsp;&nbsp; 
+                [ <a href="mailto:julien.boblique@orange.fr">CONTACT_PRO</a> ] &nbsp;&nbsp; 
+                [ <a href="https://orcid.org/0009-0009-0648-5970" target="_blank">ORCID_NODE</a> ] &nbsp;&nbsp; 
+                [ <a href="https://scholar.google.com/scholar?q=Julien+Boblique" target="_blank">SCHOLAR_NODE</a> ] &nbsp;&nbsp;
+                [ <a href="#" onclick="toggleSpectrum(); return false;" class="spectrum-btn" style="font-weight: bold; text-decoration: underline;">SWITCH_SPECTRUM</a> ]
             </div>
         </header>
 
@@ -702,12 +738,12 @@
                     <div class="card-content" style="width: 100%;">
                         <h2 style="color: #38bdf8; text-shadow: 0 0 15px rgba(56, 189, 248, 0.6);">📊 // IMPACT_ANALYTICS : TRACTION DU PARADIGME</h2>
                         <p style="margin-top: 15px; font-size: 1.05rem; line-height: 1.6; color: #e2e8f0;">
-                            Déploiement et visibilité internationale de l'article scientifique <strong style="color: #00f2fe;">"Mitochondrial Bio-Logistics"</strong> (IZAB) :
+                            Déploiement et visibilité internationale de l'article scientifique <strong style="color: var(--accent-color);">"Mitochondrial Bio-Logistics"</strong> (IZAB) :
                         </p>
                         <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; margin-top: 20px;">
-                            <div style="border: 1px solid rgba(0, 242, 254, 0.2); padding: 15px; background: rgba(2, 6, 17, 0.6); border-radius: 8px; text-align: center;">
+                            <div style="border: 1px solid var(--glow-ultra); padding: 15px; background: rgba(2, 6, 17, 0.6); border-radius: 8px; text-align: center;">
                                 <span style="font-family: 'Fira Code', monospace; color: #94a3b8; font-size: 0.8rem;">TOTAL_IMPRESSIONS</span><br>
-                                <span id="live-impressions" style="font-family: 'Fira Code', monospace; color: #00f2fe; font-size: 1.8rem; font-weight: bold; text-shadow: 0 0 10px rgba(0, 242, 254, 0.4);">64 077+</span>
+                                <span id="live-impressions" style="font-family: 'Fira Code', monospace; color: var(--accent-color); font-size: 1.8rem; font-weight: bold; text-shadow: 0 0 10px var(--glow-light);">64 077+</span>
                             </div>
                             <div style="border: 1px solid rgba(16, 185, 129, 0.2); padding: 15px; background: rgba(2, 6, 17, 0.6); border-radius: 8px; text-align: center;">
                                 <span style="font-family: 'Fira Code', monospace; color: #94a3b8; font-size: 0.8rem;">GLOBAL_REACH</span><br>
@@ -728,8 +764,8 @@
                     <div class="card-content" style="width: 100%;">
                         <h2 style="color: #10b981; text-shadow: 0 0 15px rgba(16, 185, 129, 0.6);">📢 // EDITIONS_UPDATE : NANO-VECTEUR LIPIDIQUE VALIDÉ EN PRODUCTION</h2>
                         <p style="margin-top: 15px; font-size: 1.05rem; line-height: 1.6; color: #e2e8f0;">
-                            Le rapport d'évaluation internationale de la revue <strong style="color: #38bdf8;">JSM Biotechnology and Biomedical Engineering</strong> a officiellement validé notre modèle d'ingénierie : <br>
-                            <strong style="color: #00f2fe;">"Lipid-Matrix Carrier Architecture: Engineering Nano-Vectorized Transport for Hydrophobic Living Signals in Science 4.0 Frameworks"</strong>.
+                            Le rapport d'évaluation internationale de la revue <strong style="color: var(--secondary-color);">JSM Biotechnology and Biomedical Engineering</strong> a officiellement validé notre modèle d'ingénierie : <br>
+                            <strong style="color: var(--accent-color);">"Lipid-Matrix Carrier Architecture: Engineering Nano-Vectorized Transport for Hydrophobic Living Signals in Science 4.0 Frameworks"</strong>.
                         </p>
                         <p style="margin-top: 15px; font-size: 0.95rem; color: #cbd5e1; text-align: justify;">
                             Le comité de lecture a attribué la mention de distinction maximale <span class="tag-cyan">Excellent</span> pour l'Originalité, la Qualité de la Langue et les Références. Le manuscrit est officiellement accepté et transféré à l'équipe technique pour l'édition des épreuves d'imprimerie (<span class="tag-green">PDF Galley Proof Stage</span>).
@@ -745,7 +781,7 @@
                         <h2 style="color: #00f2fe; text-shadow: 0 0 15px rgba(0, 242, 254, 0.6);">🚀 // SYSTEM_UPDATE : LA PHASE 2 (ÉLÉVATION) EST OFFICIELLEMENT LANCÉE</h2>
                         <p style="margin-top: 15px; font-size: 1.05rem; line-height: 1.6; color: #e2e8f0;">
                             Le manuscrit principal de la Phase 2 du paradigme Science 4.0 est finalisé : <br>
-                            <strong style="color: #38bdf8;">"The Maternal Golden Standard: Algorithmic Regulation of Renal Hydraulics and Glomerular Flow Restoration above 85~mL/min eGFR"</strong>.
+                            <strong style="color: var(--secondary-color);">"The Maternal Golden Standard: Algorithmic Regulation of Renal Hydraulics and Glomerular Flow Restoration above 85~mL/min eGFR"</strong>.
                         </p>
                         <p style="margin-top: 15px; font-size: 0.95rem; color: #cbd5e1; text-align: justify;">
                             Après le succès de la Phase 1, cette nouvelle étape intègre des boucles prédictives en temps réel dans l'architecture <span class="tag-cyan">Bio-OS V8</span> pour optimiser systématiquement la dynamique des fluides biologiques et dépasser les limites physiologiques standard.
@@ -753,7 +789,7 @@
                         <p style="margin-top: 15px; font-size: 0.95rem; color: #cbd5e1; text-align: justify;">
                             La documentation entre actuellement dans le circuit <strong style="color: #f59e0b;">international de révision par les pairs</strong>. Que ce soit à travers des revues traditionnelles à fort impact ou des canaux avancés de <span class="tag-cyan">Science Ouverte</span>, le déploiement de cette architecture est désormais actif.
                         </p>
-                        <div style="margin-top: 20px; padding: 12px; border: 1px dashed rgba(0, 242, 254, 0.3); background: rgba(0, 242, 254, 0.05); font-family: 'Fira Code', monospace; font-size: 0.8rem; color: #00f2fe; text-align: center; letter-spacing: 1px;">
+                        <div style="margin-top: 20px; padding: 12px; border: 1px dashed var(--glow-light); background: rgba(0, 242, 254, 0.05); font-family: 'Fira Code', monospace; font-size: 0.8rem; color: var(--accent-color); text-align: center; letter-spacing: 1px;">
                             🔔 RESTEZ À L'ÉCOUTE POUR LES PROCHAINES MISES À NIVEAU ET PUBLICATIONS DE DONNÉES !
                         </div>
                     </div>
@@ -827,17 +863,17 @@
                         </div>
                         
                         <div style="font-family: 'Fira Code', monospace; font-size: 0.9rem; line-height: 1.6;">
-                            <p style="margin: 5px 0;"><strong style="color: #00f2fe;">NODE_ALPHA // Inversion de la Dérive Épigénétique</strong></p>
+                            <p style="margin: 5px 0;"><strong style="color: var(--accent-color);">NODE_ALPHA // Inversion de la Dérive Épigénétique</strong></p>
                             <p style="color: #cbd5e1; font-family: 'Inter', sans-serif; font-size: 0.9rem; margin: 5px 0 15px 0; text-align: justify;">
                                 La cartographie multiomique globale (génome, transcriptome, épigénome) d'un organisme supercentenaire apporte la preuve matérielle du blindage topologique parfait du signal face au bruit thermique. Présence de télomères sanctuarisés équivalents à un âge biologique de 30 ans. La structure contraint le flux temporel : l'intégrité du Bio-OS refuse l'effondrement entropique linéaire.
                             </p>
                             
-                            <p style="margin: 5px 0;"><strong style="color: #00f2fe;">NODE_BETA // Invariance d'Échelle du Bioréacteur (Prof. O. Sire)</strong></p>
+                            <p style="margin: 5px 0;"><strong style="color: var(--accent-color);">NODE_BETA // Invariance d'Échelle du Bioréacteur (Prof. O. Sire)</strong></p>
                             <p style="color: #cbd5e1; font-family: 'Inter', sans-serif; font-size: 0.9rem; margin: 5px 0 15px 0; text-align: justify;">
                                 Transposition des lois de contrôle à l'échelle macro-écosystémique. L'analyse des dynamiques de persistance des biofilms bactériens démontre qu'une exploitation ou une infrastructure complexe doit être pilotée comme un bioréacteur unifié. La géométrie de la matrice précède et gouverne la fonction pour dissiper les perturbations du réseau.
                             </p>
 
-                            <p style="margin: 5px 0;"><strong style="color: #00f2fe;">NODE_GAMMA // Thermodynamique des Événements Rares & Outliers (Prof. O. Sire - Note 2026)</strong></p>
+                            <p style="margin: 5px 0;"><strong style="color: var(--accent-color);">NODE_GAMMA // Thermodynamique des Événements Rares & Outliers (Prof. O. Sire - Note 2026)</strong></p>
                             <p style="color: #cbd5e1; font-family: 'Inter', sans-serif; font-size: 0.9rem; margin: 5px 0 0 0; text-align: justify;">
                                 Modélisation des out-of-equilibrium dynamics. Lorsque le ratio des forces s'affranchit du bruit thermique (&beta; &gt; 1.5), les configurations extrêmes et fluctuations locales (outliers) agissent comme des détonateurs créatifs. Elles brisent la linéarité pour engendrer des instabilités non linéaires collectives (piégeage et convection chaotique) qui amplifient le signal et démultiplient par dix l'efficacité du transport informationnel et de la séparation des biomarqueurs.
                             </p>
@@ -853,16 +889,16 @@
                         </p>
                         
                         <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: 10px; font-family: 'Fira Code', monospace; font-size: 0.75rem; margin-bottom: 15px;">
-                            <div style="border: 1px solid rgba(0, 242, 254, 0.15); padding: 6px; background: rgba(2, 6, 17, 0.4);">
+                            <div style="border: 1px solid var(--glow-light); padding: 6px; background: rgba(2, 6, 17, 0.4);">
                                 <span style="color: rgba(255,255,255,0.4);">H1_OBSTRUCTION:</span><br>
                                 <span style="color: #10b981; font-weight: bold;">0.000 // NULL</span>
                             </div>
-                            <div style="border: 1px solid rgba(0, 242, 254, 0.15); padding: 6px; background: rgba(2, 6, 17, 0.4);">
+                            <div style="border: 1px solid var(--glow-light); padding: 6px; background: rgba(2, 6, 17, 0.4);">
                                 <span style="color: rgba(255,255,255,0.4);">PHASE_SHIFT:</span><br>
-                                <span id="live-phase" style="color: #00f2fe; font-weight: bold;">&Delta;&Phi; = 40.00&deg; ALPHA</span>
+                                <span id="live-phase" style="color: var(--accent-color); font-weight: bold;">&Delta;&Phi; = 40.00&deg; ALPHA</span>
                             </div>
-                            <div style="border: 1px solid rgba(0, 242, 254, 0.15); padding: 6px; background: rgba(2, 6, 17, 0.4);">
-                                <span id="live-stability" style="color: #38bdf8; font-weight: bold;">99.84% STABLE</span>
+                            <div style="border: 1px solid var(--glow-light); padding: 6px; background: rgba(2, 6, 17, 0.4);">
+                                <span id="live-stability" style="color: var(--secondary-color); font-weight: bold;">99.84% STABLE</span>
                             </div>
                         </div>
                     </div>
@@ -879,13 +915,13 @@
                             <line x1="30" y1="20" x2="30" y2="150" stroke="rgba(255,255,255,0.2)" stroke-width="1.5" />
                             <text x="250" y="165" fill="rgba(255,255,255,0.4)" font-size="7">R (Real)</text>
                             <text x="35" y="30" fill="rgba(255,255,255,0.4)" font-size="7" transform="rotate(90 35 30)">-X (Imaginary)</text>
-                            <path d="M 40 150 A 110 110 0 0 1 240 150" fill="none" stroke="rgba(0, 242, 254, 0.3)" stroke-width="2" stroke-dasharray="3 3" />
-                            <path d="M 40 150 A 110 110 0 0 1 180 65" fill="none" stroke="#00f2fe" stroke-width="2.5" stroke-linecap="round" />
+                            <path d="M 40 150 A 110 110 0 0 1 240 150" fill="none" stroke="var(--glow-ultra)" stroke-width="2" stroke-dasharray="3 3" />
+                            <path d="M 40 150 A 110 110 0 0 1 180 65" fill="none" stroke="var(--accent-color)" stroke-width="2.5" stroke-linecap="round" id="transduction-arc" style="transition: stroke 0.3s ease;" />
                             <circle cx="40" cy="150" r="4" fill="#10b981" />
                             <text x="48" y="145" fill="#10b981" font-size="6">R_inf (Flow)</text>
                             <circle cx="240" cy="150" r="4" fill="#ef4444" />
                             <text x="185" y="145" fill="#ef4444" font-size="6">R_0 (Static)</text>
-                            <circle cx="140" cy="53" r="5" fill="#00f2fe" style="animation: pulseNode 2s infinite;" />
+                            <circle cx="140" cy="53" r="5" fill="var(--accent-color)" id="transduction-node-point" style="animation: pulseNode 2s infinite; transition: fill 0.3s ease;" />
                             <line x1="30" y1="53" x2="140" y2="53" stroke="rgba(56, 189, 248, 0.2)" stroke-width="1" stroke-dasharray="2 2" />
                             <line x1="140" y1="53" x2="140" y2="150" stroke="rgba(56, 189, 248, 0.2)" stroke-width="1" stroke-dasharray="2 2" />
                             <text x="148" y="48" fill="#ffffff" font-size="7" font-weight="bold">F_c (Transduction Peak)</text>
@@ -900,7 +936,7 @@
                         <h2>Dr. Julien Boblique</h2>
                         <p>Architecte de la Science 4.0 — Chercheur publié (Impact Factor 7.019). Expert en souveraineté biologique, modélisation infodynamique et résilience des systèmes complexes.</p>
                         
-                        <!-- RESTRUCTURATION EN MODE ACCORDÉON DES DOCUMENTS ENREGISTRÉS -->
+                        <!-- INDEXATION ACCORDÉON -->
                         <div class="document-registry">
                             <div class="document-registry-title">// REGISTERED DOCUMENTS (INDEXED BY CORE PILLARS) :</div>
                             
@@ -1066,6 +1102,13 @@
         // MODULES CRITIQUES (CHAMP GLOBAL ÉTANCHE)
         // ==========================================
 
+        // COMMUTATEUR DE SPECTRE LUMINEUX (THEME SWITCHER)
+        window.toggleSpectrum = function() {
+            document.body.classList.toggle('spectrum-beta');
+            const isActive = document.body.classList.contains('spectrum-beta');
+            localStorage.setItem('sys_spectrum', isActive ? 'beta' : 'alpha');
+        };
+
         // DEVICE DE PRELOADER
         let preloaderTerminated = false;
         function terminateMatrixPreloader() {
@@ -1109,7 +1152,7 @@
                     stabilityElem.style.textShadow = "0 0 10px #10b981";
                     setTimeout(() => {
                         stabilityLockActive = false;
-                        stabilityElem.style.color = "#38bdf8";
+                        stabilityElem.style.color = "var(--secondary-color)";
                         stabilityElem.style.textShadow = "none";
                     }, 5000); 
                 }
@@ -1181,12 +1224,18 @@
 
         // INITIALISATION PROTEGÉE
         document.addEventListener("DOMContentLoaded", () => {
+            // RECUPERATION DU SPECTRE MEMORISE
+            const savedSpectrum = localStorage.getItem('sys_spectrum');
+            if (savedSpectrum === 'beta') {
+                document.body.classList.add('spectrum-beta');
+            }
+
             const cCursor = document.getElementById('cyber-cursor');
             if (cCursor) {
                 document.addEventListener('mousemove', (e) => {
                     cCursor.style.display = 'block'; cCursor.style.left = e.clientX + 'px'; cCursor.style.top = e.clientY + 'px';
                 });
-                document.querySelectorAll('a, button, .tab-btn, video, .document-link, .console-cmd-btn, .accordion-summary').forEach(element => {
+                document.querySelectorAll('a, button, .tab-btn, video, .document-link, .console-cmd-btn, .accordion-summary, .spectrum-btn').forEach(element => {
                     element.addEventListener('mouseenter', () => cCursor.classList.add('pulse-active'));
                     element.addEventListener('mouseleave', () => cCursor.classList.remove('pulse-active'));
                 });
@@ -1249,7 +1298,7 @@
                         if (intrusionRate === "0.000") {
                             anomalyElem.innerHTML = `ANOMALY_FILTER: <span style="color: #10b981; font-weight: 600;">0.000% INTRUSION</span> // <span style="color: #10b981; font-weight: 600;">PURE_SIGNAL_LOCKED</span>`;
                         } else {
-                            anomalyElem.innerHTML = `ANOMALY_FILTER: <span style="color: #f59e0b; font-weight: 600;">${intrusionRate}% INTRUSION</span> // <span style="color: #00f2fe; font-weight: 600;">FILTER_ACTIVE</span>`;
+                            anomalyElem.innerHTML = `ANOMALY_FILTER: <span style="color: #f59e0b; font-weight: 600;">${intrusionRate}% INTRUSION</span> // <span style="color: var(--accent-color); font-weight: 600; transition: color 0.3s;">FILTER_ACTIVE</span>`;
                         }
                     }
                 }, 2000);
