@@ -42,7 +42,7 @@
         }
 
         /* Masquage étanche du pointeur système par défaut sur tout le site */
-        html, body, a, button, video, .tab-btn, .card, .document-link, .console-cmd-btn, .accordion-summary, .spectrum-btn {
+        html, body, a, button, video, .tab-btn, .card, .document-link, .console-cmd-btn, .accordion-summary, .spectrum-btn, .copy-citation-btn {
             cursor: none !important;
         }
 
@@ -645,6 +645,34 @@
             text-shadow: 0 0 8px var(--glow-shadow);
         }
 
+        /* ==========================================
+           MODULE AMÉLIORATION 3 : QUICK COPY CITATION
+           ========================================== */
+        .copy-citation-btn {
+            background: transparent;
+            border: none;
+            color: var(--secondary-color);
+            font-family: 'Fira Code', monospace;
+            font-size: 0.7rem;
+            margin-left: 8px;
+            padding: 2px 6px;
+            border-radius: 4px;
+            transition: all 0.2s ease;
+            display: inline-block;
+            vertical-align: middle;
+        }
+
+        .copy-citation-btn:hover {
+            color: var(--accent-color);
+            background: var(--bg-tint);
+            text-shadow: 0 0 8px var(--glow-shadow);
+        }
+
+        .copy-citation-btn.copied {
+            color: #10b981 !important;
+            text-shadow: 0 0 10px rgba(16, 185, 129, 0.8) !important;
+        }
+
         footer {
             position: relative;
             z-index: 10; 
@@ -661,7 +689,7 @@
         /* Impression */
         @media print {
             body { background: #ffffff !important; color: #000000 !important; padding: 20px !important; }
-            .bg-video-container, .bg-overlay, .card-media, iframe, #sys-status, .tab-navigation, #cyber-cursor, #matrix-preloader, #anomaly-filter { display: none !important; }
+            .bg-video-container, .bg-overlay, .card-media, iframe, #sys-status, .tab-navigation, #cyber-cursor, #matrix-preloader, #anomaly-filter, .copy-citation-btn { display: none !important; }
             .tab-panel { position: relative !important; top: 0 !important; left: 0 !important; visibility: visible !important; opacity: 1 !important; height: auto !important; display: flex !important; flex-direction: column !important; }
             .card { background: none !important; border: none !important; box-shadow: none !important; padding: 0 !important; margin-bottom: 30px !important; page-break-inside: avoid; }
             h1, h2, h3, p, a { color: #000000 !important; text-shadow: none !important; }
@@ -936,7 +964,7 @@
                         <h2>Dr. Julien Boblique</h2>
                         <p>Architecte de la Science 4.0 — Chercheur publié (Impact Factor 7.019). Expert en souveraineté biologique, modélisation infodynamique et résilience des systèmes complexes.</p>
                         
-                        <!-- INDEXATION ACCORDÉON -->
+                        <!-- ACCORDÉONS RESTRUCTURÉS AVEC MODULE QUICK COPY APPLIQUÉ -->
                         <div class="document-registry">
                             <div class="document-registry-title">// REGISTERED DOCUMENTS (INDEXED BY CORE PILLARS) :</div>
                             
@@ -950,6 +978,7 @@
                                             A Social Epigenetic Theory of Systemic Transitions
                                         </a> 
                                         <span class="tag-green">[PUBLISHED]</span>
+                                        <button class="copy-citation-btn" onclick="copyCitation(this, 'Boblique, J. (2026). A Social Epigenetic Theory of Systemic Transitions. International Journal of Zoology and Animal Biology. DOI: 10.23880/izab-16000667')">[ COPY_CITATION ]</button>
                                     </p>
                                     <p class="document-line">
                                         &gt; <span class="tag-cyan">[SCIENCE_4.0_2026]</span> 
@@ -957,6 +986,7 @@
                                             From SET Theory to Science 4.0: An AI-Driven Framework for Epigenetic Integrity and Biological Flow Control
                                         </a> 
                                         <span class="tag-green">[PUBLISHED]</span>
+                                        <button class="copy-citation-btn" onclick="copyCitation(this, 'Boblique, J. (2026). From SET Theory to Science 4.0: An AI-Driven Framework for Epigenetic Integrity and Biological Flow Control. International Journal of Zoology and Animal Biology. DOI: 10.23880/izab-16000669')">[ COPY_CITATION ]</button>
                                     </p>
                                     <p class="document-line">
                                         &gt; <span class="tag-cyan">[EPIGENETIC_SUSTAINABILITY_2026]</span> 
@@ -964,6 +994,7 @@
                                             Epigenetic Sustainability: Modeling the Human Factor as a Natural Resource through Science 4.0 and the NR3C1 Biological Pilot
                                         </a> 
                                         <span class="tag-green">[PUBLISHED]</span>
+                                        <button class="copy-citation-btn" onclick="copyCitation(this, 'Boblique, J. (2026). Epigenetic Sustainability: Modeling the Human Factor as a Natural Resource through Science 4.0 and the NR3C1 Biological Pilot. Journal of Ecology and Natural Resources. DOI: 10.23880/jenr-16000418')">[ COPY_CITATION ]</button>
                                     </p>
                                     <p class="document-line">
                                         &gt; <span class="tag-cyan">[UNIFIED_FRAMEWORK_2026]</span> 
@@ -971,6 +1002,7 @@
                                             Science 4.0: A Unified Operational Framework for Epigenetic Integrity and Systemic Resilience Steering
                                         </a> 
                                         <span class="tag-green">[PUBLISHED]</span>
+                                        <button class="copy-citation-btn" onclick="copyCitation(this, 'Boblique, J. (2026). Science 4.0: A Unified Operational Framework for Epigenetic Integrity and Systemic Resilience Steering. Archives of Veterinary Science and Medicine. DOI: 10.26502/AVSM.054')">[ COPY_CITATION ]</button>
                                     </p>
                                 </div>
                             </details>
@@ -985,6 +1017,7 @@
                                             Industrial Standardization of the Bio-OS: Algorithmic Codification of Resilience Engineering Guidelines and Version V8 Architecture
                                         </a> 
                                         <span class="tag-green">[PUBLISHED]</span>
+                                        <button class="copy-citation-btn" onclick="copyCitation(this, 'Boblique, J. (2026). Industrial Standardization of the Bio-OS: Algorithmic Codification of Resilience Engineering Guidelines and Version V8 Architecture. MedWin Publishers, ArtId=14225')">[ COPY_CITATION ]</button>
                                     </p>
                                     <p class="document-line">
                                         &gt; <span class="tag-cyan">[CELLULAR_RESILIENCE_2026]</span> 
@@ -992,6 +1025,7 @@
                                             Science 4.0-Architecture of Cellular Resilience and Living Signal Optimization
                                         </a> 
                                         <span class="tag-green">[PUBLISHED]</span>
+                                        <button class="copy-citation-btn" onclick="copyCitation(this, 'Boblique, J. (2026). Science 4.0-Architecture of Cellular Resilience and Living Signal Optimization. International Journal of Zoology and Animal Biology. DOI: 10.23880/izab-16000673')">[ COPY_CITATION ]</button>
                                     </p>
                                     <p class="document-line">
                                         &gt; <span class="tag-cyan">[BIO_OS_GOVERNANCE_2026]</span> 
@@ -999,6 +1033,7 @@
                                             Science 4.0: Comprehensive Architecture of the Biological Operating System (Bio-OS) A Framework for Systemic Resilience and Industrialized Bio-Governance
                                         </a> 
                                         <span class="tag-green">[PUBLISHED]</span>
+                                        <button class="copy-citation-btn" onclick="copyCitation(this, 'Boblique, J. (2026). Science 4.0: Comprehensive Architecture of the Biological Operating System (Bio-OS). International Journal of Zoology and Animal Biology. DOI: 10.23880/izab-16000679')">[ COPY_CITATION ]</button>
                                     </p>
                                 </div>
                             </details>
@@ -1013,6 +1048,7 @@
                                             The Maternal Golden Standard: Algorithmic Regulation of Renal Hydraulics and Glomerular Flow Restoration above 85~mL/min eGFR
                                         </span> 
                                         <span class="tag-orange">[UNDER_PEER_REVIEW]</span>
+                                        <button class="copy-citation-btn" onclick="copyCitation(this, 'Boblique, J. (2026). The Maternal Golden Standard: Algorithmic Regulation of Renal Hydraulics and Glomerular Flow Restoration above 85 mL/min eGFR. (Under Peer Review).')">[ COPY_CITATION ]</button>
                                     </p>
                                     <p class="document-line">
                                         &gt; <span class="tag-cyan">[LIPID_MATRIX_ARCHITECTURE_2026]</span> 
@@ -1020,6 +1056,7 @@
                                             Lipid-Matrix Carrier Architecture: Engineering Nano-Vectorized Transport for Hydrophobic Living Signals in Science 4.0 Frameworks
                                         </span> 
                                         <span class="tag-green">[ACCEPTED_IN_PRODUCTION]</span>
+                                        <button class="copy-citation-btn" onclick="copyCitation(this, 'Boblique, J. (2026). Lipid-Matrix Carrier Architecture: Engineering Nano-Vectorized Transport for Hydrophobic Living Signals in Science 4.0 Frameworks. JSM Biotechnology and Biomedical Engineering. (In Production).')">[ COPY_CITATION ]</button>
                                     </p>
                                     <p class="document-line">
                                         &gt; <span class="tag-cyan">[CLINICAL_VALIDATION_2026]</span> 
@@ -1027,13 +1064,15 @@
                                             Clinical Validation of Science 4.0: Flow Steering and Epigenetic Drift Inversion on a 76-Year-Old Hybrid System
                                         </a> 
                                         <span class="tag-green">[PUBLISHED]</span>
+                                        <button class="copy-citation-btn" onclick="copyCitation(this, 'Boblique, J. (2026). Clinical Validation of Science 4.0: Flow Steering and Epigenetic Drift Inversion on a 76-Year-Old Hybrid System. International Journal of Zoology and Animal Biology. DOI: 10.23880/izab-16000677')">[ COPY_CITATION ]</button>
                                     </p>
                                     <p class="document-line">
                                         &gt; <span class="tag-cyan">[MITOCHONDRIAL_BIOLOGISTICS_2026]</span> 
                                         <a href="https://doi.org/10.23880/izab-16000681" target="_blank" class="document-link">
                                             Mitochondrial Bio-Logistics: Steering Co-Enzyme Q10 and Lycopene Synergies within the Science 4.0 Bio-OS Framework
                                         </a> 
-                                        <span class="tag-green">[PUBLISHED]</span> <span style="color: #38bdf8; font-size: 0.8rem; font-family: 'Fira Code', monospace;">(64K+ Views / 54K+ Reach)</span>
+                                        <span class="tag-green">[PUBLISHED]</span> <span style="color: #38bdf8; font-size: 0.8rem; font-family: 'Fira Code', monospace;">(64K+ Views)</span>
+                                        <button class="copy-citation-btn" onclick="copyCitation(this, 'Boblique, J. (2026). Mitochondrial Bio-Logistics: Steering Co-Enzyme Q10 and Lycopene Synergies within the Science 4.0 Bio-OS Framework. International Journal of Zoology and Animal Biology. DOI: 10.23880/izab-16000681')">[ COPY_CITATION ]</button>
                                     </p>
                                 </div>
                             </details>
@@ -1101,6 +1140,36 @@
         // ==========================================
         // MODULES CRITIQUES (CHAMP GLOBAL ÉTANCHE)
         // ==========================================
+
+        // MODULE QUICK COPY CITATION SYSTEM
+        window.copyCitation = function(btnElement, citationText) {
+            if (!navigator.clipboard) {
+                // Secours en cas de navigateur vintage
+                const fallbackArea = document.createElement('textarea');
+                fallbackArea.value = citationText;
+                document.body.appendChild(fallbackArea);
+                fallbackArea.select();
+                document.execCommand('copy');
+                document.body.removeChild(fallbackArea);
+                triggerCopyFeedback(btnElement);
+                return;
+            }
+            navigator.clipboard.writeText(citationText).then(() => {
+                triggerCopyFeedback(btnElement);
+            }).catch(err => {
+                console.error('Transmission error on clipboard register: ', err);
+            });
+        };
+
+        function triggerCopyFeedback(btn) {
+            const originalLabel = btn.innerHTML;
+            btn.innerHTML = "[ COPIED! ]";
+            btn.classList.add('copied');
+            setTimeout(() => {
+                btn.innerHTML = originalLabel;
+                btn.classList.remove('copied');
+            }, 2000);
+        }
 
         // COMMUTATEUR DE SPECTRE LUMINEUX (THEME SWITCHER)
         window.toggleSpectrum = function() {
@@ -1235,7 +1304,7 @@
                 document.addEventListener('mousemove', (e) => {
                     cCursor.style.display = 'block'; cCursor.style.left = e.clientX + 'px'; cCursor.style.top = e.clientY + 'px';
                 });
-                document.querySelectorAll('a, button, .tab-btn, video, .document-link, .console-cmd-btn, .accordion-summary, .spectrum-btn').forEach(element => {
+                document.querySelectorAll('a, button, .tab-btn, video, .document-link, .console-cmd-btn, .accordion-summary, .spectrum-btn, .copy-citation-btn').forEach(element => {
                     element.addEventListener('mouseenter', () => cCursor.classList.add('pulse-active'));
                     element.addEventListener('mouseleave', () => cCursor.classList.remove('pulse-active'));
                 });
