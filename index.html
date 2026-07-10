@@ -17,7 +17,7 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Fira+Code:wght@400;500&display=swap">
     <style>
         /* Masquage étanche du pointeur système par défaut sur tout le site */
-        html, body, a, button, video, .tab-btn, .card, .document-link, .console-cmd-btn {
+        html, body, a, button, video, .tab-btn, .card, .document-link, .console-cmd-btn, .accordion-summary {
             cursor: none !important;
         }
 
@@ -509,6 +509,9 @@
             font-size: 1rem;
         }
 
+        /* ==========================================
+           MODULE AMÉLIORATION 1 : ACCORDÉON CYBER
+           ========================================== */
         .document-registry {
             margin-top: 25px;
             border-top: 1px dashed rgba(0, 242, 254, 0.2);
@@ -519,13 +522,75 @@
 
         .document-registry-title {
             color: #38bdf8;
-            margin-bottom: 15px;
+            margin-bottom: 20px;
             font-weight: 600;
             letter-spacing: 1px;
         }
 
+        .accordion-category {
+            background: rgba(2, 6, 17, 0.45);
+            border: 1px solid rgba(0, 242, 254, 0.15);
+            border-radius: 8px;
+            margin-bottom: 14px;
+            overflow: hidden;
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .accordion-category[open] {
+            border-color: rgba(0, 242, 254, 0.45);
+            box-shadow: 0 0 20px rgba(0, 242, 254, 0.08);
+            background: rgba(2, 6, 17, 0.7);
+        }
+
+        .accordion-summary {
+            padding: 14px 18px;
+            font-weight: 600;
+            color: #38bdf8;
+            list-style: none;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: all 0.3s ease;
+            user-select: none;
+        }
+
+        .accordion-summary:hover {
+            background: rgba(0, 242, 254, 0.04);
+            color: #00f2fe;
+        }
+
+        .accordion-summary::-webkit-details-marker {
+            display: none;
+        }
+
+        .accordion-summary::after {
+            content: '[ + ]';
+            font-family: 'Fira Code', monospace;
+            font-size: 0.8rem;
+            color: rgba(56, 189, 248, 0.6);
+            transition: color 0.3s;
+        }
+
+        .accordion-category[open] .accordion-summary {
+            color: #00f2fe;
+            border-bottom: 1px dashed rgba(0, 242, 254, 0.15);
+        }
+
+        .accordion-category[open] .accordion-summary::after {
+            content: '[ - ]';
+            color: #00f2fe;
+        }
+
+        .accordion-content {
+            padding: 18px;
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+            background: rgba(3, 7, 18, 0.2);
+        }
+
         .document-line {
-            margin: 12px 0;
+            margin: 0;
             color: #cbd5e1;
             line-height: 1.5;
         }
@@ -571,6 +636,10 @@
             .manifesto-title, .manifesto-desc { color: #000000 !important; }
             .manifesto-node { border-left-color: #4b5563 !important; }
             .document-registry { border-color: #cccccc !important; }
+            .accordion-category { border: none !important; background: none !important; margin-bottom: 20px !important; }
+            .accordion-summary { padding: 0 !important; color: #000000 !important; font-size: 1.1rem !important; border-bottom: 1px solid #000000 !important; }
+            .accordion-summary::after { display: none !important; }
+            .accordion-content { padding: 10px 0 !important; }
         }
 
         @keyframes blinkToken { from, to { color: transparent; } 50% { color: #10b981; text-shadow: 0 0 8px rgba(16, 185, 129, 0.6); } }
@@ -831,96 +900,107 @@
                         <h2>Dr. Julien Boblique</h2>
                         <p>Architecte de la Science 4.0 — Chercheur publié (Impact Factor 7.019). Expert en souveraineté biologique, modélisation infodynamique et résilience des systèmes complexes.</p>
                         
+                        <!-- RESTRUCTURATION EN MODE ACCORDÉON DES DOCUMENTS ENREGISTRÉS -->
                         <div class="document-registry">
-                            <div class="document-registry-title">// REGISTERED DOCUMENTS :</div>
+                            <div class="document-registry-title">// REGISTERED DOCUMENTS (INDEXED BY CORE PILLARS) :</div>
                             
-                            <p class="document-line">
-                                &gt; <span class="tag-cyan">[MATERNAL_GOLDEN_STANDARD_2026]</span> 
-                                <span style="color: #e2e8f0; font-weight: 500;">
-                                    The Maternal Golden Standard: Algorithmic Regulation of Renal Hydraulics and Glomerular Flow Restoration above 85~mL/min eGFR
-                                </span> 
-                                <span class="tag-orange">[UNDER_PEER_REVIEW]</span>
-                            </p>
+                            <!-- BLOC 1 : THÉORIE SET & FLUX BIOLOGIQUES -->
+                            <details class="accordion-category" open>
+                                <summary class="accordion-summary"> [PILLAR_01] // INTÉGRITÉ ÉPIGÉNÉTIQUE & CRITICAL FLOWS</summary>
+                                <div class="accordion-content">
+                                    <p class="document-line">
+                                        &gt; <span class="tag-cyan">[SET_THEORY_2026]</span> 
+                                        <a href="https://doi.org/10.23880/izab-16000667" target="_blank" class="document-link">
+                                            A Social Epigenetic Theory of Systemic Transitions
+                                        </a> 
+                                        <span class="tag-green">[PUBLISHED]</span>
+                                    </p>
+                                    <p class="document-line">
+                                        &gt; <span class="tag-cyan">[SCIENCE_4.0_2026]</span> 
+                                        <a href="https://doi.org/10.23880/izab-16000669" target="_blank" class="document-link">
+                                            From SET Theory to Science 4.0: An AI-Driven Framework for Epigenetic Integrity and Biological Flow Control
+                                        </a> 
+                                        <span class="tag-green">[PUBLISHED]</span>
+                                    </p>
+                                    <p class="document-line">
+                                        &gt; <span class="tag-cyan">[EPIGENETIC_SUSTAINABILITY_2026]</span> 
+                                        <a href="https://doi.org/10.23880/jenr-16000418" target="_blank" class="document-link">
+                                            Epigenetic Sustainability: Modeling the Human Factor as a Natural Resource through Science 4.0 and the NR3C1 Biological Pilot
+                                        </a> 
+                                        <span class="tag-green">[PUBLISHED]</span>
+                                    </p>
+                                    <p class="document-line">
+                                        &gt; <span class="tag-cyan">[UNIFIED_FRAMEWORK_2026]</span> 
+                                        <a href="https://doi.org/10.26502/AVSM.054" target="_blank" class="document-link">
+                                            Science 4.0: A Unified Operational Framework for Epigenetic Integrity and Systemic Resilience Steering
+                                        </a> 
+                                        <span class="tag-green">[PUBLISHED]</span>
+                                    </p>
+                                </div>
+                            </details>
 
-                            <p class="document-line">
-                                &gt; <span class="tag-cyan">[LIPID_MATRIX_ARCHITECTURE_2026]</span> 
-                                <span style="color: #e2e8f0; font-weight: 500;">
-                                    Lipid-Matrix Carrier Architecture: Engineering Nano-Vectorized Transport for Hydrophobic Living Signals in Science 4.0 Frameworks
-                                </span> 
-                                <span class="tag-green">[ACCEPTED_IN_PRODUCTION]</span>
-                            </p>
+                            <!-- BLOC 2 : ARCHITECTURE BIO-OS & RÉSILIENCE -->
+                            <details class="accordion-category">
+                                <summary class="accordion-summary"> [PILLAR_02] // INDUSTRIAL STANDARDIZATION & BIO-OS</summary>
+                                <div class="accordion-content">
+                                    <p class="document-line">
+                                        &gt; <span class="tag-cyan">[BIO_OS_STANDARDIZATION_2026]</span> 
+                                        <a href="https://medwinpublishers.com/article-description.php?artId=14225" target="_blank" class="document-link">
+                                            Industrial Standardization of the Bio-OS: Algorithmic Codification of Resilience Engineering Guidelines and Version V8 Architecture
+                                        </a> 
+                                        <span class="tag-green">[PUBLISHED]</span>
+                                    </p>
+                                    <p class="document-line">
+                                        &gt; <span class="tag-cyan">[CELLULAR_RESILIENCE_2026]</span> 
+                                        <a href="https://doi.org/10.23880/izab-16000673" target="_blank" class="document-link">
+                                            Science 4.0-Architecture of Cellular Resilience and Living Signal Optimization
+                                        </a> 
+                                        <span class="tag-green">[PUBLISHED]</span>
+                                    </p>
+                                    <p class="document-line">
+                                        &gt; <span class="tag-cyan">[BIO_OS_GOVERNANCE_2026]</span> 
+                                        <a href="https://doi.org/10.23880/izab-16000679" target="_blank" class="document-link">
+                                            Science 4.0: Comprehensive Architecture of the Biological Operating System (Bio-OS) A Framework for Systemic Resilience and Industrialized Bio-Governance
+                                        </a> 
+                                        <span class="tag-green">[PUBLISHED]</span>
+                                    </p>
+                                </div>
+                            </details>
 
-                            <p class="document-line">
-                                &gt; <span class="tag-cyan">[BIO_OS_STANDARDIZATION_2026]</span> 
-                                <a href="https://medwinpublishers.com/article-description.php?artId=14225" target="_blank" class="document-link">
-                                    Industrial Standardization of the Bio-OS: Algorithmic Codification of Resilience Engineering Guidelines and Version V8 Architecture
-                                </a> 
-                                <span class="tag-green">[PUBLISHED]</span>
-                            </p>
-
-                            <p class="document-line">
-                                &gt; <span class="tag-cyan">[SET_THEORY_2026]</span> 
-                                <a href="https://doi.org/10.23880/izab-16000667" target="_blank" class="document-link">
-                                    A Social Epigenetic Theory of Systemic Transitions
-                                </a> 
-                                <span class="tag-green">[PUBLISHED]</span>
-                            </p>
-
-                            <p class="document-line">
-                                &gt; <span class="tag-cyan">[SCIENCE_4.0_2026]</span> 
-                                <a href="https://doi.org/10.23880/izab-16000669" target="_blank" class="document-link">
-                                    From SET Theory to Science 4.0: An AI-Driven Framework for Epigenetic Integrity and Biological Flow Control
-                                </a> 
-                                <span class="tag-green">[PUBLISHED]</span>
-                            </p>
-
-                            <p class="document-line">
-                                &gt; <span class="tag-cyan">[EPIGENETIC_SUSTAINABILITY_2026]</span> 
-                                <a href="https://doi.org/10.23880/jenr-16000418" target="_blank" class="document-link">
-                                    Epigenetic Sustainability: Modeling the Human Factor as a Natural Resource through Science 4.0 and the NR3C1 Biological Pilot
-                                </a> 
-                                <span class="tag-green">[PUBLISHED]</span>
-                            </p>
-
-                            <p class="document-line">
-                                &gt; <span class="tag-cyan">[CELLULAR_RESILIENCE_2026]</span> 
-                                <a href="https://doi.org/10.23880/izab-16000673" target="_blank" class="document-link">
-                                    Science 4.0-Architecture of Cellular Resilience and Living Signal Optimization
-                                </a> 
-                                <span class="tag-green">[PUBLISHED]</span>
-                            </p>
-
-                            <p class="document-line">
-                                &gt; <span class="tag-cyan">[CLINICAL_VALIDATION_2026]</span> 
-                                <a href="https://doi.org/10.23880/izab-16000677" target="_blank" class="document-link">
-                                    Clinical Validation of Science 4.0: Flow Steering and Epigenetic Drift Inversion on a 76-Year-Old Hybrid System
-                                </a> 
-                                <span class="tag-green">[PUBLISHED]</span>
-                            </p>
-
-                            <p class="document-line">
-                                &gt; <span class="tag-cyan">[UNIFIED_FRAMEWORK_2026]</span> 
-                                <a href="https://doi.org/10.26502/AVSM.054" target="_blank" class="document-link">
-                                    Science 4.0: A Unified Operational Framework for Epigenetic Integrity and Systemic Resilience Steering
-                                </a> 
-                                <span class="tag-green">[PUBLISHED]</span>
-                            </p>
-
-                            <p class="document-line">
-                                &gt; <span class="tag-cyan">[BIO_OS_GOVERNANCE_2026]</span> 
-                                <a href="https://doi.org/10.23880/izab-16000679" target="_blank" class="document-link">
-                                    Science 4.0: Comprehensive Architecture of the Biological Operating System (Bio-OS) A Framework for Systemic Resilience and Industrialized Bio-Governance
-                                </a> 
-                                <span class="tag-green">[PUBLISHED]</span>
-                            </p>
-
-                            <p class="document-line">
-                                &gt; <span class="tag-cyan">[MITOCHONDRIAL_BIOLOGISTICS_2026]</span> 
-                                <a href="https://doi.org/10.23880/izab-16000681" target="_blank" class="document-link">
-                                    Mitochondrial Bio-Logistics: Steering Co-Enzyme Q10 and Lycopene Synergies within the Science 4.0 Bio-OS Framework
-                                </a> 
-                                <span class="tag-green">[PUBLISHED]</span> <span style="color: #38bdf8; font-size: 0.8rem; font-family: 'Fira Code', monospace;">(64K+ Views / 54K+ Reach)</span>
-                            </p>
+                            <!-- BLOC 3 : VALIDATIONS APPLIQUÉES & TRAJECTOIRES V8 -->
+                            <details class="accordion-category">
+                                <summary class="accordion-summary"> [PILLAR_03] // APPLIED VALIDATION & STEERING SYNERGIES</summary>
+                                <div class="accordion-content">
+                                    <p class="document-line">
+                                        &gt; <span class="tag-cyan">[MATERNAL_GOLDEN_STANDARD_2026]</span> 
+                                        <span style="color: #e2e8f0; font-weight: 500;">
+                                            The Maternal Golden Standard: Algorithmic Regulation of Renal Hydraulics and Glomerular Flow Restoration above 85~mL/min eGFR
+                                        </span> 
+                                        <span class="tag-orange">[UNDER_PEER_REVIEW]</span>
+                                    </p>
+                                    <p class="document-line">
+                                        &gt; <span class="tag-cyan">[LIPID_MATRIX_ARCHITECTURE_2026]</span> 
+                                        <span style="color: #e2e8f0; font-weight: 500;">
+                                            Lipid-Matrix Carrier Architecture: Engineering Nano-Vectorized Transport for Hydrophobic Living Signals in Science 4.0 Frameworks
+                                        </span> 
+                                        <span class="tag-green">[ACCEPTED_IN_PRODUCTION]</span>
+                                    </p>
+                                    <p class="document-line">
+                                        &gt; <span class="tag-cyan">[CLINICAL_VALIDATION_2026]</span> 
+                                        <a href="https://doi.org/10.23880/izab-16000677" target="_blank" class="document-link">
+                                            Clinical Validation of Science 4.0: Flow Steering and Epigenetic Drift Inversion on a 76-Year-Old Hybrid System
+                                        </a> 
+                                        <span class="tag-green">[PUBLISHED]</span>
+                                    </p>
+                                    <p class="document-line">
+                                        &gt; <span class="tag-cyan">[MITOCHONDRIAL_BIOLOGISTICS_2026]</span> 
+                                        <a href="https://doi.org/10.23880/izab-16000681" target="_blank" class="document-link">
+                                            Mitochondrial Bio-Logistics: Steering Co-Enzyme Q10 and Lycopene Synergies within the Science 4.0 Bio-OS Framework
+                                        </a> 
+                                        <span class="tag-green">[PUBLISHED]</span> <span style="color: #38bdf8; font-size: 0.8rem; font-family: 'Fira Code', monospace;">(64K+ Views / 54K+ Reach)</span>
+                                    </p>
+                                </div>
+                            </details>
                         </div>
 
                         <div class="document-registry" style="border-color: rgba(16, 185, 129, 0.2); margin-top: 25px;">
@@ -1106,7 +1186,7 @@
                 document.addEventListener('mousemove', (e) => {
                     cCursor.style.display = 'block'; cCursor.style.left = e.clientX + 'px'; cCursor.style.top = e.clientY + 'px';
                 });
-                document.querySelectorAll('a, button, .tab-btn, video, .document-link, .console-cmd-btn').forEach(element => {
+                document.querySelectorAll('a, button, .tab-btn, video, .document-link, .console-cmd-btn, .accordion-summary').forEach(element => {
                     element.addEventListener('mouseenter', () => cCursor.classList.add('pulse-active'));
                     element.addEventListener('mouseleave', () => cCursor.classList.remove('pulse-active'));
                 });
