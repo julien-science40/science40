@@ -17,7 +17,7 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Fira+Code:wght@400;500&display=swap">
     <style>
         /* Masquage étanche du pointeur système par défaut sur tout le site */
-        html, body, a, button, video, .tab-btn, .card, .document-link {
+        html, body, a, button, video, .tab-btn, .card, .document-link, .console-cmd-btn {
             cursor: none !important;
         }
 
@@ -36,7 +36,7 @@
         }
 
         /* ==========================================
-           MODULE OPTION 1 : PRELOADER MATRIX (SÉPARATION NETTE)
+           MODULE OPTION 1 : PRELOADER MATRIX
            ========================================== */
         #matrix-preloader {
             position: fixed;
@@ -51,7 +51,6 @@
             justify-content: center;
             align-items: center;
             pointer-events: auto;
-            /* Suppression de la transition opacity pour éviter le fondu */
         }
 
         .preloader-content {
@@ -136,6 +135,27 @@
             border-color: #38bdf8;
             box-shadow: 0 0 18px rgba(56, 189, 248, 0.9);
             background-color: rgba(0, 242, 254, 0.04);
+        }
+
+        /* Styles pour Boutons de Commande de la Console */
+        .console-cmd-btn {
+            background: rgba(2, 6, 17, 0.8);
+            border: 1px dashed rgba(56, 189, 248, 0.4);
+            color: #38bdf8;
+            padding: 8px 14px;
+            border-radius: 4px;
+            font-family: 'Fira Code', monospace;
+            font-size: 0.75rem;
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+            letter-spacing: 0.5px;
+        }
+
+        .console-cmd-btn:hover {
+            color: #00f2fe;
+            border-color: #00f2fe;
+            border-style: solid;
+            box-shadow: 0 0 12px rgba(0, 242, 254, 0.25);
+            background: rgba(0, 242, 254, 0.02);
         }
 
         /* Barre de défilement personnalisée (Scrollbar CSS) */
@@ -384,10 +404,12 @@
             font-family: 'Fira Code', monospace;
             font-size: 0.78rem;
             color: #38bdf8;
-            overflow-x: auto;
+            overflow-y: auto;
+            max-height: 180px;
             margin-top: 15px;
             white-space: pre-wrap; 
             line-height: 1.4;
+            box-sizing: border-box;
         }
 
         /* Style du Manifeste Épistémologique */
@@ -546,7 +568,6 @@
 </head>
 <body>
 
-    <!-- Couche Matérielle du Preloader Matrix -->
     <div id="matrix-preloader">
         <div class="preloader-content">
             <div class="matrix-glow-text">INITIALIZING_BIO-OS_V8_KERNEL...</div>
@@ -556,7 +577,6 @@
         </div>
     </div>
 
-    <!-- Conteneur matériel du viseur -->
     <div id="cyber-cursor"></div>
 
     <div class="bg-video-container">
@@ -701,6 +721,11 @@
                         <p>Système d'exploitation biologique conçu pour la résilience industrielle, la standardisation et la dissipation des chocs au sein des structures complexes.</p>
                         
                         <div class="matrix-console" id="typed-console">// INITIALIZING MATRIX CONSOLE...</div>
+                        
+                        <div style="display: flex; flex-wrap: wrap; gap: 10px; margin-top: 15px; font-family: 'Fira Code', monospace;">
+                            <button class="console-cmd-btn" onclick="triggerConsoleCmd('erk')">[ EXECUTE_ERK_FILTER ]</button>
+                            <button class="console-cmd-btn" onclick="triggerConsoleCmd('lyapunov')">[ DEPLOY_LYAPUNOV_VETO ]</button>
+                        </div>
                     </div>
                     <div class="card-media">
                         <video class="display-video" autoplay loop muted playsinline controls>
@@ -859,7 +884,7 @@
 
                             <p class="document-line">
                                 &gt; <span class="tag-cyan">[UNIFIED_FRAMEWORK_2026]</span> 
-                                <a href="https://doi.org/10.26502/AVSM.054" target="_blank" class="document-link">
+                                <a href="https://doi.6/10.26502/AVSM.054" target="_blank" class="document-link">
                                     Science 4.0: A Unified Operational Framework for Epigenetic Integrity and Systemic Resilience Steering
                                 </a> 
                                 <span class="tag-green">[PUBLISHED]</span>
@@ -945,7 +970,7 @@
         // MODULES CRITIQUES (CHAMP GLOBAL ÉTANCHE)
         // ==========================================
 
-        // INITIALISATION PROTEGÉE DU DISPOSITIF DE PRELOADER (OPTION 1 - HARD CUT NET)
+        // DEVICE DE PRELOADER (OPTION 1 - HARD CUT NET)
         let preloaderTerminated = false;
         function terminateMatrixPreloader() {
             if (preloaderTerminated) return;
@@ -953,17 +978,44 @@
             
             const mPreloader = document.getElementById('matrix-preloader');
             if (mPreloader) {
-                mPreloader.style.display = 'none'; // SÉPARATION TOTALE : Extinction instantanée sans fondu
+                mPreloader.style.display = 'none'; 
             }
         }
-        
-        // Attente de la fin de l'animation CSS (3.8s) + 100ms de fixation à 100%
         window.addEventListener('load', () => {
             setTimeout(terminateMatrixPreloader, 3900); 
         });
-        
-        // Veto de sûreté absolu anti-goulot d'étranglement (au cas où le réseau s'interrompt)
         setTimeout(terminateMatrixPreloader, 4200); 
+
+        // INTERACTIVITÉ DES COMMANDES CONSOLE (OPTION 1 DE REPRISE)
+        let stabilityLockActive = false;
+        window.triggerConsoleCmd = function(type) {
+            const consoleElement = document.getElementById('typed-console');
+            if (!consoleElement) return;
+            
+            let cmdLog = "";
+            if (type === 'erk') {
+                cmdLog = `\n\n>> INITIATING EVERETT-RIESZ-KAYAD SPECTRAL ANALYSIS...\n>> ISOLATING RESIDUE PROJECTOR (I - P)... SUCCESS.\n>> INVARIANT PATTERN MOTIF VALIDATED // RESOLUTION: 0.01 nm\n>> MODÈLE STANDARD OBSOLÈTE // FLUX DE RÉTROACTION STABILISÉ.`;
+            } else if (type === 'lyapunov') {
+                cmdLog = `\n\n>> INJECTING LYAPUNOV BARRIER FUNCTIONS (FRAMEWORK OECQ)...\n>> ENGAGING COHERENCE PROTOCOL CONTROL VETO @ 50 Hz.\n>> CHAOS EXCLUDED FROM GEOMETRIC SPACE // ANCRE DE PHASE v1.0 LOCKED.`;
+                
+                // Effet matériel direct : Verrouillage visuel de la stabilité à 100%
+                stabilityLockActive = true;
+                const stabilityElem = document.getElementById("live-stability");
+                if (stabilityElem) {
+                    stabilityElem.innerHTML = "100.00% LOCKED";
+                    stabilityElem.style.color = "#10b981";
+                    stabilityElem.style.textShadow = "0 0 10px #10b981";
+                    setTimeout(() => {
+                        stabilityLockActive = false;
+                        stabilityElem.style.color = "#38bdf8";
+                        stabilityElem.style.textShadow = "none";
+                    }, 5000); // Maintien du verrouillage pendant 5 secondes
+                }
+            }
+            
+            consoleElement.innerHTML += cmdLog;
+            consoleElement.scrollTop = consoleElement.scrollHeight; // Auto-scroll
+        };
 
         // ENGINE 1 : ROUTAGE DES ONGLETS (SPA PROTOCOL)
         window.switchTab = function(tabId) {
@@ -1035,7 +1087,7 @@
                     cCursor.style.top = e.clientY + 'px';
                 });
 
-                const targets = 'a, button, .tab-btn, video, .document-link';
+                const targets = 'a, button, .tab-btn, video, .document-link, .console-cmd-btn';
                 document.querySelectorAll(targets).forEach(element => {
                     element.addEventListener('mouseenter', () => cCursor.classList.add('pulse-active'));
                     element.addEventListener('mouseleave', () => cCursor.classList.remove('pulse-active'));
@@ -1108,7 +1160,7 @@
 
                 // Fluctuation micro-topologique
                 setInterval(() => {
-                    if (stabilityElem) {
+                    if (!stabilityLockActive && stabilityElem) {
                         const targetStability = (99.81 + Math.random() * 0.08).toFixed(2);
                         stabilityElem.innerHTML = targetStability + "% STABLE";
                     }
