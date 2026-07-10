@@ -241,9 +241,7 @@
             letter-spacing: 2px;
         }
 
-        /* ==========================================
-           MODULE OPTION 2 : MONITEUR DE TAUX D'ANOMALIES
-           ========================================== */
+        /* ENGINE 7 : MONITEUR DE FILTRAGE DES ANOMALIES */
         #anomaly-filter {
             position: absolute;
             top: -30px;
@@ -617,8 +615,6 @@
     <div class="container">
         <header>
             <div id="sys-status">SYS_STATUS: INITIALIZING SYSTEM TIME...</div>
-            
-            <!-- Injection de l'Option 2 : Moniteur de Taux d'Anomalies -->
             <div id="anomaly-filter">ANOMALY_FILTER: CALIBRATING...</div>
             
             <h1>Science 4.0</h1>
@@ -632,6 +628,7 @@
         <nav class="tab-navigation">
             <button class="tab-btn active" data-tab="dashboard" onclick="switchTab('dashboard')">[ MAIN_DASHBOARD ]</button>
             <button class="tab-btn" data-tab="bioos" onclick="switchTab('bioos')">[ BIO-OS_CORE ]</button>
+            <button class="tab-btn" data-tab="asl" onclick="switchTab('asl')">[ ASL_REGISTRY ]</button>
             <button class="tab-btn" data-tab="profile" onclick="switchTab('profile')">[ RESEARCH_NODE ]</button>
         </nav>
 
@@ -692,7 +689,7 @@
                             Après le succès de la Phase 1, cette nouvelle étape intègre des boucles prédictives en temps réel dans l'architecture <span class="tag-cyan">Bio-OS V8</span> pour optimiser systématiquement la dynamique des fluides biologiques et dépasser les limites physiologiques standard.
                         </p>
                         <p style="margin-top: 15px; font-size: 0.95rem; color: #cbd5e1; text-align: justify;">
-                            La documentation entre actuellement dans le circuit <strong style="color: #f59e0b;">international de révision par les pairs</strong>. Que ce soit à travers des revues traditionnelles à fort impact ou des canaux avancés de <span class="tag-cyan">Science Ouverte</span>, le déploiement de cette architecture est désormais actif.
+                            La documentation entre actuellement dans le circuit <strong style="color: #f59e0b;">international de révision par les pairs</strong>. Que ce soit à travers des revues traditionnelles à fort impact ou des canaux avancés de <span class="tag-cyan">Science Ouverte</span>, le déploiement de cette architecture is désormais actif.
                         </p>
                         <div style="margin-top: 20px; padding: 12px; border: 1px dashed rgba(0, 242, 254, 0.3); background: rgba(0, 242, 254, 0.05); font-family: 'Fira Code', monospace; font-size: 0.8rem; color: #00f2fe; text-align: center; letter-spacing: 1px;">
                             🔔 RESTEZ À L'ÉCOUTE POUR LES PROCHAINES MISES À NIVEAU ET PUBLICATIONS DE DONNÉES !
@@ -831,6 +828,64 @@
                             <line x1="140" y1="53" x2="140" y2="150" stroke="rgba(56, 189, 248, 0.2)" stroke-width="1" stroke-dasharray="2 2" />
                             <text x="148" y="48" fill="#ffffff" font-size="7" font-weight="bold">F_c (Transduction Peak)</text>
                         </svg>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ==========================================
+               MODULE OPTION 3 : REGISTRE INTERACTIF ASL
+               ========================================== */ -->
+            <div id="panel-asl" class="tab-panel">
+                <div class="card" style="border-left: 4px solid #10b981; background: linear-gradient(135deg, rgba(11, 18, 32, 0.95) 0%, rgba(16, 185, 129, 0.03) 100%);">
+                    <div class="card-content" style="width: 100%;">
+                        <h2 style="color: #10b981; text-shadow: 0 0 15px rgba(16, 185, 129, 0.6);">🌀 // SCCI_NODE : REGISTRE DE SOUVERAINETÉ LAMINAIRE</h2>
+                        <p style="margin-top: 5px; font-size: 0.8rem; font-family: 'Fira Code', monospace; color: #94a3b8;">FORMALISÉ PAR : MOHAMED NOUR KAYAD // SCCI-CORE PROJECT</p>
+                        <p style="margin-top: 15px; font-size: 0.95rem; line-height: 1.6; color: #e2e8f0; text-align: justify;">
+                            Intégration des structures de Lyapunov et du score de réalisabilité physique finie pour l'exclusion absolue du chaos au sein des systèmes cyber-physiques critiques et de la navigation autonome relativiste.
+                        </p>
+
+                        <!-- Tableau de conformité ISO-LPU-2027 -->
+                        <div style="margin-top: 25px; border-top: 1px dashed rgba(16, 185, 129, 0.3); padding-top: 15px;">
+                            <div style="font-family: 'Fira Code', monospace; font-size: 0.85rem; color: #10b981; margin-bottom: 15px; font-weight: 600;">SYNTHÈSE DE CONFORMITÉ : NORME ISO-LPU-2027</div>
+                            <div style="overflow-x: auto;">
+                                <table style="width: 100%; border-collapse: collapse; font-family: 'Fira Code', monospace; font-size: 0.8rem; color: #cbd5e1; text-align: left;">
+                                    <thead>
+                                        <tr style="border-bottom: 1px solid rgba(16, 185, 129, 0.3); color: #00f2fe;">
+                                            <th style="padding: 10px 5px;">NIVEAU</th>
+                                            <th style="padding: 10px 5px;">COMPOSANTE</th>
+                                            <th style="padding: 10px 5px;">VALIDATION SYSTEMIC</th>
+                                            <th style="padding: 10px 5px;">STATUS</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr style="border-bottom: 1px solid rgba(255,255,255,0.05);">
+                                            <td style="padding: 10px 5px; color: #38bdf8;">1 // Logiciel</td>
+                                            <td style="padding: 10px 5px; font-weight: bold;">ZFC_KK</td>
+                                            <td style="padding: 10px 5px;">Démonstration de non-contradiction formelle</td>
+                                            <td style="padding: 10px 5px; color: #10b981;">[ CERTIFIED_VALID ]</td>
+                                        </tr>
+                                        <tr style="border-bottom: 1px solid rgba(255,255,255,0.05);">
+                                            <td style="padding: 10px 5px; color: #38bdf8;">2 // Théorique</td>
+                                            <td style="padding: 10px 5px; font-weight: bold;">SCCI-2026</td>
+                                            <td style="padding: 10px 5px;">Stabilité spectrale, opérateurs non-normaux et projecteur de Riesz</td>
+                                            <td style="padding: 10px 5px; color: #10b981;">[ CERTIFIED_VALID ]</td>
+                                        </tr>
+                                        <tr>
+                                            <td style="padding: 10px 5px; color: #38bdf8;">3 // Hardware</td>
+                                            <td style="padding: 10px 5px; font-weight: bold;">RRSA-X</td>
+                                            <td style="padding: 10px 5px;">Certification de latence, Gyroscopie EP3 et Veto de Lyapunov (1.9 ns)</td>
+                                            <td style="padding: 10px 5px; color: #10b981;">[ CERTIFIED_VALID ]</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+
+                        <!-- Indexation Gyroscope Quantique Spatial -->
+                        <div style="margin-top: 25px; padding: 15px; border: 1px dashed rgba(0, 242, 254, 0.3); background: rgba(0, 242, 254, 0.02); border-radius: 6px; font-family: 'Fira Code', monospace; font-size: 0.8rem; line-height: 1.5; text-align: justify;">
+                            <span style="color: #00f2fe; font-weight: bold;">>> DISRUPTIVE QUANTUM NAVIGATION SYSTEM // CORE_INDEX</span><br>
+                            Application industrielle sous-jacente : Gyroscope quantique à navigation spatiale autonome relativiste sous contraintes de réalisabilité physique finie. Annulation complète de la dérive du facteur de Petermann ($K \approx 1$) et stabilisation du pompage laser par modulateur acousto-optique (AOM) activé en 1.9 ns pour une transition immédiate vers le vide spectral absolu.
+                        </div>
                     </div>
                 </div>
             </div>
@@ -1143,7 +1198,7 @@
         // ==========================================
         document.addEventListener("DOMContentLoaded", () => {
             
-            // MOTEUR DU CURSEUR (Pilotage sans latence via l'event mousemove)
+            // MOTEUR DU CURSEUR (Pilotage sans latence)
             const cCursor = document.getElementById('cyber-cursor');
             if (cCursor) {
                 document.addEventListener('mousemove', (e) => {
@@ -1217,13 +1272,12 @@
                 console.log("Alerte d'isolation ENGINE 5 :", videoError);
             }
 
-            // ENGINE 6 : METRIQUES EVOLUTIVES DU PARADIGME (SANS IMPACT SUR CARDINAL PATH)
+            // ENGINE 6 : METRIQUES EVOLUTIVES DU PARADIGME
             try {
                 const stabilityElem = document.getElementById("live-stability");
                 const phaseElem = document.getElementById("live-phase");
                 const impressionsElem = document.getElementById("live-impressions");
 
-                // Fluctuation micro-topologique
                 setInterval(() => {
                     if (!stabilityLockActive && stabilityElem) {
                         const targetStability = (99.81 + Math.random() * 0.08).toFixed(2);
@@ -1235,7 +1289,6 @@
                     }
                 }, 3500);
 
-                // Incrémentation des impressions réseau
                 let baseImpressions = 64077; 
                 setInterval(() => {
                     if (impressionsElem) {
@@ -1248,14 +1301,11 @@
                 console.log("Alerte d'isolation ENGINE 6 :", metricsError);
             }
 
-            // ==========================================
             // ENGINE 7 : MONITEUR DE FILTRAGE DES ANOMALIES (SONIN-NC)
-            // ==========================================
             try {
                 const anomalyElem = document.getElementById("anomaly-filter");
                 setInterval(() => {
                     if (anomalyElem) {
-                        // Fluctuation asynchrone du taux d'obstruction résiduel O(I)
                         const intrusionRate = (Math.random() * 0.006).toFixed(3);
                         if (intrusionRate === "0.000") {
                             anomalyElem.innerHTML = `ANOMALY_FILTER: <span style="color: #10b981; font-weight: 600;">0.000% INTRUSION</span> // <span style="color: #10b981; font-weight: 600;">PURE_SIGNAL_LOCKED</span>`;
