@@ -36,7 +36,7 @@
         }
 
         /* ==========================================
-           MODULE OPTION 1 : PRELOADER MATRIX (MIS À JOUR)
+           MODULE OPTION 1 : PRELOADER MATRIX (SÉPARATION NETTE)
            ========================================== */
         #matrix-preloader {
             position: fixed;
@@ -50,8 +50,8 @@
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1);
             pointer-events: auto;
+            /* Suppression de la transition opacity pour éviter le fondu */
         }
 
         .preloader-content {
@@ -82,7 +82,7 @@
             height: 100%;
             background: #00f2fe;
             box-shadow: 0 0 8px #00f2fe;
-            animation: loadCyberBar 3.8s ease-in-out forwards; /* Temps augmenté pour plus de lourdeur */
+            animation: loadCyberBar 3.8s ease-in-out forwards; 
         }
 
         @keyframes pulsePreloaderText {
@@ -90,15 +90,14 @@
             50% { opacity: 1; text-shadow: 0 0 15px rgba(16, 185, 129, 0.9); }
         }
 
-        /* Cinématique de chargement par paliers asynchrones */
         @keyframes loadCyberBar {
             0% { width: 0%; }
             15% { width: 12%; }
             30% { width: 30%; }
-            50% { width: 30%; } /* Palier de stagnation : Simulation calcul Kernel */
+            50% { width: 30%; } 
             65% { width: 70%; }
             80% { width: 85%; }
-            92% { width: 92%; } /* Ralentissement final d'ancrage */
+            92% { width: 92%; } 
             100% { width: 100%; }
         }
 
@@ -547,6 +546,7 @@
 </head>
 <body>
 
+    <!-- Couche Matérielle du Preloader Matrix -->
     <div id="matrix-preloader">
         <div class="preloader-content">
             <div class="matrix-glow-text">INITIALIZING_BIO-OS_V8_KERNEL...</div>
@@ -556,6 +556,7 @@
         </div>
     </div>
 
+    <!-- Conteneur matériel du viseur -->
     <div id="cyber-cursor"></div>
 
     <div class="bg-video-container">
@@ -944,19 +945,25 @@
         // MODULES CRITIQUES (CHAMP GLOBAL ÉTANCHE)
         // ==========================================
 
-        // INITIALISATION PROTEGÉE DU DISPOSITIF DE PRELOADER (OPTION 1)
+        // INITIALISATION PROTEGÉE DU DISPOSITIF DE PRELOADER (OPTION 1 - HARD CUT NET)
+        let preloaderTerminated = false;
         function terminateMatrixPreloader() {
+            if (preloaderTerminated) return;
+            preloaderTerminated = true;
+            
             const mPreloader = document.getElementById('matrix-preloader');
-            if (mPreloader && mPreloader.style.display !== 'none') {
-                mPreloader.style.opacity = '0';
-                mPreloader.style.pointerEvents = 'none';
-                setTimeout(() => {
-                    mPreloader.style.display = 'none';
-                }, 800);
+            if (mPreloader) {
+                mPreloader.style.display = 'none'; // SÉPARATION TOTALE : Extinction instantanée sans fondu
             }
         }
-        window.addEventListener('load', terminateMatrixPreloader);
-        setTimeout(terminateMatrixPreloader, 4200); /* Augmenté à 4.2s pour laisser la nouvelle cinématique s'exécuter */
+        
+        // Attente de la fin de l'animation CSS (3.8s) + 100ms de fixation à 100%
+        window.addEventListener('load', () => {
+            setTimeout(terminateMatrixPreloader, 3900); 
+        });
+        
+        // Veto de sûreté absolu anti-goulot d'étranglement (au cas où le réseau s'interrompt)
+        setTimeout(terminateMatrixPreloader, 4200); 
 
         // ENGINE 1 : ROUTAGE DES ONGLETS (SPA PROTOCOL)
         window.switchTab = function(tabId) {
