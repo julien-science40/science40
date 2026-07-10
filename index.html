@@ -241,6 +241,26 @@
             letter-spacing: 2px;
         }
 
+        /* ==========================================
+           MODULE OPTION 2 : MONITEUR DE TAUX D'ANOMALIES
+           ========================================== */
+        #anomaly-filter {
+            position: absolute;
+            top: -30px;
+            right: 0;
+            font-family: 'Fira Code', monospace;
+            font-size: 0.75rem;
+            color: #38bdf8;
+            letter-spacing: 1px;
+            text-align: right;
+        }
+
+        @media (max-width: 768px) {
+            #sys-status { position: static; display: block; margin-bottom: 5px; }
+            #anomaly-filter { position: static; display: block; text-align: left; margin-bottom: 15px; }
+            header { padding-top: 0; }
+        }
+
         .blink-cursor {
             animation: blinkToken 1s infinite step-end;
         }
@@ -552,7 +572,7 @@
         /* Feuille de style d'impression */
         @media print {
             body { background: #ffffff !important; color: #000000 !important; padding: 20px !important; }
-            .bg-video-container, .bg-overlay, .card-media, iframe, #sys-status, .tab-navigation, #cyber-cursor, #matrix-preloader { display: none !important; }
+            .bg-video-container, .bg-overlay, .card-media, iframe, #sys-status, .tab-navigation, #cyber-cursor, #matrix-preloader, #anomaly-filter { display: none !important; }
             .tab-panel { position: relative !important; top: 0 !important; left: 0 !important; visibility: visible !important; opacity: 1 !important; height: auto !important; display: flex !important; flex-direction: column !important; }
             .card { background: none !important; border: none !important; box-shadow: none !important; padding: 0 !important; margin-bottom: 30px !important; page-break-inside: avoid; }
             h1, h2, h3, p, a { color: #000000 !important; text-shadow: none !important; }
@@ -597,6 +617,9 @@
     <div class="container">
         <header>
             <div id="sys-status">SYS_STATUS: INITIALIZING SYSTEM TIME...</div>
+            
+            <!-- Injection de l'Option 2 : Moniteur de Taux d'Anomalies -->
+            <div id="anomaly-filter">ANOMALY_FILTER: CALIBRATING...</div>
             
             <h1>Science 4.0</h1>
             <p class="subtitle">Framework Architectural pour la Résilience et les Systèmes Structurels</p>
@@ -989,12 +1012,12 @@
         });
         setTimeout(terminateMatrixPreloader, 4200); 
 
-        // INTERACTIVITÉ DES COMMANDES CONSOLE AVEC STREAMING DYNAMIQUE (FIX DISPOSITIF VISUEL)
+        // INTERACTIVITÉ DES COMMANDES CONSOLE AVEC STREAMING DYNAMIQUE
         let stabilityLockActive = false;
-        let isTypingCmd = false; // Verrou anti-carambolage de clics
+        let isTypingCmd = false; 
 
         window.triggerConsoleCmd = function(type) {
-            if (isTypingCmd) return; // Ignore le clic si une écriture est en cours
+            if (isTypingCmd) return; 
 
             const consoleElement = document.getElementById('typed-console');
             if (!consoleElement) return;
@@ -1014,7 +1037,6 @@
                     `>> CHAOS EXCLUDED FROM GEOMETRIC SPACE // ANCRE DE PHASE v1.0 LOCKED.`
                 ];
                 
-                // Actuation matérielle parallèle : Verrouillage visuel de la stabilité à 100%
                 stabilityLockActive = true;
                 const stabilityElem = document.getElementById("live-stability");
                 if (stabilityElem) {
@@ -1029,7 +1051,6 @@
                 }
             }
             
-            // Lancement du déploiement progressif ligne par ligne
             isTypingCmd = true;
             consoleElement.innerHTML = `>> EXECUTE_COMMAND: [${type.toUpperCase()}_PROTOCOL]`;
             
@@ -1046,13 +1067,13 @@
                         currentText += lines[lineIndex].charAt(charIndex);
                         consoleElement.innerHTML = `>> RUNNING_PROTOCOL...` + currentText + ` <span class="blink-cursor">_</span>`;
                         charIndex++;
-                        setTimeout(streamLine, 8); // Vitesse d'écriture élevée
+                        setTimeout(streamLine, 8); 
                     } else {
                         lineIndex++;
                         charIndex = 0;
-                        setTimeout(streamLine, 150); // Pause micro entre les lignes de logs
+                        setTimeout(streamLine, 150); 
                     }
-                    consoleElement.scrollTop = consoleElement.scrollHeight; // Focus automatique sur le bas
+                    consoleElement.scrollTop = consoleElement.scrollHeight; 
                 } else {
                     consoleElement.innerHTML = `>> PROTOCOL_FULLY_ENGAGED // KERNEL_ACTIVE` + currentText;
                     isTypingCmd = false;
@@ -1225,6 +1246,26 @@
                 }, 8000);
             } catch (metricsError) {
                 console.log("Alerte d'isolation ENGINE 6 :", metricsError);
+            }
+
+            // ==========================================
+            // ENGINE 7 : MONITEUR DE FILTRAGE DES ANOMALIES (SONIN-NC)
+            // ==========================================
+            try {
+                const anomalyElem = document.getElementById("anomaly-filter");
+                setInterval(() => {
+                    if (anomalyElem) {
+                        // Fluctuation asynchrone du taux d'obstruction résiduel O(I)
+                        const intrusionRate = (Math.random() * 0.006).toFixed(3);
+                        if (intrusionRate === "0.000") {
+                            anomalyElem.innerHTML = `ANOMALY_FILTER: <span style="color: #10b981; font-weight: 600;">0.000% INTRUSION</span> // <span style="color: #10b981; font-weight: 600;">PURE_SIGNAL_LOCKED</span>`;
+                        } else {
+                            anomalyElem.innerHTML = `ANOMALY_FILTER: <span style="color: #f59e0b; font-weight: 600;">${intrusionRate}% INTRUSION</span> // <span style="color: #00f2fe; font-weight: 600;">FILTER_ACTIVE</span>`;
+                        }
+                    }
+                }, 2000);
+            } catch (anomalyError) {
+                console.log("Alerte d'isolation ENGINE 7 :", anomalyError);
             }
         });
     </script>
