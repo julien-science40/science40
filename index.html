@@ -405,7 +405,7 @@
             font-size: 0.78rem;
             color: #38bdf8;
             overflow-y: auto;
-            max-height: 180px;
+            height: 180px;
             margin-top: 15px;
             white-space: pre-wrap; 
             line-height: 1.4;
@@ -568,6 +568,7 @@
 </head>
 <body>
 
+    <!-- Couche Matérielle du Preloader Matrix -->
     <div id="matrix-preloader">
         <div class="preloader-content">
             <div class="matrix-glow-text">INITIALIZING_BIO-OS_V8_KERNEL...</div>
@@ -577,6 +578,7 @@
         </div>
     </div>
 
+    <!-- Conteneur matériel du viseur -->
     <div id="cyber-cursor"></div>
 
     <div class="bg-video-container">
@@ -722,6 +724,7 @@
                         
                         <div class="matrix-console" id="typed-console">// INITIALIZING MATRIX CONSOLE...</div>
                         
+                        <!-- Interface de Commande SCCI -->
                         <div style="display: flex; flex-wrap: wrap; gap: 10px; margin-top: 15px; font-family: 'Fira Code', monospace;">
                             <button class="console-cmd-btn" onclick="triggerConsoleCmd('erk')">[ EXECUTE_ERK_FILTER ]</button>
                             <button class="console-cmd-btn" onclick="triggerConsoleCmd('lyapunov')">[ DEPLOY_LYAPUNOV_VETO ]</button>
@@ -884,7 +887,7 @@
 
                             <p class="document-line">
                                 &gt; <span class="tag-cyan">[UNIFIED_FRAMEWORK_2026]</span> 
-                                <a href="https://doi.6/10.26502/AVSM.054" target="_blank" class="document-link">
+                                <a href="https://doi.org/10.26502/AVSM.054" target="_blank" class="document-link">
                                     Science 4.0: A Unified Operational Framework for Epigenetic Integrity and Systemic Resilience Steering
                                 </a> 
                                 <span class="tag-green">[PUBLISHED]</span>
@@ -986,19 +989,32 @@
         });
         setTimeout(terminateMatrixPreloader, 4200); 
 
-        // INTERACTIVITÉ DES COMMANDES CONSOLE (OPTION 1 DE REPRISE)
+        // INTERACTIVITÉ DES COMMANDES CONSOLE AVEC STREAMING DYNAMIQUE (FIX DISPOSITIF VISUEL)
         let stabilityLockActive = false;
+        let isTypingCmd = false; // Verrou anti-carambolage de clics
+
         window.triggerConsoleCmd = function(type) {
+            if (isTypingCmd) return; // Ignore le clic si une écriture est en cours
+
             const consoleElement = document.getElementById('typed-console');
             if (!consoleElement) return;
             
-            let cmdLog = "";
+            let lines = [];
             if (type === 'erk') {
-                cmdLog = `\n\n>> INITIATING EVERETT-RIESZ-KAYAD SPECTRAL ANALYSIS...\n>> ISOLATING RESIDUE PROJECTOR (I - P)... SUCCESS.\n>> INVARIANT PATTERN MOTIF VALIDATED // RESOLUTION: 0.01 nm\n>> MODÈLE STANDARD OBSOLÈTE // FLUX DE RÉTROACTION STABILISÉ.`;
+                lines = [
+                    `>> INITIATING EVERETT-RIESZ-KAYAD SPECTRAL ANALYSIS...`,
+                    `>> ISOLATING RESIDUE PROJECTOR (I - P)... SUCCESS.`,
+                    `>> INVARIANT PATTERN MOTIF VALIDATED // RESOLUTION: 0.01 nm`,
+                    `>> MODÈLE STANDARD OBSOLÈTE // FLUX DE RÉTROACTION STABILISÉ.`
+                ];
             } else if (type === 'lyapunov') {
-                cmdLog = `\n\n>> INJECTING LYAPUNOV BARRIER FUNCTIONS (FRAMEWORK OECQ)...\n>> ENGAGING COHERENCE PROTOCOL CONTROL VETO @ 50 Hz.\n>> CHAOS EXCLUDED FROM GEOMETRIC SPACE // ANCRE DE PHASE v1.0 LOCKED.`;
+                lines = [
+                    `>> INJECTING LYAPUNOV BARRIER FUNCTIONS (FRAMEWORK OECQ)...`,
+                    `>> ENGAGING COHERENCE PROTOCOL CONTROL VETO @ 50 Hz.`,
+                    `>> CHAOS EXCLUDED FROM GEOMETRIC SPACE // ANCRE DE PHASE v1.0 LOCKED.`
+                ];
                 
-                // Effet matériel direct : Verrouillage visuel de la stabilité à 100%
+                // Actuation matérielle parallèle : Verrouillage visuel de la stabilité à 100%
                 stabilityLockActive = true;
                 const stabilityElem = document.getElementById("live-stability");
                 if (stabilityElem) {
@@ -1009,12 +1025,40 @@
                         stabilityLockActive = false;
                         stabilityElem.style.color = "#38bdf8";
                         stabilityElem.style.textShadow = "none";
-                    }, 5000); // Maintien du verrouillage pendant 5 secondes
+                    }, 5000); 
                 }
             }
             
-            consoleElement.innerHTML += cmdLog;
-            consoleElement.scrollTop = consoleElement.scrollHeight; // Auto-scroll
+            // Lancement du déploiement progressif ligne par ligne
+            isTypingCmd = true;
+            consoleElement.innerHTML = `>> EXECUTE_COMMAND: [${type.toUpperCase()}_PROTOCOL]`;
+            
+            let lineIndex = 0;
+            let charIndex = 0;
+            let currentText = "\n";
+
+            function streamLine() {
+                if (lineIndex < lines.length) {
+                    if (charIndex === 0) {
+                        currentText += "\n";
+                    }
+                    if (charIndex < lines[lineIndex].length) {
+                        currentText += lines[lineIndex].charAt(charIndex);
+                        consoleElement.innerHTML = `>> RUNNING_PROTOCOL...` + currentText + ` <span class="blink-cursor">_</span>`;
+                        charIndex++;
+                        setTimeout(streamLine, 8); // Vitesse d'écriture élevée
+                    } else {
+                        lineIndex++;
+                        charIndex = 0;
+                        setTimeout(streamLine, 150); // Pause micro entre les lignes de logs
+                    }
+                    consoleElement.scrollTop = consoleElement.scrollHeight; // Focus automatique sur le bas
+                } else {
+                    consoleElement.innerHTML = `>> PROTOCOL_FULLY_ENGAGED // KERNEL_ACTIVE` + currentText;
+                    isTypingCmd = false;
+                }
+            }
+            setTimeout(streamLine, 250);
         };
 
         // ENGINE 1 : ROUTAGE DES ONGLETS (SPA PROTOCOL)
