@@ -36,6 +36,67 @@
         }
 
         /* ==========================================
+           MODULE OPTION 1 : PRELOADER MATRIX
+           ========================================== */
+        #matrix-preloader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #030712;
+            z-index: 1000000; /* Priorité absolue sur toutes les autres couches */
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+            pointer-events: auto;
+        }
+
+        .preloader-content {
+            text-align: center;
+            font-family: 'Fira Code', monospace;
+        }
+
+        .matrix-glow-text {
+            color: #10b981;
+            font-size: 0.9rem;
+            letter-spacing: 3px;
+            text-shadow: 0 0 10px rgba(16, 185, 129, 0.6);
+            margin-bottom: 20px;
+            animation: pulsePreloaderText 2s infinite ease-in-out;
+        }
+
+        .cyber-bar-container {
+            width: 220px;
+            height: 2px;
+            background: rgba(0, 242, 254, 0.08);
+            border-radius: 1px;
+            overflow: hidden;
+            margin: 0 auto;
+        }
+
+        .cyber-bar-progress {
+            width: 0%;
+            height: 100%;
+            background: #00f2fe;
+            box-shadow: 0 0 8px #00f2fe;
+            animation: loadCyberBar 2.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+
+        @keyframes pulsePreloaderText {
+            0%, 100% { opacity: 0.6; }
+            50% { opacity: 1; text-shadow: 0 0 15px rgba(16, 185, 129, 0.9); }
+        }
+
+        @keyframes loadCyberBar {
+            0% { width: 0%; }
+            40% { width: 65%; }
+            100% { width: 100%; }
+        }
+
+        /* ==========================================
            MODULE OPTION 2 : VISEUR CYBER BLEU
            ========================================== */
         #cyber-cursor {
@@ -44,15 +105,14 @@
             height: 22px;
             border: 1.5px solid #00f2fe;
             border-radius: 50%;
-            pointer-events: none; /* PROTECTION ABSOLUE : Les clics traversent l'élément sans blocage */
+            pointer-events: none; /* PROTECTION CLICS : Les clics traversent sans obstruction */
             z-index: 999999;
             transform: translate(-50%, -50%);
             box-shadow: 0 0 12px rgba(0, 242, 254, 0.6);
-            display: none; /* Invisible tant que la souris ne bouge pas (évite le flash en haut à gauche) */
+            display: none; 
             transition: width 0.2s cubic-bezier(0.16, 1, 0.3, 1), height 0.2s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.2s;
         }
 
-        /* Point central du viseur */
         #cyber-cursor::after {
             content: '';
             position: absolute;
@@ -65,7 +125,6 @@
             transform: translate(-50%, -50%);
         }
 
-        /* Extension d'interaction lors du survol d'éléments cliquables */
         #cyber-cursor.pulse-active {
             width: 32px;
             height: 32px;
@@ -432,20 +491,9 @@
             line-height: 1.5;
         }
 
-        .tag-cyan {
-            color: #00f2fe;
-            font-weight: 600;
-        }
-
-        .tag-green {
-            color: #10b981;
-            font-weight: 600;
-        }
-
-        .tag-orange {
-            color: #f59e0b;
-            font-weight: 600;
-        }
+        .tag-cyan { color: #00f2fe; font-weight: 600; }
+        .tag-green { color: #10b981; font-weight: 600; }
+        .tag-orange { color: #f59e0b; font-weight: 600; }
 
         .document-link {
             color: #cbd5e1;
@@ -476,67 +524,34 @@
 
         /* Feuille de style d'impression */
         @media print {
-            body {
-                background: #ffffff !important;
-                color: #000000 !important;
-                padding: 20px !important;
-            }
-            .bg-video-container, .bg-overlay, .card-media, iframe, #sys-status, .tab-navigation, #cyber-cursor {
-                display: none !important; 
-            }
-            .tab-panel {
-                position: relative !important;
-                top: 0 !important;
-                left: 0 !important;
-                visibility: visible !important;
-                opacity: 1 !important;
-                height: auto !important;
-                display: flex !important;
-                flex-direction: column !important;
-            }
-            .card {
-                background: none !important;
-                border: none !important;
-                box-shadow: none !important;
-                padding: 0 !important;
-                margin-bottom: 30px !important;
-                page-break-inside: avoid;
-            }
-            h1, h2, h3, p, a {
-                color: #000000 !important;
-                text-shadow: none !important;
-            }
-            .manifesto-title, .manifesto-desc {
-                color: #000000 !important;
-            }
-            .manifesto-node {
-                border-left-color: #4b5563 !important;
-            }
-            .document-registry {
-                border-color: #cccccc !important;
-            }
+            body { background: #ffffff !important; color: #000000 !important; padding: 20px !important; }
+            .bg-video-container, .bg-overlay, .card-media, iframe, #sys-status, .tab-navigation, #cyber-cursor, #matrix-preloader { display: none !important; }
+            .tab-panel { position: relative !important; top: 0 !important; left: 0 !important; visibility: visible !important; opacity: 1 !important; height: auto !important; display: flex !important; flex-direction: column !important; }
+            .card { background: none !important; border: none !important; box-shadow: none !important; padding: 0 !important; margin-bottom: 30px !important; page-break-inside: avoid; }
+            h1, h2, h3, p, a { color: #000000 !important; text-shadow: none !important; }
+            .manifesto-title, .manifesto-desc { color: #000000 !important; }
+            .manifesto-node { border-left-color: #4b5563 !important; }
+            .document-registry { border-color: #cccccc !important; }
         }
 
-        @keyframes blinkToken {
-            from, to { color: transparent; }
-            50% { color: #10b981; text-shadow: 0 0 8px rgba(16, 185, 129, 0.6); }
-        }
-
-        @keyframes pulseStatus {
-            0% { opacity: 0.6; }
-            50% { opacity: 1; box-shadow: 0 0 10px rgba(0, 242, 254, 0.4); }
-            100% { opacity: 0.6; }
-        }
-
-        @keyframes pulseNode {
-            0% { r: 4; fill: #00f2fe; filter: drop-shadow(0 0 2px #00f2fe); }
-            50% { r: 6; fill: #38bdf8; filter: drop-shadow(0 0 8px #00f2fe); }
-            100% { r: 4; fill: #00f2fe; filter: drop-shadow(0 0 2px #00f2fe); }
-        }
+        @keyframes blinkToken { from, to { color: transparent; } 50% { color: #10b981; text-shadow: 0 0 8px rgba(16, 185, 129, 0.6); } }
+        @keyframes pulseStatus { 0% { opacity: 0.6; } 50% { opacity: 1; box-shadow: 0 0 10px rgba(0, 242, 254, 0.4); } 100% { opacity: 0.6; } }
+        @keyframes pulseNode { 0% { r: 4; fill: #00f2fe; filter: drop-shadow(0 0 2px #00f2fe); } 50% { r: 6; fill: #38bdf8; filter: drop-shadow(0 0 8px #00f2fe); } 100% { r: 4; fill: #00f2fe; filter: drop-shadow(0 0 2px #00f2fe); } }
     </style>
 </head>
 <body>
 
+    <!-- Injecté de manière atomique : Couche Matérielle du Preloader Matrix -->
+    <div id="matrix-preloader">
+        <div class="preloader-content">
+            <div class="matrix-glow-text">INITIALIZING_BIO-OS_V8_KERNEL...</div>
+            <div class="cyber-bar-container">
+                <div class="cyber-bar-progress"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Injecté de manière atomique : Conteneur matériel du viseur -->
     <div id="cyber-cursor"></div>
 
     <div class="bg-video-container">
@@ -620,14 +635,14 @@
                     <div class="card-content" style="width: 100%;">
                         <h2 style="color: #00f2fe; text-shadow: 0 0 15px rgba(0, 242, 254, 0.6);">🚀 // SYSTEM_UPDATE : LA PHASE 2 (ÉLÉVATION) EST OFFICIELLEMENT LANCÉE</h2>
                         <p style="margin-top: 15px; font-size: 1.05rem; line-height: 1.6; color: #e2e8f0;">
-                            Le manuscrit principal de la Phase 2 du paradigme Science 4.0 est finalisé : <br>
+                            Le manuscrit principal de la Phase 2 du paradigme Science 4.0 is finalisé : <br>
                             <strong style="color: #38bdf8;">"The Maternal Golden Standard: Algorithmic Regulation of Renal Hydraulics and Glomerular Flow Restoration above 85~mL/min eGFR"</strong>.
                         </p>
                         <p style="margin-top: 15px; font-size: 0.95rem; color: #cbd5e1; text-align: justify;">
                             Après le succès de la Phase 1, cette nouvelle étape intègre des boucles prédictives en temps réel dans l'architecture <span class="tag-cyan">Bio-OS V8</span> pour optimiser systématiquement la dynamique des fluides biologiques et dépasser les limites physiologiques standard.
                         </p>
                         <p style="margin-top: 15px; font-size: 0.95rem; color: #cbd5e1; text-align: justify;">
-                            La documentation entre actuellement dans le circuit <strong style="color: #f59e0b;">international de révision par les pairs</strong>. Que ce soit à travers des revues traditionnelles à fort impact ou des canaux avancés de <span class="tag-cyan">Science Ouverte</span>, le déploiement de cette architecture est désormais actif.
+                            La documentation entre actuellement dans le circuit <strong style="color: #f59e0b;">international de révision par les pairs</strong>. Que ce soit à travers des revues traditionnelles à fort impact ou des canaux avancés de <span class="tag-cyan">Science Ouverte</span>, le déploiement de cette architecture is désormais actif.
                         </p>
                         <div style="margin-top: 20px; padding: 12px; border: 1px dashed rgba(0, 242, 254, 0.3); background: rgba(0, 242, 254, 0.05); font-family: 'Fira Code', monospace; font-size: 0.8rem; color: #00f2fe; text-align: center; letter-spacing: 1px;">
                             🔔 RESTEZ À L'ÉCOUTE POUR LES PROCHAINES MISES À NIVEAU ET PUBLICATIONS DE DONNÉES !
@@ -925,6 +940,20 @@
         // MODULES CRITIQUES (CHAMP GLOBAL ÉTANCHE)
         // ==========================================
 
+        // INITIALISATION PROTEGÉE DU DISPOSITIF DE PRELOADER (OPTION 1)
+        function terminateMatrixPreloader() {
+            const mPreloader = document.getElementById('matrix-preloader');
+            if (mPreloader && mPreloader.style.display !== 'none') {
+                mPreloader.style.opacity = '0';
+                mPreloader.style.pointerEvents = 'none';
+                setTimeout(() => {
+                    mPreloader.style.display = 'none';
+                }, 800);
+            }
+        }
+        window.addEventListener('load', terminateMatrixPreloader);
+        setTimeout(terminateMatrixPreloader, 2500); // Veto de sûreté anti-goulot d'étranglement
+
         // ENGINE 1 : ROUTAGE DES ONGLETS (SPA PROTOCOL)
         window.switchTab = function(tabId) {
             document.querySelectorAll('.tab-panel').forEach(panel => {
@@ -990,12 +1019,11 @@
             const cCursor = document.getElementById('cyber-cursor');
             if (cCursor) {
                 document.addEventListener('mousemove', (e) => {
-                    cCursor.style.display = 'block'; // S'affiche dès le premier mouvement
+                    cCursor.style.display = 'block'; 
                     cCursor.style.left = e.clientX + 'px';
                     cCursor.style.top = e.clientY + 'px';
                 });
 
-                // Écouteurs de phase d'interaction (effet de pulsation au survol des nodes actifs)
                 const targets = 'a, button, .tab-btn, video, .document-link';
                 document.querySelectorAll(targets).forEach(element => {
                     element.addEventListener('mouseenter', () => cCursor.classList.add('pulse-active'));
