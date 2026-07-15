@@ -50,7 +50,6 @@
             background-color: #030712;
             color: #e2e8f0;
             font-family: 'Inter', system-ui, sans-serif;
-            margin: 0;
             padding: 60px 20px 120px 20px; 
             display: flex;
             flex-direction: column;
@@ -346,7 +345,6 @@
             color: rgba(226, 232, 240, 0.6);
             padding: 10px 18px;
             font-size: 0.8rem;
-            cursor: pointer;
             border-radius: 6px;
             transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
             letter-spacing: 0.5px;
@@ -472,6 +470,7 @@
         .manifesto-node::before {
             content: "";
             position: absolute;
+            box-sizing: border-box;
             left: -5px;
             top: 5px;
             width: 8px;
@@ -707,7 +706,6 @@
 </head>
 <body>
 
-    <!-- Preloader Matrix -->
     <div id="matrix-preloader">
         <div class="preloader-content">
             <div class="matrix-glow-text">INITIALIZING_BIO-OS_V8_KERNEL...</div>
@@ -717,7 +715,6 @@
         </div>
     </div>
 
-    <!-- Viseur -->
     <div id="cyber-cursor"></div>
 
     <div class="bg-video-container">
@@ -767,7 +764,6 @@
                             Déploiement et visibilité internationale de l'article scientifique <strong style="color: var(--accent-color);">"Mitochondrial Bio-Logistics"</strong> (IZAB) :
                         </p>
                         
-                        <!-- RETOUR NOMINAL À 3 COMPTEURS PROPRES POUR L'ARTICLE -->
                         <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; margin-top: 20px;">
                             <div style="border: 1px solid var(--glow-ultra); padding: 15px; background: rgba(2, 6, 17, 0.6); border-radius: 8px; text-align: center;">
                                 <span style="font-family: 'Fira Code', monospace; color: #94a3b8; font-size: 0.8rem;">TOTAL_IMPRESSIONS</span><br>
@@ -784,6 +780,19 @@
                         </div>
                         <p style="margin-top: 20px; font-size: 0.95rem; color: #cbd5e1; text-align: justify;">
                             Ces métriques de diffusion confirment une accélération massive de la visibilité auprès des réseaux de recherche internationaux. Le coût minimal d'optimisation interfaciale ($0.01) valide l'extrême résonance du framework Science 4.0 face aux enjeux de la biomédecine de précision.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="card" style="border-left: 4px solid #a855f7; background: linear-gradient(135deg, rgba(11, 18, 32, 0.95) 0%, rgba(168, 85, 247, 0.03) 100%);">
+                    <div class="card-content" style="width: 100%;">
+                        <h2 style="color: #a855f7; text-shadow: 0 0 15px rgba(168, 85, 247, 0.6);">🧠 // EDITIONS_UPDATE : NEURO-ÉPIGÉNÉTIQUE DU STRESS ACCEPTÉE</h2>
+                        <p style="margin-top: 15px; font-size: 1.05rem; line-height: 1.6; color: #e2e8f0;">
+                            Le manuscrit de Perspective Théorique a été officiellement accepté pour publication par le comité éditorial international du <strong style="color: var(--secondary-color);">Journal of Psychiatric Insight Review</strong> : <br>
+                            <strong style="color: var(--accent-color);">"Theoretical Perspective – Neuro-Epigenetics of Stress: Modeling HPA Axis Unlocking and Central Signal-to-Noise Ratio Optimization via the Bio-OS V8 Framework"</strong>.
+                        </p>
+                        <p style="margin-top: 15px; font-size: 0.95rem; color: #cbd5e1; text-align: justify;">
+                            Ce travail de rupture applique la logistique systémique du framework <span class="tag-cyan">Bio-OS V8</span> aux structures de régulation neurobiologique. Il modélise la transition de phase non linéaire qui verrouille le gène <em>NR3C1</em> sous l'effet du stress chronique, et démontre comment le calibrage du rapport signal/bruit (SNR) central lève activement ce verrou épigénétique. Les formalités financières de l'Open Access ayant été complétées, le document progresse sur le circuit de publication accélérée (<span class="tag-green">Fast-Track / In Press Stage</span>).
                         </p>
                     </div>
                 </div>
@@ -808,7 +817,7 @@
                     <div class="card-content" style="width: 100%;">
                         <h2 style="color: #00f2fe; text-shadow: 0 0 15px rgba(0, 242, 254, 0.6);">🚀 // SYSTEM_UPDATE : LA PHASE 2 (ÉLÉVATION) EST OFFICIELLEMENT LANCÉE</h2>
                         <p style="margin-top: 15px; font-size: 1.05rem; line-height: 1.6; color: #e2e8f0;">
-                            Le manuscrit principal de la Phase 2 du paradigme Science 4.0 est finalisé : <br>
+                            Le manuscrit principal de la Phase 2 du paradigme Science 4.0 is finalisé : <br>
                             <strong style="color: var(--secondary-color);">"The Maternal Golden Standard: Algorithmic Regulation of Renal Hydraulics and Glomerular Flow Restoration above 85~mL/min eGFR"</strong>.
                         </p>
                         <p style="margin-top: 15px; font-size: 0.95rem; color: #cbd5e1; text-align: justify;">
@@ -818,7 +827,7 @@
                             La documentation entre actuellement dans le circuit <strong style="color: #f59e0b;">international de révision par les pairs</strong>. Que ce soit à travers des revues traditionnelles à fort impact ou des canaux avancés de <span class="tag-cyan">Science Ouverte</span>, le déploiement de cette architecture est désormais actif.
                         </p>
                         <div style="margin-top: 20px; padding: 12px; border: 1px dashed var(--glow-light); background: rgba(0, 242, 254, 0.05); font-family: 'Fira Code', monospace; font-size: 0.8rem; color: var(--accent-color); text-align: center; letter-spacing: 1px;">
-                            🔔 RESTEZ À L'ÉCOUTE POUR LES PROCHAINES MISES À NIVEAU ET PUBLICATIONS DE DONNÉES !
+                            # RESTEZ À L'ÉCOUTE POUR LES PROCHAINES MISES À NIVEAU ET PUBLICATIONS DE DONNÉES !
                         </div>
                     </div>
                 </div>
@@ -870,7 +879,6 @@
                         
                         <div class="matrix-console" id="typed-console">// INITIALIZING MATRIX CONSOLE...</div>
                         
-                        <!-- Interface de Commande Manuelle SCCI -->
                         <div style="display: flex; flex-wrap: wrap; gap: 10px; margin-top: 15px; font-family: 'Fira Code', monospace;">
                             <button class="console-cmd-btn" onclick="triggerConsoleCmd('erk')">[ EXECUTE_ERK_FILTER ]</button>
                             <button class="console-cmd-btn" onclick="triggerConsoleCmd('lyapunov')">[ DEPLOY_LYAPUNOV_VETO ]</button>
@@ -964,14 +972,20 @@
                         <h2>Dr. Julien Boblique</h2>
                         <p>Architecte de la Science 4.0 — Chercheur publié (Impact Factor 7.019). Expert en souveraineté biologique, modélisation infodynamique et résilience des systèmes complexes.</p>
                         
-                        <!-- INDEXATION ACCORDÉON -->
                         <div class="document-registry">
                             <div class="document-registry-title">// REGISTERED DOCUMENTS (INDEXED BY CORE PILLARS) :</div>
                             
-                            <!-- BLOC 1 : THÉORIE SET & FLUX BIOLOGIQUES -->
                             <details class="accordion-category" open>
                                 <summary class="accordion-summary"> [PILLAR_01] // INTÉGRITÉ ÉPIGÉNÉTIQUE & CRITICAL FLOWS</summary>
                                 <div class="accordion-content">
+                                    <p class="document-line">
+                                        &gt; <span class="tag-cyan">[NEURO_EPIGENETICS_2026]</span> 
+                                        <span style="color: #e2e8f0; font-weight: 500;">
+                                            Theoretical Perspective – Neuro-Epigenetics of Stress: Modeling HPA Axis Unlocking and Central Signal-to-Noise Ratio Optimization via the Bio-OS V8 Framework
+                                        </span> 
+                                        <span class="tag-green">[IN PRESS / FORTHCOMING]</span>
+                                        <button class="copy-citation-btn" onclick="copyCitation(this, 'Boblique, J. (2026). Theoretical Perspective – Neuro-Epigenetics of Stress: Modeling HPA Axis Unlocking and Central Signal-to-Noise Ratio Optimization via the Bio-OS V8 Framework. Journal of Psychiatric Insight Review. (In Press).')">[ COPY_CITATION ]</button>
+                                    </p>
                                     <p class="document-line">
                                         &gt; <span class="tag-cyan">[SET_THEORY_2026]</span> 
                                         <a href="https://doi.org/10.23880/izab-16000667" target="_blank" class="document-link">
@@ -1007,7 +1021,6 @@
                                 </div>
                             </details>
 
-                            <!-- BLOC 2 : ARCHITECTURE BIO-OS & RÉSILIENCE -->
                             <details class="accordion-category">
                                 <summary class="accordion-summary"> [PILLAR_02] // INDUSTRIAL STANDARDIZATION & BIO-OS</summary>
                                 <div class="accordion-content">
@@ -1038,7 +1051,6 @@
                                 </div>
                             </details>
 
-                            <!-- BLOC 3 : VALIDATIONS APPLIQUÉES & TRAJECTOIRES V8 -->
                             <details class="accordion-category">
                                 <summary class="accordion-summary"> [PILLAR_03] // APPLIED VALIDATION & STEERING SYNERGIES</summary>
                                 <div class="accordion-content">
@@ -1132,7 +1144,6 @@
         </main>
     </div>
 
-    <!-- RESTRUCTURATION DU COMPTEUR SOUS FORME DE LOG SYSTÈME DANS LE FOOTER -->
     <footer>
         [ TRAFFIC_LOAD: <span id="real-visitor-counter">...</span> ] &nbsp;&nbsp;&nbsp;&nbsp; [ AUTH_ID: JULIEN_BOBLIQUE ] — © 2026 — Science 4.0 Framework
     </footer>
@@ -1160,7 +1171,7 @@
             const key = "science40_visits";
             
             if (isExcluded) {
-                // En mode admin (lecture seule), on applique le tag d'exclusion [X]
+                // En mode admin (lecture seule), on applies le tag d'exclusion [X]
                 fetch(`https://api.countapi.xyz/get/${namespace}/${key}`)
                     .then(res => res.json())
                     .then(data => {
