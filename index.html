@@ -14,6 +14,29 @@
     <meta property="og:description" content="Site officiel du Dr. Julien Boblique, architecte de la Science 4.0 et du Bio-OS V8. Chercheur publié en souveraineté biologique et résilience systémique.">
     <meta property="og:image" content="https://julien-science40.github.io/science40/Dr_Julien_Boblique_Portrait.jpg.png">
 
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Dr. Julien Boblique",
+      "jobTitle": "Architect of Science 4.0",
+      "url": "https://julien-science40.github.io/science40/",
+      "sameAs": [
+        "https://www.linkedin.com/in/julien-boblique-33230a210",
+        "https://orcid.org/0009-0009-0648-5970",
+        "https://scholar.google.com/scholar?q=Julien+Boblique"
+      ],
+      "knowsAbout": [
+        "Social Epigenetics",
+        "Bio-OS V8",
+        "Systemic Resilience",
+        "Infodynamics",
+        "Science 4.0",
+        "ZFC_KK Framework"
+      ]
+    }
+    </script>
+
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Fira+Code:wght@400;500&display=swap">
     <style>
         /* ==========================================
@@ -44,6 +67,16 @@
         /* Masquage étanche du pointeur système par défaut sur tout le site */
         html, body, a, button, video, .tab-btn, .card, .document-link, .console-cmd-btn, .accordion-summary, .spectrum-btn, .copy-citation-btn {
             cursor: none !important;
+        }
+
+        /* Restauration du curseur par défaut sur écrans tactiles */
+        @media (pointer: coarse) {
+            html, body, a, button, video, .tab-btn, .card, .document-link, .console-cmd-btn, .accordion-summary, .spectrum-btn, .copy-citation-btn {
+                cursor: auto !important;
+            }
+            #cyber-cursor {
+                display: none !important;
+            }
         }
 
         body {
@@ -757,6 +790,37 @@
             
             <div id="panel-dashboard" class="tab-panel active">
                 
+                <div class="card" style="border-left: 4px solid #f59e0b; background: linear-gradient(135deg, rgba(11, 18, 32, 0.95) 0%, rgba(245, 158, 11, 0.03) 100%);">
+                    <div class="card-content" style="width: 100%;">
+                        <h2 style="color: #f59e0b; text-shadow: 0 0 15px rgba(245, 158, 11, 0.6);">🏛️ // ARCHITECTURAL_STANDARDS & SYSTEMIC_INTEROPERABILITY</h2>
+                        <p style="margin-top: 15px; font-size: 1.05rem; line-height: 1.6; color: #e2e8f0;">
+                            Directives de conformité et intégration du framework <strong style="color: var(--accent-color);">Science 4.0 / ZFC_KK</strong> pour la sûreté des infrastructures critiques :
+                        </p>
+                        
+                        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 15px; margin-top: 20px; font-family: 'Fira Code', monospace; font-size: 0.85rem;">
+                            <div style="border: 1px solid rgba(245, 158, 11, 0.3); padding: 12px; background: rgba(2, 6, 17, 0.6); border-radius: 6px;">
+                                <span style="color: #f59e0b; font-weight: bold;">[ STANDARD_NODE_01 ]</span><br>
+                                <span style="color: #cbd5e1;">Gyroscopie EP3 & Réseaux Quantiques Non-Hermitiens</span><br>
+                                <span class="tag-green">[ INTEGRATION ISO-LPU-2027 ]</span>
+                            </div>
+                            <div style="border: 1px solid rgba(245, 158, 11, 0.3); padding: 12px; background: rgba(2, 6, 17, 0.6); border-radius: 6px;">
+                                <span style="color: #f59e0b; font-weight: bold;">[ STANDARD_NODE_02 ]</span><br>
+                                <span style="color: #cbd5e1;">Fonctions Barrières QP & Veto de Lyapunov @ 1.9 ns</span><br>
+                                <span class="tag-green">[ HARDWARE CO-DESIGN ]</span>
+                            </div>
+                            <div style="border: 1px solid rgba(245, 158, 11, 0.3); padding: 12px; background: rgba(2, 6, 17, 0.6); border-radius: 6px;">
+                                <span style="color: #f59e0b; font-weight: bold;">[ STANDARD_NODE_03 ]</span><br>
+                                <span style="color: #cbd5e1;">Moteurs de Simulation PyTorch & Jumeau Numérique</span><br>
+                                <span class="tag-cyan">[ ADVANCED PIPELINE ]</span>
+                            </div>
+                        </div>
+                        
+                        <p style="margin-top: 15px; font-size: 0.9rem; color: #94a3b8; text-align: justify;">
+                            Modélisation des protocoles d'annulation de la latence et de sanctuarisation contre la dérive entropique applicables aux environnements haute sûreté (fusion, aérospatiale, réseaux énergétiques).
+                        </p>
+                    </div>
+                </div>
+
                 <div class="card" style="border-left: 4px solid #38bdf8; background: linear-gradient(135deg, rgba(11, 18, 32, 0.95) 0%, rgba(56, 189, 248, 0.03) 100%);">
                     <div class="card-content" style="width: 100%;">
                         <h2 style="color: #38bdf8; text-shadow: 0 0 15px rgba(56, 189, 248, 0.6);">📊 // IMPACT_ANALYTICS : TRACTION DU PARADIGME</h2>
@@ -894,6 +958,7 @@
                         <div style="display: flex; flex-wrap: wrap; gap: 10px; margin-top: 15px; font-family: 'Fira Code', monospace;">
                             <button class="console-cmd-btn" onclick="triggerConsoleCmd('erk')">[ EXECUTE_ERK_FILTER ]</button>
                             <button class="console-cmd-btn" onclick="triggerConsoleCmd('lyapunov')">[ DEPLOY_LYAPUNOV_VETO ]</button>
+                            <button class="console-cmd-btn" onclick="triggerConsoleCmd('zfckk')">[ EXECUTE_ZFC_KK_MAP ]</button>
                         </div>
                     </div>
                     <div class="card-media">
@@ -1178,7 +1243,7 @@
             const counterElement = document.getElementById('real-visitor-counter');
             if (!counterElement) return;
 
-            // Détection et interception de ton lien secret ?mode=admin
+            // Détection et interception du lien secret ?mode=admin
             const urlParams = new URLSearchParams(window.location.search);
             if (urlParams.get('mode') === 'admin') {
                 localStorage.setItem('sys_exclude_counter', 'true');
@@ -1299,6 +1364,13 @@
                         stabilityElem.style.textShadow = "none";
                     }, 5000); 
                 }
+            } else if (type === 'zfckk') {
+                lines = [
+                    `>> MAPPING GEOMETRIC STABILITY SPACE (ZFC_KK)...`,
+                    `>> BOUNDING ADMISSIBLE CONFIGURATION ZONES... DONE.`,
+                    `>> BOUNDARY OBSTRUCTION H1 = 0.000 // ENTROPY CANCELLED.`,
+                    `>> SYSTEM LOCKED IN NEGUENTROPIC ATTRACTOR.`
+                ];
             }
             
             isTypingCmd = true;
