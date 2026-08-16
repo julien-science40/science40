@@ -54,7 +54,12 @@
     }
     </script>
 
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Fira+Code:wght@400;500&display=swap">
+    <!-- AXE 1 : MOTEUR TYPOGRAPHIQUE MATHÉMATIQUE KATEX -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"></script>
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Fira+Code:wght@400;500;600&display=swap">
     <style>
         /* ==========================================
             MATRICE DES VARIABLES SPECTRALES
@@ -82,14 +87,14 @@
         }
 
         /* Masquage du pointeur & optimisation tactile */
-        html, body, a, button, video, .tab-btn, .card, .document-link, .console-cmd-btn, .accordion-summary, .spectrum-btn, .copy-citation-btn, .skip-preloader-btn {
+        html, body, a, button, video, input, .tab-btn, .card, .document-link, .console-cmd-btn, .accordion-summary, .spectrum-btn, .copy-citation-btn, .copy-bibtex-btn, .skip-preloader-btn, .filter-tag-btn {
             cursor: none !important;
             touch-action: manipulation;
         }
 
         /* Restauration du curseur par défaut sur écrans tactiles */
         @media (pointer: coarse) {
-            html, body, a, button, video, .tab-btn, .card, .document-link, .console-cmd-btn, .accordion-summary, .spectrum-btn, .copy-citation-btn, .skip-preloader-btn {
+            html, body, a, button, video, input, .tab-btn, .card, .document-link, .console-cmd-btn, .accordion-summary, .spectrum-btn, .copy-citation-btn, .copy-bibtex-btn, .skip-preloader-btn, .filter-tag-btn {
                 cursor: auto !important;
             }
             #cyber-cursor {
@@ -380,7 +385,7 @@
             transition: color 0.3s ease;
         }
 
-        /* Accessibilité WCAG AA : Contraste rehaussé à #94a3b8 */
+        /* Accessibilité WCAG AA : Contraste rehaussé */
         .header-links {
             font-family: 'Fira Code', monospace;
             font-size: 0.85rem;
@@ -613,7 +618,7 @@
         }
 
         /* ==========================================
-            MODULE ACCORDÉON ADAPTATIF
+            MODULE ACCORDÉON ADAPTATIF & REGISTRE
             ========================================== */
         .document-registry {
             margin-top: 25px;
@@ -625,10 +630,62 @@
 
         .document-registry-title {
             color: var(--secondary-color);
-            margin-bottom: 20px;
+            margin-bottom: 15px;
             font-weight: 600;
             letter-spacing: 1px;
             transition: color 0.3s ease;
+        }
+
+        /* AXE 5 : BARRE DE FILTRAGE INSTANTANÉ DES RECHERCHES */
+        .registry-filter-bar {
+            margin-bottom: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .registry-search-input {
+            width: 100%;
+            background: rgba(2, 6, 17, 0.7);
+            border: 1px solid var(--glow-light);
+            padding: 10px 14px;
+            border-radius: 6px;
+            color: var(--accent-color);
+            font-family: 'Fira Code', monospace;
+            font-size: 0.8rem;
+            box-sizing: border-box;
+            outline: none;
+            transition: all 0.3s ease;
+        }
+
+        .registry-search-input:focus {
+            border-color: var(--accent-color);
+            box-shadow: 0 0 12px var(--glow-ultra);
+            background: rgba(2, 6, 17, 0.9);
+        }
+
+        .filter-tags-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .filter-tag-btn {
+            background: rgba(11, 18, 32, 0.6);
+            border: 1px solid rgba(56, 189, 248, 0.3);
+            color: var(--secondary-color);
+            padding: 4px 10px;
+            border-radius: 4px;
+            font-family: 'Fira Code', monospace;
+            font-size: 0.7rem;
+            transition: all 0.2s ease;
+        }
+
+        .filter-tag-btn:hover, .filter-tag-btn.active {
+            background: var(--bg-tint);
+            border-color: var(--accent-color);
+            color: var(--accent-color);
+            box-shadow: 0 0 8px var(--glow-light);
         }
 
         .accordion-category {
@@ -697,6 +754,11 @@
             margin: 0;
             color: #cbd5e1;
             line-height: 1.5;
+            transition: opacity 0.3s ease;
+        }
+
+        .document-line.hidden-node {
+            display: none !important;
         }
 
         .tag-cyan { color: #00f2fe; font-weight: 600; }
@@ -717,30 +779,61 @@
             text-shadow: 0 0 8px var(--glow-shadow);
         }
 
-        /* QUICK COPY CITATION */
-        .copy-citation-btn {
-            background: transparent;
-            border: none;
+        /* AXE 2 : BOUTONS QUICK COPY CITATION & BIBTEX */
+        .citation-actions-group {
+            display: inline-flex;
+            gap: 4px;
+            vertical-align: middle;
+            margin-left: 6px;
+        }
+
+        .copy-citation-btn, .copy-bibtex-btn {
+            background: rgba(2, 6, 17, 0.7);
+            border: 1px solid rgba(56, 189, 248, 0.3);
             color: var(--secondary-color);
             font-family: 'Fira Code', monospace;
-            font-size: 0.7rem;
-            margin-left: 8px;
-            padding: 2px 6px;
+            font-size: 0.68rem;
+            padding: 2px 7px;
             border-radius: 4px;
             transition: all 0.2s ease;
             display: inline-block;
-            vertical-align: middle;
         }
 
-        .copy-citation-btn:hover {
+        .copy-citation-btn:hover, .copy-bibtex-btn:hover {
             color: var(--accent-color);
+            border-color: var(--accent-color);
             background: var(--bg-tint);
             text-shadow: 0 0 8px var(--glow-shadow);
         }
 
-        .copy-citation-btn.copied {
+        .copy-citation-btn.copied, .copy-bibtex-btn.copied {
             color: #10b981 !important;
+            border-color: #10b981 !important;
             text-shadow: 0 0 10px rgba(16, 185, 129, 0.8) !important;
+        }
+
+        /* AXE 4 : STYLES DU TOOLTIP CYBER SVG */
+        .svg-interactive-node {
+            cursor: none;
+            transition: all 0.3s ease;
+        }
+        .svg-interactive-node:hover {
+            filter: drop-shadow(0 0 8px var(--accent-color));
+            r: 7 !important;
+        }
+        #svg-telemetry-tooltip {
+            margin-top: 10px;
+            font-family: 'Fira Code', monospace;
+            font-size: 0.75rem;
+            color: var(--accent-color);
+            background: rgba(2, 6, 17, 0.9);
+            border: 1px dashed var(--glow-light);
+            border-radius: 4px;
+            padding: 8px 12px;
+            text-align: center;
+            min-height: 18px;
+            letter-spacing: 0.5px;
+            transition: all 0.3s ease;
         }
 
         footer {
@@ -759,7 +852,7 @@
         /* Impression */
         @media print {
             body { background: #ffffff !important; color: #000000 !important; padding: 20px !important; }
-            .bg-video-container, .bg-overlay, .card-media, iframe, #sys-status, .tab-navigation, #cyber-cursor, #matrix-preloader, #anomaly-filter, .copy-citation-btn { display: none !important; }
+            .bg-video-container, .bg-overlay, .card-media, iframe, #sys-status, .tab-navigation, #cyber-cursor, #matrix-preloader, #anomaly-filter, .citation-actions-group, .registry-filter-bar { display: none !important; }
             .tab-panel { position: relative !important; top: 0 !important; left: 0 !important; visibility: visible !important; opacity: 1 !important; height: auto !important; display: flex !important; flex-direction: column !important; }
             .card { background: none !important; border: none !important; box-shadow: none !important; padding: 0 !important; margin-bottom: 30px !important; page-break-inside: avoid; }
             h1, h2, h3, p, a { color: #000000 !important; text-shadow: none !important; }
@@ -985,7 +1078,7 @@
 
                             <p style="margin: 5px 0;"><strong style="color: var(--accent-color);">NODE_GAMMA // Thermodynamique des Événements Rares & Outliers (Prof. O. Sire - Note 2026)</strong></p>
                             <p style="color: #cbd5e1; font-family: 'Inter', sans-serif; font-size: 0.9rem; margin: 5px 0 0 0; text-align: justify;">
-                                Modélisation des out-of-equilibrium dynamics. Lorsque le ratio des forces s'affranchit du bruit thermique (&beta; &gt; 1.5), les configurations extrêmes et fluctuations locales (outliers) agissent comme des détonateurs créatifs. Elles brisent la linéarité pour engendrer des instabilités non linéaires collectives (piégeage et convection chaotique) qui amplifient le signal et démultiplient par dix l'efficacité du transport informationnel et de la séparation des biomarqueurs.
+                                Modélisation des out-of-equilibrium dynamics. Lorsque le ratio des forces s'affranchit du bruit thermique ($\beta > 1.5$), les configurations extrêmes et fluctuations locales (outliers) agissent comme des détonateurs créatifs. Elles brisent la linéarité pour engendrer des instabilités non linéaires collectives (piégeage et convection chaotique) qui amplifient le signal et démultiplient par dix l'efficacité du transport informationnel et de la séparation des biomarqueurs.
                             </p>
                         </div>
                     </div>
@@ -998,7 +1091,7 @@
                             Représentation vectorielle de la fonction de transfert entre l'Espace Latent du Topos et le réseau de bio-impédance membranaire.
                         </p>
                         
-                        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: 10px; font-family: 'Fira Code', monospace; font-size: 0.75rem; margin-bottom: 15px;">
+                        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: 10px; font-family: 'Fira Code', monospace; font-size: 0.75rem; margin-bottom: 10px;">
                             <div style="border: 1px solid var(--glow-light); padding: 6px; background: rgba(2, 6, 17, 0.4);">
                                 <span style="color: #94a3b8;">H1_OBSTRUCTION:</span><br>
                                 <span style="color: #10b981; font-weight: bold;">0.000 // NULL</span>
@@ -1011,6 +1104,9 @@
                                 <span id="live-stability" style="color: var(--secondary-color); font-weight: bold;">99.84% STABLE</span>
                             </div>
                         </div>
+
+                        <!-- AXE 4 : INFOBULLE INTERACTIVE DE TÉLÉMÉTRIE SVG -->
+                        <div id="svg-telemetry-tooltip">// SURVOLEZ LES POINTS DU DIAGRAMME POUR ANALYSER LES PÔLES</div>
                     </div>
 
                     <div class="card-media" style="background: #020617; display: flex; align-items: center; justify-content: center; padding: 10px;">
@@ -1027,11 +1123,15 @@
                             <text x="35" y="30" fill="rgba(255,255,255,0.6)" font-size="7" transform="rotate(90 35 30)">-X (Imaginary)</text>
                             <path d="M 40 150 A 110 110 0 0 1 240 150" fill="none" stroke="var(--glow-ultra)" stroke-width="2" stroke-dasharray="3 3" />
                             <path d="M 40 150 A 110 110 0 0 1 180 65" fill="none" stroke="var(--accent-color)" stroke-width="2.5" stroke-linecap="round" id="transduction-arc" style="transition: stroke 0.3s ease;" />
-                            <circle cx="40" cy="150" r="4" fill="#10b981" />
+                            
+                            <!-- Nœuds Interactifs SVG avec Tooltips -->
+                            <circle class="svg-interactive-node" cx="40" cy="150" r="4" fill="#10b981" onmouseenter="setSvgTooltip('R_inf (Haute Fréquence) : Résistance du milieu extracellulaire / Flux continu')" onmouseleave="resetSvgTooltip()" />
                             <text x="48" y="145" fill="#10b981" font-size="6">R_inf (Flow)</text>
-                            <circle cx="240" cy="150" r="4" fill="#ef4444" />
+                            
+                            <circle class="svg-interactive-node" cx="240" cy="150" r="4" fill="#ef4444" onmouseenter="setSvgTooltip('R_0 (Basse Fréquence) : Impédance membranaire statique / Résistance totale')" onmouseleave="resetSvgTooltip()" />
                             <text x="185" y="145" fill="#ef4444" font-size="6">R_0 (Static)</text>
-                            <circle cx="140" cy="53" r="5" fill="var(--accent-color)" id="transduction-node-point" style="animation: pulseNode 2s infinite; transition: fill 0.3s ease;" />
+                            
+                            <circle class="svg-interactive-node" cx="140" cy="53" r="5" fill="var(--accent-color)" id="transduction-node-point" style="animation: pulseNode 2s infinite; transition: fill 0.3s ease;" onmouseenter="setSvgTooltip('F_c (Pic de Transduction) : Fréquence critique de relaxation diélectrique / Cohérence')" onmouseleave="resetSvgTooltip()" />
                             <line x1="30" y1="53" x2="140" y2="53" stroke="rgba(56, 189, 248, 0.2)" stroke-width="1" stroke-dasharray="2 2" />
                             <line x1="140" y1="53" x2="140" y2="150" stroke="rgba(56, 189, 248, 0.2)" stroke-width="1" stroke-dasharray="2 2" />
                             <text x="148" y="48" fill="#ffffff" font-size="7" font-weight="bold">F_c (Transduction Peak)</text>
@@ -1049,48 +1149,75 @@
                         <div class="document-registry">
                             <div class="document-registry-title">// REGISTERED DOCUMENTS (INDEXED BY CORE PILLARS) :</div>
                             
+                            <!-- AXE 5 : BARRE DE RECHERCHE ET TAGS DYNAMIQUES -->
+                            <div class="registry-filter-bar">
+                                <input type="text" id="paper-search-input" class="registry-search-input" placeholder=">> RECHERCHER UN MANUSCRIT (ex: NR3C1, Bio-OS, Lipid, Lyapunov...)" oninput="filterRegistry()">
+                                <div class="filter-tags-container">
+                                    <button class="filter-tag-btn active" onclick="setRegistryFilter('ALL')">[ TOUT ]</button>
+                                    <button class="filter-tag-btn" onclick="setRegistryFilter('BIO-OS')">[ BIO-OS ]</button>
+                                    <button class="filter-tag-btn" onclick="setRegistryFilter('EPIGENETIC')">[ ÉPIGÉNÉTIQUE ]</button>
+                                    <button class="filter-tag-btn" onclick="setRegistryFilter('MITOCHONDRIA')">[ MITOCHONDRIE ]</button>
+                                    <button class="filter-tag-btn" onclick="setRegistryFilter('NR3C1')">[ NR3C1 ]</button>
+                                </div>
+                            </div>
+
                             <details class="accordion-category" open>
                                 <summary class="accordion-summary"> [PILLAR_01] // INTÉGRITÉ ÉPIGÉNÉTIQUE & CRITICAL FLOWS</summary>
                                 <div class="accordion-content">
-                                    <p class="document-line">
+                                    <p class="document-line" data-tags="nr3c1 epigenetic bio-os stress hpa">
                                         > <span class="tag-cyan">[NEURO_EPIGENETICS_2026]</span> 
                                         <a href="https://doi.org/10.63721/26JPIR0141" target="_blank" class="document-link">
                                             Theoretical Perspective – Neuro-Epigenetics of Stress: Modeling HPA Axis Unlocking and Central Signal-to-Noise Ratio Optimization via the Bio-OS V8 Framework
                                         </a> 
                                         <span class="tag-green">[PUBLISHED]</span>
-                                        <button class="copy-citation-btn" onclick="copyCitation(this, 'Boblique, J. (2026). Theoretical Perspective – Neuro-Epigenetics of Stress: Modeling HPA Axis Unlocking and Central Signal-to-Noise Ratio Optimization via the Bio-OS V8 Framework. Journal of Psychiatric Insight Review, 2(3), 01-04. DOI: 10.63721/26JPIR0141')">[ COPY_CITATION ]</button>
+                                        <span class="citation-actions-group">
+                                            <button class="copy-citation-btn" onclick="copyCitation(this, 'Boblique, J. (2026). Theoretical Perspective – Neuro-Epigenetics of Stress: Modeling HPA Axis Unlocking and Central Signal-to-Noise Ratio Optimization via the Bio-OS V8 Framework. Journal of Psychiatric Insight Review, 2(3), 01-04. DOI: 10.63721/26JPIR0141')">[ CITATION ]</button>
+                                            <button class="copy-bibtex-btn" onclick="copyBibtex(this, 'neuro_epigenetics_2026')">[ BIBTEX ]</button>
+                                        </span>
                                     </p>
-                                    <p class="document-line">
+                                    <p class="document-line" data-tags="set theory systemic transitions epigenetic">
                                         > <span class="tag-cyan">[SET_THEORY_2026]</span> 
                                         <a href="https://doi.org/10.23880/izab-16000667" target="_blank" class="document-link">
                                             A Social Epigenetic Theory of Systemic Transitions
                                         </a> 
                                         <span class="tag-green">[PUBLISHED]</span>
-                                        <button class="copy-citation-btn" onclick="copyCitation(this, 'Boblique, J. (2026). A Social Epigenetic Theory of Systemic Transitions. International Journal of Zoology and Animal Biology. DOI: 10.23880/izab-16000667')">[ COPY_CITATION ]</button>
+                                        <span class="citation-actions-group">
+                                            <button class="copy-citation-btn" onclick="copyCitation(this, 'Boblique, J. (2026). A Social Epigenetic Theory of Systemic Transitions. International Journal of Zoology and Animal Biology. DOI: 10.23880/izab-16000667')">[ CITATION ]</button>
+                                            <button class="copy-bibtex-btn" onclick="copyBibtex(this, 'set_theory_2026')">[ BIBTEX ]</button>
+                                        </span>
                                     </p>
-                                    <p class="document-line">
+                                    <p class="document-line" data-tags="set science 4.0 flow control epigenetic">
                                         > <span class="tag-cyan">[SCIENCE_4.0_2026]</span> 
                                         <a href="https://doi.org/10.23880/izab-16000669" target="_blank" class="document-link">
                                             From SET Theory to Science 4.0: An AI-Driven Framework for Epigenetic Integrity and Biological Flow Control
                                         </a> 
                                         <span class="tag-green">[PUBLISHED]</span>
-                                        <button class="copy-citation-btn" onclick="copyCitation(this, 'Boblique, J. (2026). From SET Theory to Science 4.0: An AI-Driven Framework for Epigenetic Integrity and Biological Flow Control. International Journal of Zoology and Animal Biology. DOI: 10.23880/izab-16000669')">[ COPY_CITATION ]</button>
+                                        <span class="citation-actions-group">
+                                            <button class="copy-citation-btn" onclick="copyCitation(this, 'Boblique, J. (2026). From SET Theory to Science 4.0: An AI-Driven Framework for Epigenetic Integrity and Biological Flow Control. International Journal of Zoology and Animal Biology. DOI: 10.23880/izab-16000669')">[ CITATION ]</button>
+                                            <button class="copy-bibtex-btn" onclick="copyBibtex(this, 'science_4_0_2026')">[ BIBTEX ]</button>
+                                        </span>
                                     </p>
-                                    <p class="document-line">
+                                    <p class="document-line" data-tags="epigenetic sustainability nr3c1 human factor">
                                         > <span class="tag-cyan">[EPIGENETIC_SUSTAINABILITY_2026]</span> 
                                         <a href="https://doi.org/10.23880/jenr-16000418" target="_blank" class="document-link">
                                             Epigenetic Sustainability: Modeling the Human Factor as a Natural Resource through Science 4.0 and the NR3C1 Biological Pilot
                                         </a> 
                                         <span class="tag-green">[PUBLISHED]</span>
-                                        <button class="copy-citation-btn" onclick="copyCitation(this, 'Boblique, J. (2026). Epigenetic Sustainability: Modeling the Human Factor as a Natural Resource through Science 4.0 and the NR3C1 Biological Pilot. Journal of Ecology and Natural Resources. DOI: 10.23880/jenr-16000418')">[ COPY_CITATION ]</button>
+                                        <span class="citation-actions-group">
+                                            <button class="copy-citation-btn" onclick="copyCitation(this, 'Boblique, J. (2026). Epigenetic Sustainability: Modeling the Human Factor as a Natural Resource through Science 4.0 and the NR3C1 Biological Pilot. Journal of Ecology and Natural Resources. DOI: 10.23880/jenr-16000418')">[ CITATION ]</button>
+                                            <button class="copy-bibtex-btn" onclick="copyBibtex(this, 'epigenetic_sustainability_2026')">[ BIBTEX ]</button>
+                                        </span>
                                     </p>
-                                    <p class="document-line">
+                                    <p class="document-line" data-tags="unified framework resilience epigenetic">
                                         > <span class="tag-cyan">[UNIFIED_FRAMEWORK_2026]</span> 
                                         <a href="https://doi.org/10.26502/AVSM.054" target="_blank" class="document-link">
                                             Science 4.0: A Unified Operational Framework for Epigenetic Integrity and Systemic Resilience Steering
                                         </a> 
                                         <span class="tag-green">[PUBLISHED]</span>
-                                        <button class="copy-citation-btn" onclick="copyCitation(this, 'Boblique, J. (2026). Science 4.0: A Unified Operational Framework for Epigenetic Integrity and Systemic Resilience Steering. Archives of Veterinary Science and Medicine. DOI: 10.26502/AVSM.054')">[ COPY_CITATION ]</button>
+                                        <span class="citation-actions-group">
+                                            <button class="copy-citation-btn" onclick="copyCitation(this, 'Boblique, J. (2026). Science 4.0: A Unified Operational Framework for Epigenetic Integrity and Systemic Resilience Steering. Archives of Veterinary Science and Medicine. DOI: 10.26502/AVSM.054')">[ CITATION ]</button>
+                                            <button class="copy-bibtex-btn" onclick="copyBibtex(this, 'unified_framework_2026')">[ BIBTEX ]</button>
+                                        </span>
                                     </p>
                                 </div>
                             </details>
@@ -1098,45 +1225,60 @@
                             <details class="accordion-category">
                                 <summary class="accordion-summary"> [PILLAR_02] // INDUSTRIAL STANDARDIZATION & BIO-OS</summary>
                                 <div class="accordion-content">
-                                    <p class="document-line">
+                                    <p class="document-line" data-tags="bio-os v8 sovereignty governance">
                                         > <span class="tag-cyan">[SCIENCE_4_0_BIO_OS_V8_2026]</span> 
                                         <a href="https://medwinpublishers.com/article-description.php?artId=14250" target="_blank" class="document-link">
                                             Science 4.0 and the Bio-OS V8 Architecture: Algorithmic Governance for Biological Sovereignty
                                         </a> 
                                         <span class="tag-green">[PUBLISHED]</span>
-                                        <button class="copy-citation-btn" onclick="copyCitation(this, 'Boblique, J. (2026). Science 4.0 and the Bio-OS V8 Architecture: Algorithmic Governance for Biological Sovereignty. International Journal of Zoology and Animal Biology, 9(4): 000689. DOI: 10.23880/izab-16000689')">[ COPY_CITATION ]</button>
+                                        <span class="citation-actions-group">
+                                            <button class="copy-citation-btn" onclick="copyCitation(this, 'Boblique, J. (2026). Science 4.0 and the Bio-OS V8 Architecture: Algorithmic Governance for Biological Sovereignty. International Journal of Zoology and Animal Biology, 9(4): 000689. DOI: 10.23880/izab-16000689')">[ CITATION ]</button>
+                                            <button class="copy-bibtex-btn" onclick="copyBibtex(this, 'bio_os_v8_izab_2026')">[ BIBTEX ]</button>
+                                        </span>
                                     </p>
-                                    <p class="document-line">
+                                    <p class="document-line" data-tags="bio-os v8 jenr epigenetic ecosystems">
                                         > <span class="tag-cyan">[BIO_OS_V8_JENR_2026]</span> 
                                         <a href="https://medwinpublishers.com/article-description.php?artId=14242" target="_blank" class="document-link">
                                             Bio-OS V8 Algorithmic Governance: Industrializing Epigenetic Sustainability in Socio-Technical Ecosystems
                                         </a> 
                                         <span class="tag-green">[PUBLISHED]</span>
-                                        <button class="copy-citation-btn" onclick="copyCitation(this, 'Boblique, J. (2026). Bio-OS V8 Algorithmic Governance: Industrializing Epigenetic Sustainability in Socio-Technical Ecosystems. Journal of Ecology and Natural Resources, 10(2): 000424. DOI: 10.23880/jenr-16000424')">[ COPY_CITATION ]</button>
+                                        <span class="citation-actions-group">
+                                            <button class="copy-citation-btn" onclick="copyCitation(this, 'Boblique, J. (2026). Bio-OS V8 Algorithmic Governance: Industrializing Epigenetic Sustainability in Socio-Technical Ecosystems. Journal of Ecology and Natural Resources, 10(2): 000424. DOI: 10.23880/jenr-16000424')">[ CITATION ]</button>
+                                            <button class="copy-bibtex-btn" onclick="copyBibtex(this, 'bio_os_v8_jenr_2026')">[ BIBTEX ]</button>
+                                        </span>
                                     </p>
-                                    <p class="document-line">
+                                    <p class="document-line" data-tags="bio-os standardization codification">
                                         > <span class="tag-cyan">[BIO_OS_STANDARDIZATION_2026]</span> 
                                         <a href="https://medwinpublishers.com/article-description.php?artId=14225" target="_blank" class="document-link">
                                             Industrial Standardization of the Bio-OS: Algorithmic Codification of Resilience Engineering Guidelines and Version V8 Architecture
                                         </a> 
                                         <span class="tag-green">[PUBLISHED]</span>
-                                        <button class="copy-citation-btn" onclick="copyCitation(this, 'Boblique, J. (2026). Industrial Standardization of the Bio-OS: Algorithmic Codification of Resilience Engineering Guidelines and Version V8 Architecture. MedWin Publishers, ArtId=14225')">[ COPY_CITATION ]</button>
+                                        <span class="citation-actions-group">
+                                            <button class="copy-citation-btn" onclick="copyCitation(this, 'Boblique, J. (2026). Industrial Standardization of the Bio-OS: Algorithmic Codification of Resilience Engineering Guidelines and Version V8 Architecture. MedWin Publishers, ArtId=14225')">[ CITATION ]</button>
+                                            <button class="copy-bibtex-btn" onclick="copyBibtex(this, 'bio_os_standardization_2026')">[ BIBTEX ]</button>
+                                        </span>
                                     </p>
-                                    <p class="document-line">
+                                    <p class="document-line" data-tags="cellular resilience signal optimization">
                                         > <span class="tag-cyan">[CELLULAR_RESILIENCE_2026]</span> 
                                         <a href="https://doi.org/10.23880/izab-16000673" target="_blank" class="document-link">
                                             Science 4.0-Architecture of Cellular Resilience and Living Signal Optimization
                                         </a> 
                                         <span class="tag-green">[PUBLISHED]</span>
-                                        <button class="copy-citation-btn" onclick="copyCitation(this, 'Boblique, J. (2026). Science 4.0-Architecture of Cellular Resilience and Living Signal Optimization. International Journal of Zoology and Animal Biology. DOI: 10.23880/izab-16000673')">[ COPY_CITATION ]</button>
+                                        <span class="citation-actions-group">
+                                            <button class="copy-citation-btn" onclick="copyCitation(this, 'Boblique, J. (2026). Science 4.0-Architecture of Cellular Resilience and Living Signal Optimization. International Journal of Zoology and Animal Biology. DOI: 10.23880/izab-16000673')">[ CITATION ]</button>
+                                            <button class="copy-bibtex-btn" onclick="copyBibtex(this, 'cellular_resilience_2026')">[ BIBTEX ]</button>
+                                        </span>
                                     </p>
-                                    <p class="document-line">
+                                    <p class="document-line" data-tags="bio-os comprehensive architecture bio-governance">
                                         > <span class="tag-cyan">[BIO_OS_GOVERNANCE_2026]</span> 
                                         <a href="https://doi.org/10.23880/izab-16000679" target="_blank" class="document-link">
                                             Science 4.0: Comprehensive Architecture of the Biological Operating System (Bio-OS) A Framework for Systemic Resilience and Industrialized Bio-Governance
                                         </a> 
                                         <span class="tag-green">[PUBLISHED]</span>
-                                        <button class="copy-citation-btn" onclick="copyCitation(this, 'Boblique, J. (2026). Science 4.0: Comprehensive Architecture of the Biological Operating System (Bio-OS). International Journal of Zoology and Animal Biology. DOI: 10.23880/izab-16000679')">[ COPY_CITATION ]</button>
+                                        <span class="citation-actions-group">
+                                            <button class="copy-citation-btn" onclick="copyCitation(this, 'Boblique, J. (2026). Science 4.0: Comprehensive Architecture of the Biological Operating System (Bio-OS). International Journal of Zoology and Animal Biology. DOI: 10.23880/izab-16000679')">[ CITATION ]</button>
+                                            <button class="copy-bibtex-btn" onclick="copyBibtex(this, 'bio_os_governance_2026')">[ BIBTEX ]</button>
+                                        </span>
                                     </p>
                                 </div>
                             </details>
@@ -1144,45 +1286,60 @@
                             <details class="accordion-category">
                                 <summary class="accordion-summary"> [PILLAR_03] // APPLIED VALIDATION & STEERING SYNERGIES</summary>
                                 <div class="accordion-content">
-                                    <p class="document-line">
+                                    <p class="document-line" data-tags="lipid nano-vectorization living signals">
                                         > <span class="tag-cyan">[LIPID_MATRIX_ARCHITECTURE_2026]</span> 
                                         <a href="https://doi.org/10.47739/biotechnology1094" target="_blank" class="document-link">
                                             Lipid-Matrix Carrier Architecture: Engineering Nano-Vectorized Transport for Hydrophobic Living Signals in Science 4.0 Frameworks
                                         </a> 
                                         <span class="tag-green">[PUBLISHED]</span>
-                                        <button class="copy-citation-btn" onclick="copyCitation(this, 'Boblique, J. (2026). Lipid-Matrix Carrier Architecture: Engineering Nano-Vectorized Transport for Hydrophobic Living Signals in Science 4.0 Frameworks. JSM Biotechnology & Bioengineering, 10(1): 1094. DOI: 10.47739/biotechnology1094')">[ COPY_CITATION ]</button>
+                                        <span class="citation-actions-group">
+                                            <button class="copy-citation-btn" onclick="copyCitation(this, 'Boblique, J. (2026). Lipid-Matrix Carrier Architecture: Engineering Nano-Vectorized Transport for Hydrophobic Living Signals in Science 4.0 Frameworks. JSM Biotechnology & Bioengineering, 10(1): 1094. DOI: 10.47739/biotechnology1094')">[ CITATION ]</button>
+                                            <button class="copy-bibtex-btn" onclick="copyBibtex(this, 'lipid_matrix_2026')">[ BIBTEX ]</button>
+                                        </span>
                                     </p>
-                                    <p class="document-line">
+                                    <p class="document-line" data-tags="mitochondria clinical review mucosal restoration">
                                         > <span class="tag-cyan">[JMRCR_REVIEW_2026]</span> 
                                         <a href="https://www.sciencephotons.com/journal-of-medical-research-and-clinical-reviews/article-in-press" target="_blank" class="document-link">
                                             Clinical Review of Bio-Logistical Steering in Aging Hybrid Hardware: Micro-Vectorized Mitochondrial Architecture for Mucosal Restoration and Multi-Modular Decongestion
                                         </a> 
                                         <span class="tag-green">[PUBLISHED]</span>
-                                        <button class="copy-citation-btn" onclick="copyCitation(this, 'Boblique, J. (2026). Clinical Review of Bio-Logistical Steering in Aging Hybrid Hardware: Micro-Vectorized Mitochondrial Architecture for Mucosal Restoration and Multi-Modular Decongestion. Journal of Medical Research and Clinical Reviews, 2(2): 1-4. ISSN: 3070-6238.')">[ COPY_CITATION ]</button>
+                                        <span class="citation-actions-group">
+                                            <button class="copy-citation-btn" onclick="copyCitation(this, 'Boblique, J. (2026). Clinical Review of Bio-Logistical Steering in Aging Hybrid Hardware: Micro-Vectorized Mitochondrial Architecture for Mucosal Restoration and Multi-Modular Decongestion. Journal of Medical Research and Clinical Reviews, 2(2): 1-4. ISSN: 3070-6238.')">[ CITATION ]</button>
+                                            <button class="copy-bibtex-btn" onclick="copyBibtex(this, 'jmrcr_review_2026')">[ BIBTEX ]</button>
+                                        </span>
                                     </p>
-                                    <p class="document-line">
+                                    <p class="document-line" data-tags="maternal golden standard renal glomerular egfr">
                                         > <span class="tag-cyan">[MATERNAL_GOLDEN_STANDARD_2026]</span> 
                                         <span style="color: #e2e8f0; font-weight: 500;">
                                             The Maternal Golden Standard: Algorithmic Regulation of Renal Hydraulics and Glomerular Flow Restoration above 85 mL/min eGFR
                                         </span> 
                                         <span class="tag-orange">[UNDER_PEER_REVIEW]</span>
-                                        <button class="copy-citation-btn" onclick="copyCitation(this, 'Boblique, J. (2026). The Maternal Golden Standard: Algorithmic Regulation of Renal Hydraulics and Glomerular Flow Restoration above 85 mL/min eGFR. (Under Peer Review).')">[ COPY_CITATION ]</button>
+                                        <span class="citation-actions-group">
+                                            <button class="copy-citation-btn" onclick="copyCitation(this, 'Boblique, J. (2026). The Maternal Golden Standard: Algorithmic Regulation of Renal Hydraulics and Glomerular Flow Restoration above 85 mL/min eGFR. (Under Peer Review).')">[ CITATION ]</button>
+                                            <button class="copy-bibtex-btn" onclick="copyBibtex(this, 'maternal_golden_standard_2026')">[ BIBTEX ]</button>
+                                        </span>
                                     </p>
-                                    <p class="document-line">
+                                    <p class="document-line" data-tags="clinical validation epigenetic drift hybrid">
                                         > <span class="tag-cyan">[CLINICAL_VALIDATION_2026]</span> 
                                         <a href="https://doi.org/10.23880/izab-16000677" target="_blank" class="document-link">
                                             Clinical Validation of Science 4.0: Flow Steering and Epigenetic Drift Inversion on a 76-Year-Old Hybrid System
                                         </a> 
                                         <span class="tag-green">[PUBLISHED]</span>
-                                        <button class="copy-citation-btn" onclick="copyCitation(this, 'Boblique, J. (2026). Clinical Validation of Science 4.0: Flow Steering and Epigenetic Drift Inversion on a 76-Year-Old Hybrid System. International Journal of Zoology and Animal Biology. DOI: 10.23880/izab-16000677')">[ COPY_CITATION ]</button>
+                                        <span class="citation-actions-group">
+                                            <button class="copy-citation-btn" onclick="copyCitation(this, 'Boblique, J. (2026). Clinical Validation of Science 4.0: Flow Steering and Epigenetic Drift Inversion on a 76-Year-Old Hybrid System. International Journal of Zoology and Animal Biology. DOI: 10.23880/izab-16000677')">[ CITATION ]</button>
+                                            <button class="copy-bibtex-btn" onclick="copyBibtex(this, 'clinical_validation_2026')">[ BIBTEX ]</button>
+                                        </span>
                                     </p>
-                                    <p class="document-line">
+                                    <p class="document-line" data-tags="mitochondria q10 lycopene biologistics">
                                         > <span class="tag-cyan">[MITOCHONDRIAL_BIOLOGISTICS_2026]</span> 
                                         <a href="https://doi.org/10.23880/izab-16000681" target="_blank" class="document-link">
                                             Mitochondrial Bio-Logistics: Steering Co-Enzyme Q10 and Lycopene Synergies within the Science 4.0 Bio-OS Framework
                                         </a> 
                                         <span class="tag-green">[PUBLISHED]</span> <span style="color: #38bdf8; font-size: 0.8rem; font-family: 'Fira Code', monospace;">(64K+ Views)</span>
-                                        <button class="copy-citation-btn" onclick="copyCitation(this, 'Boblique, J. (2026). Mitochondrial Bio-Logistics: Steering Co-Enzyme Q10 and Lycopene Synergies within the Science 4.0 Bio-OS Framework. International Journal of Zoology and Animal Biology. DOI: 10.23880/izab-16000681')">[ COPY_CITATION ]</button>
+                                        <span class="citation-actions-group">
+                                            <button class="copy-citation-btn" onclick="copyCitation(this, 'Boblique, J. (2026). Mitochondrial Bio-Logistics: Steering Co-Enzyme Q10 and Lycopene Synergies within the Science 4.0 Bio-OS Framework. International Journal of Zoology and Animal Biology. DOI: 10.23880/izab-16000681')">[ CITATION ]</button>
+                                            <button class="copy-bibtex-btn" onclick="copyBibtex(this, 'mitochondrial_biologistics_2026')">[ BIBTEX ]</button>
+                                        </span>
                                     </p>
                                 </div>
                             </details>
@@ -1259,12 +1416,200 @@
         // MODULES CRITIQUES (CHAMP GLOBAL ÉTANCHE)
         // ==========================================
 
+        // AXE 2 : REGISTRE BIBTEX CENTRALISÉ
+        const BIBTEX_DATABASE = {
+            neuro_epigenetics_2026: `@article{boblique2026neuro,
+  title={Theoretical Perspective – Neuro-Epigenetics of Stress: Modeling HPA Axis Unlocking and Central Signal-to-Noise Ratio Optimization via the Bio-OS V8 Framework},
+  author={Boblique, Julien},
+  journal={Journal of Psychiatric Insight Review},
+  volume={2},
+  number={3},
+  pages={1--4},
+  year={2026},
+  doi={10.63721/26JPIR0141}
+}`,
+            set_theory_2026: `@article{boblique2026set,
+  title={A Social Epigenetic Theory of Systemic Transitions},
+  author={Boblique, Julien},
+  journal={International Journal of Zoology and Animal Biology},
+  year={2026},
+  doi={10.23880/izab-16000667}
+}`,
+            science_4_0_2026: `@article{boblique2026science40,
+  title={From SET Theory to Science 4.0: An AI-Driven Framework for Epigenetic Integrity and Biological Flow Control},
+  author={Boblique, Julien},
+  journal={International Journal of Zoology and Animal Biology},
+  year={2026},
+  doi={10.23880/izab-16000669}
+}`,
+            epigenetic_sustainability_2026: `@article{boblique2026sustainability,
+  title={Epigenetic Sustainability: Modeling the Human Factor as a Natural Resource through Science 4.0 and the NR3C1 Biological Pilot},
+  author={Boblique, Julien},
+  journal={Journal of Ecology and Natural Resources},
+  year={2026},
+  doi={10.23880/jenr-16000418}
+}`,
+            unified_framework_2026: `@article{boblique2026unified,
+  title={Science 4.0: A Unified Operational Framework for Epigenetic Integrity and Systemic Resilience Steering},
+  author={Boblique, Julien},
+  journal={Archives of Veterinary Science and Medicine},
+  year={2026},
+  doi={10.26502/AVSM.054}
+}`,
+            bio_os_v8_izab_2026: `@article{boblique2026bioos_izab,
+  title={Science 4.0 and the Bio-OS V8 Architecture: Algorithmic Governance for Biological Sovereignty},
+  author={Boblique, Julien},
+  journal={International Journal of Zoology and Animal Biology},
+  volume={9},
+  number={4},
+  pages={000689},
+  year={2026},
+  doi={10.23880/izab-16000689}
+}`,
+            bio_os_v8_jenr_2026: `@article{boblique2026bioos_jenr,
+  title={Bio-OS V8 Algorithmic Governance: Industrializing Epigenetic Sustainability in Socio-Technical Ecosystems},
+  author={Boblique, Julien},
+  journal={Journal of Ecology and Natural Resources},
+  volume={10},
+  number={2},
+  pages={000424},
+  year={2026},
+  doi={10.23880/jenr-16000424}
+}`,
+            bio_os_standardization_2026: `@article{boblique2026bioos_standard,
+  title={Industrial Standardization of the Bio-OS: Algorithmic Codification of Resilience Engineering Guidelines and Version V8 Architecture},
+  author={Boblique, Julien},
+  journal={MedWin Publishers},
+  year={2026}
+}`,
+            cellular_resilience_2026: `@article{boblique2026cellular,
+  title={Science 4.0-Architecture of Cellular Resilience and Living Signal Optimization},
+  author={Boblique, Julien},
+  journal={International Journal of Zoology and Animal Biology},
+  year={2026},
+  doi={10.23880/izab-16000673}
+}`,
+            bio_os_governance_2026: `@article{boblique2026bioos_gov,
+  title={Science 4.0: Comprehensive Architecture of the Biological Operating System (Bio-OS) A Framework for Systemic Resilience and Industrialized Bio-Governance},
+  author={Boblique, Julien},
+  journal={International Journal of Zoology and Animal Biology},
+  year={2026},
+  doi={10.23880/izab-16000679}
+}`,
+            lipid_matrix_2026: `@article{boblique2026lipid,
+  title={Lipid-Matrix Carrier Architecture: Engineering Nano-Vectorized Transport for Hydrophobic Living Signals in Science 4.0 Frameworks},
+  author={Boblique, Julien},
+  journal={JSM Biotechnology & Bioengineering},
+  volume={10},
+  number={1},
+  pages={1094},
+  year={2026},
+  doi={10.47739/biotechnology1094}
+}`,
+            jmrcr_review_2026: `@article{boblique2026jmrcr,
+  title={Clinical Review of Bio-Logistical Steering in Aging Hybrid Hardware: Micro-Vectorized Mitochondrial Architecture for Mucosal Restoration and Multi-Modular Decongestion},
+  author={Boblique, Julien},
+  journal={Journal of Medical Research and Clinical Reviews},
+  volume={2},
+  number={2},
+  pages={1--4},
+  year={2026}
+}`,
+            maternal_golden_standard_2026: `@article{boblique2026maternal,
+  title={The Maternal Golden Standard: Algorithmic Regulation of Renal Hydraulics and Glomerular Flow Restoration above 85 mL/min eGFR},
+  author={Boblique, Julien},
+  journal={Under Peer Review},
+  year={2026}
+}`,
+            clinical_validation_2026: `@article{boblique2026clinical_val,
+  title={Clinical Validation of Science 4.0: Flow Steering and Epigenetic Drift Inversion on a 76-Year-Old Hybrid System},
+  author={Boblique, Julien},
+  journal={International Journal of Zoology and Animal Biology},
+  year={2026},
+  doi={10.23880/izab-16000677}
+}`,
+            mitochondrial_biologistics_2026: `@article{boblique2026mitochondrial,
+  title={Mitochondrial Bio-Logistics: Steering Co-Enzyme Q10 and Lycopene Synergies within the Science 4.0 Bio-OS Framework},
+  author={Boblique, Julien},
+  journal={International Journal of Zoology and Animal Biology},
+  year={2026},
+  doi={10.23880/izab-16000681}
+}`
+        };
+
+        // EXPORT BIBTEX
+        window.copyBibtex = function(btnElement, key) {
+            const bibtexText = BIBTEX_DATABASE[key] || "";
+            if (!bibtexText) return;
+            navigator.clipboard.writeText(bibtexText).then(() => {
+                const orig = btnElement.innerHTML;
+                btnElement.innerHTML = "[ BIBTEX COPIED! ]";
+                btnElement.classList.add('copied');
+                setTimeout(() => {
+                    btnElement.innerHTML = orig;
+                    btnElement.classList.remove('copied');
+                }, 2000);
+            });
+        };
+
+        // AXE 4 : GESTIONNAIRE D'INFOBULLE INTERACTIVE SVG
+        window.setSvgTooltip = function(text) {
+            const tip = document.getElementById('svg-telemetry-tooltip');
+            if (tip) {
+                tip.innerHTML = `>> ${text}`;
+                tip.style.borderColor = 'var(--accent-color)';
+                tip.style.color = '#ffffff';
+            }
+        };
+
+        window.resetSvgTooltip = function() {
+            const tip = document.getElementById('svg-telemetry-tooltip');
+            if (tip) {
+                tip.innerHTML = '// SURVOLEZ LES POINTS DU DIAGRAMME POUR ANALYSER LES PÔLES';
+                tip.style.borderColor = 'var(--glow-light)';
+                tip.style.color = 'var(--accent-color)';
+            }
+        };
+
+        // AXE 5 : RECHERCHE DYNAMIQUE ET FILTRES DANS LE REGISTRE
+        window.filterRegistry = function() {
+            const query = document.getElementById('paper-search-input').value.toLowerCase();
+            const lines = document.querySelectorAll('#panel-profile .document-line');
+            const categories = document.querySelectorAll('#panel-profile .accordion-category');
+
+            lines.forEach(line => {
+                const text = line.textContent.toLowerCase();
+                const tags = (line.getAttribute('data-tags') || '').toLowerCase();
+                if (text.includes(query) || tags.includes(query)) {
+                    line.classList.remove('hidden-node');
+                } else {
+                    line.classList.add('hidden-node');
+                }
+            });
+
+            if (query.length > 1) {
+                categories.forEach(cat => cat.setAttribute('open', 'true'));
+            }
+        };
+
+        window.setRegistryFilter = function(tag) {
+            document.querySelectorAll('.filter-tag-btn').forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+
+            const searchInput = document.getElementById('paper-search-input');
+            if (tag === 'ALL') {
+                searchInput.value = '';
+            } else {
+                searchInput.value = tag.toLowerCase();
+            }
+            filterRegistry();
+        };
+
         // ENGINE COMPTEUR RESILIENT SOUVERAIN (ZERO-DEPENDENCY & ANTI-ADBLOCK)
         function initAutonomousVisitorCounter() {
             const counterElement = document.getElementById('real-visitor-counter');
             if (!counterElement) return;
 
-            // Détection et interception du mode admin
             const urlParams = new URLSearchParams(window.location.search);
             if (urlParams.get('mode') === 'admin') {
                 localStorage.setItem('sys_exclude_counter', 'true');
@@ -1273,7 +1618,7 @@
             }
 
             const isExcluded = localStorage.getItem('sys_exclude_counter') === 'true';
-            const BASELINE_VISITS = 1248; // Base plancher de trafic
+            const BASELINE_VISITS = 1248; 
             const STORAGE_KEY = 'sys_s40_autonomous_hits';
             const LAST_HIT_KEY = 'sys_s40_last_hit_timestamp';
             
@@ -1286,17 +1631,14 @@
                 return;
             }
 
-            // Incrémentation locale découplée (1 hit max par session / 30 min)
             if (now - lastHit > 30 * 60 * 1000) {
                 localHits += 1;
                 localStorage.setItem(STORAGE_KEY, localHits);
                 localStorage.setItem(LAST_HIT_KEY, now);
             }
 
-            // Affichage instantané et résilient
             counterElement.innerHTML = `${localHits.toLocaleString('fr-FR')}+`;
 
-            // Micro-ping télémétrique non bloquant
             const telemetryEndpoint = "https://julien-science40.github.io/telemetry-ping"; 
             try {
                 fetch(telemetryEndpoint, { method: 'HEAD', mode: 'no-cors', cache: 'no-store' }).catch(() => {});
@@ -1353,7 +1695,7 @@
             }
         }
         window.addEventListener('load', () => { setTimeout(terminateMatrixPreloader, 1200); });
-        setTimeout(terminateMatrixPreloader, 1500); // Fallback de sécurité
+        setTimeout(terminateMatrixPreloader, 1500); 
 
         // INTERACTIVITÉ DES COMMANDES CONSOLE AVEC STREAMING DYNAMIQUE
         let stabilityLockActive = false;
@@ -1471,14 +1813,12 @@
                 const hashBuffer = await crypto.subtle.digest('SHA-256', msgBuffer);
                 const hashHex = Array.from(new Uint8Array(hashBuffer)).map(b => b.toString(16).padStart(2, '0')).join('');
                 
-                // Empreinte SHA-256 du jeton d'accès
                 const TARGET_HASH = "ba9cb3d4b65dd4b1b369ec2e339b6be2d69fe4bc403b9bdfbcf1b24bf2a64c4c";
 
                 if (hashHex === TARGET_HASH) {
                     authAttempts = 0;
                     alert("// ACCESS_GRANTED: Signature vérifiée. Téléchargement du Press Kit en cours...");
                     
-                    // Déclenchement propre du téléchargement
                     const downloadLink = document.createElement('a');
                     downloadLink.href = "Press_Kit_Dr_Julien_Boblique.pdf";
                     downloadLink.download = "Press_Kit_Dr_Julien_Boblique.pdf";
@@ -1489,7 +1829,7 @@
                 } else {
                     authAttempts++;
                     if (authAttempts >= 3) {
-                        lockUntil = Date.now() + 30000; // Verrouillage 30s après 3 échecs
+                        lockUntil = Date.now() + 30000; 
                         authAttempts = 0;
                         alert("// ACCESS_DENIED: Clé erronée. Verrouillage du canal de transmission (30s).");
                     } else {
@@ -1501,11 +1841,33 @@
             }
         };
 
+        // AXE 3 : ÉCO-MODE ÉNERGÉTIQUE & SUSPENSION VIDÉO LORS DU CHANGEMENT D'ONGLET
+        document.addEventListener('visibilitychange', () => {
+            const bgVideos = document.querySelectorAll('.bg-video');
+            if (document.hidden) {
+                bgVideos.forEach(v => v.pause());
+            } else {
+                const activeVideo = document.querySelector('.bg-video.active');
+                if (activeVideo) activeVideo.play().catch(() => {});
+            }
+        });
+
         // INITIALISATION PROTEGÉE
         document.addEventListener("DOMContentLoaded", () => {
             const savedSpectrum = localStorage.getItem('sys_spectrum');
             if (savedSpectrum === 'beta') {
                 document.body.classList.add('spectrum-beta');
+            }
+
+            // AXE 1 : RENDU AUTOMATIQUE KATEX DES FORMULES LATEX
+            if (window.renderMathInElement) {
+                renderMathInElement(document.body, {
+                    delimiters: [
+                        {left: '$$', right: '$$', display: true},
+                        {left: '$', right: '$', display: false}
+                    ],
+                    throwOnError: false
+                });
             }
 
             // AMORÇAGE DU COMPTEUR
@@ -1516,7 +1878,7 @@
                 document.addEventListener('mousemove', (e) => {
                     cCursor.style.display = 'block'; cCursor.style.left = e.clientX + 'px'; cCursor.style.top = e.clientY + 'px';
                 });
-                document.querySelectorAll('a, button, .tab-btn, video, .document-link, .console-cmd-btn, .accordion-summary, .spectrum-btn, .copy-citation-btn, .skip-preloader-btn').forEach(element => {
+                document.querySelectorAll('a, button, input, .tab-btn, video, .document-link, .console-cmd-btn, .accordion-summary, .spectrum-btn, .copy-citation-btn, .copy-bibtex-btn, .skip-preloader-btn, .filter-tag-btn, .svg-interactive-node').forEach(element => {
                     element.addEventListener('mouseenter', () => cCursor.classList.add('pulse-active'));
                     element.addEventListener('mouseleave', () => cCursor.classList.remove('pulse-active'));
                 });
@@ -1544,6 +1906,7 @@
                     videoLayers[currentTrack].play().catch(err => {});
                     if (videoLayers.length > 1) {
                         setInterval(() => {
+                            if (document.hidden) return; // Éco-mode
                             const prev = currentTrack; currentTrack = (currentTrack + 1) % videoLayers.length;
                             const dOut = videoLayers[prev]; const dIn = videoLayers[currentTrack];
                             dIn.play().then(() => {
