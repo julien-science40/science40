@@ -65,13 +65,13 @@
         }
 
         /* Masquage étanche du pointeur système par défaut sur tout le site */
-        html, body, a, button, video, .tab-btn, .card, .document-link, .console-cmd-btn, .accordion-summary, .spectrum-btn, .copy-citation-btn {
+        html, body, a, button, video, .tab-btn, .card, .document-link, .console-cmd-btn, .accordion-summary, .spectrum-btn, .copy-citation-btn, .skip-preloader-btn {
             cursor: none !important;
         }
 
         /* Restauration du curseur par défaut sur écrans tactiles */
         @media (pointer: coarse) {
-            html, body, a, button, video, .tab-btn, .card, .document-link, .console-cmd-btn, .accordion-summary, .spectrum-btn, .copy-citation-btn {
+            html, body, a, button, video, .tab-btn, .card, .document-link, .console-cmd-btn, .accordion-summary, .spectrum-btn, .copy-citation-btn, .skip-preloader-btn {
                 cursor: auto !important;
             }
             #cyber-cursor {
@@ -94,7 +94,7 @@
         }
 
         /* ==========================================
-            PRELOADER MATRIX
+            PRELOADER MATRIX (LATENCE 1.2S + SKIP)
             ========================================== */
         #matrix-preloader {
             position: fixed;
@@ -109,11 +109,15 @@
             justify-content: center;
             align-items: center;
             pointer-events: auto;
+            transition: opacity 0.3s ease, visibility 0.3s ease;
         }
 
         .preloader-content {
             text-align: center;
             font-family: 'Fira Code', monospace;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
 
         .matrix-glow-text {
@@ -122,7 +126,7 @@
             letter-spacing: 3px;
             text-shadow: 0 0 10px rgba(16, 185, 129, 0.6);
             margin-bottom: 20px;
-            animation: pulsePreloaderText 2s infinite ease-in-out;
+            animation: pulsePreloaderText 1.2s infinite ease-in-out;
         }
 
         .cyber-bar-container {
@@ -139,22 +143,39 @@
             height: 100%;
             background: #00f2fe;
             box-shadow: 0 0 8px #00f2fe;
-            animation: loadCyberBar 3.8s ease-in-out forwards; 
+            animation: loadCyberBar 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards; 
+        }
+
+        .skip-preloader-btn {
+            margin-top: 25px;
+            background: rgba(2, 6, 17, 0.8);
+            border: 1px dashed rgba(56, 189, 248, 0.4);
+            color: var(--secondary-color);
+            padding: 6px 14px;
+            border-radius: 4px;
+            font-family: 'Fira Code', monospace;
+            font-size: 0.75rem;
+            letter-spacing: 1px;
+            transition: all 0.2s ease;
+        }
+
+        .skip-preloader-btn:hover {
+            color: var(--accent-color);
+            border-color: var(--accent-color);
+            border-style: solid;
+            box-shadow: 0 0 10px var(--glow-ultra);
+            background: rgba(0, 242, 254, 0.05);
         }
 
         @keyframes pulsePreloaderText {
-            0%, 100% { opacity: 0.6; }
+            0%, 100% { opacity: 0.7; }
             50% { opacity: 1; text-shadow: 0 0 15px rgba(16, 185, 129, 0.9); }
         }
 
         @keyframes loadCyberBar {
             0% { width: 0%; }
-            15% { width: 12%; }
-            30% { width: 30%; }
-            50% { width: 30%; } 
-            65% { width: 70%; }
-            80% { width: 85%; }
-            92% { width: 92%; } 
+            35% { width: 45%; }
+            70% { width: 85%; }
             100% { width: 100%; }
         }
 
@@ -745,6 +766,7 @@
             <div class="cyber-bar-container">
                 <div class="cyber-bar-progress"></div>
             </div>
+            <button class="skip-preloader-btn" onclick="terminateMatrixPreloader()">[ SKIP_BOOT ]</button>
         </div>
     </div>
 
@@ -1297,16 +1319,21 @@
             localStorage.setItem('sys_spectrum', isActive ? 'beta' : 'alpha');
         };
 
-        // DEVICE DE PRELOADER
+        // DEVICE DE PRELOADER (RÉDUIT À 1.2S + OPTION SKIP IMMÉDIAT)
         let preloaderTerminated = false;
         function terminateMatrixPreloader() {
             if (preloaderTerminated) return;
             preloaderTerminated = true;
             const mPreloader = document.getElementById('matrix-preloader');
-            if (mPreloader) mPreloader.style.display = 'none'; 
+            if (mPreloader) {
+                mPreloader.style.opacity = '0';
+                setTimeout(() => {
+                    mPreloader.style.display = 'none';
+                }, 300);
+            }
         }
-        window.addEventListener('load', () => { setTimeout(terminateMatrixPreloader, 3900); });
-        setTimeout(terminateMatrixPreloader, 4200); 
+        window.addEventListener('load', () => { setTimeout(terminateMatrixPreloader, 1200); });
+        setTimeout(terminateMatrixPreloader, 1500); // Fallback absolu
 
         // INTERACTIVITÉ DES COMMANDES CONSOLE AVEC STREAMING DYNAMIQUE
         let stabilityLockActive = false;
@@ -1432,7 +1459,7 @@
                 document.addEventListener('mousemove', (e) => {
                     cCursor.style.display = 'block'; cCursor.style.left = e.clientX + 'px'; cCursor.style.top = e.clientY + 'px';
                 });
-                document.querySelectorAll('a, button, .tab-btn, video, .document-link, .console-cmd-btn, .accordion-summary, .spectrum-btn, .copy-citation-btn').forEach(element => {
+                document.querySelectorAll('a, button, .tab-btn, video, .document-link, .console-cmd-btn, .accordion-summary, .spectrum-btn, .copy-citation-btn, .skip-preloader-btn').forEach(element => {
                     element.addEventListener('mouseenter', () => cCursor.classList.add('pulse-active'));
                     element.addEventListener('mouseleave', () => cCursor.classList.remove('pulse-active'));
                 });
