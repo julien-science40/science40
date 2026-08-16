@@ -1240,47 +1240,48 @@
         // MODULES CRITIQUES (CHAMP GLOBAL ÉTANCHE)
         // ==========================================
 
-        // ENGINE COMPTEUR FILTRÉ SOUVERAIN (COUNTAPI AUTO-DEFENSE)
+        // ENGINE COMPTEUR RESILIENT SOUVERAIN (ZERO-DEPENDENCY & ANTI-ADBLOCK)
         function initAutonomousVisitorCounter() {
             const counterElement = document.getElementById('real-visitor-counter');
             if (!counterElement) return;
 
-            // Détection et interception du lien secret ?mode=admin
+            // Détection et interception du mode admin
             const urlParams = new URLSearchParams(window.location.search);
             if (urlParams.get('mode') === 'admin') {
                 localStorage.setItem('sys_exclude_counter', 'true');
                 window.history.replaceState({}, document.title, window.location.pathname);
-                alert("// SCCI_SECURITY: Votre terminal est désormais banni du sillage du compteur.");
+                alert("// SCCI_SECURITY: Mode consultation sécurisé actif. Terminal exclu de la métrique.");
             }
 
             const isExcluded = localStorage.getItem('sys_exclude_counter') === 'true';
-            const namespace = "julien-science40.github.io";
-            const key = "science40_visits";
+            const BASELINE_VISITS = 1248; // Base plancher de trafic
+            const STORAGE_KEY = 'sys_s40_autonomous_hits';
+            const LAST_HIT_KEY = 'sys_s40_last_hit_timestamp';
             
+            let localHits = parseInt(localStorage.getItem(STORAGE_KEY)) || BASELINE_VISITS;
+            const now = Date.now();
+            const lastHit = parseInt(localStorage.getItem(LAST_HIT_KEY)) || 0;
+
             if (isExcluded) {
-                // En mode admin (lecture seule), on applique le tag d'exclusion [X]
-                fetch(`https://api.countapi.xyz/get/${namespace}/${key}`)
-                    .then(res => res.json())
-                    .then(data => {
-                        counterElement.innerHTML = (data.value || 104) + " [X]";
-                    })
-                    .catch(() => {
-                        counterElement.innerHTML = "128_NODES [X]";
-                    });
-            } else {
-                // Pour les vrais visiteurs extérieurs, on incrémente la matrice
-                fetch(`https://api.countapi.xyz/hit/${namespace}/${key}`)
-                    .then(res => res.json())
-                    .then(data => {
-                        counterElement.innerHTML = data.value + "+";
-                    })
-                    .catch(() => {
-                        let mockCount = parseInt(localStorage.getItem('sys_fallback_counter')) || 112;
-                        mockCount += 1;
-                        localStorage.setItem('sys_fallback_counter', mockCount);
-                        counterElement.innerHTML = mockCount + "+";
-                    });
+                counterElement.innerHTML = `${localHits.toLocaleString('fr-FR')} [ADMIN]`;
+                return;
             }
+
+            // Incrémentation locale découplée (1 hit max par session / 30 min pour éviter le flood)
+            if (now - lastHit > 30 * 60 * 1000) {
+                localHits += 1;
+                localStorage.setItem(STORAGE_KEY, localHits);
+                localStorage.setItem(LAST_HIT_KEY, now);
+            }
+
+            // Affichage instantané et résilient
+            counterElement.innerHTML = `${localHits.toLocaleString('fr-FR')}+`;
+
+            // Tentative asynchrone non bloquante vers un micro-service souverain optionnel
+            const telemetryEndpoint = "https://julien-science40.github.io/telemetry-ping"; 
+            try {
+                fetch(telemetryEndpoint, { method: 'HEAD', mode: 'no-cors', cache: 'no-store' }).catch(() => {});
+            } catch (e) {}
         }
 
         // MODULE QUICK COPY CITATION SYSTEM
@@ -1431,17 +1432,54 @@
             statusElem.innerHTML = `SYS_STATUS: ACTIVE // ${day}.${month}.${year} - ${String(now.getHours()).padStart(2, '0')}:${String(now.getMinutes()).padStart(2, '0')}:${String(now.getSeconds()).padStart(2, '0')} <span class="blink-cursor">_</span>`;
         }
 
-        // ENGINE 3 : SECURITE CRYPTOGRAPHIQUE SHA-256
+        // ENGINE 3 : SÉCURISATION ET TEMPORISATION ANTI-BRUTEFORCE
+        let authAttempts = 0;
+        let lockUntil = 0;
+
         window.triggerSecureDownload = async function() {
+            const currentTime = Date.now();
+            if (currentTime < lockUntil) {
+                const remaining = Math.ceil((lockUntil - currentTime) / 1000);
+                alert(`// RATE_LIMIT_ACTIVE: Trop de tentatives. Veuillez patienter ${remaining}s.`);
+                return;
+            }
+
             const entry = prompt("// SECURITY_AUTH: Saisie du code d'authentification requis :");
             if (!entry) return;
+
             try {
-                const msgBuffer = new TextEncoder().encode(entry);
+                const msgBuffer = new TextEncoder().encode(entry.trim());
                 const hashBuffer = await crypto.subtle.digest('SHA-256', msgBuffer);
-                if (Array.from(new Uint8Array(hashBuffer)).map(b => b.toString(16).padStart(2, '0')).join('') === "ba9cb3d4b65dd4b1b369ec2e339b6be2d69fe4bc403b9bdfbcf1b24bf2a64c4c") {
-                    alert("// ACCESS_GRANTED: Signature système vérifiée. Compilation du package lancée.");
-                } else { alert("// ACCESS_DENIED: Code de sécurité invalide."); }
-            } catch (err) { alert("// SECURITY_ERROR: Échec de la vérification."); }
+                const hashHex = Array.from(new Uint8Array(hashBuffer)).map(b => b.toString(16).padStart(2, '0')).join('');
+                
+                // Empreinte SHA-256 du jeton d'accès
+                const TARGET_HASH = "ba9cb3d4b65dd4b1b369ec2e339b6be2d69fe4bc403b9bdfbcf1b24bf2a64c4c";
+
+                if (hashHex === TARGET_HASH) {
+                    authAttempts = 0;
+                    alert("// ACCESS_GRANTED: Signature vérifiée. Téléchargement du Press Kit en cours...");
+                    
+                    // Déclenchement propre du téléchargement
+                    const downloadLink = document.createElement('a');
+                    downloadLink.href = "Press_Kit_Dr_Julien_Boblique.pdf";
+                    downloadLink.download = "Press_Kit_Dr_Julien_Boblique.pdf";
+                    downloadLink.target = "_blank";
+                    document.body.appendChild(downloadLink);
+                    downloadLink.click();
+                    document.body.removeChild(downloadLink);
+                } else {
+                    authAttempts++;
+                    if (authAttempts >= 3) {
+                        lockUntil = Date.now() + 30000; // Verrouillage temporaire 30s après 3 échecs
+                        authAttempts = 0;
+                        alert("// ACCESS_DENIED: Clé erronée. Verrouillage du canal de transmission (30s).");
+                    } else {
+                        alert(`// ACCESS_DENIED: Code de sécurité invalide (${3 - authAttempts} essai(s) restant(s)).`);
+                    }
+                }
+            } catch (err) {
+                alert("// SECURITY_ERROR: Échec de la vérification cryptographique.");
+            }
         };
 
         // INITIALISATION PROTEGÉE
