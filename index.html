@@ -924,6 +924,21 @@
             
             <div id="panel-dashboard" class="tab-panel active">
                 
+                <!-- CAPSULE VIDÉO EXÉCUTIVE : PRÉSENTATION SCIENCE 4.0 -->
+                <div class="card" style="border-left: 4px solid var(--accent-color); background: linear-gradient(135deg, rgba(11, 18, 32, 0.95) 0%, rgba(0, 242, 254, 0.04) 100%);">
+                    <div class="card-content">
+                        <h2>// CAPSULE EXÉCUTIVE : INTRODUCTION SCIENCE 4.0</h2>
+                        <p style="margin-top: 12px; color: #cbd5e1; font-size: 0.95rem; line-height: 1.6;">
+                            Présentation synthétique du paradigme par le <strong style="color: var(--accent-color);">Dr. Julien Boblique</strong> : unification de la physique fondamentale et de l'analyse systémique, contrôle absolu des flux et pilotage algorithmique via l'architecture <strong style="color: var(--secondary-color);">Bio-OS V8</strong>.
+                        </p>
+                    </div>
+                    <div class="card-media">
+                        <video class="display-video" autoplay loop muted playsinline controls poster="Dr_Julien_Boblique_Portrait.jpg.png">
+                            <source src="presentation_science40.mp4" type="video/mp4">
+                        </video>
+                    </div>
+                </div>
+
                 <div class="card" style="border-left: 4px solid #f59e0b; background: linear-gradient(135deg, rgba(11, 18, 32, 0.95) 0%, rgba(245, 158, 11, 0.03) 100%);">
                     <div class="card-content" style="width: 100%;">
                         <h2 style="color: #f59e0b; text-shadow: 0 0 15px rgba(245, 158, 11, 0.6);">🏛️ // ARCHITECTURAL_STANDARDS & SYSTEMIC_INTEROPERABILITY</h2>
@@ -1906,7 +1921,7 @@
                     videoLayers[currentTrack].play().catch(err => {});
                     if (videoLayers.length > 1) {
                         setInterval(() => {
-                            if (document.hidden) return; // Éco-mode
+                            if (document.hidden) return; 
                             const prev = currentTrack; currentTrack = (currentTrack + 1) % videoLayers.length;
                             const dOut = videoLayers[prev]; const dIn = videoLayers[currentTrack];
                             dIn.play().then(() => {
