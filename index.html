@@ -91,13 +91,11 @@
             --cursor-pulse: rgba(52, 211, 153, 0.9);
         }
 
-        /* Masquage du pointeur & optimisation tactile */
         html, body, a, button, video, input, .tab-btn, .card, .document-link, .console-cmd-btn, .accordion-summary, .spectrum-btn, .copy-citation-btn, .copy-bibtex-btn, .skip-preloader-btn, .filter-tag-btn {
             cursor: none !important;
             touch-action: manipulation;
         }
 
-        /* Restauration du curseur par défaut sur écrans tactiles */
         @media (pointer: coarse) {
             html, body, a, button, video, input, .tab-btn, .card, .document-link, .console-cmd-btn, .accordion-summary, .spectrum-btn, .copy-citation-btn, .copy-bibtex-btn, .skip-preloader-btn, .filter-tag-btn {
                 cursor: auto !important;
@@ -121,9 +119,6 @@
             transition: background-color 0.3s ease;
         }
 
-        /* ==========================================
-            PRELOADER MATRIX (LATENCE 1.2S + SKIP)
-            ========================================== */
         #matrix-preloader {
             position: fixed;
             top: 0;
@@ -207,9 +202,6 @@
             100% { width: 100%; }
         }
 
-        /* ==========================================
-            VISEUR CYBER RECONFIGURABLE
-            ========================================== */
         #cyber-cursor {
             position: fixed;
             width: 22px;
@@ -245,7 +237,6 @@
             background-color: rgba(0, 242, 254, 0.04);
         }
 
-        /* Styles de Commande de la Console */
         .console-cmd-btn {
             background: rgba(2, 6, 17, 0.8);
             border: 1px dashed var(--secondary-color);
@@ -266,7 +257,6 @@
             background: rgba(0, 242, 254, 0.02);
         }
 
-        /* Barre de défilement personnalisé */
         ::-webkit-scrollbar {
             width: 6px;
             height: 6px;
@@ -284,7 +274,6 @@
             box-shadow: 0 0 8px var(--glow-shadow);
         }
 
-        /* COUCHE 1 : Fond Vidéo Multi-pistes */
         .bg-video-container {
             position: fixed;
             top: 0;
@@ -312,7 +301,6 @@
             opacity: 0.55; 
         }
 
-        /* COUCHE 2 : Voile de protection */
         .bg-overlay {
             position: fixed;
             top: 0;
@@ -324,7 +312,6 @@
             pointer-events: none;
         }
 
-        /* COUCHE 10 : Contenu principal */
         .container {
             position: relative;
             z-index: 10; 
@@ -349,7 +336,6 @@
             letter-spacing: 2px;
         }
 
-        /* MONITEUR DE TAUX D'ANOMALIES */
         #anomaly-filter {
             position: absolute;
             top: -30px;
@@ -876,6 +862,17 @@
         </div>
     </div>
 
+    <!-- Sécurité autonome : efface le préchargeur après 1.2s même en cas de bug JS -->
+    <script>
+        setTimeout(function() {
+            var pre = document.getElementById('matrix-preloader');
+            if (pre && pre.style.display !== 'none') {
+                pre.style.opacity = '0';
+                setTimeout(function() { pre.style.display = 'none'; }, 300);
+            }
+        }, 1200);
+    </script>
+
     <div id="cyber-cursor"></div>
 
     <div class="bg-video-container">
@@ -1187,14 +1184,14 @@
                             <div class="registry-filter-bar">
                                 <input type="text" id="paper-search-input" class="registry-search-input" placeholder=">> RECHERCHER UN MANUSCRIT (ex: Janus, Metric, Bioelectric, SNR, Bio-OS, Lipid, NR3C1...)" oninput="filterRegistry()">
                                 <div class="filter-tags-container">
-                                    <button class="filter-tag-btn active" onclick="setRegistryFilter('ALL')">[ TOUT ]</button>
-                                    <button class="filter-tag-btn" onclick="setRegistryFilter('JANUS')">[ JANUS / IMPÉDANCE ]</button>
-                                    <button class="filter-tag-btn" onclick="setRegistryFilter('BIOELECTRIC')">[ BIOÉLECTRICITÉ ]</button>
-                                    <button class="filter-tag-btn" onclick="setRegistryFilter('SNR')">[ SNR ]</button>
-                                    <button class="filter-tag-btn" onclick="setRegistryFilter('BIO-OS')">[ BIO-OS ]</button>
-                                    <button class="filter-tag-btn" onclick="setRegistryFilter('EPIGENETIC')">[ ÉPIGÉNÉTIQUE ]</button>
-                                    <button class="filter-tag-btn" onclick="setRegistryFilter('MITOCHONDRIA')">[ MITOCHONDRIE ]</button>
-                                    <button class="filter-tag-btn" onclick="setRegistryFilter('NR3C1')">[ NR3C1 ]</button>
+                                    <button class="filter-tag-btn active" onclick="setRegistryFilter('ALL', this)">[ TOUT ]</button>
+                                    <button class="filter-tag-btn" onclick="setRegistryFilter('JANUS', this)">[ JANUS / IMPÉDANCE ]</button>
+                                    <button class="filter-tag-btn" onclick="setRegistryFilter('BIOELECTRIC', this)">[ BIOÉLECTRICITÉ ]</button>
+                                    <button class="filter-tag-btn" onclick="setRegistryFilter('SNR', this)">[ SNR ]</button>
+                                    <button class="filter-tag-btn" onclick="setRegistryFilter('BIO-OS', this)">[ BIO-OS ]</button>
+                                    <button class="filter-tag-btn" onclick="setRegistryFilter('EPIGENETIC', this)">[ ÉPIGÉNÉTIQUE ]</button>
+                                    <button class="filter-tag-btn" onclick="setRegistryFilter('MITOCHONDRIA', this)">[ MITOCHONDRIE ]</button>
+                                    <button class="filter-tag-btn" onclick="setRegistryFilter('NR3C1', this)">[ NR3C1 ]</button>
                                 </div>
                             </div>
 
@@ -1492,10 +1489,9 @@
         // MODULES CRITIQUES (CHAMP GLOBAL ÉTANCHE)
         // ==========================================
 
-        // REGISTRE BIBTEX CENTRALISÉ
         const BIBTEX_DATABASE = {
             janus_metric_impedance_2026: `@article{boblique2026janus,
-  title={D\\'epasser le mod\\`ele bim\\'etrique de Janus : L'imp\\'edance m\\'etrique et l'infodynamique de l'espace-temps},
+  title={Depasser le modele bimetrique de Janus : L'impedance metrique et l'infodynamique de l'espace-temps},
   author={Boblique, Julien},
   journal={Zenodo Open Access Preprint},
   year={2026},
@@ -1640,7 +1636,6 @@
 }`
         };
 
-        // EXPORT BIBTEX
         window.copyBibtex = function(btnElement, key) {
             const bibtexText = BIBTEX_DATABASE[key] || "";
             if (!bibtexText) return;
@@ -1655,7 +1650,6 @@
             });
         };
 
-        // GESTIONNAIRE D'INFOBULLE INTERACTIVE SVG
         window.setSvgTooltip = function(text) {
             const tip = document.getElementById('svg-telemetry-tooltip');
             if (tip) {
@@ -1674,7 +1668,6 @@
             }
         };
 
-        // RECHERCHE DYNAMIQUE ET FILTRES DANS LE REGISTRE
         window.filterRegistry = function() {
             const query = document.getElementById('paper-search-input').value.toLowerCase();
             const lines = document.querySelectorAll('#panel-profile .document-line');
@@ -1695,9 +1688,9 @@
             }
         };
 
-        window.setRegistryFilter = function(tag) {
+        window.setRegistryFilter = function(tag, btnElement) {
             document.querySelectorAll('.filter-tag-btn').forEach(btn => btn.classList.remove('active'));
-            event.target.classList.add('active');
+            if (btnElement) btnElement.classList.add('active');
 
             const searchInput = document.getElementById('paper-search-input');
             if (tag === 'ALL') {
@@ -1708,7 +1701,6 @@
             filterRegistry();
         };
 
-        // ENGINE COMPTEUR RESILIENT SOUVERAIN (ZERO-DEPENDENCY & ANTI-ADBLOCK)
         function initAutonomousVisitorCounter() {
             const counterElement = document.getElementById('real-visitor-counter');
             if (!counterElement) return;
@@ -1748,7 +1740,6 @@
             } catch (e) {}
         }
 
-        // MODULE QUICK COPY CITATION SYSTEM
         window.copyCitation = function(btnElement, citationText) {
             if (!navigator.clipboard) {
                 const fallbackArea = document.createElement('textarea');
@@ -1777,14 +1768,12 @@
             }, 2000);
         }
 
-        // COMMUTATEUR DE SPECTRE LUMINEUX (THEME SWITCHER)
         window.toggleSpectrum = function() {
             document.body.classList.toggle('spectrum-beta');
             const isActive = document.body.classList.contains('spectrum-beta');
             localStorage.setItem('sys_spectrum', isActive ? 'beta' : 'alpha');
         };
 
-        // DEVICE DE PRELOADER (RÉDUIT À 1.2S + OPTION SKIP IMMÉDIAT)
         let preloaderTerminated = false;
         function terminateMatrixPreloader() {
             if (preloaderTerminated) return;
@@ -1800,7 +1789,6 @@
         window.addEventListener('load', () => { setTimeout(terminateMatrixPreloader, 1200); });
         setTimeout(terminateMatrixPreloader, 1500); 
 
-        // INTERACTIVITÉ DES COMMANDES CONSOLE AVEC STREAMING DYNAMIQUE
         let stabilityLockActive = false;
         let isTypingCmd = false; 
 
@@ -1874,7 +1862,6 @@
             setTimeout(streamLine, 250);
         };
 
-        // ROUTAGE DES ONGLETS
         window.switchTab = function(tabId) {
             document.querySelectorAll('.tab-panel').forEach(panel => { panel.classList.remove('active'); });
             document.querySelectorAll('.tab-btn').forEach(btn => { btn.classList.remove('active'); });
@@ -1885,7 +1872,6 @@
             window.dispatchEvent(new Event('resize'));
         };
 
-        // HORLOGE SYSTEME
         function updateSystemClock() {
             const statusElem = document.getElementById('sys-status');
             if (!statusElem) return;
@@ -1896,7 +1882,6 @@
             statusElem.innerHTML = `SYS_STATUS: ACTIVE // ${day}.${month}.${year} - ${String(now.getHours()).padStart(2, '0')}:${String(now.getMinutes()).padStart(2, '0')}:${String(now.getSeconds()).padStart(2, '0')} <span class="blink-cursor">_</span>`;
         }
 
-        // SÉCURISATION ET TEMPORISATION ANTI-BRUTEFORCE
         let authAttempts = 0;
         let lockUntil = 0;
 
@@ -1944,7 +1929,6 @@
             }
         };
 
-        // ÉCO-MODE ÉNERGÉTIQUE & SUSPENSION VIDÉO LORS DU CHANGEMENT D'ONGLET
         document.addEventListener('visibilitychange', () => {
             const bgVideos = document.querySelectorAll('.bg-video');
             if (document.hidden) {
@@ -1955,7 +1939,6 @@
             }
         });
 
-        // INITIALISATION PROTEGÉE
         document.addEventListener("DOMContentLoaded", () => {
             const savedSpectrum = localStorage.getItem('sys_spectrum');
             if (savedSpectrum === 'beta') {
