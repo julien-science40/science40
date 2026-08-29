@@ -58,7 +58,9 @@
         "Cellular Biophysics",
         "Glymphatic Clearance",
         "Hydrodynamic Couplings",
-        "Non-Equilibrium Thermodynamics"
+        "Non-Equilibrium Thermodynamics",
+        "Clifford Algebra Cl(8,0)",
+        "Topological Unification Model"
       ]
     }
     </script>
@@ -932,6 +934,36 @@
                     </div>
                 </div>
 
+                <!-- R&D NOTE : TUM x SCIENCE 4.0 UNIFICATION -->
+                <div class="card" style="border-left: 4px solid #10b981; background: linear-gradient(135deg, rgba(11, 18, 32, 0.95) 0%, rgba(16, 185, 129, 0.04) 100%);">
+                    <div class="card-content" style="width: 100%;">
+                        <h2 style="color: #10b981; text-shadow: 0 0 15px rgba(16, 185, 129, 0.6);">🌐📐 // R&D NOTE : UNIFICATION GÉOMÉTRIQUE-CYBERNÉTIQUE (TUM $\times$ SCIENCE 4.0)</h2>
+                        <p style="margin-top: 12px; font-size: 0.95rem; line-height: 1.6; color: #e2e8f0;">
+                            Formalisation conjointe avec le <strong style="color: var(--accent-color);">Prof. Sebastián Berón</strong> : l'espace-temps émerge comme un retour d'information actif (feedback). Couplage entre l'invariant topologique en algèbre de Clifford $Cl(8,0)$ ($\Gamma_{eq} = 0.8470$) et l'architecture cybernétique multi-échelle du framework <strong style="color: var(--secondary-color);">Science 4.0 / Bio-OS V8</strong> régie par des états stationnaires hors d'équilibre (NESS) et le verrouillage de phase aux Points Exceptionnels (EPs).
+                        </p>
+                        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 12px; margin-top: 15px; font-family: 'Fira Code', monospace; font-size: 0.8rem;">
+                            <div style="border: 1px solid rgba(16, 185, 129, 0.3); padding: 10px; background: rgba(2, 6, 17, 0.6); border-radius: 6px;">
+                                <span style="color: #10b981; font-weight: bold;">[ INVARIANT $Cl(8,0)$ ]</span><br>
+                                <span style="color: #cbd5e1;">Attracteur topologique $\Gamma_{eq} = 0.8470$ sans paramètre libre</span>
+                            </div>
+                            <div style="border: 1px solid rgba(16, 185, 129, 0.3); padding: 10px; background: rgba(2, 6, 17, 0.6); border-radius: 6px;">
+                                <span style="color: #10b981; font-weight: bold;">[ NESS & HIÉRARCHIE $\tau$ ]</span><br>
+                                <span style="color: #cbd5e1;">Routage $\tau_1$ bioélectrique, $\tau_2$ métabolique & $\tau_3$ épigénétique</span>
+                            </div>
+                            <div style="border: 1px solid rgba(16, 185, 129, 0.3); padding: 10px; background: rgba(2, 6, 17, 0.6); border-radius: 6px;">
+                                <span style="color: #10b981; font-weight: bold;">[ MÉTRIQUE ÉMERGENTE ]</span><br>
+                                <span style="color: #cbd5e1;">$g_{\mu\nu} = \eta_{\mu\nu} + \alpha(\Gamma_{eq})\langle\partial_\mu\Psi, \partial_\nu\Psi\rangle$</span>
+                            </div>
+                        </div>
+                        <div style="margin-top: 15px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px; font-family: 'Fira Code', monospace; font-size: 0.8rem;">
+                            <span class="tag-green">[ PREPRINT OFFICIEL HORODATÉ ZENODO ]</span>
+                            <a href="https://zenodo.org/records/22115055" target="_blank" class="document-link" style="color: var(--accent-color); font-weight: 600;">
+                                >> ACCÉDER AU PREPRINT INTÉGRÉ (ZENODO RECORD 22115055)
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
                 <div class="card" style="border-left: 4px solid #38bdf8; background: linear-gradient(135deg, rgba(11, 18, 32, 0.95) 0%, rgba(56, 189, 248, 0.04) 100%);">
                     <div class="card-content" style="width: 100%;">
                         <h2 style="color: #38bdf8; text-shadow: 0 0 15px rgba(56, 189, 248, 0.6);">🌌📐 // R&D NOTE : DÉPASSER LE MODÈLE BIMÉTRIQUE DE JANUS</h2>
@@ -1185,9 +1217,10 @@
                             <div class="document-registry-title">// REGISTERED DOCUMENTS (INDEXED BY CORE PILLARS) :</div>
                             
                             <div class="registry-filter-bar">
-                                <input type="text" id="paper-search-input" class="registry-search-input" placeholder=">> RECHERCHER UN MANUSCRIT (ex: Janus, Metric, Bioelectric, Glymphatic, SNR, Bio-OS, Lipid, NR3C1...)" oninput="filterRegistry()">
+                                <input type="text" id="paper-search-input" class="registry-search-input" placeholder=">> RECHERCHER UN MANUSCRIT (ex: TUM, Cl(8,0), Janus, Metric, Bioelectric, Glymphatic, SNR...)" oninput="filterRegistry()">
                                 <div class="filter-tags-container">
                                     <button class="filter-tag-btn active" onclick="setRegistryFilter('ALL', this)">[ TOUT ]</button>
+                                    <button class="filter-tag-btn" onclick="setRegistryFilter('TUM', this)">[ TUM / CL(8,0) ]</button>
                                     <button class="filter-tag-btn" onclick="setRegistryFilter('JANUS', this)">[ JANUS / IMPÉDANCE ]</button>
                                     <button class="filter-tag-btn" onclick="setRegistryFilter('GLYMPHATIC', this)">[ GLYMPHATIC / SLEEP ]</button>
                                     <button class="filter-tag-btn" onclick="setRegistryFilter('BIOELECTRIC', this)">[ BIOÉLECTRICITÉ ]</button>
@@ -1202,6 +1235,21 @@
                             <details class="accordion-category" open>
                                 <summary class="accordion-summary"> [PILLAR_00] // THEORETICAL ASTROPHYSICS & METRIC INFODYNAMICS</summary>
                                 <div class="accordion-content">
+                                    
+                                    <!-- TUM x SCIENCE 4.0 -->
+                                    <p class="document-line" data-tags="tum cl(8,0) clifford algebra spacetime feedback cybernetics ness exceptional points information geometry beron boblique">
+                                        > <span class="tag-cyan">[TUM_SCIENCE40_2026]</span> 
+                                        <a href="https://zenodo.org/records/22115055" target="_blank" class="document-link">
+                                            Geometric-Cybernetic Unification: TUM Cl(8,0) Invariant and Science 4.0 Autonomous Feedback
+                                        </a> 
+                                        <span class="tag-green">[PREPRINT_ZENODO]</span>
+                                        <span class="citation-actions-group">
+                                            <button class="copy-citation-btn" onclick="copyCitation(this, 'Beron, S. M. A., & Boblique, J. (2026). Geometric-Cybernetic Unification: TUM Cl(8,0) Invariant and Science 4.0 Autonomous Feedback. Zenodo. https://zenodo.org/records/22115055')">[ CITATION ]</button>
+                                            <button class="copy-bibtex-btn" onclick="copyBibtex(this, 'tum_science40_2026')">[ BIBTEX ]</button>
+                                        </span>
+                                    </p>
+
+                                    <!-- JANUS IMPEDANCE -->
                                     <p class="document-line" data-tags="janus metric impedance infodynamics cosmology dark matter dark energy sparc general relativity">
                                         > <span class="tag-cyan">[JANUS_IMPEDANCE_2026]</span> 
                                         <a href="https://doi.org/10.5281/zenodo.22006771" target="_blank" class="document-link">
@@ -1448,7 +1496,7 @@
                             <div class="document-registry-title" style="color: #10b981;">// SCIENTIFIC LEADERSHIP & RESEARCH COLLABORATIONS :</div>
                             <p class="document-line">> Science 4.0 Architecture Paradigm Active</p>
                             <p class="document-line">
-                                > <span class="tag-cyan">[OPEN_NODE]</span> Open for Peer-to-Peer Research Alignments and Scientific Cooperations on Bio-OS V8 Protocols.
+                                > <span class="tag-cyan">[OPEN_NODE]</span> Open for Peer-to-Peer Research Alignments and Scientific Cooperations on Bio-OS V8 & TUM Unification Protocols.
                             </p>
                             <p class="document-line">
                                 > <span class="tag-cyan">[PARTNERSHIPS]</span> Steering multi-systemic connections for industrialized bio-governance standards.
@@ -1516,6 +1564,13 @@
         // ==========================================
 
         const BIBTEX_DATABASE = {
+            tum_science40_2026: `@article{beron_boblique_2026_tum,
+  title={Geometric-Cybernetic Unification: TUM Cl(8,0) Invariant and Science 4.0 Autonomous Feedback},
+  author={Beron, Sebasti{\\'a}n M. A. and Boblique, Julien},
+  journal={Zenodo Open Access Preprint},
+  year={2026},
+  url={https://zenodo.org/records/22115055}
+}`,
             thermodynamic_glymphatic_snr_2026: `@article{boblique2026snr_glymphatic,
   title={Thermodynamic and Bioenergetic Coupling of Glymphatic Clearance: How Slow-Wave Sleep Maximizes Cerebral Signal-to-Noise Ratio (SNR)},
   author={Boblique, Julien},
