@@ -58,6 +58,9 @@
         "Cellular Biophysics",
         "Glymphatic Clearance",
         "Hydrodynamic Couplings",
+        "Urological Logistics",
+        "Glomerular Maintenance",
+        "Prostatic Congestion Mitigation",
         "Non-Equilibrium Thermodynamics",
         "Clifford Algebra Cl(8,0)",
         "Topological Unification Model"
@@ -1218,9 +1221,10 @@
                             <div class="document-registry-title">// REGISTERED DOCUMENTS (INDEXED BY CORE PILLARS) :</div>
                             
                             <div class="registry-filter-bar">
-                                <input type="text" id="paper-search-input" class="registry-search-input" placeholder=">> RECHERCHER UN MANUSCRIT (ex: TUM, Cl(8,0), Janus, Metric, Bioelectric, Glymphatic, SNR...)" oninput="filterRegistry()">
+                                <input type="text" id="paper-search-input" class="registry-search-input" placeholder=">> RECHERCHER UN MANUSCRIT (ex: Urological, TUM, Cl(8,0), Janus, Metric, Glymphatic, SNR...)" oninput="filterRegistry()">
                                 <div class="filter-tags-container">
                                     <button class="filter-tag-btn active" onclick="setRegistryFilter('ALL', this)">[ TOUT ]</button>
+                                    <button class="filter-tag-btn" onclick="setRegistryFilter('UROLOGICAL', this)">[ UROLOGIE / FLUX ]</button>
                                     <button class="filter-tag-btn" onclick="setRegistryFilter('TUM', this)">[ TUM / CL(8,0) ]</button>
                                     <button class="filter-tag-btn" onclick="setRegistryFilter('JANUS', this)">[ JANUS / IMPÉDANCE ]</button>
                                     <button class="filter-tag-btn" onclick="setRegistryFilter('GLYMPHATIC', this)">[ GLYMPHATIC / SLEEP ]</button>
@@ -1431,9 +1435,23 @@
                                 </div>
                             </details>
 
-                            <details class="accordion-category">
+                            <details class="accordion-category" open>
                                 <summary class="accordion-summary"> [PILLAR_03] // APPLIED VALIDATION & STEERING SYNERGIES</summary>
                                 <div class="accordion-content">
+                                    
+                                    <!-- NOUVEL ARTICLE DJS UROLOGICAL LOGISTICS -->
+                                    <p class="document-line" data-tags="urological logistics glomerular filtration prostatic congestion bio-os djs westland science 4.0 operational model fluidics">
+                                        > <span class="tag-cyan">[UROLOGICAL_LOGISTICS_2026]</span> 
+                                        <a href="https://westlandpublishers.com/abstract.php?aid=134&jid=4&Article=Urological-Logistics:-A-Science-4.0-Operational-Model-for-Predictive-Glomerular-Maintenance-and-Prostatic-Congestion-Mitigation" target="_blank" class="document-link">
+                                            Urological Logistics: A Science 4.0 Operational Model for Predictive Glomerular Maintenance and Prostatic Congestion Mitigation
+                                        </a> 
+                                        <span class="tag-green">[PUBLISHED]</span>
+                                        <span class="citation-actions-group">
+                                            <button class="copy-citation-btn" onclick="copyCitation(this, 'Boblique, J. (2026). Urological Logistics: A Science 4.0 Operational Model for Predictive Glomerular Maintenance and Prostatic Congestion Mitigation. Digital Journal of Science, 3(6): 174. DOI: 10.63592/DJS/174')">[ CITATION ]</button>
+                                            <button class="copy-bibtex-btn" onclick="copyBibtex(this, 'urological_logistics_2026')">[ BIBTEX ]</button>
+                                        </span>
+                                    </p>
+
                                     <p class="document-line" data-tags="lipid nano-vectorization living signals">
                                         > <span class="tag-cyan">[LIPID_MATRIX_ARCHITECTURE_2026]</span> 
                                         <a href="https://doi.org/10.47739/biotechnology1094" target="_blank" class="document-link">
@@ -1573,6 +1591,18 @@
         // ==========================================
 
         const BIBTEX_DATABASE = {
+            urological_logistics_2026: `@article{boblique2026urological,
+  title={Urological Logistics: A Science 4.0 Operational Model for Predictive Glomerular Maintenance and Prostatic Congestion Mitigation},
+  author={Boblique, Julien},
+  journal={Digital Journal of Science},
+  volume={3},
+  number={6},
+  pages={174},
+  year={2026},
+  issn={3066-3822},
+  doi={10.63592/DJS/174},
+  url={https://westlandpublishers.com/abstract.php?aid=134&jid=4&Article=Urological-Logistics:-A-Science-4.0-Operational-Model-for-Predictive-Glomerular-Maintenance-and-Prostatic-Congestion-Mitigation}
+}`,
             tum_science40_2026: `@article{beron_boblique_2026_tum,
   title={Geometric-Cybernetic Unification: TUM Cl(8,0) Invariant and Science 4.0 Autonomous Feedback},
   author={Beron, Sebasti{\\'a}n M. A. and Boblique, Julien},
