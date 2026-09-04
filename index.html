@@ -404,7 +404,7 @@
         }
 
         /* ==========================================
-           MODULE AUDIO HAUTE RÉSOLUTION (ANTHEM)
+           MODULE AUDIO HAUTE RÉSOLUTION (PAYSAGE SONORE)
            ========================================== */
         .audio-stream-widget {
             margin-top: 22px;
@@ -1031,7 +1031,7 @@
                 [ <a href="#" onclick="toggleSpectrum(); return false;" class="spectrum-btn" style="font-weight: bold; text-decoration: underline;">SWITCH_SPECTRUM</a> ]
             </div>
 
-            <!-- LECTEUR HYMNE SCIENCE 4.0 // CONNECTÉ AU FICHIER GITHUB -->
+            <!-- MODULE ACOUSTIQUE // FOND SONORE ANALYTIQUE -->
             <div class="audio-stream-widget">
                 <audio id="science40-audio-stream" loop preload="none">
                     <source src="The_Architect_s_Proof.mp4" type="video/mp4">
@@ -1040,7 +1040,7 @@
                 
                 <button class="audio-play-btn" id="audio-toggle-btn" onclick="toggleAudioStream()">
                     <span id="audio-play-icon">▶</span>
-                    <span id="audio-play-text">PLAY_ANTHEM</span>
+                    <span id="audio-play-text">PLAY_SIGNAL</span>
                 </button>
 
                 <div class="audio-bars-container" id="audio-visualizer-bars">
@@ -1051,8 +1051,8 @@
                 </div>
 
                 <div class="audio-track-info">
-                    <span class="audio-track-title">// HYMNE OFFICIEL : THE ARCHITECT'S PROOF</span>
-                    <span class="audio-track-sub">Cinematic Neo-Classical & Modular Synth [110 BPM // Dm]</span>
+                    <span class="audio-track-title">// PAYSAGE SONORE : THE ARCHITECT'S PROOF</span>
+                    <span class="audio-track-sub">Synthèse modulaire & cordes acoustiques [110 BPM // Dm]</span>
                 </div>
 
                 <div class="audio-volume-control">
@@ -1924,7 +1924,7 @@
         };
 
         // ==========================================
-        // PILOTAGE AUDIO DE L'HYMNE
+        // PILOTAGE ACOUSTIQUE // CONTRÔLEUR DE FLUX
         // ==========================================
         window.toggleAudioStream = function() {
             const audio = document.getElementById('science40-audio-stream');
@@ -1938,7 +1938,7 @@
             if (audio.paused) {
                 audio.play().then(() => {
                     icon.textContent = "⏸";
-                    text.textContent = "PAUSE_STREAM";
+                    text.textContent = "MUTE_SIGNAL";
                     visualizer.classList.add('playing');
                     btn.style.borderColor = 'var(--secondary-color)';
                 }).catch(err => {
@@ -1947,7 +1947,7 @@
             } else {
                 audio.pause();
                 icon.textContent = "▶";
-                text.textContent = "PLAY_ANTHEM";
+                text.textContent = "PLAY_SIGNAL";
                 visualizer.classList.remove('playing');
                 btn.style.borderColor = 'var(--accent-color)';
             }
