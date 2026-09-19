@@ -42,17 +42,17 @@
     <style>
         :root {
             --bg: #0b0f17;
-            --surface: rgba(17, 24, 39, 0.88);
-            --surface-hover: rgba(31, 41, 55, 0.95);
+            --surface: #111827;
+            --surface-hover: #1f2937;
             --border: #1f293d;
             --border-accent: #2563eb;
             --text: #e2e8f0;
             --text-muted: #94a3b8;
             --primary: #38bdf8;
-            --tag-bg: rgba(56, 189, 248, 0.12);
-            --tag-border: rgba(56, 189, 248, 0.25);
+            --tag-bg: rgba(56, 189, 248, 0.08);
+            --tag-border: rgba(56, 189, 248, 0.2);
             --green: #10b981;
-            --green-bg: rgba(16, 185, 129, 0.12);
+            --green-bg: rgba(16, 185, 129, 0.1);
         }
 
         * {
@@ -63,11 +63,6 @@
 
         body {
             background-color: var(--bg);
-            background-image: linear-gradient(rgba(11, 15, 23, 0.88), rgba(11, 15, 23, 0.96)), url('og-science40.png');
-            background-repeat: no-repeat;
-            background-position: center top;
-            background-size: cover;
-            background-attachment: fixed;
             color: var(--text);
             font-family: 'Inter', system-ui, sans-serif;
             line-height: 1.6;
@@ -86,11 +81,6 @@
             margin-bottom: 35px;
             border-bottom: 1px solid var(--border);
             padding-bottom: 25px;
-            background: rgba(11, 15, 23, 0.75);
-            backdrop-filter: blur(8px);
-            padding: 24px;
-            border-radius: 8px;
-            border: 1px solid var(--border);
         }
 
         h1 {
@@ -120,7 +110,7 @@
             color: var(--text-muted);
             text-decoration: none;
             border: 1px solid var(--border);
-            padding: 5px 12px;
+            padding: 4px 10px;
             border-radius: 4px;
             background: var(--surface);
             transition: all 0.2s ease;
@@ -129,7 +119,6 @@
         .header-links a:hover {
             color: var(--primary);
             border-color: var(--primary);
-            background: var(--surface-hover);
         }
 
         nav.tab-nav {
@@ -142,8 +131,8 @@
         }
 
         .tab-btn {
-            background: rgba(17, 24, 39, 0.7);
-            border: 1px solid var(--border);
+            background: transparent;
+            border: 1px solid transparent;
             color: var(--text-muted);
             font-family: 'Fira Code', monospace;
             font-size: 0.85rem;
@@ -162,7 +151,7 @@
         .tab-btn.active {
             color: #ffffff;
             background: var(--surface-hover);
-            border-color: var(--primary);
+            border-color: var(--border);
             border-bottom: 2px solid var(--primary);
         }
 
@@ -183,7 +172,6 @@
 
         .card {
             background: var(--surface);
-            backdrop-filter: blur(8px);
             border: 1px solid var(--border);
             border-radius: 8px;
             padding: 24px;
@@ -214,7 +202,7 @@
 
         .search-box {
             width: 100%;
-            background: rgba(11, 15, 23, 0.85);
+            background: var(--bg);
             border: 1px solid var(--border);
             padding: 12px 14px;
             border-radius: 6px;
@@ -233,8 +221,7 @@
             padding: 16px;
             border: 1px solid var(--border);
             border-radius: 6px;
-            background: rgba(17, 24, 39, 0.75);
-            backdrop-filter: blur(6px);
+            background: rgba(17, 24, 39, 0.6);
             margin-bottom: 12px;
             transition: border-color 0.2s;
         }
@@ -707,7 +694,7 @@
             </div>
         </div>
 
-        <!-- ONGLET 3 : CONFÉRENCES (5 RENCONTRES) -->
+        <!-- ONGLET 3 : CONFÉRENCES (RENCONTRES VÉRIFIÉES) -->
         <div id="panel-conferences" class="panel">
             <div class="card">
                 <h2>Contributions et soumissions scientifiques internationales (2027)</h2>
@@ -729,18 +716,6 @@
                     <div class="pub-title">ASTROPHYSICS 2027</div>
                     <div class="pub-meta">Florence, Italie · Proposition de communication scientifique</div>
                     <p><em>Metric Impedance, Mathematical Formalisms & Non-Equilibrium Gravitational Regimes.</em></p>
-                </div>
-
-                <div class="pub-item">
-                    <div class="pub-title">Colloque International sur les Systèmes Complexes & Biophysique 2027</div>
-                    <div class="pub-meta">Milan, Italie · Proposition de communication</div>
-                    <p><em>Non-Equilibrium Thermodynamics, Information Entropy, and Biological Flow Resilience.</em></p>
-                </div>
-
-                <div class="pub-item">
-                    <div class="pub-title">Rencontre Internationale de Cybernétique & Dynamique des Flux 2027</div>
-                    <div class="pub-meta">Nice, France · Proposition de communication</div>
-                    <p><em>Epigenetic Steering, Microvascular Mechanics and Systemic Transitions in Living Hardware.</em></p>
                 </div>
             </div>
         </div>
