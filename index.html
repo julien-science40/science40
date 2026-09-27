@@ -29,7 +29,8 @@
         "Thermodynamique hors équilibre",
         "Cybernétique",
         "Systèmes complexes",
-        "Biologie des systèmes"
+        "Biologie des systèmes",
+        "Physique de la matière condensée"
       ]
     }
     </script>
@@ -335,6 +336,23 @@
         <!-- ONGLET 1 : PUBLICATIONS -->
         <div id="panel-publications" class="panel active">
             <input type="text" id="filter-input" class="search-box" placeholder="Filtrer parmi les publications (titre, mot-clé, revue, DOI)..." oninput="filterPublications()">
+
+            <section>
+                <h2>Physique de la matière condensée & Dynamique nucléaire</h2>
+                
+                <div class="pub-item" data-search="f-5 f5 architecture solid-state geometric confinement lattice-assisted nuclear dynamics lanr cmns zenodo 22994419 non-hermitian gamow phonons boblique">
+                    <div class="pub-title">
+                        <a href="https://doi.org/10.5281/zenodo.22994419" target="_blank" rel="noopener noreferrer">
+                            A Falsifiable Theoretical Framework for Solid-State Geometric Confinement and Lattice-Assisted Nuclear Dynamics: The F-5 Architecture
+                        </a>
+                    </div>
+                    <div class="pub-meta"><span class="badge badge-preprint">Préprint Zenodo</span> · 2026 · Boblique, J. · DOI: 10.5281/zenodo.22994419</div>
+                    <div class="pub-actions">
+                        <a href="https://doi.org/10.5281/zenodo.22994419" target="_blank" rel="noopener noreferrer" class="action-btn">Accéder au dépôt</a>
+                        <button class="action-btn" onclick="copyBibtex('f5_architecture_2026', this)">BibTeX</button>
+                    </div>
+                </div>
+            </section>
 
             <section>
                 <h2>Astrophysique théorique & Infodynamique métrique</h2>
@@ -782,6 +800,14 @@
 
 <script>
     const BIBTEX = {
+        f5_architecture_2026: `@misc{boblique2026f5,
+  title={A Falsifiable Theoretical Framework for Solid-State Geometric Confinement and Lattice-Assisted Nuclear Dynamics: The F-5 Architecture},
+  author={Boblique, Julien},
+  year={2026},
+  howpublished={Zenodo Open Access Preprint},
+  doi={10.5281/zenodo.22994419},
+  url={https://doi.org/10.5281/zenodo.22994419}
+}`,
         bbb_shielding_tia_2026: `@article{boblique2026bioelectrodynamic,
   title={Bio-Electrodynamic Shielding of the Blood-Brain Barrier: Non-Equilibrium Hydrodynamics to Prevent Post-Ischemic Micro-Thrombosis and Transient Ischemic Attacks (TIA)},
   author={Boblique, Julien},
