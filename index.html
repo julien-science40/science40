@@ -1,862 +1,863 @@
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Julien Boblique — Science 4.0 | Recherche indépendante</title>
-    <meta name="description" content="Travaux de recherche indépendants de Julien Boblique autour de Science 4.0 : biophysique, thermodynamique hors équilibre, cybernétique et systèmes complexes. Publications, préprints et collaborations.">
-    
-    <link rel="canonical" href="https://julien-science40.github.io/science40/">
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://julien-science40.github.io/science40/">
-    <meta property="og:title" content="Julien Boblique — Science 4.0">
-    <meta property="og:description" content="Recherche indépendante en biophysique, thermodynamique hors équilibre, cybernétique et systèmes complexes.">
-    <meta property="og:image" content="https://julien-science40.github.io/science40/og-science40.png">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Julien Boblique — Science 4.0 | Recherche indépendante</title>
+<meta name="description" content="Travaux de recherche indépendants de Julien Boblique autour de Science 4.0 : biophysique, thermodynamique hors équilibre, cybernétique, systèmes complexes et projet lunaire L-ZAC. Publications, préprints et collaborations.">
+<link rel="canonical" href="https://julien-science40.github.io/science40/">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://julien-science40.github.io/science40/">
+<meta property="og:title" content="Julien Boblique — Science 4.0">
+<meta property="og:description" content="Recherche indépendante en biophysique, thermodynamique hors équilibre, cybernétique et systèmes complexes.">
+<meta property="og:image" content="https://julien-science40.github.io/science40/og-science40.png">
 
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "Person",
-      "name": "Julien Boblique",
-      "jobTitle": "Chercheur indépendant — Fondateur de Science 4.0",
-      "url": "https://julien-science40.github.io/science40/",
-      "sameAs": [
-        "https://www.linkedin.com/in/julien-boblique-33230a210",
-        "https://orcid.org/0009-0009-0648-5970"
-      ],
-      "knowsAbout": [
-        "Biophysique",
-        "Thermodynamique hors équilibre",
-        "Cybernétique",
-        "Systèmes complexes",
-        "Biologie des systèmes",
-        "Physique de la matière condensée"
-      ]
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Julien Boblique",
+  "jobTitle": "Chercheur indépendant — Fondateur de Science 4.0",
+  "url": "https://julien-science40.github.io/science40/",
+  "sameAs": [
+    "https://www.linkedin.com/in/julien-boblique-33230a210",
+    "https://orcid.org/0009-0009-0648-5970"
+  ],
+  "knowsAbout": [
+    "Biophysique",
+    "Thermodynamique hors équilibre",
+    "Cybernétique",
+    "Systèmes complexes",
+    "Biologie des systèmes",
+    "Physique de la matière condensée"
+  ]
+}
+</script>
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Fira+Code:wght@400;500&display=swap">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"></script>
+
+<style>
+:root {
+    --bg: #0b0f17;
+    --surface: #111827;
+    --surface-hover: #1f2937;
+    --border: #1f293d;
+    --border-accent: #2563eb;
+    --text: #e2e8f0;
+    --text-muted: #94a3b8;
+    --primary: #38bdf8;
+    --tag-bg: rgba(56,189,248,0.08);
+    --tag-border: rgba(56,189,248,0.2);
+    --green: #10b981;
+    --green-bg: rgba(16,185,129,0.1);
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: var(--bg);
+    color: var(--text);
+    font-family: 'Inter',system-ui,sans-serif;
+    line-height: 1.6;
+    padding: 40px 20px 80px;
+    display: flex;
+    justify-content: center;
+    min-height: 100vh;
+}
+
+.container {
+    max-width: 880px;
+    width: 100%;
+}
+
+header {
+    margin-bottom: 35px;
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 25px;
+}
+
+h1 {
+    font-size: 2.2rem;
+    font-weight: 700;
+    color: #fff;
+    letter-spacing: -0.5px;
+    margin-bottom: 6px;
+}
+
+.lead {
+    font-size: 1.05rem;
+    color: var(--primary);
+    margin-bottom: 14px;
+    font-weight: 500;
+}
+
+.header-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    font-family: 'Fira Code',monospace;
+    font-size: 0.85rem;
+}
+
+.header-links a {
+    color: var(--text-muted);
+    text-decoration: none;
+    border: 1px solid var(--border);
+    padding: 4px 10px;
+    border-radius: 4px;
+    background: var(--surface);
+    transition: all 0.2s ease;
+}
+
+.header-links a:hover {
+    color: var(--primary);
+    border-color: var(--primary);
+}
+
+nav.tab-nav {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 35px;
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 12px;
+    overflow-x: auto;
+}
+
+.tab-btn {
+    background: transparent;
+    border: 1px solid transparent;
+    color: var(--text-muted);
+    font-family: 'Fira Code',monospace;
+    font-size: 0.85rem;
+    padding: 8px 14px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.2s;
+    white-space: nowrap;
+}
+
+.tab-btn:hover {
+    color: var(--text);
+    background: var(--surface);
+}
+
+.tab-btn.active {
+    color: #fff;
+    background: var(--surface-hover);
+    border-color: var(--border);
+    border-bottom: 2px solid var(--primary);
+}
+
+a:focus-visible,
+button:focus-visible,
+input:focus-visible {
+    outline: 2px solid var(--primary);
+    outline-offset: 3px;
+}
+
+.panel {
+    display: none;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.panel.active {
+    display: flex;
+}
+
+.card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 24px;
+}
+
+h2 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: #fff;
+    margin: 20px 0 12px;
+    border-bottom: 1px dashed var(--border);
+    padding-bottom: 8px;
+}
+
+h2:first-of-type {
+    margin-top: 0;
+}
+
+p {
+    color: #cbd5e1;
+    font-size: 0.95rem;
+    margin-bottom: 12px;
+}
+
+p:last-child {
+    margin-bottom: 0;
+}
+
+.search-box {
+    width: 100%;
+    background: var(--bg);
+    border: 1px solid var(--border);
+    padding: 12px 14px;
+    border-radius: 6px;
+    color: var(--text);
+    font-family: 'Fira Code',monospace;
+    font-size: 0.85rem;
+    margin-bottom: 25px;
+    outline: none;
+}
+
+.search-box:focus {
+    border-color: var(--primary);
+}
+
+.pub-item {
+    padding: 16px;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    background: rgba(17,24,39,0.6);
+    margin-bottom: 12px;
+    transition: border-color 0.2s;
+}
+
+.pub-item:hover {
+    border-color: var(--border-accent);
+}
+
+.pub-item.hidden {
+    display: none;
+}
+
+.pub-title {
+    font-weight: 600;
+    color: #fff;
+    font-size: 0.98rem;
+    margin-bottom: 6px;
+    line-height: 1.4;
+}
+
+.pub-title a {
+    color: inherit;
+    text-decoration: none;
+}
+
+.pub-title a:hover {
+    color: var(--primary);
+}
+
+.pub-meta {
+    font-family: 'Fira Code',monospace;
+    font-size: 0.78rem;
+    color: var(--text-muted);
+    margin-bottom: 8px;
+}
+
+.badge {
+    display: inline-block;
+    padding: 2px 6px;
+    border-radius: 3px;
+    font-size: 0.72rem;
+    font-weight: 500;
+    text-transform: uppercase;
+}
+
+.badge-preprint {
+    background: var(--tag-bg);
+    color: var(--primary);
+    border: 1px solid var(--tag-border);
+}
+
+.badge-published {
+    background: var(--green-bg);
+    color: var(--green);
+    border: 1px solid rgba(16,185,129,0.3);
+}
+
+.badge-review {
+    background: rgba(245,158,11,0.1);
+    color: #f59e0b;
+    border: 1px solid rgba(245,158,11,0.3);
+}
+
+.pub-actions {
+    margin-top: 10px;
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.action-btn {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    color: var(--text-muted);
+    font-family: 'Fira Code',monospace;
+    font-size: 0.72rem;
+    padding: 4px 10px;
+    border-radius: 3px;
+    cursor: pointer;
+    text-decoration: none;
+    transition: all 0.2s;
+}
+
+.action-btn:hover {
+    color: var(--text);
+    border-color: var(--text-muted);
+}
+
+.action-btn.copied {
+    color: var(--green)!important;
+    border-color: var(--green)!important;
+}
+
+footer {
+    margin-top: 50px;
+    border-top: 1px solid var(--border);
+    padding-top: 20px;
+    font-family: 'Fira Code',monospace;
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    text-align: center;
+}
+
+/* NOUVEL ONGLET : PROJET LUNAIRE */
+
+.lzac-hero {
+    position: relative;
+    min-height: 270px;
+    overflow: hidden;
+    border: 1px solid rgba(56,189,248,0.28);
+    border-radius: 12px;
+    padding: 34px 32px;
+    background:
+      radial-gradient(ellipse at 78% 44%,rgba(84,112,151,0.20),transparent 36%),
+      linear-gradient(135deg,#122439 0%,#0c1526 62%,#080e19 100%);
+}
+
+.lzac-hero::after {
+    content: "";
+    position: absolute;
+    top: 27px;
+    right: 50px;
+    width: 195px;
+    height: 195px;
+    border-radius: 50%;
+    background:
+      radial-gradient(circle at 37% 32%,
+      rgba(245,246,249,0.86),
+      rgba(171,184,200,0.88) 42%,
+      rgba(75,94,121,0.92) 74%,
+      #25364c 100%);
+    box-shadow:
+      0 0 0 8px rgba(211,230,249,0.035),
+      0 0 70px rgba(96,165,250,0.16);
+    opacity: 0.52;
+    pointer-events: none;
+}
+
+.lzac-hero-content {
+    position: relative;
+    z-index: 1;
+    max-width: 560px;
+}
+
+.lzac-kicker {
+    font-family: 'Fira Code',monospace;
+    color: #7dd3fc;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.075em;
+    margin-bottom: 14px;
+    text-transform: uppercase;
+}
+
+.lzac-heading {
+    font-size: clamp(1.7rem,5vw,2.45rem);
+    line-height: 1.2;
+    color: #fff;
+    margin-bottom: 12px;
+}
+
+.lzac-subtitle {
+    max-width: 540px;
+    font-size: 1rem;
+    color: #d6e4f3;
+    margin: 0;
+}
+
+.lzac-status {
+    display: inline-block;
+    font-family: 'Fira Code',monospace;
+    font-size: 0.75rem;
+    color: #fde68a;
+    border: 1px solid rgba(251,191,36,0.35);
+    background: rgba(245,158,11,0.09);
+    border-radius: 6px;
+    margin-top: 22px;
+    padding: 6px 10px;
+}
+
+.lzac-grid {
+    display: grid;
+    grid-template-columns: repeat(2,minmax(0,1fr));
+    gap: 15px;
+}
+
+.lzac-grid .card {
+    padding: 22px;
+}
+
+.lzac-grid .card h3 {
+    font-size: 1rem;
+    color: #f8fafc;
+    margin-bottom: 10px;
+}
+
+.lzac-index {
+    font-family: 'Fira Code',monospace;
+    color: var(--primary);
+    font-size: 0.78rem;
+    margin-bottom: 8px;
+}
+
+.lzac-note {
+    border-left: 3px solid #f59e0b;
+    background: rgba(245,158,11,0.06);
+    padding: 18px 20px;
+    border-radius: 0 7px 7px 0;
+}
+
+.lzac-note p {
+    margin: 0;
+}
+
+.lzac-list {
+    margin-left: 20px;
+    color: #cbd5e1;
+    padding-top: 4px;
+    font-size: 0.95rem;
+}
+
+.lzac-list li {
+    margin-bottom: 8px;
+}
+
+@media(max-width:650px) {
+    .lzac-grid {
+        grid-template-columns: 1fr;
     }
-    </script>
+    .lzac-hero {
+        padding: 26px 22px;
+        min-height: 300px;
+    }
+    .lzac-hero::after {
+        width: 165px;
+        height: 165px;
+        right: -55px;
+        top: 13px;
+        opacity: 0.30;
+    }
+}
 
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Fira+Code:wght@400;500&display=swap">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
-    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
-    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"></script>
-
-    <style>
-        :root {
-            --bg: #0b0f17;
-            --surface: #111827;
-            --surface-hover: #1f2937;
-            --border: #1f293d;
-            --border-accent: #2563eb;
-            --text: #e2e8f0;
-            --text-muted: #94a3b8;
-            --primary: #38bdf8;
-            --tag-bg: rgba(56, 189, 248, 0.08);
-            --tag-border: rgba(56, 189, 248, 0.2);
-            --green: #10b981;
-            --green-bg: rgba(16, 185, 129, 0.1);
-        }
-
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
-
-        body {
-            background-color: var(--bg);
-            color: var(--text);
-            font-family: 'Inter', system-ui, sans-serif;
-            line-height: 1.6;
-            padding: 40px 20px 80px 20px;
-            display: flex;
-            justify-content: center;
-            min-height: 100vh;
-        }
-
-        .container {
-            max-width: 880px;
-            width: 100%;
-        }
-
-        header {
-            margin-bottom: 35px;
-            border-bottom: 1px solid var(--border);
-            padding-bottom: 25px;
-        }
-
-        h1 {
-            font-size: 2.2rem;
-            font-weight: 700;
-            color: #ffffff;
-            letter-spacing: -0.5px;
-            margin-bottom: 6px;
-        }
-
-        .lead {
-            font-size: 1.05rem;
-            color: var(--primary);
-            margin-bottom: 14px;
-            font-weight: 500;
-        }
-
-        .header-links {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 12px;
-            font-family: 'Fira Code', monospace;
-            font-size: 0.85rem;
-        }
-
-        .header-links a {
-            color: var(--text-muted);
-            text-decoration: none;
-            border: 1px solid var(--border);
-            padding: 4px 10px;
-            border-radius: 4px;
-            background: var(--surface);
-            transition: all 0.2s ease;
-        }
-
-        .header-links a:hover {
-            color: var(--primary);
-            border-color: var(--primary);
-        }
-
-        nav.tab-nav {
-            display: flex;
-            gap: 8px;
-            margin-bottom: 35px;
-            border-bottom: 1px solid var(--border);
-            padding-bottom: 12px;
-            overflow-x: auto;
-        }
-
-        .tab-btn {
-            background: transparent;
-            border: 1px solid transparent;
-            color: var(--text-muted);
-            font-family: 'Fira Code', monospace;
-            font-size: 0.85rem;
-            padding: 8px 14px;
-            border-radius: 4px;
-            cursor: pointer;
-            transition: all 0.2s;
-            white-space: nowrap;
-        }
-
-        .tab-btn:hover {
-            color: var(--text);
-            background: var(--surface);
-        }
-
-        .tab-btn.active {
-            color: #ffffff;
-            background: var(--surface-hover);
-            border-color: var(--border);
-            border-bottom: 2px solid var(--primary);
-        }
-
-        a:focus-visible, button:focus-visible, input:focus-visible {
-            outline: 2px solid var(--primary);
-            outline-offset: 3px;
-        }
-
-        .panel {
-            display: none;
-            flex-direction: column;
-            gap: 30px;
-        }
-
-        .panel.active {
-            display: flex;
-        }
-
-        .card {
-            background: var(--surface);
-            border: 1px solid var(--border);
-            border-radius: 8px;
-            padding: 24px;
-        }
-
-        h2 {
-            font-size: 1.25rem;
-            font-weight: 600;
-            color: #ffffff;
-            margin: 20px 0 12px 0;
-            border-bottom: 1px dashed var(--border);
-            padding-bottom: 8px;
-        }
-
-        h2:first-of-type {
-            margin-top: 0;
-        }
-
-        p {
-            color: #cbd5e1;
-            font-size: 0.95rem;
-            margin-bottom: 12px;
-        }
-
-        p:last-child {
-            margin-bottom: 0;
-        }
-
-        .search-box {
-            width: 100%;
-            background: var(--bg);
-            border: 1px solid var(--border);
-            padding: 12px 14px;
-            border-radius: 6px;
-            color: var(--text);
-            font-family: 'Fira Code', monospace;
-            font-size: 0.85rem;
-            margin-bottom: 25px;
-            outline: none;
-        }
-
-        .search-box:focus {
-            border-color: var(--primary);
-        }
-
-        .pub-item {
-            padding: 16px;
-            border: 1px solid var(--border);
-            border-radius: 6px;
-            background: rgba(17, 24, 39, 0.6);
-            margin-bottom: 12px;
-            transition: border-color 0.2s;
-        }
-
-        .pub-item:hover {
-            border-color: var(--border-accent);
-        }
-
-        .pub-item.hidden {
-            display: none;
-        }
-
-        .pub-title {
-            font-weight: 600;
-            color: #ffffff;
-            font-size: 0.98rem;
-            margin-bottom: 6px;
-            line-height: 1.4;
-        }
-
-        .pub-title a {
-            color: inherit;
-            text-decoration: none;
-        }
-
-        .pub-title a:hover {
-            color: var(--primary);
-        }
-
-        .pub-meta {
-            font-family: 'Fira Code', monospace;
-            font-size: 0.78rem;
-            color: var(--text-muted);
-            margin-bottom: 8px;
-        }
-
-        .badge {
-            display: inline-block;
-            padding: 2px 6px;
-            border-radius: 3px;
-            font-size: 0.72rem;
-            font-weight: 500;
-            text-transform: uppercase;
-        }
-
-        .badge-preprint { background: var(--tag-bg); color: var(--primary); border: 1px solid var(--tag-border); }
-        .badge-published { background: var(--green-bg); color: var(--green); border: 1px solid rgba(16, 185, 129, 0.3); }
-        .badge-review { background: rgba(245, 158, 11, 0.1); color: #f59e0b; border: 1px solid rgba(245, 158, 11, 0.3); }
-
-        .pub-actions {
-            margin-top: 10px;
-            display: flex;
-            gap: 8px;
-        }
-
-        .action-btn {
-            background: var(--bg);
-            border: 1px solid var(--border);
-            color: var(--text-muted);
-            font-family: 'Fira Code', monospace;
-            font-size: 0.72rem;
-            padding: 4px 10px;
-            border-radius: 3px;
-            cursor: pointer;
-            text-decoration: none;
-            transition: all 0.2s;
-        }
-
-        .action-btn:hover {
-            color: var(--text);
-            border-color: var(--text-muted);
-        }
-
-        .action-btn.copied {
-            color: var(--green) !important;
-            border-color: var(--green) !important;
-        }
-
-        footer {
-            margin-top: 50px;
-            border-top: 1px solid var(--border);
-            padding-top: 20px;
-            font-family: 'Fira Code', monospace;
-            font-size: 0.8rem;
-            color: var(--text-muted);
-            text-align: center;
-        }
-    </style>
+</style>
 </head>
+
 <body>
-
 <div class="container">
-    <header>
-        <h1>Julien Boblique</h1>
-        <div class="lead">Recherche indépendante · Biophysique, thermodynamique hors équilibre & cybernétique</div>
-        <div class="header-links">
-            <a href="https://orcid.org/0009-0009-0648-5970" target="_blank" rel="noopener noreferrer">ORCID</a>
-            <a href="https://zenodo.org/search?q=metadata.creators.person_or_org.name%3A%22Boblique%2C%20Julien%22" target="_blank" rel="noopener noreferrer">Zenodo</a>
-            <a href="https://www.linkedin.com/in/julien-boblique-33230a210" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-            <a href="mailto:julien.boblique@orange.fr">Contact</a>
-        </div>
-    </header>
 
-    <nav class="tab-nav">
-        <button class="tab-btn active" onclick="showTab('publications', this)">Publications & Préprints (<span id="publication-count">0</span>)</button>
-        <button class="tab-btn" onclick="showTab('about', this)">Démarche & Science 4.0</button>
-        <button class="tab-btn" onclick="showTab('conferences', this)">Conférences & Collaborations</button>
-    </nav>
+<header>
+    <h1>Julien Boblique</h1>
+    <div class="lead">
+        Recherche indépendante · Biophysique, thermodynamique hors équilibre & cybernétique
+    </div>
+    <div class="header-links">
+        <a href="https://orcid.org/0009-0009-0648-5970" target="_blank" rel="noopener noreferrer">ORCID</a>
+        <a href="https://zenodo.org/search?q=metadata.creators.person_or_org.name%3A%22Boblique%2C%20Julien%22" target="_blank" rel="noopener noreferrer">Zenodo</a>
+        <a href="https://www.linkedin.com/in/julien-boblique-33230a210" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+        <a href="mailto:julien.boblique@orange.fr">Contact</a>
+    </div>
+</header>
 
-    <main>
-        <!-- ONGLET 1 : PUBLICATIONS -->
-        <div id="panel-publications" class="panel active">
-            <input type="text" id="filter-input" class="search-box" placeholder="Filtrer parmi les publications (titre, mot-clé, revue, DOI)..." oninput="filterPublications()">
+<nav class="tab-nav">
+    <button class="tab-btn active" onclick="showTab('publications',this)">
+        Publications & Préprints (<span id="publication-count">0</span>)
+    </button>
+    <button class="tab-btn" onclick="showTab('about',this)">
+        Démarche & Science 4.0
+    </button>
+    <button class="tab-btn" onclick="showTab('lzac',this)">
+        Projet lunaire — L-ZAC
+    </button>
+    <button class="tab-btn" onclick="showTab('conferences',this)">
+        Conférences & Collaborations
+    </button>
+</nav>
 
-            <section>
-                <h2>Physique de la matière condensée & Dynamique nucléaire</h2>
+<main>
 
-                <!-- NT-2026-F5-SoS-001 (V3.2) -->
-                <div class="pub-item" data-search="nt-2026-f5-sos-001 f-5 f5 non-hermitian spectral foundations impedance duality ep2 jordan block 5mw chartres boblique zenodo 23123491 23122545 phonons lattice-assisted nuclear dynamics sos science of stability">
-                    <div class="pub-title">
-                        <a href="https://doi.org/10.5281/zenodo.23123491" target="_blank" rel="noopener noreferrer">
-                            NT-2026-F5-SoS-001: Non-Hermitian Spectral Foundations, Continuous Impedance Duality and Thermodynamic Balance of the F-5 Lattice Architecture (Version 3.2 Consolidée)
-                        </a>
-                    </div>
-                    <div class="pub-meta"><span class="badge badge-preprint">Rapport Zenodo</span> · 2026 · Boblique, J., Chartres, J.-M. · DOI: 10.5281/zenodo.23123491</div>
-                    <div class="pub-actions">
-                        <a href="https://doi.org/10.5281/zenodo.23123491" target="_blank" rel="noopener noreferrer" class="action-btn">Accéder au dépôt (v3.2)</a>
-                        <button class="action-btn" onclick="copyBibtex('nt_f5_sos_001_v32_2026', this)">BibTeX</button>
-                    </div>
-                </div>
+<!-- ONGLET 1 : PUBLICATIONS -->
+<div id="panel-publications" class="panel active">
 
-                <!-- SPEC-2026-F5-EXP-001 (V1.4) -->
-                <div class="pub-item" data-search="spec-2026-f5-exp-001 f-5 f5 test bench 5-sigma metrology falsification protocol calorimetry helium-4 d2 separation chartres boblique zenodo 23124553 thermosiphon bonferroni">
-                    <div class="pub-title">
-                        <a href="https://doi.org/10.5281/zenodo.23124553" target="_blank" rel="noopener noreferrer">
-                            SPEC-2026-F5-EXP-001: Test Bench Specifications and 5-Sigma Metrological Falsification Protocol for the F-5 Lattice Architecture (Version 1.4 Finalisée)
-                        </a>
-                    </div>
-                    <div class="pub-meta"><span class="badge badge-preprint">Spécification Zenodo</span> · 2026 · Boblique, J., Chartres, J.-M. · DOI: 10.5281/zenodo.23124553</div>
-                    <div class="pub-actions">
-                        <a href="https://doi.org/10.5281/zenodo.23124553" target="_blank" rel="noopener noreferrer" class="action-btn">Accéder au dépôt (v1.4)</a>
-                        <button class="action-btn" onclick="copyBibtex('spec_f5_exp_001_v14_2026', this)">BibTeX</button>
-                    </div>
-                </div>
+<input
+    type="text"
+    id="filter-input"
+    class="search-box"
+    placeholder="Filtrer parmi les publications (titre, mot-clé, revue, DOI)..."
+    oninput="filterPublications()"
+>
 
-                <!-- F-5 Architecture initiale -->
-                <div class="pub-item" data-search="f-5 f5 architecture solid-state geometric confinement lattice-assisted nuclear dynamics lanr cmns zenodo 22994419 non-hermitian gamow phonons boblique">
-                    <div class="pub-title">
-                        <a href="https://doi.org/10.5281/zenodo.22994419" target="_blank" rel="noopener noreferrer">
-                            A Falsifiable Theoretical Framework for Solid-State Geometric Confinement and Lattice-Assisted Nuclear Dynamics: The F-5 Architecture
-                        </a>
-                    </div>
-                    <div class="pub-meta"><span class="badge badge-preprint">Préprint Zenodo</span> · 2026 · Boblique, J. · DOI: 10.5281/zenodo.22994419</div>
-                    <div class="pub-actions">
-                        <a href="https://doi.org/10.5281/zenodo.22994419" target="_blank" rel="noopener noreferrer" class="action-btn">Accéder au dépôt</a>
-                        <button class="action-btn" onclick="copyBibtex('f5_architecture_2026', this)">BibTeX</button>
-                    </div>
-                </div>
-            </section>
+<div id="publication-list"></div>
 
-            <section>
-                <h2>Astrophysique théorique & Infodynamique métrique</h2>
-                
-                <div class="pub-item" data-search="zmunu metric impedance relativite covariante zenodo 22773052 kretschmann sparc ligo">
-                    <div class="pub-title">
-                        <a href="https://doi.org/10.5281/zenodo.22773052" target="_blank" rel="noopener noreferrer">
-                            Extension phénoménologique covariante de la relativité générale par une réponse d'impédance métrique $Z_{\mu\nu}$ : formulation minimale, limites asymptotiques et programme de falsification
-                        </a>
-                    </div>
-                    <div class="pub-meta"><span class="badge badge-preprint">Préprint Zenodo</span> · 2026 · Boblique, J. · DOI: 10.5281/zenodo.22773052</div>
-                    <div class="pub-actions">
-                        <a href="https://doi.org/10.5281/zenodo.22773052" target="_blank" rel="noopener noreferrer" class="action-btn">Accéder au dépôt</a>
-                        <button class="action-btn" onclick="copyBibtex('metric_impedance_zmunu_v2_2026', this)">BibTeX</button>
-                    </div>
-                </div>
+</div>
 
-                <!-- TUM v2.0 -->
-                <div class="pub-item" data-search="tum clifford algebra beron boblique zenodo 22922030 ep2 jordan non-hermitian cybernetics feedback v2 benchmark">
-                    <div class="pub-title">
-                        <a href="https://doi.org/10.5281/zenodo.22922030" target="_blank" rel="noopener noreferrer">
-                            Geometric-Cybernetic Unification: TUM $\mathrm{Cl}(8,0)$ Invariant and Science 4.0 Autonomous Feedback (v2.0 Benchmark)
-                        </a>
-                    </div>
-                    <div class="pub-meta"><span class="badge badge-preprint">Préprint Zenodo</span> · 2026 · Berón, S. M. A., Boblique, J. · DOI: 10.5281/zenodo.22922030</div>
-                    <div class="pub-actions">
-                        <a href="https://doi.org/10.5281/zenodo.22922030" target="_blank" rel="noopener noreferrer" class="action-btn">Accéder au dépôt (v2.0)</a>
-                        <button class="action-btn" onclick="copyBibtex('tum_science40_v2_2026', this)">BibTeX</button>
-                    </div>
-                </div>
+<!-- ONGLET 2 : DÉMARCHE SCIENCE 4.0 -->
+<div id="panel-about" class="panel">
 
-                <!-- TUM v1.0 -->
-                <div class="pub-item" data-search="tum clifford algebra beron boblique zenodo 22115055 cybernetics feedback v1 draft">
-                    <div class="pub-title">
-                        <a href="https://zenodo.org/records/22115055" target="_blank" rel="noopener noreferrer">
-                            Geometric-Cybernetic Unification: TUM $\mathrm{Cl}(8,0)$ Invariant and Science 4.0 Autonomous Feedback (v1.0 Working Draft)
-                        </a>
-                    </div>
-                    <div class="pub-meta"><span class="badge badge-preprint">Préprint Zenodo</span> · 2026 · Berón, S. M. A., Boblique, J. · Zenodo: 22115055</div>
-                    <div class="pub-actions">
-                        <a href="https://zenodo.org/records/22115055" target="_blank" rel="noopener noreferrer" class="action-btn">Accéder au dépôt (v1.0)</a>
-                        <button class="action-btn" onclick="copyBibtex('tum_science40_v1_2026', this)">BibTeX</button>
-                    </div>
-                </div>
+    <div class="card">
+        <h2>Orientation de recherche</h2>
+        <p>
+            Mes travaux s'articulent autour de l'application de la
+            thermodynamique des systèmes ouverts, de la théorie de
+            l'information et de la cybernétique à la résilience des
+            architectures complexes, tant biologiques que physiques.
+        </p>
+        <p>
+            L'objectif central est de modéliser les transitions de
+            régime dynamique sous contrainte d'épuisement ou de saturation,
+            en privilégiant l'étude des flux et des boucles de rétroaction
+            plutôt qu'une analyse purement statique des composants.
+        </p>
+    </div>
 
-                <div class="pub-item" data-search="janus bimetrique impedance infodynamique zenodo 22006771 cosmologie">
-                    <div class="pub-title">
-                        <a href="https://doi.org/10.5281/zenodo.22006771" target="_blank" rel="noopener noreferrer">
-                            Dépasser le modèle bimétrique de Janus : L'impédance métrique et l'infodynamique de l'espace-temps
-                        </a>
-                    </div>
-                    <div class="pub-meta"><span class="badge badge-preprint">Préprint Zenodo</span> · 2026 · Boblique, J. · DOI: 10.5281/zenodo.22006771</div>
-                    <div class="pub-actions">
-                        <a href="https://doi.org/10.5281/zenodo.22006771" target="_blank" rel="noopener noreferrer" class="action-btn">Accéder au dépôt</a>
-                        <button class="action-btn" onclick="copyBibtex('janus_metric_impedance_2026', this)">BibTeX</button>
-                    </div>
-                </div>
-            </section>
+    <div class="card">
+        <h2>Le framework Science 4.0</h2>
+        <p>
+            Science 4.0 constitue une grille de lecture interdisciplinaire
+            visant à formaliser les analogies structurelles entre phénomènes
+            physiques hors équilibre et régulation des réseaux biologiques :
+        </p>
+        <ul style="margin-left:20px;color:#cbd5e1;font-size:0.95rem;">
+            <li>
+                <strong>Dynamique des flux :</strong>
+                Traitement du signal et cinétique temporelle des biomarqueurs
+                physiologiques face aux gradients de contrainte.
+            </li>
+            <li>
+                <strong>Formalisation mathématique :</strong>
+                Exploration d'extensions de champ et de modèles variationnels
+                pour tester la complétude géodésique en régimes extrêmes.
+            </li>
+            <li>
+                <strong>Open Science :</strong>
+                Diffusion continue des hypothèses sous forme de préprints
+                horodatés avec DOI pour soumission au débat contradictoire
+                des pairs.
+            </li>
+        </ul>
+    </div>
 
-            <section>
-                <h2>Intégrité épigénétique & Modélisation systémique</h2>
+</div>
 
-                <div class="pub-item" data-search="neuro epigenetics stress nr3c1 bio-os hpa jpir 26jpir0141">
-                    <div class="pub-title">
-                        <a href="https://doi.org/10.63721/26JPIR0141" target="_blank" rel="noopener noreferrer">
-                            Theoretical Perspective – Neuro-Epigenetics of Stress: Modeling HPA Axis Unlocking and Central Signal-to-Noise Ratio Optimization via the Bio-OS V8 Framework
-                        </a>
-                    </div>
-                    <div class="pub-meta"><span class="badge badge-published">Publié</span> · 2026 · Journal of Psychiatric Insight Review · DOI: 10.63721/26JPIR0141</div>
-                    <div class="pub-actions">
-                        <a href="https://doi.org/10.63721/26JPIR0141" target="_blank" rel="noopener noreferrer" class="action-btn">Lien DOI</a>
-                        <button class="action-btn" onclick="copyBibtex('neuro_epigenetics_2026', this)">BibTeX</button>
-                    </div>
-                </div>
+<!-- ONGLET 3 : PROJET LUNAIRE L-ZAC -->
+<div id="panel-lzac" class="panel">
 
-                <div class="pub-item" data-search="set theory systemic transitions izab 16000667 epigenetic">
-                    <div class="pub-title">
-                        <a href="https://doi.org/10.23880/izab-16000667" target="_blank" rel="noopener noreferrer">
-                            A Social Epigenetic Theory of Systemic Transitions
-                        </a>
-                    </div>
-                    <div class="pub-meta"><span class="badge badge-published">Publié</span> · 2026 · International Journal of Zoology and Animal Biology · DOI: 10.23880/izab-16000667</div>
-                    <div class="pub-actions">
-                        <a href="https://doi.org/10.23880/izab-16000667" target="_blank" rel="noopener noreferrer" class="action-btn">Lien DOI</a>
-                        <button class="action-btn" onclick="copyBibtex('set_theory_2026', this)">BibTeX</button>
-                    </div>
-                </div>
-
-                <div class="pub-item" data-search="set science 4.0 flow control biological izab 16000669">
-                    <div class="pub-title">
-                        <a href="https://doi.org/10.23880/izab-16000669" target="_blank" rel="noopener noreferrer">
-                            From SET Theory to Science 4.0: An AI-Driven Framework for Epigenetic Integrity and Biological Flow Control
-                        </a>
-                    </div>
-                    <div class="pub-meta"><span class="badge badge-published">Publié</span> · 2026 · International Journal of Zoology and Animal Biology · DOI: 10.23880/izab-16000669</div>
-                    <div class="pub-actions">
-                        <a href="https://doi.org/10.23880/izab-16000669" target="_blank" rel="noopener noreferrer" class="action-btn">Lien DOI</a>
-                        <button class="action-btn" onclick="copyBibtex('science_4_0_2026', this)">BibTeX</button>
-                    </div>
-                </div>
-
-                <div class="pub-item" data-search="epigenetic sustainability human factor nr3c1 jenr 16000418">
-                    <div class="pub-title">
-                        <a href="https://doi.org/10.23880/jenr-16000418" target="_blank" rel="noopener noreferrer">
-                            Epigenetic Sustainability: Modeling the Human Factor as a Natural Resource through Science 4.0 and the NR3C1 Biological Pilot
-                        </a>
-                    </div>
-                    <div class="pub-meta"><span class="badge badge-published">Publié</span> · 2026 · Journal of Ecology and Natural Resources · DOI: 10.23880/jenr-16000418</div>
-                    <div class="pub-actions">
-                        <a href="https://doi.org/10.23880/jenr-16000418" target="_blank" rel="noopener noreferrer" class="action-btn">Lien DOI</a>
-                        <button class="action-btn" onclick="copyBibtex('epigenetic_sustainability_2026', this)">BibTeX</button>
-                    </div>
-                </div>
-
-                <div class="pub-item" data-search="unified operational framework resilience steering avsm 054">
-                    <div class="pub-title">
-                        <a href="https://doi.org/10.26502/AVSM.054" target="_blank" rel="noopener noreferrer">
-                            Science 4.0: A Unified Operational Framework for Epigenetic Integrity and Systemic Resilience Steering
-                        </a>
-                    </div>
-                    <div class="pub-meta"><span class="badge badge-published">Publié</span> · 2026 · Archives of Veterinary Science and Medicine · DOI: 10.26502/AVSM.054</div>
-                    <div class="pub-actions">
-                        <a href="https://doi.org/10.26502/AVSM.054" target="_blank" rel="noopener noreferrer" class="action-btn">Lien DOI</a>
-                        <button class="action-btn" onclick="copyBibtex('unified_framework_2026', this)">BibTeX</button>
-                    </div>
-                </div>
-            </section>
-
-            <section>
-                <h2>Cybernétique biologique, Bio-OS & Biophysique cellulaire</h2>
-
-                <!-- Science 4.0: Integrating Biophysical Signal Optimization (BJSTR 2026) -->
-                <div class="pub-item" data-search="science 4.0 integrating biophysical signal optimization non-equilibrium thermodynamics hydrodynamic boundary constraints living systems architecture snr bio-fluidic bjstr 10.26717/bjstr.2026.66.010366 shannon lipid vectorization counter-pressure deconvolution boblique 58936 010366">
-                    <div class="pub-title">
-                        <a href="https://doi.org/10.26717/BJSTR.2026.66.010366" target="_blank" rel="noopener noreferrer">
-                            Science 4.0: Integrating Biophysical Signal Optimization, Non-Equilibrium Thermodynamics, and Hydrodynamic Boundary Constraints in Living Systems Architecture
-                        </a>
-                    </div>
-                    <div class="pub-meta"><span class="badge badge-published">Publié</span> · 2026 · Biomedical Journal of Scientific & Technical Research · Vol. 66, Iss. 4, pp. 58936–58940 · DOI: 10.26717/BJSTR.2026.66.010366</div>
-                    <div class="pub-actions">
-                        <a href="https://doi.org/10.26717/BJSTR.2026.66.010366" target="_blank" rel="noopener noreferrer" class="action-btn">Lien DOI</a>
-                        <button class="action-btn" onclick="copyBibtex('science40_bjstr_2026', this)">BibTeX</button>
-                    </div>
-                </div>
-
-                <!-- Non-Equilibrium Allometric Scaling (IZAB-16000702) -->
-                <div class="pub-item" data-search="allometric scaling bioenergetic information routing shannon snr mammalian phyla izab 16000702 cellular resilience non-equilibrium metabolic flow hypoxia boblique">
-                    <div class="pub-title">
-                        <a href="https://medwinpublishers.com/article/IZAB/10.23880/izab-16000702/full" target="_blank" rel="noopener noreferrer">
-                            Non-Equilibrium Allometric Scaling and Bioenergetic Information Routing: A Comparative Science 4.0 Framework for Cellular Resilience Across Mammalian Phyla
-                        </a>
-                    </div>
-                    <div class="pub-meta"><span class="badge badge-published">Publié</span> · 2026 · International Journal of Zoology and Animal Biology · Vol. 9, Iss. 5 · DOI: 10.23880/izab-16000702</div>
-                    <div class="pub-actions">
-                        <a href="https://medwinpublishers.com/article/IZAB/10.23880/izab-16000702/full" target="_blank" rel="noopener noreferrer" class="action-btn">Consulter</a>
-                        <button class="action-btn" onclick="copyBibtex('allometric_scaling_izab_2026', this)">BibTeX</button>
-                    </div>
-                </div>
-
-                <div class="pub-item" data-search="glycocalyx wss shear stress mechanotransduction izab 16000697 microvascular">
-                    <div class="pub-title">
-                        <a href="https://medwinpublishers.com/article/IZAB/10.23880/izab-16000697/full" target="_blank" rel="noopener noreferrer">
-                            Viscoelastic Coupling of Pulsatile Wall Shear Stress and Endothelial Glycocalyx Mechanotransduction: A Non-Equilibrium Hydrodynamic Model for Microvascular Resilience
-                        </a>
-                    </div>
-                    <div class="pub-meta"><span class="badge badge-published">Publié</span> · 2026 · International Journal of Zoology and Animal Biology · DOI: 10.23880/izab-16000697</div>
-                    <div class="pub-actions">
-                        <a href="https://doi.org/10.23880/izab-16000697" target="_blank" rel="noopener noreferrer" class="action-btn">Lien DOI</a>
-                        <button class="action-btn" onclick="copyBibtex('glycocalyx_mechanotransduction_2026', this)">BibTeX</button>
-                    </div>
-                </div>
-
-                <div class="pub-item" data-search="glymphatic clearance sleep snr bioenergetics jmcrr thermodynamics">
-                    <div class="pub-title">
-                        <a href="https://www.scivisionpub.com/pdfs/thermodynamic-and-bioenergetic-coupling-of-glymphatic-clearance-how-slow-wave-sleep-maximizes-cerebral-signal-to-noise-ratio-snr-4561.pdf" target="_blank" rel="noopener noreferrer">
-                            Thermodynamic and Bioenergetic Coupling of Glymphatic Clearance: How Slow-Wave Sleep Maximizes Cerebral Signal-to-Noise Ratio (SNR)
-                        </a>
-                    </div>
-                    <div class="pub-meta"><span class="badge badge-published">Publié</span> · 2026 · Journal of Medical - Clinical Research & Reviews · ISSN: 2639-944X</div>
-                    <div class="pub-actions">
-                        <a href="https://www.scivisionpub.com/pdfs/thermodynamic-and-bioenergetic-coupling-of-glymphatic-clearance-how-slow-wave-sleep-maximizes-cerebral-signal-to-noise-ratio-snr-4561.pdf" target="_blank" rel="noopener noreferrer" class="action-btn">PDF</a>
-                        <button class="action-btn" onclick="copyBibtex('thermodynamic_glymphatic_snr_2026', this)">BibTeX</button>
-                    </div>
-                </div>
-
-                <div class="pub-item" data-search="glymphatic clearance nrem sleep bioelectric hydrodynamics oclmcr">
-                    <div class="pub-title">
-                        <a href="https://laurinpublishers.com/Journals/OCLMCR/Hydrodynamic-and-Bioelectric-Couplings-Governing-Interstitial-Glymphatic-Clearance-During-NREM-Sleep-059" target="_blank" rel="noopener noreferrer">
-                            Hydrodynamic and Bioelectric Couplings Governing Interstitial Glymphatic Clearance During NREM Sleep
-                        </a>
-                    </div>
-                    <div class="pub-meta"><span class="badge badge-published">Publié</span> · 2026 · Online Journal of Clinical and Medical Case Reports</div>
-                    <div class="pub-actions">
-                        <a href="https://laurinpublishers.com/Journals/OCLMCR/Hydrodynamic-and-Bioelectric-Couplings-Governing-Interstitial-Glymphatic-Clearance-During-NREM-Sleep-059" target="_blank" rel="noopener noreferrer" class="action-btn">Consulter</a>
-                        <button class="action-btn" onclick="copyBibtex('glymphatic_clearance_2026', this)">BibTeX</button>
-                    </div>
-                </div>
-
-                <div class="pub-item" data-search="bioelectric steering transmembrane voltage modulation tumor microenvironment ajbsr 31 004106">
-                    <div class="pub-title">
-                        <a href="https://doi.org/10.34297/AJBSR.2026.31.004106" target="_blank" rel="noopener noreferrer">
-                            Bio-Electric Steering and Transmembrane Voltage Modulation: Algorithmic Reprogramming of the Tumor Microenvironment within the Science 4.0 Framework
-                        </a>
-                    </div>
-                    <div class="pub-meta"><span class="badge badge-published">Publié</span> · 2026 · American Journal of Biomedical Science & Research · DOI: 10.34297/AJBSR.2026.31.004106</div>
-                    <div class="pub-actions">
-                        <a href="https://doi.org/10.34297/AJBSR.2026.31.004106" target="_blank" rel="noopener noreferrer" class="action-btn">Lien DOI</a>
-                        <button class="action-btn" onclick="copyBibtex('bioelectric_steering_2026', this)">BibTeX</button>
-                    </div>
-                </div>
-
-                <div class="pub-item" data-search="cellular snr bioenergetic information networks 3070 0310">
-                    <div class="pub-title">
-                        <a href="https://doi.org/10.71123/3070-0310.030104" target="_blank" rel="noopener noreferrer">
-                            Biophysical Optimization of Cellular Signal-to-Noise Ratio (SNR) in Bioenergetic Information Networks V2
-                        </a>
-                    </div>
-                    <div class="pub-meta"><span class="badge badge-published">Publié</span> · 2026 · Research Journal of Innovative Studies in Medical and Health Sciences · DOI: 10.71123/3070-0310.030104</div>
-                    <div class="pub-actions">
-                        <a href="https://doi.org/10.71123/3070-0310.030104" target="_blank" rel="noopener noreferrer" class="action-btn">Lien DOI</a>
-                        <button class="action-btn" onclick="copyBibtex('cellular_snr_v2_2026', this)">BibTeX</button>
-                    </div>
-                </div>
-
-                <div class="pub-item" data-search="science 4.0 bio-os v8 biological sovereignty izab 16000689">
-                    <div class="pub-title">
-                        <a href="https://medwinpublishers.com/article-description.php?artId=14250" target="_blank" rel="noopener noreferrer">
-                            Science 4.0 and the Bio-OS V8 Architecture: Algorithmic Governance for Biological Sovereignty
-                        </a>
-                    </div>
-                    <div class="pub-meta"><span class="badge badge-published">Publié</span> · 2026 · International Journal of Zoology and Animal Biology · DOI: 10.23880/izab-16000689</div>
-                    <div class="pub-actions">
-                        <a href="https://doi.org/10.23880/izab-16000689" target="_blank" rel="noopener noreferrer" class="action-btn">Lien DOI</a>
-                        <button class="action-btn" onclick="copyBibtex('bio_os_v8_izab_2026', this)">BibTeX</button>
-                    </div>
-                </div>
-
-                <div class="pub-item" data-search="bio-os v8 algorithmic governance epigenetic ecosystems jenr 16000424">
-                    <div class="pub-title">
-                        <a href="https://medwinpublishers.com/article-description.php?artId=14242" target="_blank" rel="noopener noreferrer">
-                            Bio-OS V8 Algorithmic Governance: Industrializing Epigenetic Sustainability in Socio-Technical Ecosystems
-                        </a>
-                    </div>
-                    <div class="pub-meta"><span class="badge badge-published">Publié</span> · 2026 · Journal of Ecology and Natural Resources · DOI: 10.23880/jenr-16000424</div>
-                    <div class="pub-actions">
-                        <a href="https://doi.org/10.23880/jenr-16000424" target="_blank" rel="noopener noreferrer" class="action-btn">Lien DOI</a>
-                        <button class="action-btn" onclick="copyBibtex('bio_os_v8_jenr_2026', this)">BibTeX</button>
-                    </div>
-                </div>
-
-                <div class="pub-item" data-search="industrial standardization bio-os resilience engineering medwin 14225">
-                    <div class="pub-title">
-                        <a href="https://medwinpublishers.com/article-description.php?artId=14225" target="_blank" rel="noopener noreferrer">
-                            Industrial Standardization of the Bio-OS: Algorithmic Codification of Resilience Engineering Guidelines and Version V8 Architecture
-                        </a>
-                    </div>
-                    <div class="pub-meta"><span class="badge badge-published">Publié</span> · 2026 · MedWin Publishers</div>
-                    <div class="pub-actions">
-                        <a href="https://medwinpublishers.com/article-description.php?artId=14225" target="_blank" rel="noopener noreferrer" class="action-btn">Consulter</a>
-                        <button class="action-btn" onclick="copyBibtex('bio_os_standardization_2026', this)">BibTeX</button>
-                    </div>
-                </div>
-
-                <div class="pub-item" data-search="cellular resilience living signal optimization izab 16000673">
-                    <div class="pub-title">
-                        <a href="https://doi.org/10.23880/izab-16000673" target="_blank" rel="noopener noreferrer">
-                            Science 4.0-Architecture of Cellular Resilience and Living Signal Optimization
-                        </a>
-                    </div>
-                    <div class="pub-meta"><span class="badge badge-published">Publié</span> · 2026 · International Journal of Zoology and Animal Biology · DOI: 10.23880/izab-16000673</div>
-                    <div class="pub-actions">
-                        <a href="https://doi.org/10.23880/izab-16000673" target="_blank" rel="noopener noreferrer" class="action-btn">Lien DOI</a>
-                        <button class="action-btn" onclick="copyBibtex('cellular_resilience_2026', this)">BibTeX</button>
-                    </div>
-                </div>
-
-                <div class="pub-item" data-search="comprehensive architecture biological operating system bio-os izab 16000679">
-                    <div class="pub-title">
-                        <a href="https://doi.org/10.23880/izab-16000679" target="_blank" rel="noopener noreferrer">
-                            Science 4.0: Comprehensive Architecture of the Biological Operating System (Bio-OS) A Framework for Systemic Resilience and Industrialized Bio-Governance
-                        </a>
-                    </div>
-                    <div class="pub-meta"><span class="badge badge-published">Publié</span> · 2026 · International Journal of Zoology and Animal Biology · DOI: 10.23880/izab-16000679</div>
-                    <div class="pub-actions">
-                        <a href="https://doi.org/10.23880/izab-16000679" target="_blank" rel="noopener noreferrer" class="action-btn">Lien DOI</a>
-                        <button class="action-btn" onclick="copyBibtex('bio_os_governance_2026', this)">BibTeX</button>
-                    </div>
-                </div>
-            </section>
-
-            <section>
-                <h2>Applications biomédicales, logistique des flux & cinétiques</h2>
-
-                <div class="pub-item" data-search="blood-brain barrier bbb shielding transient ischemic attack tia glycocalyx hydrodynamics micro-thrombosis jcdp 3065-7059 non-equilibrium brinkman navier-stokes">
-                    <div class="pub-title">
-                        <a href="https://doi.org/10.3065-7059/jcdpc.2026.032" target="_blank" rel="noopener noreferrer">
-                            Bio-Electrodynamic Shielding of the Blood-Brain Barrier: Non-Equilibrium Hydrodynamics to Prevent Post-Ischemic Micro-Thrombosis and Transient Ischemic Attacks (TIA)
-                        </a>
-                    </div>
-                    <div class="pub-meta"><span class="badge badge-published">Publié</span> · 2026 · Journal of Chronic Disease Prevention and Care · Vol. 3, Iss. 4, pp. 1–4 · ISSN: 3065-7059</div>
-                    <div class="pub-actions">
-                        <a href="https://doi.org/10.3065-7059/jcdpc.2026.032" target="_blank" rel="noopener noreferrer" class="action-btn">Consulter</a>
-                        <button class="action-btn" onclick="copyBibtex('bbb_shielding_tia_2026', this)">BibTeX</button>
-                    </div>
-                </div>
-
-                <div class="pub-item" data-search="ischemic endothelial repair snr signal to noise ratio bioenergetic routing non-equilibrium microvascular recovery advance medical and clinical research amcr scieniq">
-                    <div class="pub-title">
-                        <a href="https://www.scieniqpublishers.com/advance-medical-and-clinical-research-current-issue/" target="_blank" rel="noopener noreferrer">
-                            Non-Equilibrium Bioenergetic Information Routing and Signal-to-Noise Ratio Optimization in Ischemic Endothelial Repair: A Clinical Framework for Microvascular Recovery
-                        </a>
-                    </div>
-                    <div class="pub-meta"><span class="badge badge-published">Publié</span> · 2026 · Advance Medical and Clinical Research · Vol. 7, Iss. 4, pp. 436–438</div>
-                    <div class="pub-actions">
-                        <a href="https://www.scieniqpublishers.com/advance-medical-and-clinical-research-current-issue/" target="_blank" rel="noopener noreferrer" class="action-btn">Consulter</a>
-                        <button class="action-btn" onclick="copyBibtex('ischemic_endothelial_snr_2026', this)">BibTeX</button>
-                    </div>
-                </div>
-
-                <div class="pub-item" data-search="mams mitochondria myocardial no-reflow reperfusion ajmcrr">
-                    <div class="pub-title">
-                        <a href="https://ajmcrr.com/index.php/pub/article/view/456" target="_blank" rel="noopener noreferrer">
-                            Targeting Mitochondrial-Endoplasmic Reticulum Contact Sites (MAMs) Bioenergetics to Prevent Myocardial No-Reflow: A Non-Equilibrium Thermodynamic Framework
-                        </a>
-                    </div>
-                    <div class="pub-meta"><span class="badge badge-published">Publié</span> · 2026 · American Journal of Medical and Clinical Research & Reviews · ISSN: 2835-6276</div>
-                    <div class="pub-actions">
-                        <a href="https://ajmcrr.com/index.php/pub/article/view/456" target="_blank" rel="noopener noreferrer" class="action-btn">Consulter</a>
-                        <button class="action-btn" onclick="copyBibtex('mams_no_reflow_2026', this)">BibTeX</button>
-                    </div>
-                </div>
-
-                <div class="pub-item" data-search="urological logistics glomerular filtration prostatic congestion djs 174">
-                    <div class="pub-title">
-                        <a href="https://westlandpublishers.com/abstract.php?aid=134&jid=4&Article=Urological-Logistics:-A-Science-4.0-Operational-Model-for-Predictive-Glomerular-Maintenance-and-Prostatic-Congestion-Mitigation" target="_blank" rel="noopener noreferrer">
-                            Urological Logistics: A Science 4.0 Operational Model for Predictive Glomerular Maintenance and Prostatic Congestion Mitigation
-                        </a>
-                    </div>
-                    <div class="pub-meta"><span class="badge badge-published">Publié</span> · 2026 · Digital Journal of Science · DOI: 10.63592/DJS/174</div>
-                    <div class="pub-actions">
-                        <a href="https://westlandpublishers.com/abstract.php?aid=134&jid=4&Article=Urological-Logistics:-A-Science-4.0-Operational-Model-for-Predictive-Glomerular-Maintenance-and-Prostatic-Congestion-Mitigation" target="_blank" rel="noopener noreferrer" class="action-btn">Consulter</a>
-                        <button class="action-btn" onclick="copyBibtex('urological_logistics_2026', this)">BibTeX</button>
-                    </div>
-                </div>
-
-                <div class="pub-item" data-search="lipid matrix carrier nano vectorized transport living signals 1094">
-                    <div class="pub-title">
-                        <a href="https://doi.org/10.47739/biotechnology1094" target="_blank" rel="noopener noreferrer">
-                            Lipid-Matrix Carrier Architecture: Engineering Nano-Vectorized Transport for Hydrophobic Living Signals in Science 4.0 Frameworks
-                        </a>
-                    </div>
-                    <div class="pub-meta"><span class="badge badge-published">Publié</span> · 2026 · JSM Biotechnology & Bioengineering · DOI: 10.47739/biotechnology1094</div>
-                    <div class="pub-actions">
-                        <a href="https://doi.org/10.47739/biotechnology1094" target="_blank" rel="noopener noreferrer" class="action-btn">Lien DOI</a>
-                        <button class="action-btn" onclick="copyBibtex('lipid_matrix_2026', this)">BibTeX</button>
-                    </div>
-                </div>
-
-                <div class="pub-item" data-search="jmrcr clinical review bio-logistical steering aging hybrid jmrcr">
-                    <div class="pub-title">
-                        <a href="https://www.sciencephotons.com/journal-of-medical-research-and-clinical-reviews/article-in-press" target="_blank" rel="noopener noreferrer">
-                            Clinical Review of Bio-Logistical Steering in Aging Hybrid Hardware: Micro-Vectorized Mitochondrial Architecture for Mucosal Restoration and Multi-Modular Decongestion
-                        </a>
-                    </div>
-                    <div class="pub-meta"><span class="badge badge-published">Publié</span> · 2026 · Journal of Medical Research and Clinical Reviews · ISSN: 3070-6238</div>
-                    <div class="pub-actions">
-                        <a href="https://www.sciencephotons.com/journal-of-medical-research-and-clinical-reviews/article-in-press" target="_blank" rel="noopener noreferrer" class="action-btn">Consulter</a>
-                        <button class="action-btn" onclick="copyBibtex('jmrcr_review_2026', this)">BibTeX</button>
-                    </div>
-                </div>
-
-                <div class="pub-item" data-search="maternal golden standard renal glomerular egfr peer review">
-                    <div class="pub-title">
-                        The Maternal Golden Standard: Algorithmic Regulation of Renal Hydraulics and Glomerular Flow Restoration above 85 mL/min eGFR
-                    </div>
-                    <div class="pub-meta"><span class="badge badge-review">Sous revue</span> · 2026 · Travail théorique et observationnel</div>
-                    <div class="pub-actions">
-                        <button class="action-btn" onclick="copyBibtex('maternal_golden_standard_2026', this)">BibTeX</button>
-                    </div>
-                </div>
-
-                <div class="pub-item" data-search="clinical validation flow steering epigenetic drift 76 year old hybrid izab 16000677">
-                    <div class="pub-title">
-                        <a href="https://doi.org/10.23880/izab-16000677" target="_blank" rel="noopener noreferrer">
-                            Clinical Validation of Science 4.0: Flow Steering and Epigenetic Drift Inversion on a 76-Year-Old Hybrid System
-                        </a>
-                    </div>
-                    <div class="pub-meta"><span class="badge badge-published">Publié</span> · 2026 · International Journal of Zoology and Animal Biology · DOI: 10.23880/izab-16000677</div>
-                    <div class="pub-actions">
-                        <a href="https://doi.org/10.23880/izab-16000677" target="_blank" rel="noopener noreferrer" class="action-btn">Lien DOI</a>
-                        <button class="action-btn" onclick="copyBibtex('clinical_validation_2026', this)">BibTeX</button>
-                    </div>
-                </div>
-
-                <div class="pub-item" data-search="mitochondrial bio-logistics co-enzyme q10 lycopene izab 16000681">
-                    <div class="pub-title">
-                        <a href="https://doi.org/10.23880/izab-16000681" target="_blank" rel="noopener noreferrer">
-                            Mitochondrial Bio-Logistics: Steering Co-Enzyme Q10 and Lycopene Synergies within the Science 4.0 Bio-OS Framework
-                        </a>
-                    </div>
-                    <div class="pub-meta"><span class="badge badge-published">Publié</span> · 2026 · International Journal of Zoology and Animal Biology · DOI: 10.23880/izab-16000681</div>
-                    <div class="pub-actions">
-                        <a href="https://doi.org/10.23880/izab-16000681" target="_blank" rel="noopener noreferrer" class="action-btn">Lien DOI</a>
-                        <button class="action-btn" onclick="copyBibtex('mitochondrial_biologistics_2026', this)">BibTeX</button>
-                    </div>
-                </div>
-            </section>
-        </div>
-
-        <!-- ONGLET 2 : DÉMARCHE & CADRE -->
-        <div id="panel-about" class="panel">
-            <div class="card">
-                <h2>Orientation de recherche</h2>
-                <p>Mes travaux s'articulent autour de l'application de la thermodynamique des systèmes ouverts, de la théorie de l'information et de la cybernétique à la résilience des architectures complexes, tant biologiques que physiques.</p>
-                <p>L'objectif central est de modéliser les transitions de régime dynamique sous contrainte d'épuisement ou de saturation, en privilégiant l'étude des flux et des boucles de rétroaction plutôt qu'une analyse purement statique des composants.</p>
+    <section class="lzac-hero" aria-labelledby="lzac-title">
+        <div class="lzac-hero-content">
+            <div class="lzac-kicker">
+                SCIENCE 4.0 · Recherche spatiale exploratoire
             </div>
+            <h2
+                id="lzac-title"
+                class="lzac-heading"
+                style="border:none;padding:0;margin:0 0 12px;"
+            >
+                L-ZAC — Étude de concept pour l'environnement lunaire
+            </h2>
+            <p class="lzac-subtitle">
+                Explorer la maîtrise des différences de potentiel et
+                des risques de décharges électrostatiques lors
+                d'interactions entre équipements dans un environnement
+                lunaire contraignant.
+            </p>
+            <span class="lzac-status">
+                Étude théorique et numérique · Non qualifiée
+            </span>
+        </div>
+    </section>
 
-            <div class="card">
-                <h2>Le framework Science 4.0</h2>
-                <p>Science 4.0 constitue une grille de lecture interdisciplinaire visant à formaliser les analogies structurelles entre phénomènes physiques hors équilibre et régulation des réseaux biologiques :</p>
-                <ul style="margin-left: 20px; color: #cbd5e1; font-size: 0.95rem;">
-                    <li><strong>Dynamique des flux :</strong> Traitement du signal et cinétique temporelle des biomarqueurs physiologiques face aux gradients de contrainte.</li>
-                    <li><strong>Formalisation mathématique :</strong> Exploration d'extensions de champ et de modèles variationnels pour tester la complétude géodésique en régimes extrêmes.</li>
-                    <li><strong>Open Science :</strong> Diffusion continue des hypothèses sous forme de préprints horodatés avec DOI pour soumission au débat contradictoire des pairs.</li>
-                </ul>
-            </div>
+    <div class="card">
+        <h2>Objectif du projet</h2>
+        <p>
+            <strong>L-ZAC</strong> est une piste de recherche indépendante
+            portant sur des architectures de contact et de maîtrise
+            des charges électriques adaptées, à terme, aux contraintes
+            rencontrées dans des scénarios d'opérations à la surface
+            de la Lune.
+        </p>
+        <p>
+            La démarche consiste à identifier les mécanismes de défaillance
+            possibles, à modéliser les interactions entre électricité,
+            matériaux, température et environnement, puis à définir
+            les vérifications nécessaires avant toute conclusion
+            de faisabilité.
+        </p>
+        <p>
+            Aucun prototype qualifié, essai de validation en environnement
+            lunaire ou démonstration opérationnelle n'est revendiqué
+            à ce stade.
+        </p>
+    </div>
+
+    <div class="lzac-grid">
+
+        <div class="card">
+            <div class="lzac-index">AXE 01</div>
+            <h3>Phénomènes électrostatiques</h3>
+            <p>
+                Étude des différentiels de potentiel, des régimes
+                transitoires et des conditions susceptibles de
+                favoriser une décharge.
+            </p>
         </div>
 
-        <!-- ONGLET 3 : CONFÉRENCES INTERNATIONALES (2027) -->
-        <div id="panel-conferences" class="panel">
-            <div class="card">
-                <h2>Contributions et conférences scientifiques internationales (2027)</h2>
-                <p>Invitations, sessions plénières et communications soumises aux comités de programme internationaux :</p>
-                
-                <div class="pub-item">
-                    <div class="pub-title">International Congress on Aging & Gerontology (ICAG 2027)</div>
-                    <div class="pub-meta">Tokyo, Japon · 14–15 avril 2027 · Oral Presentation</div>
-                    <p><em>Epigenetic Integrity & Biological Steering: Inverting Cellular Aging Dynamics through the Bio-OS Architecture and Nano-Vectorized Carrier Systems</em></p>
-                </div>
-
-                <div class="pub-item">
-                    <div class="pub-title">3rd International Conference on Gravitation, Astrophysics and Cosmology (ICGAC 2027)</div>
-                    <div class="pub-meta">Berlin, Allemagne · 26–27 mai 2027 · Keynote Speaker</div>
-                    <p><em>Science 4.0 and Cosmic Infodynamics: Modeling Invisible Gravitational Structures and Systemic Convergence in the Outer Solar System</em></p>
-                </div>
-
-                <div class="pub-item">
-                    <div class="pub-title">2nd International Conference on Advances in Gravitation, Astrophysics and Cosmology (ICAGAC 2027)</div>
-                    <div class="pub-meta">Amsterdam, Pays-Bas · 20–21 septembre 2027 · Plenary Speaker</div>
-                    <p><em>Non-Equilibrium Dynamics and Extended Field Interactions in Celestial Mechanics</em></p>
-                </div>
-
-                <div class="pub-item">
-                    <div class="pub-title">5th International Summit on Gravitation, Astrophysics and Cosmology (ISGAC 2027)</div>
-                    <div class="pub-meta">Milan, Italie · 26–27 avril 2027 · Keynote Speaker</div>
-                    <p><em>Project F5 and the $\kappa$-Law Formalism: Systemic Dynamics and Metric Coupling in Non-Equilibrium Gravitation</em></p>
-                </div>
-
-                <div class="pub-item">
-                    <div class="pub-title">Global Summit on Advances in Astrophysics, Gravitation and Cosmology (ASTROPHYSICS2027)</div>
-                    <div class="pub-meta">Florence, Italie · 19–20 mai 2027 · Invited Speaker</div>
-                    <p><em>Topological Matrices and Thermodynamic Limits of Information: Overcoming Reductionism in Population-Level Astrophysics</em></p>
-                </div>
-            </div>
+        <div class="card">
+            <div class="lzac-index">AXE 02</div>
+            <h3>Matériaux et environnement</h3>
+            <p>
+                Analyse exploratoire des contraintes liées au vide,
+                aux variations thermiques et aux interfaces
+                entre matériaux.
+            </p>
         </div>
-    </main>
 
-    <footer>
-        Julien Boblique — Science 4.0 · Recherche indépendante & Science ouverte (2026)
-    </footer>
+        <div class="card">
+            <div class="lzac-index">AXE 03</div>
+            <h3>Modélisation multi-physique</h3>
+            <p>
+                Construction de modèles électriques, thermiques et
+                mécaniques pour examiner des scénarios de fonctionnement
+                et de défaut.
+            </p>
+        </div>
+
+        <div class="card">
+            <div class="lzac-index">AXE 04</div>
+            <h3>Sûreté et vérification</h3>
+            <p>
+                Recherche de critères de réfutation, estimation
+                des incertitudes et identification des simulations
+                et essais restant nécessaires.
+            </p>
+        </div>
+
+    </div>
+
+    <div class="card">
+        <h2>Méthode Science 4.0</h2>
+        <p>
+            Le projet est examiné selon une distinction explicite
+            entre <strong>calculs établis dans un modèle</strong>,
+            <strong>hypothèses de conception</strong> et
+            <strong>résultats à vérifier expérimentalement</strong>.
+        </p>
+        <ul class="lzac-list">
+            <li>
+                <strong>[C] Calcul :</strong>
+                résultat reproductible sous les hypothèses et
+                conditions aux limites indiquées.
+            </li>
+            <li>
+                <strong>[H] Hypothèse :</strong>
+                choix de géométrie, de matériau ou de modèle
+                encore non validé.
+            </li>
+            <li>
+                <strong>[E] Expérience :</strong>
+                mesure, caractérisation ou essai nécessaire
+                pour statuer sur le comportement réel.
+            </li>
+        </ul>
+        <p>
+            Les paramètres de conception détaillés, les variantes
+            internes et les documents techniques non publiés ne figurent
+            pas dans cette présentation générale.
+        </p>
+    </div>
+
+    <div class="lzac-note">
+        <p>
+            <strong>Statut et indépendance :</strong>
+            L-ZAC est un travail de recherche indépendant porté
+            dans le cadre Science 4.0. Ce projet n'est pas présenté
+            comme une technologie éprouvée, sélectionnée ou certifiée.
+            Il ne bénéficie d'aucun partenariat, parrainage, commande
+            ou validation revendiqués de la NASA, de l'ESA ou d'une
+            autre agence spatiale.
+        </p>
+    </div>
+
+</div>
+
+<!-- ONGLET 4 : CONFÉRENCES -->
+<div id="panel-conferences" class="panel">
+
+    <div class="card">
+        <h2>Contributions et conférences scientifiques internationales (2027)</h2>
+        <p>
+            Invitations, sessions plénières et communications soumises
+            aux comités de programme internationaux :
+        </p>
+
+        <div class="pub-item">
+            <div class="pub-title">
+                International Congress on Aging & Gerontology (ICAG 2027)
+            </div>
+            <div class="pub-meta">
+                Tokyo, Japon · 14–15 avril 2027 · Oral Presentation
+            </div>
+            <p><em>
+                Epigenetic Integrity & Biological Steering:
+                Inverting Cellular Aging Dynamics through the Bio-OS
+                Architecture and Nano-Vectorized Carrier Systems
+            </em></p>
+        </div>
+
+        <div class="pub-item">
+            <div class="pub-title">
+                3rd International Conference on Gravitation,
+                Astrophysics and Cosmology (ICGAC 2027)
+            </div>
+            <div class="pub-meta">
+                Berlin, Allemagne · 26–27 mai 2027 · Keynote Speaker
+            </div>
+            <p><em>
+                Science 4.0 and Cosmic Infodynamics:
+                Modeling Invisible Gravitational Structures and
+                Systemic Convergence in the Outer Solar System
+            </em></p>
+        </div>
+
+        <div class="pub-item">
+            <div class="pub-title">
+                2nd International Conference on Advances in Gravitation,
+                Astrophysics and Cosmology (ICAGAC 2027)
+            </div>
+            <div class="pub-meta">
+                Amsterdam, Pays-Bas · 20–21 septembre 2027 · Plenary Speaker
+            </div>
+            <p><em>
+                Non-Equilibrium Dynamics and Extended Field
+                Interactions in Celestial Mechanics
+            </em></p>
+        </div>
+
+        <div class="pub-item">
+            <div class="pub-title">
+                5th International Summit on Gravitation,
+                Astrophysics and Cosmology (ISGAC 2027)
+            </div>
+            <div class="pub-meta">
+                Milan, Italie · 26–27 avril 2027 · Keynote Speaker
+            </div>
+            <p><em>
+                Project F5 and the $\kappa$-Law Formalism:
+                Systemic Dynamics and Metric Coupling in
+                Non-Equilibrium Gravitation
+            </em></p>
+        </div>
+
+        <div class="pub-item">
+            <div class="pub-title">
+                Global Summit on Advances in Astrophysics,
+                Gravitation and Cosmology (ASTROPHYSICS2027)
+            </div>
+            <div class="pub-meta">
+                Florence, Italie · 19–20 mai 2027 · Invited Speaker
+            </div>
+            <p><em>
+                Topological Matrices and Thermodynamic Limits
+                of Information: Overcoming Reductionism in
+                Population-Level Astrophysics
+            </em></p>
+        </div>
+
+    </div>
+
+</div>
+
+</main>
+
+<footer>
+Julien Boblique — Science 4.0 · Recherche indépendante & Science ouverte (2026)
+</footer>
+
 </div>
 
 <script>
-    const BIBTEX = {
-        science40_bjstr_2026: `@article{boblique2026science40_integrating,
+"use strict";
+
+/*
+ * CATALOGUE DES PUBLICATIONS
+ * 33 références, dans les mêmes 5 catégories
+ * que le fichier d'origine.
+ *
+ * Champs séparés par |
+ * catégorie | identifiant BibTeX | statut |
+ * titre | lien | métadonnées | libellé du lien
+ */
+
+const CATALOGUE = String.raw`
+1|nt_f5_sos_001_v32_2026|Rapport Zenodo|NT-2026-F5-SoS-001: Non-Hermitian Spectral Foundations, Continuous Impedance Duality and Thermodynamic Balance of the F-5 Lattice Architecture (Version 3.2 Consolidée)|https://doi.org/10.5281/zenodo.23123491|2026 · Boblique, J., Chartres, J.-M. · DOI: 10.5281/zenodo.23123491|Accéder au dépôt (v3.2)
+1|spec_f5_exp_001_v14_2026|Spécification Zenodo|SPEC-2026-F5-EXP-001: Test Bench Specifications and 5-Sigma Metrological Falsification Protocol for the F-5 Lattice Architecture (Version 1.4 Finalisée)|https://doi.org/10.5281/zenodo.23124553|2026 · Boblique, J., Chartres, J.-M. · DOI: 10.5281/zenodo.23124553|Accéder au dépôt (v1.4)
+1|f5_architecture_2026|Préprint Zenodo|A Falsifiable Theoretical Framework for Solid-State Geometric Confinement and Lattice-Assisted Nuclear Dynamics: The F-5 Architecture|https://doi.org/10.5281/zenodo.22994419|2026 · Boblique, J. · DOI: 10.5281/zenodo.22994419|Accéder au dépôt
+2|metric_impedance_zmunu_v2_2026|Préprint Zenodo|Extension phénoménologique covariante de la relativité générale par une réponse d'impédance métrique $Z_{\mu\nu}$ : formulation minimale, limites asymptotiques et programme de falsification|https://doi.org/10.5281/zenodo.22773052|2026 · Boblique, J. · DOI: 10.5281/zenodo.22773052|Accéder au dépôt
+2|tum_science40_v2_2026|Préprint Zenodo|Geometric-Cybernetic Unification: TUM $\mathrm{Cl}(8,0)$ Invariant and Science 4.0 Autonomous Feedback (v2.0 Benchmark)|https://doi.org/10.5281/zenodo.22922030|2026 · Berón, S. M. A., Boblique, J. · DOI: 10.5281/zenodo.22922030|Accéder au dépôt (v2.0)
+2|tum_science40_v1_2026|Préprint Zenodo|Geometric-Cybernetic Unification: TUM $\mathrm{Cl}(8,0)$ Invariant and Science 4.0 Autonomous Feedback (v1.0 Working Draft)|https://zenodo.org/records/22115055|2026 · Berón, S. M. A., Boblique, J. · Zenodo: 22115055|Accéder au dépôt (v1.0)
+2|janus_metric_impedance_2026|Préprint Zenodo|Dépasser le modèle bimétrique de Janus : L'impédance métrique et l'infodynamique de l'espace-temps|https://doi.org/10.5281/zenodo.22006771|2026 · Boblique, J. · DOI: 10.5281/zenodo.22006771|Accéder au dépôt
+3|neuro_epigenetics_2026|Publié|Theoretical Perspective – Neuro-Epigenetics of Stress: Modeling HPA Axis Unlocking and Central Signal-to-Noise Ratio Optimization via the Bio-OS V8 Framework|https://doi.org/10.63721/26JPIR0141|2026 · Journal of Psychiatric Insight Review · DOI: 10.63721/26JPIR0141|Lien DOI
+3|set_theory_2026|Publié|A Social Epigenetic Theory of Systemic Transitions|https://doi.org/10.23880/izab-16000667|2026 · International Journal of Zoology and Animal Biology · DOI: 10.23880/izab-16000667|Lien DOI
+3|science_4_0_2026|Publié|From SET Theory to Science 4.0: An AI-Driven Framework for Epigenetic Integrity and Biological Flow Control|https://doi.org/10.23880/izab-16000669|2026 · International Journal of Zoology and Animal Biology · DOI: 10.23880/izab-16000669|Lien DOI
+3|epigenetic_sustainability_2026|Publié|Epigenetic Sustainability: Modeling the Human Factor as a Natural Resource through Science 4.0 and the NR3C1 Biological Pilot|https://doi.org/10.23880/jenr-16000418|2026 · Journal of Ecology and Natural Resources · DOI: 10.23880/jenr-16000418|Lien DOI
+3|unified_framework_2026|Publié|Science 4.0: A Unified Operational Framework for Epigenetic Integrity and Systemic Resilience Steering|https://doi.org/10.26502/AVSM.054|2026 · Archives of Veterinary Science and Medicine · DOI: 10.26502/AVSM.054|Lien DOI
+4|science40_bjstr_2026|Publié|Science 4.0: Integrating Biophysical Signal Optimization, Non-Equilibrium Thermodynamics, and Hydrodynamic Boundary Constraints in Living Systems Architecture|https://doi.org/10.26717/BJSTR.2026.66.010366|2026 · Biomedical Journal of Scientific & Technical Research · Vol. 66, Iss. 4, pp. 58936–58940 · DOI: 10.26717/BJSTR.2026.66.010366|Lien DOI
+4|allometric_scaling_izab_2026|Publié|Non-Equilibrium Allometric Scaling and Bioenergetic Information Routing: A Comparative Science 4.0 Framework for Cellular Resilience Across Mammalian Phyla|https://medwinpublishers.com/article/IZAB/10.23880/izab-16000702/full|2026 · International Journal of Zoology and Animal Biology · Vol. 9, Iss. 5 · DOI: 10.23880/izab-16000702|Consulter
+4|glycocalyx_mechanotransduction_2026|Publié|Viscoelastic Coupling of Pulsatile Wall Shear Stress and Endothelial Glycocalyx Mechanotransduction: A Non-Equilibrium Hydrodynamic Model for Microvascular Resilience|https://medwinpublishers.com/article/IZAB/10.23880/izab-16000697/full|2026 · International Journal of Zoology and Animal Biology · DOI: 10.23880/izab-16000697|Consulter
+4|thermodynamic_glymphatic_snr_2026|Publié|Thermodynamic and Bioenergetic Coupling of Glymphatic Clearance: How Slow-Wave Sleep Maximizes Cerebral Signal-to-Noise Ratio (SNR)|https://www.scivisionpub.com/pdfs/thermodynamic-and-bioenergetic-coupling-of-glymphatic-clearance-how-slow-wave-sleep-maximizes-cerebral-signal-to-noise-ratio-snr-4561.pdf|2026 · Journal of Medical - Clinical Research & Reviews · ISSN: 2639-944X|PDF
+4|glymphatic_clearance_2026|Publié|Hydrodynamic and Bioelectric Couplings Governing Interstitial Glymphatic Clearance During NREM Sleep|https://laurinpublishers.com/Journals/OCLMCR/Hydrodynamic-and-Bioelectric-Couplings-Governing-Interstitial-Glymphatic-Clearance-During-NREM-Sleep-059|2026 · Online Journal of Clinical and Medical Case Reports|Consulter
+4|bioelectric_steering_2026|Publié|Bio-Electric Steering and Transmembrane Voltage Modulation: Algorithmic Reprogramming of the Tumor Microenvironment within the Science 4.0 Framework|https://doi.org/10.34297/AJBSR.2026.31.004106|2026 · American Journal of Biomedical Science & Research · DOI: 10.34297/AJBSR.2026.31.004106|Lien DOI
+4|cellular_snr_v2_2026|Publié|Biophysical Optimization of Cellular Signal-to-Noise Ratio (SNR) in Bioenergetic Information Networks V2|https://doi.org/10.71123/3070-0310.030104|2026 · Research Journal of Innovative Studies in Medical and Health Sciences · DOI: 10.71123/3070-0310.030104|Lien DOI
+4|bio_os_v8_izab_2026|Publié|Science 4.0 and the Bio-OS V8 Architecture: Algorithmic Governance for Biological Sovereignty|https://medwinpublishers.com/article-description.php?artId=14250|2026 · International Journal of Zoology and Animal Biology · DOI: 10.23880/izab-16000689|Lien DOI
+4|bio_os_v8_jenr_2026|Publié|Bio-OS V8 Algorithmic Governance: Industrializing Epigenetic Sustainability in Socio-Technical Ecosystems|https://medwinpublishers.com/article-description.php?artId=14242|2026 · Journal of Ecology and Natural Resources · DOI: 10.23880/jenr-16000424|Lien DOI
+4|bio_os_standardization_2026|Publié|Industrial Standardization of the Bio-OS: Algorithmic Codification of Resilience Engineering Guidelines and Version V8 Architecture|https://medwinpublishers.com/article-description.php?artId=14225|2026 · MedWin Publishers|Consulter
+4|cellular_resilience_2026|Publié|Science 4.0-Architecture of Cellular Resilience and Living Signal Optimization|https://doi.org/10.23880/izab-16000673|2026 · International Journal of Zoology and Animal Biology · DOI: 10.23880/izab-16000673|Lien DOI
+4|bio_os_governance_2026|Publié|Science 4.0: Comprehensive Architecture of the Biological Operating System (Bio-OS) A Framework for Systemic Resilience and Industrialized Bio-Governance|https://doi.org/10.23880/izab-16000679|2026 · International Journal of Zoology and Animal Biology · DOI: 10.23880/izab-16000679|Lien DOI
+5|bbb_shielding_tia_2026|Publié|Bio-Electrodynamic Shielding of the Blood-Brain Barrier: Non-Equilibrium Hydrodynamics to Prevent Post-Ischemic Micro-Thrombosis and Transient Ischemic Attacks (TIA)|https://doi.org/10.3065-7059/jcdpc.2026.032|2026 · Journal of Chronic Disease Prevention and Care · Vol. 3, Iss. 4, pp. 1–4 · ISSN: 3065-7059|Consulter
+5|ischemic_endothelial_snr_2026|Publié|Non-Equilibrium Bioenergetic Information Routing and Signal-to-Noise Ratio Optimization in Ischemic Endothelial Repair: A Clinical Framework for Microvascular Recovery|https://www.scieniqpublishers.com/advance-medical-and-clinical-research-current-issue/|2026 · Advance Medical and Clinical Research · Vol. 7, Iss. 4, pp. 436–438|Consulter
+5|mams_no_reflow_2026|Publié|Targeting Mitochondrial-Endoplasmic Reticulum Contact Sites (MAMs) Bioenergetics to Prevent Myocardial No-Reflow: A Non-Equilibrium Thermodynamic Framework|https://ajmcrr.com/index.php/pub/article/view/456|2026 · American Journal of Medical and Clinical Research & Reviews · ISSN: 2835-6276|Consulter
+5|urological_logistics_2026|Publié|Urological Logistics: A Science 4.0 Operational Model for Predictive Glomerular Maintenance and Prostatic Congestion Mitigation|https://westlandpublishers.com/abstract.php?aid=134&jid=4&Article=Urological-Logistics:-A-Science-4.0-Operational-Model-for-Predictive-Glomerular-Maintenance-and-Prostatic-Congestion-Mitigation|2026 · Digital Journal of Science · DOI: 10.63592/DJS/174|Consulter
+5|lipid_matrix_2026|Publié|Lipid-Matrix Carrier Architecture: Engineering Nano-Vectorized Transport for Hydrophobic Living Signals in Science 4.0 Frameworks|https://doi.org/10.47739/biotechnology1094|2026 · JSM Biotechnology & Bioengineering · DOI: 10.47739/biotechnology1094|Lien DOI
+5|jmrcr_review_2026|Publié|Clinical Review of Bio-Logistical Steering in Aging Hybrid Hardware: Micro-Vectorized Mitochondrial Architecture for Mucosal Restoration and Multi-Modular Decongestion|https://www.sciencephotons.com/journal-of-medical-research-and-clinical-reviews/article-in-press|2026 · Journal of Medical Research and Clinical Reviews · ISSN: 3070-6238|Consulter
+5|maternal_golden_standard_2026|Sous revue|The Maternal Golden Standard: Algorithmic Regulation of Renal Hydraulics and Glomerular Flow Restoration above 85 mL/min eGFR||2026 · Travail théorique et observationnel|
+5|clinical_validation_2026|Publié|Clinical Validation of Science 4.0: Flow Steering and Epigenetic Drift Inversion on a 76-Year-Old Hybrid System|https://doi.org/10.23880/izab-16000677|2026 · International Journal of Zoology and Animal Biology · DOI: 10.23880/izab-16000677|Lien DOI
+5|mitochondrial_biologistics_2026|Publié|Mitochondrial Bio-Logistics: Steering Co-Enzyme Q10 and Lycopene Synergies within the Science 4.0 Bio-OS Framework|https://doi.org/10.23880/izab-16000681|2026 · International Journal of Zoology and Animal Biology · DOI: 10.23880/izab-16000681|Lien DOI
+`;
+
+/*
+ * RÉFÉRENCES BIBTEX ORIGINALES
+ * Conservées individuellement, sans génération automatique.
+ */
+
+const BIBTEX = {
+
+science40_bjstr_2026: `@article{boblique2026science40_integrating,
   title={Science 4.0: Integrating Biophysical Signal Optimization, Non-Equilibrium Thermodynamics, and Hydrodynamic Boundary Constraints in Living Systems Architecture},
   author={Boblique, Julien},
   journal={Biomedical Journal of Scientific \\& Technical Research},
@@ -868,7 +869,8 @@
   doi={10.26717/BJSTR.2026.66.010366},
   url={https://doi.org/10.26717/BJSTR.2026.66.010366}
 }`,
-        allometric_scaling_izab_2026: `@article{boblique2026allometric,
+
+allometric_scaling_izab_2026: `@article{boblique2026allometric,
   title={Non-Equilibrium Allometric Scaling and Bioenergetic Information Routing: A Comparative Science 4.0 Framework for Cellular Resilience Across Mammalian Phyla},
   author={Boblique, Julien},
   journal={International Journal of Zoology and Animal Biology},
@@ -880,7 +882,8 @@
   doi={10.23880/izab-16000702},
   url={https://medwinpublishers.com/article/IZAB/10.23880/izab-16000702/full}
 }`,
-        nt_f5_sos_001_v32_2026: `@techreport{boblique_chartres_2026_nt_f5_v32,
+
+nt_f5_sos_001_v32_2026: `@techreport{boblique_chartres_2026_nt_f5_v32,
   title={NT-2026-F5-SoS-001: Non-Hermitian Spectral Foundations, Continuous Impedance Duality and Thermodynamic Balance of the F-5 Lattice Architecture (Version 3.2 Consolid{\'e}e)},
   author={Boblique, Julien and Chartres, Jean-Marc},
   year={2026},
@@ -889,7 +892,8 @@
   doi={10.5281/zenodo.23123491},
   url={https://doi.org/10.5281/zenodo.23123491}
 }`,
-        spec_f5_exp_001_v14_2026: `@techreport{boblique_chartres_2026_spec_f5_v14,
+
+spec_f5_exp_001_v14_2026: `@techreport{boblique_chartres_2026_spec_f5_v14,
   title={SPEC-2026-F5-EXP-001: Test Bench Specifications and 5-Sigma Metrological Falsification Protocol for the F-5 Lattice Architecture (Version 1.4 Finalis{\'e}e)},
   author={Boblique, Julien and Chartres, Jean-Marc},
   year={2026},
@@ -898,7 +902,8 @@
   doi={10.5281/zenodo.23124553},
   url={https://doi.org/10.5281/zenodo.23124553}
 }`,
-        f5_architecture_2026: `@misc{boblique2026f5,
+
+f5_architecture_2026: `@misc{boblique2026f5,
   title={A Falsifiable Theoretical Framework for Solid-State Geometric Confinement and Lattice-Assisted Nuclear Dynamics: The F-5 Architecture},
   author={Boblique, Julien},
   year={2026},
@@ -906,7 +911,8 @@
   doi={10.5281/zenodo.22994419},
   url={https://doi.org/10.5281/zenodo.22994419}
 }`,
-        bbb_shielding_tia_2026: `@article{boblique2026bioelectrodynamic,
+
+bbb_shielding_tia_2026: `@article{boblique2026bioelectrodynamic,
   title={Bio-Electrodynamic Shielding of the Blood-Brain Barrier: Non-Equilibrium Hydrodynamics to Prevent Post-Ischemic Micro-Thrombosis and Transient Ischemic Attacks (TIA)},
   author={Boblique, Julien},
   journal={Journal of Chronic Disease Prevention and Care},
@@ -916,7 +922,8 @@
   year={2026},
   issn={3065-7059}
 }`,
-        ischemic_endothelial_snr_2026: `@article{boblique2026nonequilibrium,
+
+ischemic_endothelial_snr_2026: `@article{boblique2026nonequilibrium,
   title={Non-Equilibrium Bioenergetic Information Routing and Signal-to-Noise Ratio Optimization in Ischemic Endothelial Repair: A Clinical Framework for Microvascular Recovery},
   author={Boblique, Julien},
   journal={Advance Medical and Clinical Research},
@@ -926,7 +933,8 @@
   year={2026},
   url={https://www.scieniqpublishers.com/advance-medical-and-clinical-research-current-issue/}
 }`,
-        metric_impedance_zmunu_v2_2026: `@misc{boblique2026zmunu_v2,
+
+metric_impedance_zmunu_v2_2026: `@misc{boblique2026zmunu_v2,
   title={Extension phénoménologique covariante de la relativité générale par une réponse d'impédance métrique {$Z_{\\mu\\nu}$} : formulation minimale, limites asymptotiques et programme de falsification},
   author={Boblique, Julien},
   year={2026},
@@ -934,7 +942,8 @@
   doi={10.5281/zenodo.22773052},
   url={https://doi.org/10.5281/zenodo.22773052}
 }`,
-        tum_science40_v2_2026: `@misc{beron_boblique_2026_tum_v2,
+
+tum_science40_v2_2026: `@misc{beron_boblique_2026_tum_v2,
   title={Geometric-Cybernetic Unification: TUM Cl(8,0) Invariant and Science 4.0 Autonomous Feedback (v2.0 Benchmark)},
   author={Ber{\'o}n, Sebasti{\'a}n M. A. and Boblique, Julien},
   year={2026},
@@ -942,14 +951,16 @@
   doi={10.5281/zenodo.22922030},
   url={https://doi.org/10.5281/zenodo.22922030}
 }`,
-        tum_science40_v1_2026: `@misc{beron_boblique_2026_tum_v1,
+
+tum_science40_v1_2026: `@misc{beron_boblique_2026_tum_v1,
   title={Geometric-Cybernetic Unification: TUM Cl(8,0) Invariant and Science 4.0 Autonomous Feedback (v1.0 Working Draft)},
   author={Ber{\'o}n, Sebasti{\'a}n M. A. and Boblique, Julien},
   year={2026},
   howpublished={Zenodo Open Access Preprint},
   url={https://zenodo.org/records/22115055}
 }`,
-        janus_metric_impedance_2026: `@misc{boblique2026janus,
+
+janus_metric_impedance_2026: `@misc{boblique2026janus,
   title={Dépasser le modèle bimétrique de Janus : L'impédance métrique et l'infodynamique de l'espace-temps},
   author={Boblique, Julien},
   year={2026},
@@ -957,7 +968,8 @@
   doi={10.5281/zenodo.22006771},
   url={https://doi.org/10.5281/zenodo.22006771}
 }`,
-        neuro_epigenetics_2026: `@article{boblique2026neuro,
+
+neuro_epigenetics_2026: `@article{boblique2026neuro,
   title={Theoretical Perspective – Neuro-Epigenetics of Stress: Modeling HPA Axis Unlocking and Central Signal-to-Noise Ratio Optimization via the Bio-OS V8 Framework},
   author={Boblique, Julien},
   journal={Journal of Psychiatric Insight Review},
@@ -967,7 +979,8 @@
   year={2026},
   doi={10.63721/26JPIR0141}
 }`,
-        set_theory_2026: `@article{boblique2026set,
+
+set_theory_2026: `@article{boblique2026set,
   title={A Social Epigenetic Theory of Systemic Transitions},
   author={Boblique, Julien},
   journal={International Journal of Zoology and Animal Biology},
@@ -975,28 +988,32 @@
   doi={10.23880/izab-16000667},
   url={https://doi.org/10.23880/izab-16000667}
 }`,
-        science_4_0_2026: `@article{boblique2026science40,
+
+science_4_0_2026: `@article{boblique2026science40,
   title={From SET Theory to Science 4.0: An AI-Driven Framework for Epigenetic Integrity and Biological Flow Control},
   author={Boblique, Julien},
   journal={International Journal of Zoology and Animal Biology},
   year={2026},
   doi={10.23880/izab-16000669}
 }`,
-        epigenetic_sustainability_2026: `@article{boblique2026sustainability,
+
+epigenetic_sustainability_2026: `@article{boblique2026sustainability,
   title={Epigenetic Sustainability: Modeling the Human Factor as a Natural Resource through Science 4.0 and the NR3C1 Biological Pilot},
   author={Boblique, Julien},
   journal={Journal of Ecology and Natural Resources},
   year={2026},
   doi={10.23880/jenr-16000418}
 }`,
-        unified_framework_2026: `@article{boblique2026unified,
+
+unified_framework_2026: `@article{boblique2026unified,
   title={Science 4.0: A Unified Operational Framework for Epigenetic Integrity and Systemic Resilience Steering},
   author={Boblique, Julien},
   journal={Archives of Veterinary Science and Medicine},
   year={2026},
   doi={10.26502/AVSM.054}
 }`,
-        glycocalyx_mechanotransduction_2026: `@article{boblique2026viscoelastic,
+
+glycocalyx_mechanotransduction_2026: `@article{boblique2026viscoelastic,
   title={Viscoelastic Coupling of Pulsatile Wall Shear Stress and Endothelial Glycocalyx Mechanotransduction: A Non-Equilibrium Hydrodynamic Model for Microvascular Resilience},
   author={Boblique, Julien},
   journal={International Journal of Zoology and Animal Biology},
@@ -1008,7 +1025,8 @@
   doi={10.23880/izab-16000697},
   url={https://medwinpublishers.com/article/IZAB/10.23880/izab-16000697/full}
 }`,
-        thermodynamic_glymphatic_snr_2026: `@article{boblique2026snr_glymphatic,
+
+thermodynamic_glymphatic_snr_2026: `@article{boblique2026snr_glymphatic,
   title={Thermodynamic and Bioenergetic Coupling of Glymphatic Clearance: How Slow-Wave Sleep Maximizes Cerebral Signal-to-Noise Ratio (SNR)},
   author={Boblique, Julien},
   journal={Journal of Medical - Clinical Research & Reviews},
@@ -1019,14 +1037,16 @@
   issn={2639-944X},
   url={https://www.scivisionpub.com/pdfs/thermodynamic-and-bioenergetic-coupling-of-glymphatic-clearance-how-slow-wave-sleep-maximizes-cerebral-signal-to-noise-ratio-snr-4561.pdf}
 }`,
-        glymphatic_clearance_2026: `@article{boblique2026glymphatic,
+
+glymphatic_clearance_2026: `@article{boblique2026glymphatic,
   title={Hydrodynamic and Bioelectric Couplings Governing Interstitial Glymphatic Clearance During NREM Sleep},
   author={Boblique, Julien},
   journal={Online Journal of Clinical and Medical Case Reports},
   year={2026},
   url={https://laurinpublishers.com/Journals/OCLMCR/Hydrodynamic-and-Bioelectric-Couplings-Governing-Interstitial-Glymphatic-Clearance-During-NREM-Sleep-059}
 }`,
-        bioelectric_steering_2026: `@article{boblique2026bioelectric,
+
+bioelectric_steering_2026: `@article{boblique2026bioelectric,
   title={Bio-Electric Steering and Transmembrane Voltage Modulation: Algorithmic Reprogramming of the Tumor Microenvironment within the Science 4.0 Framework},
   author={Boblique, Julien},
   journal={American Journal of Biomedical Science & Research},
@@ -1036,7 +1056,8 @@
   year={2026},
   doi={10.34297/AJBSR.2026.31.004106}
 }`,
-        cellular_snr_v2_2026: `@article{boblique2026snr_v2,
+
+cellular_snr_v2_2026: `@article{boblique2026snr_v2,
   title={Biophysical Optimization of Cellular Signal-to-Noise Ratio (SNR) in Bioenergetic Information Networks V2},
   author={Boblique, Julien},
   journal={Research Journal of Innovative Studies in Medical and Health Sciences},
@@ -1046,7 +1067,8 @@
   year={2026},
   doi={10.71123/3070-0310.030104}
 }`,
-        bio_os_v8_izab_2026: `@article{boblique2026bioos_izab,
+
+bio_os_v8_izab_2026: `@article{boblique2026bioos_izab,
   title={Science 4.0 and the Bio-OS V8 Architecture: Algorithmic Governance for Biological Sovereignty},
   author={Boblique, Julien},
   journal={International Journal of Zoology and Animal Biology},
@@ -1056,7 +1078,8 @@
   year={2026},
   doi={10.23880/izab-16000689}
 }`,
-        bio_os_v8_jenr_2026: `@article{boblique2026bioos_jenr,
+
+bio_os_v8_jenr_2026: `@article{boblique2026bioos_jenr,
   title={Bio-OS V8 Algorithmic Governance: Industrializing Epigenetic Sustainability in Socio-Technical Ecosystems},
   author={Boblique, Julien},
   journal={Journal of Ecology and Natural Resources},
@@ -1066,27 +1089,31 @@
   year={2026},
   doi={10.23880/jenr-16000424}
 }`,
-        bio_os_standardization_2026: `@article{boblique2026bioos_standard,
+
+bio_os_standardization_2026: `@article{boblique2026bioos_standard,
   title={Industrial Standardization of the Bio-OS: Algorithmic Codification of Resilience Engineering Guidelines and Version V8 Architecture},
   author={Boblique, Julien},
   journal={MedWin Publishers},
   year={2026}
 }`,
-        cellular_resilience_2026: `@article{boblique2026cellular,
+
+cellular_resilience_2026: `@article{boblique2026cellular,
   title={Science 4.0-Architecture of Cellular Resilience and Living Signal Optimization},
   author={Boblique, Julien},
   journal={International Journal of Zoology and Animal Biology},
   year={2026},
   doi={10.23880/izab-16000673}
 }`,
-        bio_os_governance_2026: `@article{boblique2026bioos_gov,
+
+bio_os_governance_2026: `@article{boblique2026bioos_gov,
   title={Science 4.0: Comprehensive Architecture of the Biological Operating System (Bio-OS) A Framework for Systemic Resilience and Industrialized Bio-Governance},
   author={Boblique, Julien},
   journal={International Journal of Zoology and Animal Biology},
   year={2026},
   doi={10.23880/izab-16000679}
 }`,
-        mams_no_reflow_2026: `@article{boblique2026mams,
+
+mams_no_reflow_2026: `@article{boblique2026mams,
   title={Targeting Mitochondrial-Endoplasmic Reticulum Contact Sites (MAMs) Bioenergetics to Prevent Myocardial No-Reflow: A Non-Equilibrium Thermodynamic Framework},
   author={Boblique, Julien},
   journal={American Journal of Medical and Clinical Research & Reviews},
@@ -1097,7 +1124,8 @@
   issn={2835-6276},
   url={https://ajmcrr.com/index.php/pub/article/view/456}
 }`,
-        urological_logistics_2026: `@article{boblique2026urological,
+
+urological_logistics_2026: `@article{boblique2026urological,
   title={Urological Logistics: A Science 4.0 Operational Model for Predictive Glomerular Maintenance and Prostatic Congestion Mitigation},
   author={Boblique, Julien},
   journal={Digital Journal of Science},
@@ -1108,7 +1136,8 @@
   issn={3066-3822},
   doi={10.63592/DJS/174}
 }`,
-        lipid_matrix_2026: `@article{boblique2026lipid,
+
+lipid_matrix_2026: `@article{boblique2026lipid,
   title={Lipid-Matrix Carrier Architecture: Engineering Nano-Vectorized Transport for Hydrophobic Living Signals in Science 4.0 Frameworks},
   author={Boblique, Julien},
   journal={JSM Biotechnology & Bioengineering},
@@ -1118,7 +1147,8 @@
   year={2026},
   doi={10.47739/biotechnology1094}
 }`,
-        jmrcr_review_2026: `@article{boblique2026jmrcr,
+
+jmrcr_review_2026: `@article{boblique2026jmrcr,
   title={Clinical Review of Bio-Logistical Steering in Aging Hybrid Hardware: Micro-Vectorized Mitochondrial Architecture for Mucosal Restoration and Multi-Modular Decongestion},
   author={Boblique, Julien},
   journal={Journal of Medical Research and Clinical Reviews},
@@ -1127,78 +1157,403 @@
   pages={1--4},
   year={2026}
 }`,
-        maternal_golden_standard_2026: `@article{boblique2026maternal,
+
+maternal_golden_standard_2026: `@article{boblique2026maternal,
   title={The Maternal Golden Standard: Algorithmic Regulation of Renal Hydraulics and Glomerular Flow Restoration above 85 mL/min eGFR},
   author={Boblique, Julien},
   journal={Under Peer Review},
   year={2026}
 }`,
-        clinical_validation_2026: `@article{boblique2026clinical_val,
+
+clinical_validation_2026: `@article{boblique2026clinical_val,
   title={Clinical Validation of Science 4.0: Flow Steering and Epigenetic Drift Inversion on a 76-Year-Old Hybrid System},
   author={Boblique, Julien},
   journal={International Journal of Zoology and Animal Biology},
   year={2026},
   doi={10.23880/izab-16000677}
 }`,
-        mitochondrial_biologistics_2026: `@article{boblique2026mitochondrial,
+
+mitochondrial_biologistics_2026: `@article{boblique2026mitochondrial,
   title={Mitochondrial Bio-Logistics: Steering Co-Enzyme Q10 and Lycopene Synergies within the Science 4.0 Bio-OS Framework},
   author={Boblique, Julien},
   journal={International Journal of Zoology and Animal Biology},
   year={2026},
   doi={10.23880/izab-16000681}
 }`
-    };
 
-    function showTab(tabId, btn) {
-        document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
-        document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
-        
-        const target = document.getElementById(`panel-${tabId}`);
-        if (target) target.classList.add('active');
-        if (btn) btn.classList.add('active');
+};
+
+/*
+ * AFFICHAGE DES PUBLICATIONS
+ */
+
+const GROUPES = [
+    "Physique de la matière condensée & Dynamique nucléaire",
+    "Astrophysique théorique & Infodynamique métrique",
+    "Intégrité épigénétique & Modélisation systémique",
+    "Cybernétique biologique, Bio-OS & Biophysique cellulaire",
+    "Applications biomédicales, logistique des flux & cinétiques"
+];
+
+const PUBLICATIONS = CATALOGUE
+    .trim()
+    .split("\n")
+    .map(ligne => {
+        const [
+            groupe,
+            cle,
+            statut,
+            titre,
+            lien,
+            meta,
+            libelle
+        ] = ligne.split("|");
+
+        return {
+            groupe: Number(groupe),
+            cle,
+            statut,
+            titre,
+            lien,
+            meta,
+            libelle
+        };
+    });
+
+function creerElement(tag,classe,contenu) {
+    const element = document.createElement(tag);
+
+    if (classe) {
+        element.className = classe;
     }
 
-    function filterPublications() {
-        const q = document.getElementById('filter-input').value.toLowerCase();
-        document.querySelectorAll('#panel-publications .pub-item').forEach(item => {
-            const data = (item.getAttribute('data-search') || '') + ' ' + item.textContent.toLowerCase();
-            if (data.includes(q)) {
-                item.classList.remove('hidden');
-            } else {
-                item.classList.add('hidden');
+    if (contenu !== undefined) {
+        element.textContent = contenu;
+    }
+
+    return element;
+}
+
+function afficherPublications() {
+    const zone = document.getElementById("publication-list");
+    zone.replaceChildren();
+
+    GROUPES.forEach((titreGroupe,index) => {
+
+        const section = creerElement("section");
+        const titre = creerElement(
+            "h2",
+            "",
+            titreGroupe
+        );
+
+        section.appendChild(titre);
+
+        PUBLICATIONS
+            .filter(pub => pub.groupe === index + 1)
+            .forEach(pub => {
+
+                const carte = creerElement(
+                    "div",
+                    "pub-item"
+                );
+
+                carte.dataset.search = [
+                    pub.titre,
+                    pub.meta,
+                    pub.cle,
+                    pub.statut,
+                    pub.lien
+                ].join(" ").toLowerCase();
+
+                const blocTitre = creerElement(
+                    "div",
+                    "pub-title"
+                );
+
+                if (pub.lien) {
+                    const lienTitre = creerElement(
+                        "a",
+                        "",
+                        pub.titre
+                    );
+
+                    lienTitre.href = pub.lien;
+                    lienTitre.target = "_blank";
+                    lienTitre.rel = "noopener noreferrer";
+
+                    blocTitre.appendChild(lienTitre);
+                } else {
+                    blocTitre.textContent = pub.titre;
+                }
+
+                const blocMeta = creerElement(
+                    "div",
+                    "pub-meta"
+                );
+
+                const classeBadge =
+                    pub.statut === "Publié"
+                    ? "badge-published"
+                    : pub.statut === "Sous revue"
+                      ? "badge-review"
+                      : "badge-preprint";
+
+                const badge = creerElement(
+                    "span",
+                    "badge " + classeBadge,
+                    pub.statut
+                );
+
+                blocMeta.appendChild(badge);
+                blocMeta.appendChild(
+                    document.createTextNode(
+                        " · " + pub.meta
+                    )
+                );
+
+                const actions = creerElement(
+                    "div",
+                    "pub-actions"
+                );
+
+                if (pub.lien) {
+                    const boutonLien = creerElement(
+                        "a",
+                        "action-btn",
+                        pub.libelle || "Consulter"
+                    );
+
+                    boutonLien.href = pub.lien;
+                    boutonLien.target = "_blank";
+                    boutonLien.rel = "noopener noreferrer";
+
+                    actions.appendChild(boutonLien);
+                }
+
+                const boutonBibtex = creerElement(
+                    "button",
+                    "action-btn",
+                    "BibTeX"
+                );
+
+                boutonBibtex.type = "button";
+
+                boutonBibtex.addEventListener(
+                    "click",
+                    () => copyBibtex(
+                        pub.cle,
+                        boutonBibtex
+                    )
+                );
+
+                actions.appendChild(boutonBibtex);
+
+                carte.appendChild(blocTitre);
+                carte.appendChild(blocMeta);
+                carte.appendChild(actions);
+
+                section.appendChild(carte);
+            });
+
+        zone.appendChild(section);
+    });
+
+    document.getElementById(
+        "publication-count"
+    ).textContent = PUBLICATIONS.length;
+}
+
+/*
+ * NAVIGATION ENTRE LES ONGLETS
+ */
+
+function showTab(tabId,btn) {
+
+    const ongletsAutorises = [
+        "publications",
+        "about",
+        "lzac",
+        "conferences"
+    ];
+
+    if (!ongletsAutorises.includes(tabId)) {
+        return;
+    }
+
+    document.querySelectorAll(".panel")
+        .forEach(panel => {
+            panel.classList.remove("active");
+        });
+
+    document.querySelectorAll(".tab-btn")
+        .forEach(bouton => {
+            bouton.classList.remove("active");
+        });
+
+    const panneau = document.getElementById(
+        "panel-" + tabId
+    );
+
+    if (!panneau) {
+        return;
+    }
+
+    panneau.classList.add("active");
+
+    if (btn) {
+        btn.classList.add("active");
+    } else {
+        const boutons = document.querySelectorAll(
+            ".tab-btn"
+        );
+
+        boutons.forEach(bouton => {
+            const action = bouton.getAttribute(
+                "onclick"
+            ) || "";
+
+            if (action.includes("'" + tabId + "'")) {
+                bouton.classList.add("active");
             }
         });
     }
 
-    function copyBibtex(key, btn) {
-        const text = BIBTEX[key] || "";
-        if (!text) return;
-        navigator.clipboard.writeText(text).then(() => {
-            const orig = btn.textContent;
-            btn.textContent = "Copié !";
-            btn.classList.add('copied');
-            setTimeout(() => {
-                btn.textContent = orig;
-                btn.classList.remove('copied');
-            }, 1800);
-        });
-    }
+    history.replaceState(
+        null,
+        "",
+        "#" + tabId
+    );
+}
 
-    document.addEventListener("DOMContentLoaded", () => {
-        const count = document.querySelectorAll("#panel-publications .pub-item").length;
-        const counter = document.getElementById("publication-count");
-        if (counter) counter.textContent = count;
+/*
+ * RECHERCHE PAR TITRE, DOI, MOTS-CLÉS
+ */
 
-        if (window.renderMathInElement) {
-            renderMathInElement(document.body, {
-                delimiters: [
-                    {left: '$$', right: '$$', display: true},
-                    {left: '$', right: '$', display: false}
-                ],
-                throwOnError: false
-            });
+function filterPublications() {
+
+    const champ = document.getElementById(
+        "filter-input"
+    );
+
+    const recherche = champ.value
+        .toLowerCase()
+        .normalize("NFD")
+        .replace(/[\u0300-\u036f]/g,"");
+
+    document.querySelectorAll(
+        "#panel-publications .pub-item"
+    ).forEach(carte => {
+
+        const contenu = (
+            carte.dataset.search + " " +
+            carte.textContent.toLowerCase()
+        )
+        .normalize("NFD")
+        .replace(/[\u0300-\u036f]/g,"");
+
+        if (contenu.includes(recherche)) {
+            carte.classList.remove("hidden");
+        } else {
+            carte.classList.add("hidden");
         }
     });
+}
+
+/*
+ * COPIE DES BIBTEX ORIGINAUX
+ */
+
+function copyBibtex(key,btn) {
+
+    const texte = BIBTEX[key] || "";
+
+    if (!texte) {
+        return;
+    }
+
+    if (!navigator.clipboard) {
+        window.prompt(
+            "Copier la référence BibTeX :",
+            texte
+        );
+        return;
+    }
+
+    navigator.clipboard.writeText(texte)
+        .then(() => {
+
+            const ancienTexte = btn.textContent;
+
+            btn.textContent = "Copié !";
+            btn.classList.add("copied");
+
+            setTimeout(() => {
+                btn.textContent = ancienTexte;
+                btn.classList.remove("copied");
+            },1800);
+
+        })
+        .catch(() => {
+
+            window.prompt(
+                "Copier la référence BibTeX :",
+                texte
+            );
+
+        });
+}
+
+/*
+ * INITIALISATION DU SITE
+ */
+
+document.addEventListener(
+    "DOMContentLoaded",
+    () => {
+
+        afficherPublications();
+
+        const ongletInitial = location.hash
+            .replace("#","");
+
+        if ([
+            "publications",
+            "about",
+            "lzac",
+            "conferences"
+        ].includes(ongletInitial)) {
+
+            showTab(ongletInitial);
+        }
+
+        if (window.renderMathInElement) {
+
+            renderMathInElement(
+                document.body,
+                {
+                    delimiters: [
+                        {
+                            left: "$$",
+                            right: "$$",
+                            display: true
+                        },
+                        {
+                            left: "$",
+                            right: "$",
+                            display: false
+                        }
+                    ],
+                    throwOnError: false
+                }
+            );
+
+        }
+
+    }
+);
+
 </script>
+
 </body>
 </html>
