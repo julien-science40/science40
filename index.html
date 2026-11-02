@@ -5,8 +5,9 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Julien Boblique — Science 4.0 | Recherche indépendante</title>
-<meta name="description" content="Travaux de recherche indépendants de Julien Boblique autour de Science 4.0 : biophysique, thermodynamique hors équilibre, cybernétique, systèmes complexes et projet lunaire L-ZAC. Publications, préprints et collaborations.">
+<meta name="description" content="Publications et préprints de Julien Boblique, fondateur de Science 4.0 : épigénétique et NR3C1, biophysique, thermodynamique hors équilibre, cybernétique, systèmes complexes et projet lunaire L-ZAC.">
 <link rel="canonical" href="https://julien-science40.github.io/science40/">
+
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://julien-science40.github.io/science40/">
 <meta property="og:title" content="Julien Boblique — Science 4.0">
@@ -32,6 +33,28 @@
     "Biologie des systèmes",
     "Physique de la matière condensée"
   ]
+}
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ScholarlyArticle",
+  "headline": "Epigenetic Debt and Signal-to-Noise Dynamics: A Non-Equilibrium Science 4.0 Model with NR3C1 as an Illustrative Case",
+  "author": {
+    "@type": "Person",
+    "name": "Julien Boblique",
+    "sameAs": "https://orcid.org/0009-0009-0648-5970"
+  },
+  "datePublished": "2026-11-02",
+  "inLanguage": "en",
+  "isPartOf": {
+    "@type": "Periodical",
+    "name": "Global Journal of Science Frontier Research - I: Interdisciplinary",
+    "volumeNumber": "26"
+  },
+  "identifier": "https://doi.org/10.34257/GJSFRI278061",
+  "url": "https://globaljournals.org/GJSFR_Volume26/epigenetic-sustainability-human-factor.pdf?v=1793611265436"
 }
 </script>
 
@@ -328,7 +351,7 @@ footer {
     text-align: center;
 }
 
-/* NOUVEL ONGLET : PROJET LUNAIRE */
+/* ONGLET : PROJET LUNAIRE */
 
 .lzac-hero {
     position: relative;
@@ -806,11 +829,10 @@ Julien Boblique — Science 4.0 · Recherche indépendante & Science ouverte (20
 
 /*
  * CATALOGUE DES PUBLICATIONS
- * 33 références, dans les mêmes 5 catégories
- * que le fichier d'origine.
+ * 34 références dans les 5 catégories.
  *
  * Champs séparés par |
- * catégorie | identifiant BibTeX | statut |
+ * catégorie | clé BibTeX | statut |
  * titre | lien | métadonnées | libellé du lien
  */
 
@@ -822,6 +844,7 @@ const CATALOGUE = String.raw`
 2|tum_science40_v2_2026|Préprint Zenodo|Geometric-Cybernetic Unification: TUM $\mathrm{Cl}(8,0)$ Invariant and Science 4.0 Autonomous Feedback (v2.0 Benchmark)|https://doi.org/10.5281/zenodo.22922030|2026 · Berón, S. M. A., Boblique, J. · DOI: 10.5281/zenodo.22922030|Accéder au dépôt (v2.0)
 2|tum_science40_v1_2026|Préprint Zenodo|Geometric-Cybernetic Unification: TUM $\mathrm{Cl}(8,0)$ Invariant and Science 4.0 Autonomous Feedback (v1.0 Working Draft)|https://zenodo.org/records/22115055|2026 · Berón, S. M. A., Boblique, J. · Zenodo: 22115055|Accéder au dépôt (v1.0)
 2|janus_metric_impedance_2026|Préprint Zenodo|Dépasser le modèle bimétrique de Janus : L'impédance métrique et l'infodynamique de l'espace-temps|https://doi.org/10.5281/zenodo.22006771|2026 · Boblique, J. · DOI: 10.5281/zenodo.22006771|Accéder au dépôt
+3|epigenetic_debt_gjsfr_2026|Publié|Epigenetic Debt and Signal-to-Noise Dynamics: A Non-Equilibrium Science 4.0 Model with NR3C1 as an Illustrative Case|https://globaljournals.org/GJSFR_Volume26/epigenetic-sustainability-human-factor.pdf?v=1793611265436|2026 · Global Journal of Science Frontier Research – I: Interdisciplinary · Vol. 26 · Ahead of Print (02/11/2026) · DOI: 10.34257/GJSFRI278061|PDF de l’article publié
 3|neuro_epigenetics_2026|Publié|Theoretical Perspective – Neuro-Epigenetics of Stress: Modeling HPA Axis Unlocking and Central Signal-to-Noise Ratio Optimization via the Bio-OS V8 Framework|https://doi.org/10.63721/26JPIR0141|2026 · Journal of Psychiatric Insight Review · DOI: 10.63721/26JPIR0141|Lien DOI
 3|set_theory_2026|Publié|A Social Epigenetic Theory of Systemic Transitions|https://doi.org/10.23880/izab-16000667|2026 · International Journal of Zoology and Animal Biology · DOI: 10.23880/izab-16000667|Lien DOI
 3|science_4_0_2026|Publié|From SET Theory to Science 4.0: An AI-Driven Framework for Epigenetic Integrity and Biological Flow Control|https://doi.org/10.23880/izab-16000669|2026 · International Journal of Zoology and Animal Biology · DOI: 10.23880/izab-16000669|Lien DOI
@@ -851,11 +874,22 @@ const CATALOGUE = String.raw`
 `;
 
 /*
- * RÉFÉRENCES BIBTEX ORIGINALES
- * Conservées individuellement, sans génération automatique.
+ * RÉFÉRENCES BIBTEX
  */
 
 const BIBTEX = {
+
+epigenetic_debt_gjsfr_2026: `@article{boblique2026epigenetic_debt,
+  title={Epigenetic Debt and Signal-to-Noise Dynamics: A Non-Equilibrium Science 4.0 Model with NR3C1 as an Illustrative Case},
+  author={Boblique, Julien},
+  journal={Global Journal of Science Frontier Research - I: Interdisciplinary},
+  volume={26},
+  year={2026},
+  month={nov},
+  note={Ahead of Print, published online 2 November 2026},
+  doi={10.34257/GJSFRI278061},
+  url={https://globaljournals.org/GJSFR_Volume26/epigenetic-sustainability-human-factor.pdf?v=1793611265436}
+}`,
 
 science40_bjstr_2026: `@article{boblique2026science40_integrating,
   title={Science 4.0: Integrating Biophysical Signal Optimization, Non-Equilibrium Thermodynamics, and Hydrodynamic Boundary Constraints in Living Systems Architecture},
